@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>X.FORM · Beyond design</title>
 <meta name="description" content="X.FORM es un estudio de arquitectura en Bogotá. Estrategia, diseño y desarrollo en una misma mesa, desde el primer trazo hasta la obra.">
@@ -39,8 +38,8 @@ section{padding:clamp(80px,12vw,150px) 0;position:relative}
 .num{font-size:12px;letter-spacing:.2em;color:#6E6E6E;font-weight:400}
 
 /* ---------- barra ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-header.on{background:rgba(17,17,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:border-color .3s;border-bottom:1px solid transparent;background:rgba(17,17,17,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+header.on{border-color:var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
 .bar img{height:30px;width:auto}
 nav.menu{display:flex;gap:28px;align-items:center}
@@ -203,8 +202,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* aparición suave, solo con JavaScript */
 @media (prefers-reduced-motion:no-preference){
-  .js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
-  .js .rv.in{opacity:1;transform:none}
+  .rvon .rv{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
+  .rvon .rv.in{opacity:1;transform:none}
 }
 @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
@@ -221,7 +220,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a href="#proceso">Proceso</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#equipo">Equipo</a>
-      <a href="#dimensiona">Dimensiona tu proyecto</a>
+      <a href="#dimensiona">Dimensione su proyecto</a>
       <a class="cta" href="#hablemos">Hablemos</a>
     </nav>
   </div>
@@ -242,7 +241,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="facts">
       <div><b>+500.000 m²</b>Diseñados</div>
       <div><b>+20</b>Proyectos</div>
-      <div><b>+50 años</b>De oficio combinado</div>
+      <div><b>+50 años</b>De oficio</div>
     </div>
   </div>
 </section>
@@ -255,7 +254,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h2 class="rv">Entramos cuando el proyecto todavía es una conversación.</h2>
       <div class="rv">
         <p>X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, porque las mejores decisiones de un proyecto se toman antes del primer plano.</p>
-        <p>Llegamos cuando el lote todavía guarda preguntas abiertas: qué cabe, qué conviene, qué historia quiere contar. Desde ahí acompañamos el proyecto hasta que se habita.</p>
+        <p>En ese momento el lote todavía guarda preguntas abiertas: qué cabe, qué conviene, qué historia quiere contar. Las respondemos con el cliente y seguimos al lado del proyecto hasta que alguien lo habita.</p>
         <p>Buscamos lugares que se sientan bien al recorrerlos, que se construyan con sensatez y que encuentren a su gente.</p>
       </div>
     </div>
@@ -269,8 +268,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h2 class="rv">Tres frentes que piensan juntos</h2>
     <div class="srv">
       <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres con el cliente leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
-      <article class="rv"><span class="code">X.DSG</span><h3>Arquitectura e interiorismo</h3><span class="verb">DISEÑAR</span><p>Arquitectura, interiorismo, urbanismo y paisaje en un mismo hilo. Trabajamos la luz, la materia y el recorrido con el rigor técnico que pide la norma y la obra.</p></article>
-      <article class="rv"><span class="code">X.DVL</span><h3>Gerencia, control y obra</h3><span class="verb">EJECUTAR</span><p>Acompañamos el proyecto hasta que se vuelve materia. Coordinamos disciplinas, tiempos y costos, y cuidamos en obra que lo dibujado llegue intacto.</p></article>
+      <article class="rv"><span class="code">X.DSG</span><h3>Arquitectura e interiorismo</h3><span class="verb">DISEÑAR</span><p>Arquitectura, interiorismo, urbanismo y paisaje salen del mismo lápiz. Trabajamos la luz, la materia y el recorrido con el rigor técnico que pide la norma y la obra.</p></article>
+      <article class="rv"><span class="code">X.DVL</span><h3>Gerencia, control y obra</h3><span class="verb">EJECUTAR</span><p>Llevamos el proyecto hasta que se vuelve materia. Coordinamos disciplinas, tiempos y costos, y en obra cuidamos que lo dibujado llegue intacto.</p></article>
     </div>
   </div>
 </section>
@@ -282,9 +281,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h2 class="rv">Cuatro fases, un mismo hilo</h2>
     <div class="fases">
       <div class="fase rv"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y al cliente. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
-      <div class="fase rv"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: un lugar con identidad, con una manera propia de recibir la luz y de recorrerse.</p></div>
+      <div class="fase rv"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: una forma propia de recibir la luz, de llegar y de recorrerse.</p></div>
       <div class="fase rv"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir sin perder su carácter.</p></div>
-      <div class="fase rv"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Acompañamos la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
+      <div class="fase rv"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Estamos en la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
     </div>
   </div>
 </section>
@@ -328,11 +327,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
     <div class="team">
       <div class="person rv"><h3>Francisco Ospina</h3><p class="role">SOCIO · DIRECTOR DE DISEÑO</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Paisaje y Urbanismo de la Universidad de Pensilvania. Piensa el proyecto desde el paisaje hacia adentro.</p></div>
-      <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · GERENTE DE PROYECTOS</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Vivienda del Siglo XXI de la UPC de Barcelona. Acompaña cada proyecto desde la primera conversación hasta la obra.</p></div>
+      <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · GERENTE DE PROYECTOS</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Vivienda del Siglo XXI de la UPC de Barcelona. Acompaña cada proyecto desde la primera conversación hasta el último día de obra.</p></div>
     </div>
     <div class="boutique rv">
       <div><p class="tag"><i></i>Dirección boutique</p><h3>Un estudio pequeño a propósito.</h3></div>
-      <div><p>Estrategia, paisaje, urbanismo, biofilia y neuroarquitectura se cruzan en la misma mesa para crear atmósferas que se recuerdan con el cuerpo.</p><p class="foot">UN EQUIPO, TODAS LAS ESCALAS</p></div>
+      <div><p>Estrategia, paisaje, urbanismo, biofilia y neuroarquitectura trabajan juntas desde el primer boceto, para crear atmósferas que se recuerdan con el cuerpo.</p><p class="foot">UN EQUIPO, TODAS LAS ESCALAS</p></div>
     </div>
   </div>
 </section>
@@ -341,7 +340,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section class="light" id="dimensiona">
   <div class="wrap dim">
     <div>
-      <p class="tag rv"><i></i>07 · Dimensiona tu proyecto</p>
+      <p class="tag rv"><i></i>07 · Dimensione su proyecto</p>
       <h2 class="rv">Cuéntenos qué tiene en mente</h2>
       <p class="lead rv">Tres preguntas para darle una primera lectura de la escala de su proyecto y del paso que sigue.</p>
     </div>
@@ -372,10 +371,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <p class="txt" id="resTxt"></p>
         <p class="matiz" id="resMatiz"></p>
         <div class="btns">
-          <a class="btn k" id="ctaWa" href="https://wa.me/573148304724" target="_blank" rel="noopener">Agenda 20 minutos con nosotros</a>
+          <a class="btn k" id="ctaWa" href="https://wa.me/573148304724" target="_blank" rel="noopener">Agende 20 minutos con nosotros</a>
           <a class="btn" id="ctaMail" href="mailto:info@xform.com.co">Escríbanos por correo</a>
         </div>
-        <p class="disc">Una primera lectura para orientar la conversación. Cada proyecto tiene su propia historia, y la contamos juntos.</p>
+        <p class="disc">Una primera lectura para orientar la conversación. El detalle lo armamos juntos en la primera reunión.</p>
       </div>
     </form>
   </div>
@@ -387,7 +386,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <p class="tag rv"><i></i>08 · Hablemos</p>
     <h2 class="rv">Hablemos de su lugar</h2>
-    <p class="lead rv">Cada proyecto empieza con una conversación. Cuéntenos dónde está y qué imagina.</p>
+    <p class="lead rv">Cuéntenos dónde está su terreno y qué imagina para él.</p>
     <div class="btns rv">
       <a class="btn k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">info@xform.com.co</a>
       <a class="btn" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
@@ -419,19 +418,19 @@ const P = [
   txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle que invita a quedarse hasta que cae la tarde.",
   cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3"], cap:["Beach Club · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","La llegada al mar · Cayetana, Barú"]},
  {f:["rs"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
-  txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella acompaña la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
+  txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella sigue la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
   cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-villa-eivissa","cayetana-villa-macarella","cayetana-villa-savina"], cap:["Villa Eivissa · Cayetana, Barú","Villa Macarella · Cayetana, Barú","Villa Savina · Cayetana, Barú"]},
  {f:["mu","rs"], cat:"Uso mixto", t:"VITA 119", meta:"Bogotá · Uso mixto · 5.150 m² · 2026",
   txt:"En VITA 119 el bienestar sube con el edificio. Recibe en el lobby, se abre al aire en el piso 4 y vuelve a encontrar la luz en el piso 12, entre jardines que cuelgan de la fachada. VT Residences y el Centro de Experiencia hacen parte del mismo proyecto.",
   cred:"Arquitectura: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["vita119-1","vita119-2","vita119-3","vita119-4"], cap:["VITA 119 · Santa Bárbara, Bogotá","VITA 119 · Bogotá","Terraza · VITA 119","VT Residences · VITA 119"]},
  {f:["hs"], cat:"Hospitality", t:"Casa Alma", meta:"Bogotá · Wellness club · 600 m² · 2025",
-  txt:"Un lugar para bajar el ritmo en medio de la ciudad. Casa Alma ordena sus espacios alrededor del cuerpo y la calma: luz tamizada, materiales cálidos y recorridos que invitan a llegar despacio.",
+  txt:"Un lugar para bajar el ritmo en medio de la ciudad. Casa Alma ordena sus espacios alrededor del cuerpo y la calma: luz tamizada, materiales cálidos y recorridos que piden llegar despacio.",
   cred:"Arquitectura e interiorismo: X.FORM", ia:false, img:["casa-alma-1","casa-alma-2","casa-alma-3"], cap:["Casa Alma · Bogotá","Casa Alma · Bogotá","Casa Alma · Bogotá"]},
  {f:["rs"], big:true, cat:"Residencial", t:"Casa Barú", meta:"Cartagena · Residencial · 480 m² · 2019",
   txt:"Una casa pensada para la brisa del Caribe. Sombras profundas, espacios que se abren hacia el exterior y una vida que transcurre entre la terraza y el agua.",
   cred:"Arquitectura: Camilo Restrepo", ia:false, img:["casa-baru-1","casa-baru-2"], cap:["Casa Barú · Cartagena","Casa Barú · Cartagena"]},
  {f:["rs"], big:true, cat:"Residencial", t:"Casa Villeta", meta:"Villeta, Cundinamarca · Residencial · 300 m² · 2012",
-  txt:"La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca, con una vida que se abre al jardín.",
+  txt:"La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca. La casa se abre entera al jardín.",
   cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-1","casa-villeta-2","casa-villeta-3"], cap:["Casa Villeta · Villeta","Casa Villeta · Villeta","Casa Villeta · Villeta"]}
 ];
 const src = n => `assets/img/${n}.webp`;
@@ -467,7 +466,7 @@ const L = {
   idea:"Un proyecto en este punto se beneficia de una fase de estrategia: tres a cuatro semanas para leer el lugar, definir la visión y saber qué vale la pena construir.",
   lote:"Con el lote en la mano, el primer paso es una cabida: entender qué permite la norma y qué pide el terreno antes de dibujar.",
   diseno:"Podemos entrar a revisar, coordinar o profundizar lo que ya existe, sin empezar de cero.",
-  obra:"Acompañamos la ejecución con control técnico y dirección, para que lo construido conserve la idea."
+  obra:"Entramos a la ejecución con control técnico y dirección, para que lo construido conserve la idea."
 };
 const MATIZ="Proyectos de más de 10.000 m² o de masterplan suelen arrancar con una mesa de estrategia antes del concepto.";
 const form=document.getElementById("dimForm");
@@ -480,7 +479,7 @@ form.addEventListener("change",()=>{
   document.getElementById("resMatiz").textContent = (+a.value>=4 || t.value==="masterplan") ? MATIZ : "";
   const msg=`Hola, X.FORM. Quiero conversar sobre un proyecto de ${t.value}, ${a.dataset.t}, que está en la etapa de ${s.dataset.t}.`;
   document.getElementById("ctaWa").href="https://wa.me/573148304724?text="+encodeURIComponent(msg);
-  document.getElementById("ctaMail").href="mailto:info@xform.com.co?subject="+encodeURIComponent("Dimensiona tu proyecto · X.FORM")+"&body="+encodeURIComponent(msg);
+  document.getElementById("ctaMail").href="mailto:info@xform.com.co?subject="+encodeURIComponent("Dimensione su proyecto · X.FORM")+"&body="+encodeURIComponent(msg);
   document.getElementById("res").classList.add("show");
 });
 
@@ -491,10 +490,15 @@ bg.addEventListener("click",()=>{const o=mn.classList.toggle("open"); bg.setAttr
 mn.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mn.classList.remove("open");bg.setAttribute("aria-expanded",false);}));
 
 // ---------- aparición ----------
+// El contenido solo se esconde cuando este código ya corre; si algo falla o tarda, todo queda visible.
+const todos=()=>document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
 if("IntersectionObserver" in window){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
-  document.querySelectorAll(".rv").forEach(el=>io.observe(el));
-} else document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px 10% 0px"});
+  document.querySelectorAll(".rv").forEach(el=>{const r=el.getBoundingClientRect(); if(r.top<innerHeight*1.1) el.classList.add("in"); else io.observe(el);});
+  document.documentElement.classList.add("rvon");
+  addEventListener("hashchange",todos); if(location.hash) todos();
+  setTimeout(todos,2500);
+} else todos();
 
 // ---------- curvas de nivel: el motivo gráfico de la marca ----------
 function curvas(id, cyF){
