@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>X.FORM · Beyond design</title>
+<meta name="description" content="X.FORM · Arquitectura, estrategia y desarrollo. Bogotá, Colombia. El sitio está en obra: escríbenos a info@xform.com.co.">
+<meta name="theme-color" content="#111111">
+<meta property="og:type" content="website">
+<meta property="og:title" content="X.FORM · Beyond design">
+<meta property="og:description" content="Arquitectura, estrategia y desarrollo. El sitio está en obra.">
+<meta property="og:image" content="https://xform.com.co/assets/og-xform.png">
+<meta property="og:url" content="https://xform.com.co/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preload" href="assets/KievitOT-Light.otf" as="font" type="font/otf" crossorigin>
+<style>
+@font-face{font-family:"Kievit";src:url(assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:"Kievit";src:url(assets/KievitOT-Regular.otf) format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"Kievit";src:url(assets/KievitOT-Bold.otf) format("opentype");font-weight:700;font-display:swap}
+:root{--ink:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--muted:#8E9097;--lime:#C8FF3C}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--ink);color:var(--paper);font-family:"Kievit","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+canvas#curvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
+main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 24px}
+.logo{width:min(440px,72vw);height:auto}
+.obra{margin-top:clamp(36px,7vh,64px);font-weight:300;font-size:clamp(22px,3.4vw,34px);letter-spacing:.01em}
+.obra b{font-weight:400}
+.barra{width:120px;height:2px;background:rgba(241,240,236,.12);margin:26px auto 0;overflow:hidden}
+.barra i{display:block;width:40%;height:100%;background:var(--lime)}
+.sub{margin-top:22px;font-weight:300;font-size:clamp(14px,1.6vw,16px);color:var(--muted);letter-spacing:.02em}
+nav{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+nav a{color:var(--paper);text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border:1px solid rgba(241,240,236,.22);transition:border-color .25s,color .25s,background .25s}
+nav a:hover,nav a:focus-visible{border-color:var(--lime);color:var(--lime);outline:none}
+nav a.k{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+nav a.k:hover,nav a.k:focus-visible{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+footer{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px calc(18px + env(safe-area-inset-bottom));font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5E6067}
+footer span:first-child{color:var(--muted)}
+/* Animación solo si el JavaScript corre: si no, todo se ve igual (navegadores limitados como el de Instagram) */
+@media (prefers-reduced-motion:no-preference){
+  .js .logo{animation:entra 1.4s cubic-bezier(.2,.7,.1,1) .2s backwards}
+  .js .obra{animation:entra 1.2s ease .9s backwards}
+  .js .barra{animation:entra 1s ease 1.3s backwards}
+  .js .sub{animation:entra 1s ease 1.5s backwards}
+  .js nav{animation:entra 1s ease 1.8s backwards}
+  .barra i{animation:avance 2.8s cubic-bezier(.6,0,.3,1) infinite}
+}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes avance{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+@media (max-width:520px){footer{justify-content:center;text-align:center}}
+</style>
+</head>
+<body>
+<canvas id="curvas" aria-hidden="true"></canvas>
+<main>
+  <img class="logo" src="assets/xform-logo-blanco.png" alt="X.FORM · Beyond design" width="886" height="263">
+  <p class="obra">El sitio está <b>en obra.</b></p>
+  <div class="barra" aria-hidden="true"><i></i></div>
+  <p class="sub">Arquitectura, estrategia y desarrollo · Bogotá</p>
+  <nav aria-label="Contacto">
+    <a class="k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">Escríbenos</a>
+    <a href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram</a>
+  </nav>
+</main>
+<footer><span>X.FORM S.A.S.</span><span>info@xform.com.co</span></footer>
+<script>
+// Curvas de nivel en movimiento lento: el motivo gráfico de la marca.
+(()=>{const c=document.getElementById("curvas"),g=c.getContext("2d");let W,H,t=0;const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function tam(){const r=Math.min(devicePixelRatio||1,2);W=c.width=innerWidth*r;H=c.height=innerHeight*r}
+function dibuja(){g.clearRect(0,0,W,H);const cx=W*.5,cy=H*.48,n=26,esc=Math.max(W,H)/24,d=Math.min(devicePixelRatio||1,2);
+  for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
+    for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
+    g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
+  if(!quieto){t+=.0025;requestAnimationFrame(dibuja)}}
+addEventListener("resize",()=>{tam();if(quieto)dibuja()});tam();dibuja()})();
+</script>
+</body>
+</html>
