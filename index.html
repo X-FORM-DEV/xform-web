@@ -47,6 +47,9 @@ nav.menu a{text-decoration:none;font-size:12px;letter-spacing:.16em;text-transfo
 nav.menu a:hover{opacity:1;color:var(--lime)}
 nav.menu a.cta{opacity:1;border:1px solid rgba(241,240,236,.4);padding:10px 16px}
 nav.menu a.cta:hover{border-color:var(--lime)}
+nav.menu button.lang{font:inherit;font-size:12px;letter-spacing:.16em;color:var(--paper);background:none;border:0;border-left:1px solid rgba(241,240,236,.3);padding:4px 0 4px 16px;cursor:pointer;opacity:.78}
+nav.menu button.lang:hover{opacity:1;color:var(--lime)}
+nav.menu button.lang[hidden]{display:none}
 .burger{display:none;background:none;border:0;color:var(--paper);width:44px;height:44px;cursor:pointer}
 .burger span{display:block;width:22px;height:1.5px;background:currentColor;margin:5px auto}
 @media (max-width:1080px){
@@ -55,11 +58,16 @@ nav.menu a.cta:hover{border-color:var(--lime)}
   nav.menu.open{transform:none}
   nav.menu a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:13px}
   nav.menu a.cta{border:0;border-bottom:1px solid var(--line);padding:14px 0;color:var(--lime)}
+  nav.menu button.lang{border:0;border-bottom:1px solid var(--line);padding:14px 0;width:100%;text-align:left;font-size:13px}
 }
 
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 clamp(48px,8vw,90px);overflow:hidden}
 canvas.curvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6}
+canvas.relieve{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9}
+.hero.con3d{cursor:crosshair}
+.hero.con3d .wrap{pointer-events:none}
+.hero.con3d .wrap a,.hero.con3d .wrap button{pointer-events:auto}
 .hero .wrap{position:relative;z-index:1;width:100%}
 .hero h1{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
 .hero h1 b{font-weight:700}
@@ -221,6 +229,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a href="#proyectos">Proyectos</a>
       <a href="#equipo">Equipo</a>
       <a href="#dimensiona">Dimensione su proyecto</a>
+      <button class="lang" id="lang" type="button" hidden>EN</button>
       <a class="cta" href="#hablemos">Hablemos</a>
     </nav>
   </div>
@@ -515,5 +524,8 @@ function curvas(id, cyF){
 }
 curvas("curvas",.42); curvas("curvas2",.5);
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="assets/relieve.js?v=20261021" defer></script>
+<script src="assets/i18n.js?v=20261021b" defer></script>
 </body>
 </html>
