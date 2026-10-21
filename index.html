@@ -5,11 +5,11 @@
 <script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>X.FORM · Beyond design</title>
-<meta name="description" content="X.FORM · Arquitectura, estrategia y desarrollo. Bogotá, Colombia. El sitio está en obra: escríbenos a info@xform.com.co.">
+<meta name="description" content="X.FORM es un estudio de arquitectura en Bogotá. Estrategia, diseño y desarrollo en una misma mesa, desde el primer trazo hasta la obra.">
 <meta name="theme-color" content="#111111">
 <meta property="og:type" content="website">
 <meta property="og:title" content="X.FORM · Beyond design">
-<meta property="og:description" content="Arquitectura, estrategia y desarrollo. El sitio está en obra.">
+<meta property="og:description" content="Arquitectura, estrategia y desarrollo. Bogotá, Colombia.">
 <meta property="og:image" content="https://xform.com.co/assets/og-xform.png">
 <meta property="og:url" content="https://xform.com.co/">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,63 +19,497 @@
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Regular.otf) format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Bold.otf) format("opentype");font-weight:700;font-display:swap}
-:root{--ink:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--muted:#8E9097;--lime:#C8FF3C}
+:root{--ink:#1A1A1A;--deep:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--white:#FFFFFF;--muted:#8E9097;--line:rgba(241,240,236,.14);--linek:rgba(26,26,26,.14);--lime:#C8FF3C;--gut:clamp(16px,5vw,72px)}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:var(--ink);color:var(--paper);font-family:"Kievit","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-body{min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
-canvas#curvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
-main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 24px}
-.logo{width:min(440px,72vw);height:auto}
-.obra{margin-top:clamp(36px,7vh,64px);font-weight:300;font-size:clamp(22px,3.4vw,34px);letter-spacing:.01em}
-.obra b{font-weight:400}
-.barra{width:120px;height:2px;background:rgba(241,240,236,.12);margin:26px auto 0;overflow:hidden}
-.barra i{display:block;width:40%;height:100%;background:var(--lime)}
-.sub{margin-top:22px;font-weight:300;font-size:clamp(14px,1.6vw,16px);color:var(--muted);letter-spacing:.02em}
-nav{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-nav a{color:var(--paper);text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border:1px solid rgba(241,240,236,.22);transition:border-color .25s,color .25s,background .25s}
-nav a:hover,nav a:focus-visible{border-color:var(--lime);color:var(--lime);outline:none}
-nav a.k{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-nav a.k:hover,nav a.k:focus-visible{background:var(--lime);border-color:var(--lime);color:var(--ink)}
-footer{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px calc(18px + env(safe-area-inset-bottom));font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5E6067}
-footer span:first-child{color:var(--muted)}
-/* Animación solo si el JavaScript corre: si no, todo se ve igual (navegadores limitados como el de Instagram) */
-@media (prefers-reduced-motion:no-preference){
-  .js .logo{animation:entra 1.4s cubic-bezier(.2,.7,.1,1) .2s backwards}
-  .js .obra{animation:entra 1.2s ease .9s backwards}
-  .js .barra{animation:entra 1s ease 1.3s backwards}
-  .js .sub{animation:entra 1s ease 1.5s backwards}
-  .js nav{animation:entra 1s ease 1.8s backwards}
-  .barra i{animation:avance 2.8s cubic-bezier(.6,0,.3,1) infinite}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--deep);color:var(--paper);font-family:"Kievit","Helvetica Neue",Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.tag{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--muted);display:flex;align-items:center;gap:14px}
+.tag i{display:inline-block;width:28px;height:2px;background:var(--lime)}
+.light .tag i,.white .tag i{background:var(--ink)}
+h1,h2,h3{font-weight:300;letter-spacing:-.015em;line-height:1.08}
+h2{font-size:clamp(32px,5vw,64px);margin-top:22px;max-width:16ch}
+section{padding:clamp(80px,12vw,150px) 0;position:relative}
+.light{background:var(--paper);color:var(--ink)}
+.light .tag{color:#6E6E6E}
+.white{background:var(--white);color:var(--ink)}
+.white .tag{color:#6E6E6E}
+.num{font-size:12px;letter-spacing:.2em;color:#6E6E6E;font-weight:400}
+
+/* ---------- barra ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.on{background:rgba(17,17,17,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.bar img{height:30px;width:auto}
+nav.menu{display:flex;gap:28px;align-items:center}
+nav.menu a{text-decoration:none;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--paper);opacity:.78;transition:opacity .2s,color .2s}
+nav.menu a:hover{opacity:1;color:var(--lime)}
+nav.menu a.cta{opacity:1;border:1px solid rgba(241,240,236,.4);padding:10px 16px}
+nav.menu a.cta:hover{border-color:var(--lime)}
+.burger{display:none;background:none;border:0;color:var(--paper);width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:22px;height:1.5px;background:currentColor;margin:5px auto}
+@media (max-width:1080px){
+  .burger{display:block}
+  nav.menu{position:fixed;top:68px;left:0;right:0;background:var(--deep);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gut) 28px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s;z-index:-1}
+  nav.menu.open{transform:none}
+  nav.menu a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:13px}
+  nav.menu a.cta{border:0;border-bottom:1px solid var(--line);padding:14px 0;color:var(--lime)}
 }
-@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes avance{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
-@media (max-width:520px){footer{justify-content:center;text-align:center}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 clamp(48px,8vw,90px);overflow:hidden}
+canvas.curvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero h1{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
+.hero h1 b{font-weight:700}
+.hero .lead{max-width:44ch;font-size:clamp(18px,1.8vw,22px);color:#C9C8C3;margin-top:30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;padding:16px 24px;border:1px solid rgba(241,240,236,.35);color:var(--paper);background:none;cursor:pointer;font-family:inherit;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{border-color:var(--lime);color:var(--lime)}
+.btn.k{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn.k:hover{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:clamp(20px,5vw,72px);margin-top:clamp(48px,7vw,90px);padding-top:26px;border-top:1px solid var(--line)}
+.facts div{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.facts b{display:block;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.01em;color:var(--paper);font-weight:300;margin-bottom:4px;text-transform:none}
+@media (max-width:620px){.facts{grid-template-columns:1fr;gap:18px}}
+
+/* ---------- firma ---------- */
+.firma .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,110px);align-items:start;margin-top:12px}
+.firma p{font-size:clamp(17px,1.5vw,20px);color:#3B3B3B;margin-bottom:22px;max-width:52ch}
+.firma p:first-child{font-size:clamp(20px,1.9vw,25px);color:var(--ink)}
+@media (max-width:860px){.firma .grid{grid-template-columns:1fr}}
+
+/* ---------- servicios ---------- */
+.srv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:clamp(40px,6vw,72px);border:1px solid var(--line)}
+.srv article{background:var(--deep);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;min-height:380px;transition:background .3s}
+.srv article:hover{background:#171717}
+.srv .code{font-size:13px;letter-spacing:.2em;color:var(--lime);font-weight:400}
+.srv h3{font-size:clamp(26px,2.4vw,34px);margin-top:auto;padding-top:60px}
+.srv .verb{font-size:12px;letter-spacing:.2em;color:var(--muted);margin-top:10px;font-weight:400}
+.srv p{color:#B9B8B3;margin-top:20px;font-size:17px}
+@media (max-width:900px){.srv{grid-template-columns:1fr}.srv article{min-height:0}.srv h3{padding-top:36px}}
+
+/* ---------- proceso ---------- */
+.fases{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.5vw,36px);margin-top:clamp(40px,6vw,72px)}
+.fase{border-top:2px solid var(--ink);padding-top:22px}
+.fase h3{font-size:clamp(24px,2.2vw,30px);margin:14px 0}
+.fase p{color:#3B3B3B;font-size:17px}
+@media (max-width:980px){.fases{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.fases{grid-template-columns:1fr}}
+
+/* ---------- cifras ---------- */
+.cifras{background:var(--carbon)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.kpis div{padding:30px 20px 0 0}
+.kpis b{display:block;font-size:clamp(40px,4.2vw,64px);white-space:nowrap;font-weight:300;letter-spacing:-.03em;line-height:1}
+.kpis div:first-child b::after{content:"";display:block;width:56px;height:3px;background:var(--lime);margin-top:18px}
+.kpis span{display:block;margin-top:16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;max-width:22ch}
+@media (max-width:860px){.kpis{grid-template-columns:1fr 1fr;row-gap:30px}}
+
+/* ---------- proyectos ---------- */
+.proy-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}
+.filtros button{font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;background:none;border:1px solid var(--linek);color:var(--ink);padding:10px 14px;cursor:pointer;transition:all .2s}
+.filtros button:hover{border-color:var(--ink)}
+.filtros button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.6vw,24px);margin-top:clamp(36px,5vw,56px)}
+.card{grid-column:span 2;cursor:pointer;background:none;border:0;text-align:left;font-family:inherit;color:inherit;padding:0}
+.card.big{grid-column:span 3}
+.card .ph{position:relative;overflow:hidden;aspect-ratio:4/3;background:#DDD}
+.card.big .ph{aspect-ratio:16/10}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
+.card:hover img,.card:focus-visible img{transform:scale(1.04)}
+.card .ph::after{content:"VER PROYECTO";position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.2em;color:#fff;background:rgba(17,17,17,.75);padding:8px 12px;opacity:0;transform:translateY(6px);transition:all .3s}
+.card:hover .ph::after,.card:focus-visible .ph::after{opacity:1;transform:none}
+.card h3{font-size:clamp(22px,2vw,28px);margin-top:16px}
+.card .meta{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;font-weight:400;text-transform:uppercase}
+.card.hide{display:none}
+.card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.card,.card.big{grid-column:span 1}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.iaNote{margin-top:36px;font-size:12px;letter-spacing:.12em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+
+/* ficha abierta */
+dialog.ficha{border:0;padding:0;max-width:none;max-height:none;width:100%;height:100%;background:var(--paper);color:var(--ink)}
+dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
+.f-top{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);background:var(--paper);border-bottom:1px solid var(--linek)}
+.f-top img{height:26px;width:auto}
+.f-close{font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;background:none;border:1px solid var(--linek);padding:10px 16px;cursor:pointer;color:var(--ink)}
+.f-close:hover{border-color:var(--ink)}
+.f-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);padding:clamp(24px,4vw,56px) var(--gut) 80px;max-width:1500px;margin:0 auto}
+.f-gal{display:grid;gap:18px}
+.f-gal figcaption{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;text-transform:uppercase;font-weight:400}
+.f-txt{position:sticky;top:90px;align-self:start}
+.f-txt .tag i{background:var(--ink)}
+.f-txt .tag{color:#6E6E6E}
+.f-txt h3{font-size:clamp(34px,4vw,56px);margin:18px 0 10px}
+.f-txt .meta{font-size:12px;letter-spacing:.18em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+.f-txt p.txt{font-size:clamp(17px,1.4vw,20px);margin-top:26px;color:#2E2E2E}
+.f-txt .cred{font-size:14px;margin-top:28px;padding-top:18px;border-top:1px solid var(--linek);color:#4A4A4A}
+.f-txt .ia{font-size:13px;margin-top:10px;color:#6E6E6E}
+@media (max-width:900px){.f-body{grid-template-columns:1fr}.f-txt{position:static;order:-1}}
+
+/* ---------- equipo ---------- */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);margin-top:clamp(40px,6vw,64px)}
+.person{border-top:1px solid var(--line);padding-top:26px}
+.person h3{font-size:clamp(28px,3vw,40px)}
+.person .role{font-size:12px;letter-spacing:.18em;color:var(--lime);margin-top:10px;font-weight:400}
+.person p.bio{color:#B9B8B3;margin-top:18px;max-width:46ch;font-size:17px}
+.boutique{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,90px);align-items:end;padding:clamp(28px,4vw,52px);background:var(--carbon)}
+.boutique h3{font-size:clamp(28px,3.4vw,46px);margin-top:16px}
+.boutique p{color:#C9C8C3;font-size:clamp(17px,1.5vw,20px)}
+.boutique p.foot{font-size:12px;letter-spacing:.18em;color:var(--muted);margin-top:20px;font-weight:400}
+@media (max-width:860px){.team,.boutique{grid-template-columns:1fr}}
+
+/* ---------- dimensiona ---------- */
+.dim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,6vw,100px);align-items:start}
+.dim .lead{font-size:clamp(17px,1.5vw,20px);color:#3B3B3B;margin-top:24px;max-width:40ch}
+.q{border-top:1px solid var(--linek);padding:22px 0 26px}
+.q fieldset{border:0;min-width:0}
+.q legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:#6E6E6E;margin-bottom:14px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-block;font-size:15px;padding:11px 16px;border:1px solid var(--linek);cursor:pointer;transition:all .2s;background:var(--white)}
+.opts label:hover span{border-color:var(--ink)}
+.opts input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.opts input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.res{margin-top:10px;padding:clamp(24px,3vw,36px);background:var(--ink);color:var(--paper);display:none}
+.res.show{display:block;animation:entra .5s ease}
+.res .tag{color:var(--muted)}
+.res .tag i{background:var(--lime)}
+.res p.txt{font-size:clamp(18px,1.7vw,22px);margin-top:18px}
+.res p.matiz{font-size:16px;color:#B9B8B3;margin-top:12px}
+.res .btns{margin-top:26px}
+.res p.disc{font-size:13px;color:var(--muted);margin-top:22px}
+.hint{font-size:14px;color:#6E6E6E;margin-top:8px}
+@media (max-width:900px){.dim{grid-template-columns:1fr}}
+
+/* ---------- hablemos ---------- */
+.contacto{overflow:hidden}
+.contacto canvas.curvas{opacity:.35}
+.contacto .wrap{position:relative;z-index:1}
+.contacto h2{font-size:clamp(40px,7vw,104px);max-width:12ch}
+.contacto .lead{color:#C9C8C3;font-size:clamp(18px,1.7vw,22px);margin-top:24px;max-width:40ch}
+.datos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(48px,7vw,80px);padding-top:28px;border-top:1px solid var(--line)}
+.datos h4{font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:400;margin-bottom:12px}
+.datos a,.datos p{display:block;font-size:17px;text-decoration:none;margin-bottom:6px;color:var(--paper)}
+.datos a:hover{color:var(--lime)}
+@media (max-width:760px){.datos{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* aparición suave, solo con JavaScript */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
+  .js .rv.in{opacity:1;transform:none}
+}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<canvas id="curvas" aria-hidden="true"></canvas>
+
+<header id="top">
+  <div class="wrap bar">
+    <a href="#inicio" aria-label="X.FORM, inicio"><img src="assets/xform-logo-blanco.png" alt="X.FORM · Beyond design" width="886" height="263"></a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#firma">La firma</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#dimensiona">Dimensiona tu proyecto</a>
+      <a class="cta" href="#hablemos">Hablemos</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-  <img class="logo" src="assets/xform-logo-blanco.png" alt="X.FORM · Beyond design" width="886" height="263">
-  <p class="obra">El sitio está <b>en obra.</b></p>
-  <div class="barra" aria-hidden="true"><i></i></div>
-  <p class="sub">Arquitectura, estrategia y desarrollo · Bogotá</p>
-  <nav aria-label="Contacto">
-    <a class="k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">Escríbenos</a>
-    <a href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram</a>
-  </nav>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="tag"><i></i>Arquitectura · Estrategia · Desarrollo</p>
+    <h1>Más allá<br><b>del diseño</b></h1>
+    <p class="lead">Cada lugar empieza con una pregunta: qué vale la pena construir aquí. La respondemos con el terreno, con la luz y con quien lo va a habitar, desde el primer trazo.</p>
+    <div class="btns">
+      <a class="btn k" href="#proyectos">Ver proyectos</a>
+      <a class="btn" href="#hablemos">Hablemos</a>
+    </div>
+    <div class="facts">
+      <div><b>+500.000 m²</b>Diseñados</div>
+      <div><b>+20</b>Proyectos</div>
+      <div><b>+50 años</b>De oficio combinado</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 FIRMA -->
+<section class="light firma" id="firma">
+  <div class="wrap">
+    <p class="tag rv"><i></i>01 · Quiénes somos</p>
+    <div class="grid">
+      <h2 class="rv">Entramos cuando el proyecto todavía es una conversación.</h2>
+      <div class="rv">
+        <p>X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, porque las mejores decisiones de un proyecto se toman antes del primer plano.</p>
+        <p>Llegamos cuando el lote todavía guarda preguntas abiertas: qué cabe, qué conviene, qué historia quiere contar. Desde ahí acompañamos el proyecto hasta que se habita.</p>
+        <p>Buscamos lugares que se sientan bien al recorrerlos, que se construyan con sensatez y que encuentren a su gente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <p class="tag rv"><i></i>02 · Qué hacemos</p>
+    <h2 class="rv">Tres frentes que piensan juntos</h2>
+    <div class="srv">
+      <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres con el cliente leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
+      <article class="rv"><span class="code">X.DSG</span><h3>Arquitectura e interiorismo</h3><span class="verb">DISEÑAR</span><p>Arquitectura, interiorismo, urbanismo y paisaje en un mismo hilo. Trabajamos la luz, la materia y el recorrido con el rigor técnico que pide la norma y la obra.</p></article>
+      <article class="rv"><span class="code">X.DVL</span><h3>Gerencia, control y obra</h3><span class="verb">EJECUTAR</span><p>Acompañamos el proyecto hasta que se vuelve materia. Coordinamos disciplinas, tiempos y costos, y cuidamos en obra que lo dibujado llegue intacto.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PROCESO -->
+<section class="white" id="proceso">
+  <div class="wrap">
+    <p class="tag rv"><i></i>03 · Cómo trabajamos</p>
+    <h2 class="rv">Cuatro fases, un mismo hilo</h2>
+    <div class="fases">
+      <div class="fase rv"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y al cliente. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
+      <div class="fase rv"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: un lugar con identidad, con una manera propia de recibir la luz y de recorrerse.</p></div>
+      <div class="fase rv"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir sin perder su carácter.</p></div>
+      <div class="fase rv"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Acompañamos la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CIFRAS -->
+<section class="cifras" id="cifras">
+  <div class="wrap">
+    <p class="tag rv"><i></i>04 · Trayectoria</p>
+    <h2 class="rv">X.FORM en cifras</h2>
+    <div class="kpis">
+      <div class="rv"><b>+500.000</b><span>M² diseñados</span></div>
+      <div class="rv"><b>93 %</b><span>Cumplimiento en cronograma</span></div>
+      <div class="rv"><b>+50</b><span>Años de experiencia combinada</span></div>
+      <div class="rv"><b>+20</b><span>Proyectos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PROYECTOS -->
+<section class="light" id="proyectos">
+  <div class="wrap">
+    <div class="proy-head">
+      <div><p class="tag rv"><i></i>05 · Selección de obra</p><h2 class="rv">Proyectos</h2></div>
+      <div class="filtros rv" role="group" aria-label="Filtrar proyectos">
+        <button aria-pressed="true" data-f="all">Todos</button>
+        <button aria-pressed="false" data-f="mp">Masterplan</button>
+        <button aria-pressed="false" data-f="rs">Residencial</button>
+        <button aria-pressed="false" data-f="hs">Hospitality</button>
+        <button aria-pressed="false" data-f="mu">Uso mixto</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+    <p class="iaNote">Las imágenes de Cayetana tienen retoque con inteligencia artificial.</p>
+  </div>
+</section>
+
+<!-- 06 EQUIPO -->
+<section id="equipo">
+  <div class="wrap">
+    <p class="tag rv"><i></i>06 · Nosotros</p>
+    <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
+    <div class="team">
+      <div class="person rv"><h3>Francisco Ospina</h3><p class="role">SOCIO · DIRECTOR DE DISEÑO</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Paisaje y Urbanismo de la Universidad de Pensilvania. Piensa el proyecto desde el paisaje hacia adentro.</p></div>
+      <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · GERENTE DE PROYECTOS</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Vivienda del Siglo XXI de la UPC de Barcelona. Acompaña cada proyecto desde la primera conversación hasta la obra.</p></div>
+    </div>
+    <div class="boutique rv">
+      <div><p class="tag"><i></i>Dirección boutique</p><h3>Un estudio pequeño a propósito.</h3></div>
+      <div><p>Estrategia, paisaje, urbanismo, biofilia y neuroarquitectura se cruzan en la misma mesa para crear atmósferas que se recuerdan con el cuerpo.</p><p class="foot">UN EQUIPO, TODAS LAS ESCALAS</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 DIMENSIONA -->
+<section class="light" id="dimensiona">
+  <div class="wrap dim">
+    <div>
+      <p class="tag rv"><i></i>07 · Dimensiona tu proyecto</p>
+      <h2 class="rv">Cuéntenos qué tiene en mente</h2>
+      <p class="lead rv">Tres preguntas para darle una primera lectura de la escala de su proyecto y del paso que sigue.</p>
+    </div>
+    <form id="dimForm" class="rv" onsubmit="return false">
+      <div class="q"><fieldset><legend>01 · ¿Qué quiere hacer?</legend><div class="opts">
+        <label><input type="radio" name="tipo" value="vivienda"><span>Vivienda</span></label>
+        <label><input type="radio" name="tipo" value="uso mixto"><span>Uso mixto</span></label>
+        <label><input type="radio" name="tipo" value="oficinas"><span>Oficinas</span></label>
+        <label><input type="radio" name="tipo" value="hospitality"><span>Hospitality</span></label>
+        <label><input type="radio" name="tipo" value="masterplan"><span>Masterplan</span></label>
+      </div></fieldset></div>
+      <div class="q"><fieldset><legend>02 · ¿Qué área imagina?</legend><div class="opts">
+        <label><input type="radio" name="area" value="1" data-t="de hasta 500 m²"><span>Hasta 500 m²</span></label>
+        <label><input type="radio" name="area" value="2" data-t="de 500 a 2.000 m²"><span>500 a 2.000 m²</span></label>
+        <label><input type="radio" name="area" value="3" data-t="de 2.000 a 10.000 m²"><span>2.000 a 10.000 m²</span></label>
+        <label><input type="radio" name="area" value="4" data-t="de 10.000 a 50.000 m²"><span>10.000 a 50.000 m²</span></label>
+        <label><input type="radio" name="area" value="5" data-t="de más de 50.000 m² o varias hectáreas"><span>Más de 50.000 m² o varias hectáreas</span></label>
+      </div></fieldset></div>
+      <div class="q"><fieldset><legend>03 · ¿En qué etapa está?</legend><div class="opts">
+        <label><input type="radio" name="etapa" value="idea" data-t="idea"><span>Tengo una idea</span></label>
+        <label><input type="radio" name="etapa" value="lote" data-t="lote"><span>Tengo el lote</span></label>
+        <label><input type="radio" name="etapa" value="diseno" data-t="diseño en curso"><span>El diseño está en curso</span></label>
+        <label><input type="radio" name="etapa" value="obra" data-t="obra"><span>Estoy en obra</span></label>
+      </div></fieldset></div>
+      <p class="hint" id="hint">Responda las tres preguntas para ver su lectura.</p>
+      <div class="res" id="res" aria-live="polite">
+        <p class="tag"><i></i>Primera lectura</p>
+        <p class="txt" id="resTxt"></p>
+        <p class="matiz" id="resMatiz"></p>
+        <div class="btns">
+          <a class="btn k" id="ctaWa" href="https://wa.me/573148304724" target="_blank" rel="noopener">Agenda 20 minutos con nosotros</a>
+          <a class="btn" id="ctaMail" href="mailto:info@xform.com.co">Escríbanos por correo</a>
+        </div>
+        <p class="disc">Una primera lectura para orientar la conversación. Cada proyecto tiene su propia historia, y la contamos juntos.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- 08 HABLEMOS -->
+<section class="contacto" id="hablemos">
+  <canvas class="curvas" id="curvas2" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="tag rv"><i></i>08 · Hablemos</p>
+    <h2 class="rv">Hablemos de su lugar</h2>
+    <p class="lead rv">Cada proyecto empieza con una conversación. Cuéntenos dónde está y qué imagina.</p>
+    <div class="btns rv">
+      <a class="btn k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">info@xform.com.co</a>
+      <a class="btn" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="datos">
+      <div><h4>TELÉFONO</h4><a href="tel:+573168121156">+57 316 812 1156</a><a href="tel:+573148304724">+57 314 830 4724</a></div>
+      <div><h4>DIGITAL</h4><a href="mailto:info@xform.com.co">info@xform.com.co</a><a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram @x.form___</a></div>
+      <div><h4>OFICINA</h4><p>Calle 93 # 19B-66 Of. 303</p><p>110221, Bogotá, Colombia</p></div>
+    </div>
+  </div>
+</section>
 </main>
-<footer><span>X.FORM S.A.S.</span><span>info@xform.com.co</span></footer>
+
+<footer><div class="wrap"><span>X.FORM S.A.S. · NIT. 901.968.408-4</span><span>© 2026 · Todos los derechos reservados</span></div></footer>
+
+<dialog class="ficha" id="ficha" aria-labelledby="fTitle">
+  <div class="f-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button class="f-close" id="fClose">Cerrar ✕</button></div>
+  <div class="f-body"><div class="f-gal" id="fGal"></div><div class="f-txt"><p class="tag"><i></i><span id="fCat"></span></p><h3 id="fTitle"></h3><p class="meta" id="fMeta"></p><p class="txt" id="fTxt"></p><p class="cred" id="fCred"></p><p class="ia" id="fIa"></p></div></div>
+</dialog>
+
 <script>
-// Curvas de nivel en movimiento lento: el motivo gráfico de la marca.
-(()=>{const c=document.getElementById("curvas"),g=c.getContext("2d");let W,H,t=0;const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches;
-function tam(){const r=Math.min(devicePixelRatio||1,2);W=c.width=innerWidth*r;H=c.height=innerHeight*r}
-function dibuja(){g.clearRect(0,0,W,H);const cx=W*.5,cy=H*.48,n=26,esc=Math.max(W,H)/24,d=Math.min(devicePixelRatio||1,2);
-  for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
-    for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
-    g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
-  if(!quieto){t+=.0025;requestAnimationFrame(dibuja)}}
-addEventListener("resize",()=>{tam();if(quieto)dibuja()});tam();dibuja()})();
+// ---------- Proyectos: fuente única de las 7 fichas ----------
+const IA = "Imágenes con retoque de IA.";
+const P = [
+ {f:["mp"], big:true, cat:"Masterplan", t:"Cayetana · Masterplan", meta:"Barú, Cartagena · Masterplan · 2026",
+  txt:"El agua llegó primero. El lago interior decidió dónde se abría el paisaje y dónde se recogía la sombra, y desde ese borde se trazaron las calles, los senderos y el canal que lleva la brisa hasta el mar.",
+  cred:"Masterplan y diseño: X.FORM", ia:true, img:["cayetana-masterplan-1","cayetana-masterplan-2","cayetana-masterplan-3"], cap:["Cayetana, Barú","Planta del conjunto · Cayetana, Barú","El lago y el mar · Cayetana, Barú"]},
+ {f:["hs"], big:true, cat:"Hospitality", t:"Cayetana · Beach Club", meta:"Barú, Cartagena · Hospitality · 2026",
+  txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle que invita a quedarse hasta que cae la tarde.",
+  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3"], cap:["Beach Club · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","La llegada al mar · Cayetana, Barú"]},
+ {f:["rs"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
+  txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella acompaña la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
+  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-villa-eivissa","cayetana-villa-macarella","cayetana-villa-savina"], cap:["Villa Eivissa · Cayetana, Barú","Villa Macarella · Cayetana, Barú","Villa Savina · Cayetana, Barú"]},
+ {f:["mu","rs"], cat:"Uso mixto", t:"VITA 119", meta:"Bogotá · Uso mixto · 5.150 m² · 2026",
+  txt:"En VITA 119 el bienestar sube con el edificio. Recibe en el lobby, se abre al aire en el piso 4 y vuelve a encontrar la luz en el piso 12, entre jardines que cuelgan de la fachada. VT Residences y el Centro de Experiencia hacen parte del mismo proyecto.",
+  cred:"Arquitectura: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["vita119-1","vita119-2","vita119-3","vita119-4"], cap:["VITA 119 · Santa Bárbara, Bogotá","VITA 119 · Bogotá","Terraza · VITA 119","VT Residences · VITA 119"]},
+ {f:["hs"], cat:"Hospitality", t:"Casa Alma", meta:"Bogotá · Wellness club · 600 m² · 2025",
+  txt:"Un lugar para bajar el ritmo en medio de la ciudad. Casa Alma ordena sus espacios alrededor del cuerpo y la calma: luz tamizada, materiales cálidos y recorridos que invitan a llegar despacio.",
+  cred:"Arquitectura e interiorismo: X.FORM", ia:false, img:["casa-alma-1","casa-alma-2","casa-alma-3"], cap:["Casa Alma · Bogotá","Casa Alma · Bogotá","Casa Alma · Bogotá"]},
+ {f:["rs"], big:true, cat:"Residencial", t:"Casa Barú", meta:"Cartagena · Residencial · 480 m² · 2019",
+  txt:"Una casa pensada para la brisa del Caribe. Sombras profundas, espacios que se abren hacia el exterior y una vida que transcurre entre la terraza y el agua.",
+  cred:"Arquitectura: Camilo Restrepo", ia:false, img:["casa-baru-1","casa-baru-2"], cap:["Casa Barú · Cartagena","Casa Barú · Cartagena"]},
+ {f:["rs"], big:true, cat:"Residencial", t:"Casa Villeta", meta:"Villeta, Cundinamarca · Residencial · 300 m² · 2012",
+  txt:"La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca, con una vida que se abre al jardín.",
+  cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-1","casa-villeta-2","casa-villeta-3"], cap:["Casa Villeta · Villeta","Casa Villeta · Villeta","Casa Villeta · Villeta"]}
+];
+const src = n => `assets/img/${n}.webp`;
+const cards = document.getElementById("cards");
+cards.innerHTML = P.map((p,i)=>`<button class="card rv${p.big?" big":""}" data-i="${i}" data-f="${p.f.join(" ")}" aria-label="Ver ${p.t}">
+  <div class="ph"><img src="${src(p.img[0])}" alt="${p.cap[0]}" loading="lazy" decoding="async"></div>
+  <h3>${p.t}</h3><p class="meta">${p.meta}</p></button>`).join("");
+
+document.querySelectorAll(".filtros button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".filtros button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const f=b.dataset.f;
+  cards.querySelectorAll(".card").forEach(c=>c.classList.toggle("hide", f!=="all" && !c.dataset.f.split(" ").includes(f)));
+}));
+
+const dlg=document.getElementById("ficha");
+cards.addEventListener("click",e=>{
+  const c=e.target.closest(".card"); if(!c) return; const p=P[+c.dataset.i];
+  document.getElementById("fCat").textContent=p.cat;
+  document.getElementById("fTitle").textContent=p.t;
+  document.getElementById("fMeta").textContent=p.meta;
+  document.getElementById("fTxt").textContent=p.txt;
+  document.getElementById("fCred").textContent=p.cred;
+  document.getElementById("fIa").textContent=p.ia?IA:"";
+  document.getElementById("fGal").innerHTML=p.img.map((n,k)=>`<figure><img src="${src(n)}" alt="${p.cap[k]}" loading="lazy"><figcaption>${p.cap[k]}</figcaption></figure>`).join("");
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+  dlg.scrollTop=0;
+});
+document.getElementById("fClose").addEventListener("click",()=>dlg.close?dlg.close():dlg.removeAttribute("open"));
+dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
+
+// ---------- Dimensiona tu proyecto: lectura cualitativa, nunca precio ----------
+const L = {
+  idea:"Un proyecto en este punto se beneficia de una fase de estrategia: tres a cuatro semanas para leer el lugar, definir la visión y saber qué vale la pena construir.",
+  lote:"Con el lote en la mano, el primer paso es una cabida: entender qué permite la norma y qué pide el terreno antes de dibujar.",
+  diseno:"Podemos entrar a revisar, coordinar o profundizar lo que ya existe, sin empezar de cero.",
+  obra:"Acompañamos la ejecución con control técnico y dirección, para que lo construido conserve la idea."
+};
+const MATIZ="Proyectos de más de 10.000 m² o de masterplan suelen arrancar con una mesa de estrategia antes del concepto.";
+const form=document.getElementById("dimForm");
+form.addEventListener("change",()=>{
+  const g=n=>form.querySelector(`input[name=${n}]:checked`);
+  const t=g("tipo"),a=g("area"),s=g("etapa");
+  if(!(t&&a&&s)) return;
+  document.getElementById("hint").style.display="none";
+  document.getElementById("resTxt").textContent=L[s.value];
+  document.getElementById("resMatiz").textContent = (+a.value>=4 || t.value==="masterplan") ? MATIZ : "";
+  const msg=`Hola, X.FORM. Quiero conversar sobre un proyecto de ${t.value}, ${a.dataset.t}, que está en la etapa de ${s.dataset.t}.`;
+  document.getElementById("ctaWa").href="https://wa.me/573148304724?text="+encodeURIComponent(msg);
+  document.getElementById("ctaMail").href="mailto:info@xform.com.co?subject="+encodeURIComponent("Dimensiona tu proyecto · X.FORM")+"&body="+encodeURIComponent(msg);
+  document.getElementById("res").classList.add("show");
+});
+
+// ---------- barra y menú ----------
+const hd=document.getElementById("top"), bg=document.querySelector(".burger"), mn=document.getElementById("menu");
+const onS=()=>hd.classList.toggle("on", scrollY>40); addEventListener("scroll",onS,{passive:true}); onS();
+bg.addEventListener("click",()=>{const o=mn.classList.toggle("open"); bg.setAttribute("aria-expanded",o); hd.classList.add("on");});
+mn.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mn.classList.remove("open");bg.setAttribute("aria-expanded",false);}));
+
+// ---------- aparición ----------
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+} else document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
+
+// ---------- curvas de nivel: el motivo gráfico de la marca ----------
+function curvas(id, cyF){
+  const c=document.getElementById(id); if(!c) return; const g=c.getContext("2d"); let W,H,t=0,vis=true,run=false;
+  const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function tam(){const r=Math.min(devicePixelRatio||1,2);W=c.width=c.clientWidth*r;H=c.height=c.clientHeight*r}
+  function dibuja(){run=false;g.clearRect(0,0,W,H);const cx=W*.62,cy=H*cyF,n=26,esc=Math.max(W,H)/24,d=Math.min(devicePixelRatio||1,2);
+    for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
+      for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
+      g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
+    if(!quieto&&vis){t+=.0025;run=true;requestAnimationFrame(dibuja)}}
+  if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting; if(vis&&!run) dibuja();}).observe(c);
+  addEventListener("resize",()=>{tam();if(quieto)dibuja()}); tam(); dibuja();
+}
+curvas("curvas",.42); curvas("curvas2",.5);
 </script>
 </body>
 </html>
