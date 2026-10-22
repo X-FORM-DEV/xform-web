@@ -199,16 +199,21 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 /* ---------- equipo ---------- */
 .eq{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:clamp(28px,5vw,80px);align-items:start}
 .eq h2{font-size:clamp(30px,3.6vw,48px);max-width:13ch}
+.eq .lead{font-size:clamp(16px,1.3vw,18px);color:#C9C8C3;max-width:42ch;margin-top:22px}
+.cultura{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+.cultura li{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:clamp(15px,1.2vw,17px);color:var(--paper)}
+.cultura li b{font-size:11px;letter-spacing:.18em;color:var(--lime);font-weight:400;flex:none;width:22px}
+.socios-tag{margin-bottom:22px}
 .team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
-.person{border-top:1px solid var(--line);padding-top:20px}
-.person h3{font-size:clamp(24px,2.3vw,32px)}
+.person figure{aspect-ratio:1/1;overflow:hidden;background:var(--carbon)}
+.person figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.person:hover figure img{transform:scale(1.03)}
+.person h3{font-size:clamp(24px,2.3vw,32px);margin-top:22px}
 .person .role{font-size:12px;letter-spacing:.18em;color:var(--lime);margin-top:8px;font-weight:400}
-.person p.bio{color:#B9B8B3;margin-top:14px;max-width:46ch;font-size:16px}
-.boutique{grid-column:1/-1;margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:clamp(28px,5vw,80px);align-items:center;padding:clamp(22px,2.6vw,34px) clamp(22px,2.6vw,34px);background:rgba(43,43,43,.78)}
-.boutique h3{font-size:clamp(22px,2.2vw,30px);margin-top:12px}
-.boutique p:not(.tag){color:#C9C8C3;font-size:clamp(16px,1.3vw,18px)}
-.boutique p.foot{font-size:11px;letter-spacing:.18em;color:var(--muted);margin-top:12px;font-weight:400}
-@media (max-width:860px){.eq,.team,.boutique{grid-template-columns:1fr}}
+.person a.mail{display:inline-block;margin-top:14px;font-size:15px;color:#C9C8C3;text-decoration:none;border-bottom:1px solid rgba(241,240,236,.25);padding-bottom:2px;transition:color .2s,border-color .2s}
+.person a.mail:hover{color:var(--lime);border-color:var(--lime)}
+@media (max-width:860px){.eq{grid-template-columns:1fr}}
+@media (max-width:520px){.team{gap:14px}.person h3{font-size:19px;margin-top:14px}.person .role{font-size:9.5px;letter-spacing:.1em;line-height:1.5}.person a.mail{font-size:12.5px;word-break:break-all}}
 
 /* ---------- dimensiona ---------- */
 .dim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,6vw,100px);align-items:start}
@@ -234,6 +239,13 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .res p.disc{font-size:13px;color:var(--muted);margin-top:22px}
 .hint{font-size:14px;color:#6E6E6E;margin-top:8px}
 @media (max-width:900px){.dim{grid-template-columns:1fr}}
+/* render de fondo con curvas de nivel en tinta: la arquitectura asoma detrás de lo claro */
+.conrender{overflow:hidden;isolation:isolate}
+.fondo-render{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.fondo-render img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;opacity:.26;filter:grayscale(.55) contrast(1.05);mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 38%,rgba(0,0,0,.12) 70%,transparent 92%);mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 38%,rgba(0,0,0,.12) 70%,transparent 92%);will-change:transform}
+.fondo-render canvas{position:absolute;inset:0;width:100%;height:100%}
+.fondo-cap{position:absolute;left:var(--gut);bottom:18px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+@media (max-width:900px){.fondo-render img{-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 30%,transparent 60%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 30%,transparent 60%)}.fondo-cap{bottom:auto;top:clamp(64px,8vw,112px);margin-top:-30px}}
 
 /* ---------- hablemos ---------- */
 .contacto{overflow:hidden}
@@ -251,6 +263,25 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 @media (max-width:520px){.datos{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer nav.legal{display:flex;gap:18px;flex-wrap:wrap}
+footer nav.legal a{text-decoration:none;color:#8E9097;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+footer nav.legal a:hover{color:var(--lime);border-color:var(--lime)}
+/* textos legales */
+dialog.legal{border:0;padding:0;margin:auto;width:min(860px,100vw);max-height:min(88vh,100dvh);background:var(--paper);color:var(--ink)}
+dialog.legal::backdrop{background:rgba(17,17,17,.82);backdrop-filter:blur(4px)}
+.lg-top{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,4vw,44px);background:var(--paper);border-bottom:1px solid var(--linek);z-index:1}
+.lg-top img{height:24px;width:auto}
+.lg-top button{font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;background:none;border:1px solid var(--linek);padding:9px 14px;cursor:pointer;color:var(--ink)}
+.lg-top button:hover{border-color:var(--ink)}
+.lg-body{padding:clamp(24px,4vw,44px) clamp(20px,4vw,44px) 48px;font-size:15px;line-height:1.65;color:#2B2B2B}
+.lg-body h3{font-size:clamp(26px,3vw,36px);color:var(--ink);margin:10px 0 6px}
+.lg-body .vig{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E6E6E;margin-bottom:22px}
+.lg-body h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink);margin:26px 0 8px}
+.lg-body p,.lg-body li{margin-bottom:8px;max-width:72ch}
+.lg-body ul{padding-left:20px}
+.lg-body a{color:var(--ink)}
+.lg-body .tag{color:#6E6E6E}.lg-body .tag i{background:var(--ink)}
+@media (max-width:640px){dialog.legal{max-height:100dvh;height:100dvh;width:100vw;max-width:100vw}}
 
 /* ---------- modelo comercial vivo: cabida y prefactibilidad ---------- */
 .mv{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.3fr);gap:clamp(28px,4.5vw,72px);align-items:start}
@@ -313,8 +344,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .mv-venta p{font-size:14px;color:#B9B8B3;max-width:52ch}
 .mv-venta p b{color:var(--paper);font-weight:400}
 .mv-venta .btn{flex:none}
-@media (max-width:1000px){.mv{grid-template-columns:1fr}}
-@media (max-width:640px){.mv-planta{grid-template-columns:1fr}.mv-pl-dib{border-right:0;border-bottom:1px solid var(--line)}.mv-venta{flex-direction:column;align-items:flex-start}.mv-giro{display:none}.mv-curva svg{width:150px}}
+/* la planta vive en un desplegable: abierto en escritorio, plegado en el celular */
+.mv-det{border:1px solid var(--line);border-top:0;background:rgba(17,17,17,.55)}
+.mv-det .mv-planta{border-top:0}
+.mv-det>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);font-weight:400}
+.mv-det>summary::-webkit-details-marker{display:none}
+.mv-det>summary::after{content:"+";font-size:20px;color:var(--lime);line-height:1}
+.mv-det[open]>summary::after{content:"−"}
+.mv-det[open]>summary{border-bottom:1px solid var(--line)}
+@media (min-width:1001px){
+  .mv-vista{aspect-ratio:16/9;max-height:46vh}
+  .mv-det>summary{display:none}
+  .mv-cadena li{padding:5px 0}
+  .mv-pl-dib{padding:10px 14px}
+}
+@media (max-width:1000px){
+  /* celular: titular, edificio, controles y cifras en ese orden, para ver el cambio mientras se toca */
+  .mv{display:flex;flex-direction:column;gap:0}
+  .mv-izq,.mv-der{display:contents}
+  .mv-izq .tag{order:1}.mv h2{order:2}.mv .lead{order:3}
+  .mv-fig{order:4;margin-top:22px}
+  .mv-ctl{order:5;margin-top:20px;gap:12px}
+  .mv-datos{order:6}
+  .mv-det{order:7;margin-top:14px;border-top:1px solid var(--line)}
+  .mv-venta{order:8}
+  .mv-pie{order:9}
+  .mv-curva,.mv-tag{display:none}
+  .mv-vista{aspect-ratio:4/3}
+  .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--gut));padding-right:var(--gut)}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{flex:none}
+}
+@media (max-width:640px){.mv-planta{grid-template-columns:1fr}.mv-pl-dib{border-right:0;border-bottom:1px solid var(--line)}.mv-venta{flex-direction:column;align-items:flex-start}.mv-giro{display:none}.mv-datos{grid-template-columns:repeat(3,minmax(0,1fr))}.mv-datos b{font-size:14px}}
 
 /* ---------- sabor ---------- */
 header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--lime);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
@@ -525,6 +586,9 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
         <div class="mv-vista" id="mvVista" aria-label="Edificio de ejemplo en 3D: haz clic en un piso para ver su planta"></div>
         <p class="mv-tag">Lote de ejemplo · Bogotá</p>
         <p class="mv-giro">Clic en un piso · arrastra para girar</p>
+      </figure>
+      <details class="mv-det" id="mvDet">
+        <summary>Ver la planta del piso</summary>
         <div class="mv-planta">
           <div class="mv-pl-dib">
             <div class="mv-pl-head"><button type="button" id="mvAnt" aria-label="Piso de abajo">‹</button><div><b id="mvPisoN">Piso 5</b><span id="mvPisoU">—</span></div><button type="button" id="mvSig" aria-label="Piso de arriba">›</button></div>
@@ -541,7 +605,7 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
             <li class="resto"><span>Lo que sobra pasa a área común</span><b id="mvC8">—</b></li>
           </ol>
         </div>
-      </figure>
+      </details>
       <div class="mv-venta">
         <p><b>Cabidas y prefactibilidades en pocos días.</b> Qué cabe en tu lote, cuántas unidades salen y si el negocio da, antes de comprar o de diseñar.</p>
         <a class="btn k" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20una%20cabida%20para%20mi%20lote" target="_blank" rel="noopener">Pide tu cabida</a>
@@ -577,20 +641,27 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 <section id="equipo" data-oscuro>
   <div class="wrap eq">
     <div><p class="tag rv"><i></i>07 · Nosotros</p>
-    <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2></div>
-    <div class="team">
-      <div class="person rv"><h3>Francisco Ospina</h3><p class="role">SOCIO · DIRECTOR DE DISEÑO</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Paisaje y Urbanismo de la Universidad de Pensilvania. Piensa el proyecto desde el paisaje hacia adentro.</p></div>
-      <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · DIRECTOR GENERAL</p><p class="bio">Arquitecto de la Pontificia Universidad Javeriana, con máster en Diseño de Interiores para Espacios Comerciales del IED Barcelona.</p></div>
-    </div>
-    <div class="boutique rv">
-      <div><p class="tag"><i></i>Dirección boutique</p><h3>Un estudio pequeño a propósito.</h3></div>
-      <div><p>Estrategia, paisaje, urbanismo, biofilia y neuroarquitectura trabajan juntas desde el primer boceto, para crear atmósferas que se recuerdan con el cuerpo.</p><p class="foot">UN EQUIPO, TODAS LAS ESCALAS</p></div>
+    <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
+    <p class="lead rv">Somos un estudio pequeño a propósito. Estrategia, paisaje y arquitectura se sientan en la misma mesa desde el primer boceto, y cada proyecto lo llevan sus socios de principio a fin.</p>
+    <ul class="cultura rv">
+      <li><b>01</b>Dibujamos mucho antes de decidir.</li>
+      <li><b>02</b>Trabajamos cerca de quien va a habitar el lugar.</li>
+      <li><b>03</b>Cuidamos el detalle hasta el día de la obra.</li>
+    </ul></div>
+    <div>
+      <p class="tag socios-tag rv"><i></i>Founding Partners</p>
+      <div class="team">
+        <article class="person rv"><figure><img src="assets/img/equipo-francisco.webp?v=20261022c" alt="Francisco Ospina" loading="lazy" decoding="async" width="900" height="900"></figure><h3>Francisco Ospina</h3><p class="role">CO-FOUNDER · DIRECTOR DE DISEÑO</p><a class="mail" href="mailto:fospina@xform.com.co">fospina@xform.com.co</a></article>
+        <article class="person rv"><figure><img src="assets/img/equipo-camilo.webp?v=20261022c" alt="Camilo Restrepo" loading="lazy" decoding="async" width="900" height="900"></figure><h3>Camilo Restrepo</h3><p class="role">CO-FOUNDER · DIRECTOR DE PROYECTOS</p><a class="mail" href="mailto:crestrepo@xform.com.co">crestrepo@xform.com.co</a></article>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- 07 DIMENSIONA -->
-<section class="light" id="dimensiona">
+<section class="light conrender" id="dimensiona">
+  <div class="fondo-render" aria-hidden="true"><img id="fondoImg" src="assets/img/cayetana-masterplan-3.webp?v=20261022b" alt="" loading="lazy" decoding="async"><canvas id="curvasTinta"></canvas></div>
+  <p class="fondo-cap" aria-hidden="true">Cayetana, Barú · render con retoque de IA</p>
   <div class="wrap dim">
     <div>
       <p class="tag rv"><i></i>08 · Dimensiona tu proyecto</p>
@@ -656,7 +727,78 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 </section>
 </main>
 
-<footer><div class="wrap"><span>X.FORM S.A.S. · NIT. 901.968.408-4</span><span>© 2026 · Todos los derechos reservados</span></div></footer>
+<footer><div class="wrap"><span>X.FORM S.A.S. · NIT. 901.968.408-4</span><nav class="legal" aria-label="Legal"><a href="#terminos" data-legal="lgTerminos">Términos y condiciones</a><a href="#datos" data-legal="lgDatos">Tratamiento de datos personales</a></nav><span>© 2026 · Todos los derechos reservados</span></div></footer>
+
+<dialog class="legal" id="lgTerminos" aria-labelledby="lgT1">
+  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar ✕</button></div>
+  <div class="lg-body">
+    <p class="tag"><i></i>Legal</p>
+    <h3 id="lgT1">Términos y condiciones de uso</h3>
+    <p class="vig">Vigentes desde el 23 de octubre de 2026</p>
+    <h4>1. Quiénes somos</h4>
+    <p>Este sitio, xform.com.co, pertenece a X.FORM S.A.S., NIT 901.968.408-4, con domicilio en la Calle 93 # 19B-66 Of. 303, Bogotá, Colombia. Correo de contacto: <a href="mailto:info@xform.com.co">info@xform.com.co</a>.</p>
+    <h4>2. Aceptación</h4>
+    <p>Al navegar por este sitio aceptas estos términos. Si no estás de acuerdo con ellos, te pedimos no usar el sitio.</p>
+    <h4>3. Uso del sitio</h4>
+    <p>El sitio presenta el trabajo de X.FORM y sirve como canal de contacto. Puedes consultarlo para fines personales e informativos. Está prohibido usarlo para fines ilícitos, intentar vulnerar su seguridad o copiar su contenido de forma automatizada.</p>
+    <h4>4. Propiedad intelectual</h4>
+    <p>Los textos, planos, renders, fotografías, modelos 3D, logotipos y el diseño del sitio son de X.FORM S.A.S. o de sus clientes y aliados, que autorizaron su publicación. Ningún contenido puede reproducirse, modificarse o usarse con fines comerciales sin autorización escrita. Las marcas de terceros pertenecen a sus titulares.</p>
+    <h4>5. Imágenes de los proyectos</h4>
+    <p>Los renders muestran la intención de diseño de cada proyecto y pueden cambiar en su desarrollo. Algunas imágenes tienen retoque con inteligencia artificial y así se indica junto a ellas. Ninguna imagen constituye una oferta comercial ni una promesa sobre el resultado final de una obra.</p>
+    <h4>6. Herramientas de cálculo</h4>
+    <p>La cabida en vivo, el modelo comercial y la lectura de «Dimensiona tu proyecto» trabajan con cifras de ejemplo. Sirven para entender cómo pensamos un proyecto y no reemplazan un estudio de norma, una cabida técnica, un avalúo ni una asesoría financiera, jurídica o tributaria. Cualquier decisión de compra, diseño o inversión debe apoyarse en un estudio hecho para tu caso.</p>
+    <h4>7. Enlaces a terceros</h4>
+    <p>El sitio enlaza a servicios de terceros como WhatsApp, Instagram o el correo electrónico. Cada uno tiene sus propias condiciones y políticas, de las que X.FORM no es responsable.</p>
+    <h4>8. Responsabilidad</h4>
+    <p>Procuramos que la información del sitio sea correcta y esté al día, pero puede contener errores o cambiar sin aviso. X.FORM no responde por daños derivados del uso del sitio o de la imposibilidad de acceder a él, salvo en los casos que la ley no permita excluir.</p>
+    <h4>9. Datos personales</h4>
+    <p>Los datos que nos compartas se tratan según nuestra <a href="#datos" data-legal="lgDatos">Política de tratamiento de datos personales</a>.</p>
+    <h4>10. Cambios y ley aplicable</h4>
+    <p>Podemos actualizar estos términos; la versión vigente es la publicada en este sitio. Estos términos se rigen por las leyes de la República de Colombia.</p>
+  </div>
+</dialog>
+
+<dialog class="legal" id="lgDatos" aria-labelledby="lgT2">
+  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar ✕</button></div>
+  <div class="lg-body">
+    <p class="tag"><i></i>Legal</p>
+    <h3 id="lgT2">Política de tratamiento de datos personales</h3>
+    <p class="vig">Vigente desde el 23 de octubre de 2026 · Ley 1581 de 2012 y Decreto 1074 de 2015</p>
+    <h4>1. Responsable del tratamiento</h4>
+    <p>X.FORM S.A.S., NIT 901.968.408-4. Calle 93 # 19B-66 Of. 303, Bogotá, Colombia. Correo: <a href="mailto:info@xform.com.co">info@xform.com.co</a>. Teléfono: +57 316 812 1156.</p>
+    <h4>2. Qué datos tratamos</h4>
+    <p>Los que tú nos entregas al escribirnos por correo, WhatsApp, redes sociales o en una reunión: nombre, correo, teléfono, empresa, cargo y la información de tu proyecto (ubicación del predio, metas, presupuesto). No pedimos datos sensibles ni datos de menores de edad. Si llegaras a compartirlos, no estás obligado a hacerlo y los trataremos con la reserva que exige la ley.</p>
+    <h4>3. Para qué los usamos</h4>
+    <ul>
+      <li>Responder tus mensajes y solicitudes.</li>
+      <li>Preparar propuestas, cabidas, contratos y facturas.</li>
+      <li>Coordinar y ejecutar los proyectos que nos encargues.</li>
+      <li>Enviarte información sobre X.FORM, solo si nos autorizas.</li>
+      <li>Cumplir obligaciones legales, contables y tributarias.</li>
+    </ul>
+    <h4>4. Autorización</h4>
+    <p>Al escribirnos y entregarnos tus datos nos autorizas a tratarlos para estas finalidades. Puedes revocar la autorización cuando quieras, salvo cuando exista un deber legal o contractual de conservarlos.</p>
+    <h4>5. Tus derechos</h4>
+    <ul>
+      <li>Conocer, actualizar y rectificar tus datos.</li>
+      <li>Pedir prueba de la autorización que nos diste.</li>
+      <li>Saber qué uso les hemos dado.</li>
+      <li>Revocar la autorización o pedir que los borremos.</li>
+      <li>Acceder gratis a tus datos.</li>
+      <li>Presentar quejas ante la Superintendencia de Industria y Comercio, después de agotar el trámite con nosotros.</li>
+    </ul>
+    <h4>6. Cómo ejercerlos</h4>
+    <p>Escríbenos a <a href="mailto:info@xform.com.co">info@xform.com.co</a> con tu nombre, tu documento de identidad, lo que pides y un dato de contacto. Respondemos las consultas en máximo diez (10) días hábiles, prorrogables cinco (5) más, y los reclamos en máximo quince (15) días hábiles, prorrogables ocho (8) más. Si el reclamo está incompleto, te pediremos completarlo dentro de los cinco (5) días hábiles siguientes.</p>
+    <h4>7. Quién más los ve</h4>
+    <p>Solo el equipo de X.FORM y los proveedores que nos ayudan a operar, como el correo y el almacenamiento en la nube (Microsoft), el alojamiento del sitio (Netlify) y la mensajería (WhatsApp). Algunos guardan la información fuera de Colombia, con niveles de protección adecuados. No vendemos ni cedemos tus datos.</p>
+    <h4>8. Seguridad</h4>
+    <p>Aplicamos medidas técnicas y administrativas razonables, como accesos restringidos y cuentas con verificación, para proteger tus datos contra pérdida, consulta o uso no autorizado.</p>
+    <h4>9. Cookies y almacenamiento local</h4>
+    <p>El sitio no usa cookies publicitarias ni de seguimiento. Solo guarda en tu navegador el idioma que eliges (español o inglés), y puedes borrarlo desde la configuración del navegador.</p>
+    <h4>10. Conservación y vigencia</h4>
+    <p>Guardamos tus datos mientras dure la relación contigo y el tiempo que exijan las normas contables y legales. Esta política rige desde la fecha indicada arriba; si cambia, publicaremos la nueva versión en este sitio.</p>
+  </div>
+</dialog>
 
 <dialog class="ficha" id="ficha" aria-labelledby="fTitle">
   <div class="f-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button class="f-close" id="fClose">Cerrar ✕</button></div>
@@ -772,6 +914,62 @@ function curvas(id, cyF){
   addEventListener("resize",()=>{tam();if(quieto)dibuja()}); tam(); dibuja();
 }
 curvas("curvas",.42); curvas("curvas2",.5);
+
+// ---------- Textos legales: se abren desde el pie o con #terminos / #datos en la dirección ----------
+(function(){
+  const abre = id => { const d = document.getElementById(id); if (!d) return; document.querySelectorAll("dialog.legal[open]").forEach(x => x !== d && x.close()); if (!d.open) d.showModal(); d.querySelector(".lg-body").scrollTop = 0; d.scrollTop = 0; };
+  document.querySelectorAll("[data-legal]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); abre(a.dataset.legal); }));
+  document.querySelectorAll("dialog.legal").forEach(d => {
+    d.querySelector("[data-cierra]").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });   // clic fuera del texto
+  });
+  const porHash = () => { if (location.hash === "#terminos") abre("lgTerminos"); if (location.hash === "#datos") abre("lgDatos"); };
+  porHash(); addEventListener("hashchange", porHash);
+})();
+
+// ---------- Cabida: la planta va abierta en escritorio y plegada en el celular ----------
+(function(){
+  const det = document.getElementById("mvDet"); if (!det) return;
+  const mq = matchMedia("(min-width:1001px)");
+  const fija = () => { if (mq.matches) det.open = true; else det.open = false; };
+  fija(); mq.addEventListener ? mq.addEventListener("change", fija) : mq.addListener(fija);
+})();
+
+// ---------- Dimensiona: render de fondo con curvas de nivel en tinta que se levantan con el cursor ----------
+(function(){
+  const sec = document.getElementById("dimensiona"), c = document.getElementById("curvasTinta"), img = document.getElementById("fondoImg");
+  if (!sec || !c) return;
+  const g = c.getContext("2d"), quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W, H, d = 1, t = 0, vis = false, run = false, mx = -9999, my = -9999, fx = 0, fy = 0, fuerza = 0;
+  function tam(){ d = Math.min(devicePixelRatio || 1, 2); W = c.width = c.clientWidth * d; H = c.height = c.clientHeight * d; }
+  function dibuja(){
+    run = false; g.clearRect(0, 0, W, H);
+    fx += (mx - fx) * .08; fy += (my - fy) * .08;            // el cursor se sigue con suavidad
+    fuerza += ((mx > -999 ? 1 : 0) - fuerza) * .05;
+    const cx = W * .22, cy = H * .55, n = 30, esc = Math.max(W, H) / 26, sig = 170 * d;
+    for (let i = 1; i <= n; i++) {
+      g.beginPath(); const r0 = i * esc;
+      for (let k = 0; k <= 200; k++) {
+        const a = k / 200 * Math.PI * 2;
+        const r = r0 * (1 + .09 * Math.sin(a * 3 + i * .33 + t) + .05 * Math.cos(a * 5 - i * .21 - t * .7));
+        let x = cx + Math.cos(a) * r * 1.45, y = cy + Math.sin(a) * r * .8;
+        const dx = x - fx, dy = y - fy, e = Math.exp(-(dx * dx + dy * dy) / (2 * sig * sig)) * fuerza;
+        x += dx * e * .55; y += dy * e * .55;                    // la colina empuja las curvas hacia afuera
+        k ? g.lineTo(x, y) : g.moveTo(x, y);
+      }
+      g.closePath();
+      g.strokeStyle = i % 5 === 0 ? "rgba(26,26,26,.34)" : "rgba(26,26,26," + (.2 - .003 * i) + ")";
+      g.lineWidth = (i % 5 === 0 ? 1.3 : .9) * d; g.stroke();
+    }
+    // el render se desplaza un poco más lento que la página
+    if (img) { const r = sec.getBoundingClientRect(); img.style.transform = "translateY(" + ((r.top + r.height / 2 - innerHeight / 2) * -.06).toFixed(1) + "px)"; }
+    if (!quieto && vis) { t += .002; run = true; requestAnimationFrame(dibuja); }
+  }
+  sec.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); mx = (e.clientX - r.left) * d; my = (e.clientY - r.top) * d; if (fx < -999) { fx = mx; fy = my; } });
+  sec.addEventListener("pointerleave", () => { mx = my = -9999; });
+  if ("IntersectionObserver" in window) new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && !run) dibuja(); }).observe(sec); else { vis = true; }
+  addEventListener("resize", () => { tam(); if (quieto) dibuja(); }); tam(); dibuja();
+})();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/relieve.js?v=20261022d" defer></script>
