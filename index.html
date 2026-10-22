@@ -75,10 +75,11 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer
 .btn:hover{border-color:var(--lime);color:var(--lime)}
 .btn.k{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .btn.k:hover{background:var(--lime);border-color:var(--lime);color:var(--ink)}
-.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:clamp(20px,5vw,72px);margin-top:clamp(48px,7vw,90px);padding-top:26px;border-top:1px solid var(--line)}
-.facts div{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
-.facts b{display:block;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.01em;color:var(--paper);font-weight:300;margin-bottom:4px;text-transform:none}
-@media (max-width:620px){.facts{grid-template-columns:1fr;gap:18px}}
+/* manifiesto de la portada: una frase en lugar de cifras (las cifras viven en «X.FORM en cifras») */
+.facts{margin-top:clamp(48px,7vw,90px);padding-top:26px;border-top:1px solid var(--line);display:flex;gap:18px;align-items:baseline;max-width:62ch}
+.facts i{flex:none;display:block;width:28px;height:2px;background:var(--lime);transform:translateY(-6px)}
+.facts span{font-size:clamp(20px,2.1vw,30px);line-height:1.25;letter-spacing:-.01em;color:var(--paper);font-weight:300}
+.facts span b{font-weight:700}
 
 /* ---------- firma ---------- */
 .fgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:start}
@@ -371,7 +372,9 @@ dialog.legal::backdrop{background:rgba(17,17,17,.82);backdrop-filter:blur(4px)}
   .mv-pie{order:9}
   .mv-curva,.mv-tag{display:none}
   .mv-vista{aspect-ratio:4/3}
-  .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--gut));padding-right:var(--gut)}
+  .mv>*,.mv-ctl,.mv-ctl>div{min-width:0}
+  .mv-ctl{grid-template-columns:minmax(0,1fr)}
+  .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
   .seg::-webkit-scrollbar{display:none}
   .seg button{flex:none}
 }
@@ -481,11 +484,7 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
       <a class="btn k" href="#proyectos">Ver proyectos</a>
       <a class="btn" href="#hablemos">Hablemos</a>
     </div>
-    <div class="facts">
-      <div><b>+500.000 m²</b>Diseñados</div>
-      <div><b>+20</b>Proyectos</div>
-      <div><b>+50 años</b>De oficio</div>
-    </div>
+    <p class="facts"><i aria-hidden="true"></i><span>Todo lugar guarda una forma. <b>Nuestro oficio es revelarla.</b></span></p>
   </div>
   <p class="coord" aria-hidden="true"><b>4.6773° N</b> · 74.0490° W<br>Bogotá · 2.640 m s. n. m.</p>
   <span class="bajar" aria-hidden="true"></span>
