@@ -294,6 +294,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 #mvPlanta{width:100%;height:auto;display:block;margin-top:6px}
 #mvPlanta .pl-borde{fill:none;stroke:var(--paper);stroke-width:1.6}
 #mvPlanta .pl-u{fill:rgba(241,240,236,.05);stroke:rgba(241,240,236,.55);stroke-width:1}
+#mvPlanta .pl-mix{fill:rgba(241,240,236,.13);stroke:var(--paper);stroke-dasharray:4 2}
+#mvPlanta .pl-ac{fill:none;stroke:rgba(241,240,236,.3);stroke-dasharray:1 3}
 #mvPlanta .pl-nucleo{fill:rgba(200,255,60,.18);stroke:var(--lime);stroke-width:1}
 #mvPlanta .pl-pas{stroke:rgba(241,240,236,.25);stroke-dasharray:3 4}
 #mvPlanta .pl-t{fill:var(--paper);font-size:10px;letter-spacing:.12em;text-anchor:middle;font-family:inherit}
@@ -303,7 +305,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .mv-cadena li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(241,240,236,.12);font-size:12px}
 .mv-cadena li span{color:#B9B8B3}
 .mv-cadena li b{font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums}
-.mv-cadena li.fin{border-bottom:0}
+.mv-cadena li.fin{border-bottom:1px dashed rgba(241,240,236,.12)}
+.mv-cadena li.resto{border-bottom:0}
+.mv-cadena li.resto span,.mv-cadena li.resto b{color:#8E9097}
 .mv-cadena li.fin b{color:var(--lime)}
 .mv-venta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px;padding:16px 18px;border:1px solid var(--line);background:rgba(17,17,17,.55)}
 .mv-venta p{font-size:14px;color:#B9B8B3;max-width:52ch}
@@ -534,6 +538,7 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
             <li><span>Área vendible</span><b id="mvC5">—</b></li>
             <li><span>Unidad elegida</span><b id="mvC7">—</b></li>
             <li class="fin"><span>Unidades del piso</span><b id="mvC6">—</b></li>
+            <li class="resto"><span>Lo que sobra pasa a área común</span><b id="mvC8">—</b></li>
           </ol>
         </div>
       </figure>
@@ -770,7 +775,7 @@ curvas("curvas",.42); curvas("curvas2",.5);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/relieve.js?v=20261022d" defer></script>
-<script src="assets/modelo.js?v=20261022d" defer></script>
+<script src="assets/modelo.js?v=20261022e" defer></script>
 <script src="assets/sabor.js?v=20261022d" defer></script>
 <script src="assets/i18n.js?v=20261022a" defer></script>
 </body>

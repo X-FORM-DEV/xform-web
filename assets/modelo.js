@@ -27,18 +27,42 @@
     if (n >= 6 && i > n - 2) return u.torre * .8;
     return u.torre;
   }
+  // Reparto del piso (nota de Camilo, 22 oct): la unidad elegida se respeta tal cual.
+  // Caben n unidades exactas; con lo que sobra se arma el mix: la tipología más grande que quepa,
+  // y así hasta que no quepa ni la más pequeña. Ese último resto pasa a área común (no se vende).
+  function reparto(vend){
+    const ts = USOS[st.uso].tams, elegida = ts[st.tam], grupos = [];
+    let resto = vend;
+    const n = Math.floor(resto / elegida[0]);
+    if (n) { grupos.push({ t: elegida, n, mix: false }); resto -= n * elegida[0]; }
+    for (let k = ts.length - 1; k >= 0; k--) {
+      const t = ts[k], m = Math.floor(resto / t[0]);
+      if (!m) continue;
+      const g = grupos.find(x => x.t === t);
+      if (g) g.n += m; else grupos.push({ t, n: m, mix: t !== elegida });
+      resto -= m * t[0];
+    }
+    grupos.sort((a, b) => (a.mix - b.mix) || (b.t[0] - a.t[0]));
+    return { grupos, resto };
+  }
   function pisoInfo(uso, lote, i, n){
-    const u = USOS[uso], planta = lote * factor(uso, i, n);
+    const planta = lote * factor(uso, i, n);
     const nucleo = 40 + planta * .05, circ = planta * .07, vend = planta - nucleo - circ;
-    const uds = i === 1 ? 0 : Math.max(1, Math.round(vend / tam()[0]));
-    return { i, planta, nucleo, circ, vend, uds, area: uds ? vend / uds : 0 };
+    // piso 1: lobby y comercio; el local comercial se vende completo al precio base
+    if (i === 1) return { i, planta, nucleo, circ, vend, uds: 0, grupos: [], resto: 0, vendido: vend, ventas: vend * USOS[uso].precio };
+    const r = reparto(vend);
+    let uds = 0, vendido = 0, ventas = 0;
+    r.grupos.forEach(g => { uds += g.n; vendido += g.n * g.t[0]; ventas += g.n * g.t[0] * USOS[uso].precio * g.t[3]; });
+    return { i, planta, nucleo, circ, vend, uds, grupos: r.grupos, resto: r.resto, vendido, ventas };
   }
   function calc(uso, lote, n){
-    const u = USOS[uso]; let ac = 0, vend = 0, uds = 0;
-    for (let i = 1; i <= n; i++) { const p = pisoInfo(uso, lote, i, n); ac += p.planta; vend += p.vend; uds += p.uds; }
-    const ventas = vend * u.precio * tam()[3], costo = ac * u.cd * (1 + .01 * Math.max(0, n - 6)) * INDIRECTOS + lote * LOTE_M2, ut = ventas - costo;
+    let ac = 0, vend = 0, uds = 0, ventas = 0;
+    for (let i = 1; i <= n; i++) { const p = pisoInfo(uso, lote, i, n); ac += p.planta; vend += p.vendido; uds += p.uds; ventas += p.ventas; }
+    const costo = ac * USOS[uso].cd * (1 + .01 * Math.max(0, n - 6)) * INDIRECTOS + lote * LOTE_M2, ut = ventas - costo;
     return { ac, vend, uds, ventas, ut, margen: ut / ventas * 100 };
   }
+  const nomT = t => en() ? t[2] : t[1];
+  const lista = p => p.grupos.map(g => g.n + " × " + g.t[0] + " m²").join(" + ");
 
   // ---------- números ----------
   function pinta(){
@@ -57,14 +81,17 @@
   function planta(){
     const u = USOS[st.uso], p = pisoInfo(st.uso, st.lote, st.piso, st.pisos), nom = (en() ? u.en : u.es);
     $("#mvPisoN").textContent = (en() ? "Floor " : "Piso ") + st.piso;
-    $("#mvPisoU").textContent = p.uds ? p.uds + " " + nom[p.uds === 1 ? 0 : 1] + (en() ? " of ~" : " de ~") + fmt(p.area) + " m²" : u.p1[en() ? 1 : 0];
+    const deUno = p.grupos.length === 1;
+    $("#mvPisoU").textContent = !p.uds ? u.p1[en() ? 1 : 0]
+      : p.uds + " " + nom[p.uds === 1 ? 0 : 1] + " · " + (deUno ? nomT(p.grupos[0].t) : p.grupos.map(g => g.n + " " + nomT(g.t)).join(" + "));
     $("#mvC1").textContent = fmt(st.lote) + " m²";
     $("#mvC2").textContent = Math.round(factor(st.uso, st.piso, st.pisos) * 100) + " %";
     $("#mvC3").textContent = fmt(p.planta) + " m²";
     $("#mvC4").textContent = "− " + fmt(p.nucleo + p.circ) + " m²";
     $("#mvC5").textContent = fmt(p.vend) + " m²";
-    $("#mvC6").textContent = p.uds ? p.uds + " × " + fmt(p.area) + " m²" : "—";
-    $("#mvC7").textContent = tam()[0] + " m² · " + (en() ? tam()[2] : tam()[1]);
+    $("#mvC6").textContent = p.uds ? lista(p) : "—";
+    $("#mvC7").textContent = tam()[0] + " m² · " + nomT(tam());
+    $("#mvC8").textContent = p.uds ? fmt(p.resto) + " m²" : "—";
     $("#mvAnt").disabled = st.piso <= 1; $("#mvSig").disabled = st.piso >= st.pisos;
 
     // dibujo: planta rectangular, pasillo al centro con el núcleo, unidades arriba y abajo
@@ -74,13 +101,24 @@
     if (!p.uds) {
       g += `<rect class="pl-u" x="${x0 + 4}" y="${y0 + 4}" width="${w - 8}" height="${d - 8}"/><text class="pl-t" x="${VW / 2}" y="${VH / 2 + 4}">${u.p1[en() ? 1 : 0].toUpperCase()}</text>`;
     } else {
-      const arriba = Math.ceil(p.uds / 2), abajo = p.uds - arriba, fila = (d - pas) / 2;
-      const fila1 = (n, y, letra) => { for (let j = 0; j < n; j++) {
-        const uw = w / n, x = x0 + j * uw, cx = x + uw / 2, cy = y + fila / 2;
-        g += `<rect class="pl-u" x="${x + 2}" y="${y + 2}" width="${uw - 4}" height="${fila - 4}"/>`;
-        if (uw > 26) g += `<text class="pl-t" x="${cx}" y="${cy - 2}">${letra}${j + 1}</text><text class="pl-a" x="${cx}" y="${cy + 10}">${fmt(p.area)} m²</text>`;
-      } };
-      fila1(arriba, y0, "A"); if (abajo) fila1(abajo, y0 + fila + pas, "B");
+      // cada unidad con su área real; el ancho es proporcional al área, y el resto va como área común
+      const us = []; p.grupos.forEach(gr => { for (let j = 0; j < gr.n; j++) us.push({ a: gr.t[0], mix: gr.mix }); });
+      if (p.resto >= 1) us.push({ a: p.resto, ac: true });
+      const total = us.reduce((s, x) => s + x.a, 0); let acum = 0, corte = us.length;
+      for (let j = 0; j < us.length; j++) { acum += us[j].a; if (acum >= total / 2) { corte = j + 1; break; } }
+      const filas = [us.slice(0, corte), us.slice(corte)], fila = (d - pas) / 2;
+      filas.forEach((f, fi) => {
+        if (!f.length) return;
+        const suma = f.reduce((s, x) => s + x.a, 0), y = y0 + fi * (fila + pas), cy = y + fila / 2; let x = x0;
+        f.forEach((un, j) => {
+          const uw = w * un.a / suma, cx = x + uw / 2;
+          g += `<rect class="${un.ac ? "pl-ac" : un.mix ? "pl-u pl-mix" : "pl-u"}" x="${x + 2}" y="${y + 2}" width="${Math.max(1, uw - 4)}" height="${fila - 4}"/>`;
+          if (uw > 24) g += un.ac
+            ? `<text class="pl-t" x="${cx}" y="${cy - 2}">AC</text><text class="pl-a" x="${cx}" y="${cy + 10}">${fmt(un.a)} m²</text>`
+            : `<text class="pl-t" x="${cx}" y="${cy - 2}">${fi ? "B" : "A"}${j + 1}</text><text class="pl-a" x="${cx}" y="${cy + 10}">${un.a} m²</text>`;
+          x += uw;
+        });
+      });
       const yp = y0 + fila;
       g += `<line class="pl-pas" x1="${x0}" y1="${yp + pas / 2}" x2="${x0 + w}" y2="${yp + pas / 2}"/>`;
       g += `<rect class="pl-nucleo" x="${x0 + (w - nw) / 2}" y="${yp - 4}" width="${nw}" height="${pas + 8}"/>`;
