@@ -84,8 +84,8 @@ canvas.relieve{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacit
 
 /* ---------- firma ---------- */
 .firma .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,110px);align-items:start;margin-top:12px}
-.firma p{font-size:clamp(17px,1.5vw,20px);color:#3B3B3B;margin-bottom:22px;max-width:52ch}
-.firma p:first-child{font-size:clamp(20px,1.9vw,25px);color:var(--ink)}
+.firma .grid p{font-size:clamp(17px,1.5vw,20px);color:#3B3B3B;margin-bottom:22px;max-width:52ch}
+.firma .grid p:first-child{font-size:clamp(20px,1.9vw,25px);color:var(--ink)}
 @media (max-width:860px){.firma .grid{grid-template-columns:1fr}}
 
 /* ---------- servicios ---------- */
@@ -166,7 +166,7 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .person p.bio{color:#B9B8B3;margin-top:18px;max-width:46ch;font-size:17px}
 .boutique{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,90px);align-items:end;padding:clamp(28px,4vw,52px);background:var(--carbon)}
 .boutique h3{font-size:clamp(28px,3.4vw,46px);margin-top:16px}
-.boutique p{color:#C9C8C3;font-size:clamp(17px,1.5vw,20px)}
+.boutique p:not(.tag){color:#C9C8C3;font-size:clamp(17px,1.5vw,20px)}
 .boutique p.foot{font-size:12px;letter-spacing:.18em;color:var(--muted);margin-top:20px;font-weight:400}
 @media (max-width:860px){.team,.boutique{grid-template-columns:1fr}}
 
@@ -208,6 +208,33 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
+/* ---------- modelo comercial vivo ---------- */
+.mv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,100px);align-items:start}
+.mv .lead{font-size:clamp(17px,1.5vw,20px);color:#C9C8C3;max-width:44ch;margin-top:28px}
+.mv .outs{margin-top:clamp(0px,4vw,52px)}
+.mv-ej{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:28px;padding-bottom:6px}
+.ctl{border-top:1px solid var(--line);padding:22px 0 20px}
+.ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.ctl output{font-size:clamp(18px,1.6vw,22px);letter-spacing:0;text-transform:none;color:var(--paper);font-weight:300;white-space:nowrap}
+.ctl .ext{display:flex;justify-content:space-between;font-size:12px;color:#6A6C72;margin-top:2px}
+.mv input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin-top:6px;cursor:pointer}
+.mv input[type=range]::-webkit-slider-runnable-track{height:2px;background:rgba(241,240,236,.25)}
+.mv input[type=range]::-moz-range-track{height:2px;background:rgba(241,240,236,.25)}
+.mv input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--lime);border:0;margin-top:-11px}
+.mv input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--lime);border:0}
+.mv input[type=range]:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+.outs{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.out{background:var(--carbon);padding:clamp(22px,2.6vw,34px);transition:background .3s}
+.out .k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.out b{display:block;font-size:clamp(40px,4.6vw,68px);font-weight:300;letter-spacing:-.03em;line-height:1;margin-top:16px;color:var(--lime);font-variant-numeric:tabular-nums;white-space:nowrap}
+.out .u{display:block;font-size:15px;color:#B9B8B3;margin-top:10px}
+.out.alerta b{color:#FF9F5A}
+.out.alerta{background:#33281F}
+.mv-pie{font-size:13px;color:var(--muted);margin-top:18px}
+.mv-cierre{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:28px;border-top:1px solid var(--line)}
+.mv-cierre p{font-size:clamp(22px,2.4vw,32px)}
+@media (max-width:900px){.mv{grid-template-columns:1fr}}
+
 /* aparición suave, solo con JavaScript */
 @media (prefers-reduced-motion:no-preference){
   .rvon .rv{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
@@ -228,7 +255,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a href="#proceso">Proceso</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#equipo">Equipo</a>
-      <a href="#dimensiona">Dimensione su proyecto</a>
+      <a href="#dimensiona">Dimensiona tu proyecto</a>
       <button class="lang" id="lang" type="button" hidden>EN</button>
       <a class="cta" href="#hablemos">Hablemos</a>
     </nav>
@@ -242,7 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <p class="tag"><i></i>Arquitectura · Estrategia · Desarrollo</p>
     <h1>Más allá<br><b>del diseño</b></h1>
-    <p class="lead">Cada lugar empieza con una pregunta: qué vale la pena construir aquí. La respondemos con el terreno, con la luz y con quien lo va a habitar, desde el primer trazo.</p>
+    <p class="lead">Un predio, un edificio, un espacio vale por lo que puede llegar a ser. Lo descubrimos contigo desde el primer trazo, con diseño, sostenibilidad y experiencia humana.</p>
     <div class="btns">
       <a class="btn k" href="#proyectos">Ver proyectos</a>
       <a class="btn" href="#hablemos">Hablemos</a>
@@ -260,11 +287,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <p class="tag rv"><i></i>01 · Quiénes somos</p>
     <div class="grid">
-      <h2 class="rv">Entramos cuando el proyecto todavía es una conversación.</h2>
+      <h2 class="rv">Transformamos predios y espacios en lugares que las personas quieren habitar.</h2>
       <div class="rv">
-        <p>X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, porque las mejores decisiones de un proyecto se toman antes del primer plano.</p>
-        <p>En ese momento el lote todavía guarda preguntas abiertas: qué cabe, qué conviene, qué historia quiere contar. Las respondemos con el cliente y seguimos al lado del proyecto hasta que alguien lo habita.</p>
-        <p>Buscamos lugares que se sientan bien al recorrerlos, que se construyan con sensatez y que encuentren a su gente.</p>
+        <p>X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, en equilibrio con el entorno y con la cultura de cada lugar.</p>
+        <p>Cada proyecto lo construimos contigo. Desde la primera pregunta (qué cabe, qué conviene, qué historia quiere contar el lugar) hasta el día en que alguien lo habita.</p>
+        <p>Trabajamos con rigor técnico y viabilidad económica para dejar entornos más sostenibles y más valiosos. La forma que toma una decisión bien tomada va más allá del diseño.</p>
       </div>
     </div>
   </div>
@@ -276,8 +303,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <p class="tag rv"><i></i>02 · Qué hacemos</p>
     <h2 class="rv">Tres frentes que piensan juntos</h2>
     <div class="srv">
-      <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres con el cliente leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
-      <article class="rv"><span class="code">X.DSG</span><h3>Arquitectura e interiorismo</h3><span class="verb">DISEÑAR</span><p>Arquitectura, interiorismo, urbanismo y paisaje salen del mismo lápiz. Trabajamos la luz, la materia y el recorrido con el rigor técnico que pide la norma y la obra.</p></article>
+      <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres contigo leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
+      <article class="rv"><span class="code">X.DSG</span><h3>Arquitectura e interiorismo</h3><span class="verb">DISEÑAR</span><p>Arquitectura, interiorismo, urbanismo y paisaje salen del mismo lápiz. Trabajamos la luz, la materia y el recorrido con el rigor técnico que piden la norma y la obra.</p></article>
       <article class="rv"><span class="code">X.DVL</span><h3>Gerencia, control y obra</h3><span class="verb">EJECUTAR</span><p>Llevamos el proyecto hasta que se vuelve materia. Coordinamos disciplinas, tiempos y costos, y en obra cuidamos que lo dibujado llegue intacto.</p></article>
     </div>
   </div>
@@ -289,9 +316,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <p class="tag rv"><i></i>03 · Cómo trabajamos</p>
     <h2 class="rv">Cuatro fases, un mismo hilo</h2>
     <div class="fases">
-      <div class="fase rv"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y al cliente. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
+      <div class="fase rv"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y te escuchamos a ti. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
       <div class="fase rv"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: una forma propia de recibir la luz, de llegar y de recorrerse.</p></div>
-      <div class="fase rv"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir sin perder su carácter.</p></div>
+      <div class="fase rv"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir y conserva su carácter.</p></div>
       <div class="fase rv"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Estamos en la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
     </div>
   </div>
@@ -311,11 +338,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 
-<!-- 05 PROYECTOS -->
+<!-- 05 MODELO COMERCIAL VIVO · cifras de ejemplo, sin relación con un proyecto real -->
+<section id="modelo">
+  <div class="wrap">
+    <div class="mv">
+      <div class="rv">
+        <p class="tag"><i></i>05 · Modelo comercial vivo</p>
+        <h2>Mueve una variable y mira cómo cambia el proyecto.</h2>
+        <p class="lead">Así trabajamos la viabilidad: con un modelo que responde mientras diseñamos. Prueba con este edificio de ejemplo.</p>
+        <p class="mv-ej">Edificio de ejemplo · Bogotá · 4.000 m² vendibles</p>
+        <form id="mvForm" onsubmit="return false">
+          <div class="ctl"><label for="mvPrecio">Precio de venta por m² <output id="mvPrecioO" for="mvPrecio"></output></label>
+            <input type="range" id="mvPrecio" min="8" max="14" step="0.5" value="11"><div class="ext"><span>8 M</span><span>14 M</span></div></div>
+          <div class="ctl"><label for="mvMezcla">Mezcla de tipologías <output id="mvMezclaO" for="mvMezcla"></output></label>
+            <input type="range" id="mvMezcla" min="0" max="100" step="5" value="50"><div class="ext"><span>Estudios</span><span>3 alcobas</span></div></div>
+          <div class="ctl"><label for="mvRitmo">Ritmo de ventas <output id="mvRitmoO" for="mvRitmo"></output></label>
+            <input type="range" id="mvRitmo" min="2" max="10" step="1" value="5"><div class="ext"><span>2</span><span>10</span></div></div>
+        </form>
+      </div>
+      <div class="rv">
+        <div class="outs" aria-live="polite">
+          <div class="out" id="mvIng"><span class="k">Ingresos totales</span><b>—</b><span class="u"></span></div>
+          <div class="out" id="mvEq"><span class="k">Punto de equilibrio</span><b>—</b><span class="u"></span></div>
+          <div class="out" id="mvUt"><span class="k">Utilidad</span><b>—</b><span class="u"></span></div>
+        </div>
+        <p class="mv-pie">Cifras de ejemplo, sin relación con un proyecto real.</p>
+      </div>
+    </div>
+    <div class="mv-cierre rv"><p>¿Quieres ver tu proyecto así?</p><a class="btn k" href="#hablemos">Hablemos</a></div>
+  </div>
+</section>
+
+<!-- 06 PROYECTOS -->
 <section class="light" id="proyectos">
   <div class="wrap">
     <div class="proy-head">
-      <div><p class="tag rv"><i></i>05 · Selección de obra</p><h2 class="rv">Proyectos</h2></div>
+      <div><p class="tag rv"><i></i>06 · Selección de obra</p><h2 class="rv">Proyectos</h2></div>
       <div class="filtros rv" role="group" aria-label="Filtrar proyectos">
         <button aria-pressed="true" data-f="all">Todos</button>
         <button aria-pressed="false" data-f="mp">Masterplan</button>
@@ -332,11 +390,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- 06 EQUIPO -->
 <section id="equipo">
   <div class="wrap">
-    <p class="tag rv"><i></i>06 · Nosotros</p>
+    <p class="tag rv"><i></i>07 · Nosotros</p>
     <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
     <div class="team">
       <div class="person rv"><h3>Francisco Ospina</h3><p class="role">SOCIO · DIRECTOR DE DISEÑO</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Paisaje y Urbanismo de la Universidad de Pensilvania. Piensa el proyecto desde el paisaje hacia adentro.</p></div>
-      <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · GERENTE DE PROYECTOS</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Vivienda del Siglo XXI de la UPC de Barcelona. Acompaña cada proyecto desde la primera conversación hasta el último día de obra.</p></div>
+      <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · DIRECTOR GENERAL</p><p class="bio">Arquitecto de la Pontificia Universidad Javeriana, con máster en Diseño de Interiores para Espacios Comerciales del IED Barcelona. Más de 14 años entre arquitectura, interiorismo, hotelería y desarrollo inmobiliario, del concepto a la entrega.</p></div>
     </div>
     <div class="boutique rv">
       <div><p class="tag"><i></i>Dirección boutique</p><h3>Un estudio pequeño a propósito.</h3></div>
@@ -349,39 +407,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section class="light" id="dimensiona">
   <div class="wrap dim">
     <div>
-      <p class="tag rv"><i></i>07 · Dimensione su proyecto</p>
-      <h2 class="rv">Cuéntenos qué tiene en mente</h2>
-      <p class="lead rv">Tres preguntas para darle una primera lectura de la escala de su proyecto y del paso que sigue.</p>
+      <p class="tag rv"><i></i>08 · Dimensiona tu proyecto</p>
+      <h2 class="rv">Cuéntanos qué tienes en mente</h2>
+      <p class="lead rv">Tres preguntas para darte una primera lectura de la escala de tu proyecto y del paso que sigue.</p>
     </div>
     <form id="dimForm" class="rv" onsubmit="return false">
-      <div class="q"><fieldset><legend>01 · ¿Qué quiere hacer?</legend><div class="opts">
+      <div class="q"><fieldset><legend>01 · ¿Qué quieres hacer?</legend><div class="opts">
         <label><input type="radio" name="tipo" value="vivienda"><span>Vivienda</span></label>
         <label><input type="radio" name="tipo" value="uso mixto"><span>Uso mixto</span></label>
         <label><input type="radio" name="tipo" value="oficinas"><span>Oficinas</span></label>
         <label><input type="radio" name="tipo" value="hospitality"><span>Hospitality</span></label>
         <label><input type="radio" name="tipo" value="masterplan"><span>Masterplan</span></label>
       </div></fieldset></div>
-      <div class="q"><fieldset><legend>02 · ¿Qué área imagina?</legend><div class="opts">
+      <div class="q"><fieldset><legend>02 · ¿Qué área imaginas?</legend><div class="opts">
         <label><input type="radio" name="area" value="1" data-t="de hasta 500 m²"><span>Hasta 500 m²</span></label>
         <label><input type="radio" name="area" value="2" data-t="de 500 a 2.000 m²"><span>500 a 2.000 m²</span></label>
         <label><input type="radio" name="area" value="3" data-t="de 2.000 a 10.000 m²"><span>2.000 a 10.000 m²</span></label>
         <label><input type="radio" name="area" value="4" data-t="de 10.000 a 50.000 m²"><span>10.000 a 50.000 m²</span></label>
         <label><input type="radio" name="area" value="5" data-t="de más de 50.000 m² o varias hectáreas"><span>Más de 50.000 m² o varias hectáreas</span></label>
       </div></fieldset></div>
-      <div class="q"><fieldset><legend>03 · ¿En qué etapa está?</legend><div class="opts">
+      <div class="q"><fieldset><legend>03 · ¿En qué etapa estás?</legend><div class="opts">
         <label><input type="radio" name="etapa" value="idea" data-t="idea"><span>Tengo una idea</span></label>
         <label><input type="radio" name="etapa" value="lote" data-t="lote"><span>Tengo el lote</span></label>
         <label><input type="radio" name="etapa" value="diseno" data-t="diseño en curso"><span>El diseño está en curso</span></label>
         <label><input type="radio" name="etapa" value="obra" data-t="obra"><span>Estoy en obra</span></label>
       </div></fieldset></div>
-      <p class="hint" id="hint">Responda las tres preguntas para ver su lectura.</p>
+      <p class="hint" id="hint">Responde las tres preguntas para ver tu lectura.</p>
       <div class="res" id="res" aria-live="polite">
         <p class="tag"><i></i>Primera lectura</p>
         <p class="txt" id="resTxt"></p>
         <p class="matiz" id="resMatiz"></p>
         <div class="btns">
-          <a class="btn k" id="ctaWa" href="https://wa.me/573148304724" target="_blank" rel="noopener">Agende 20 minutos con nosotros</a>
-          <a class="btn" id="ctaMail" href="mailto:info@xform.com.co">Escríbanos por correo</a>
+          <a class="btn k" id="ctaWa" href="https://wa.me/573148304724" target="_blank" rel="noopener">Agenda 20 minutos con nosotros</a>
+          <a class="btn" id="ctaMail" href="mailto:info@xform.com.co">Escríbenos por correo</a>
         </div>
         <p class="disc">Una primera lectura para orientar la conversación. El detalle lo armamos juntos en la primera reunión.</p>
       </div>
@@ -393,9 +451,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section class="contacto" id="hablemos">
   <canvas class="curvas" id="curvas2" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="tag rv"><i></i>08 · Hablemos</p>
-    <h2 class="rv">Hablemos de su lugar</h2>
-    <p class="lead rv">Cuéntenos dónde está su terreno y qué imagina para él.</p>
+    <p class="tag rv"><i></i>09 · Hablemos</p>
+    <h2 class="rv">Hablemos de tu lugar</h2>
+    <p class="lead rv">Cuéntanos dónde está tu terreno y qué imaginas para él.</p>
     <div class="btns rv">
       <a class="btn k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">info@xform.com.co</a>
       <a class="btn" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
@@ -424,7 +482,7 @@ const P = [
   txt:"El agua llegó primero. El lago interior decidió dónde se abría el paisaje y dónde se recogía la sombra, y desde ese borde se trazaron las calles, los senderos y el canal que lleva la brisa hasta el mar.",
   cred:"Masterplan y diseño: X.FORM", ia:true, img:["cayetana-masterplan-1","cayetana-masterplan-2","cayetana-masterplan-3"], cap:["Cayetana, Barú","Planta del conjunto · Cayetana, Barú","El lago y el mar · Cayetana, Barú"]},
  {f:["hs"], big:true, cat:"Hospitality", t:"Cayetana · Beach Club", meta:"Barú, Cartagena · Hospitality · 2026",
-  txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle que invita a quedarse hasta que cae la tarde.",
+  txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle para quedarse hasta que cae la tarde.",
   cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3"], cap:["Beach Club · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","La llegada al mar · Cayetana, Barú"]},
  {f:["rs"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
   txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella sigue la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
@@ -474,10 +532,10 @@ dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
 const L = {
   idea:"Un proyecto en este punto se beneficia de una fase de estrategia: tres a cuatro semanas para leer el lugar, definir la visión y saber qué vale la pena construir.",
   lote:"Con el lote en la mano, el primer paso es una cabida: entender qué permite la norma y qué pide el terreno antes de dibujar.",
-  diseno:"Podemos entrar a revisar, coordinar o profundizar lo que ya existe, sin empezar de cero.",
+  diseno:"Podemos entrar a revisar, coordinar o profundizar lo que ya existe y construir sobre lo avanzado.",
   obra:"Entramos a la ejecución con control técnico y dirección, para que lo construido conserve la idea."
 };
-const MATIZ="Proyectos de más de 10.000 m² o de masterplan suelen arrancar con una mesa de estrategia antes del concepto.";
+const MATIZ="Los proyectos de más de 10.000 m² o de masterplan suelen arrancar con una mesa de estrategia antes del concepto.";
 const form=document.getElementById("dimForm");
 form.addEventListener("change",()=>{
   const g=n=>form.querySelector(`input[name=${n}]:checked`);
@@ -488,9 +546,65 @@ form.addEventListener("change",()=>{
   document.getElementById("resMatiz").textContent = (+a.value>=4 || t.value==="masterplan") ? MATIZ : "";
   const msg=`Hola, X.FORM. Quiero conversar sobre un proyecto de ${t.value}, ${a.dataset.t}, que está en la etapa de ${s.dataset.t}.`;
   document.getElementById("ctaWa").href="https://wa.me/573148304724?text="+encodeURIComponent(msg);
-  document.getElementById("ctaMail").href="mailto:info@xform.com.co?subject="+encodeURIComponent("Dimensione su proyecto · X.FORM")+"&body="+encodeURIComponent(msg);
+  document.getElementById("ctaMail").href="mailto:info@xform.com.co?subject="+encodeURIComponent("Dimensiona tu proyecto · X.FORM")+"&body="+encodeURIComponent(msg);
   document.getElementById("res").classList.add("show");
 });
+
+// ---------- Modelo comercial vivo: lógica ficticia del brief WEB-20261021-04 ----------
+// Edificio de ejemplo: 4.000 m² vendibles, de 40 unidades (todo estudios) a 27 (todo 3 alcobas).
+// Ingresos = área × precio × (1 + 0,04 × % grandes). Costo = 34.000 M + 1 % de los ingresos.
+(function(){
+  const f=document.getElementById("mvForm"); if(!f) return;
+  const $=id=>document.getElementById(id), AREA=4000, COSTO=34000;
+  const en=()=>document.documentElement.lang==="en";
+  const fmt=(n,d)=>Math.abs(n).toLocaleString(en()?"en-US":"es-CO",{maximumFractionDigits:d||0,minimumFractionDigits:d||0});
+  const vivo={ing:0,ut:0,eq:0};
+  function calc(){
+    const p=+$("mvPrecio").value, g=+$("mvMezcla").value/100, r=+$("mvRitmo").value;
+    const uds=Math.round(40-13*g), ing=AREA*p*(1+.04*g), costo=COSTO+.01*ing, ut=ing-costo;
+    const eq= ing>=costo ? Math.ceil(costo/(r*ing/uds)) : 0;
+    return {p,g,r,uds,ing,ut,eq};
+  }
+  function etiquetas(m){
+    const d = m.p%1 ? 1 : 0;
+    $("mvPrecioO").textContent = (en()?"COP ":"$")+fmt(m.p,d)+" M";
+    $("mvMezclaO").textContent = en() ? Math.round(m.g*100)+"% large · "+m.uds+" units" : Math.round(m.g*100)+" % grandes · "+m.uds+" uds.";
+    $("mvRitmoO").textContent = en() ? m.r+" units / month" : m.r+" uds. / mes";
+  }
+  function pinta(m,v){
+    const I=$("mvIng"), E=$("mvEq"), U=$("mvUt");
+    I.querySelector("b").textContent=(en()?"COP ":"$")+fmt(v.ing);
+    I.querySelector(".u").textContent=en()?"million, "+m.uds+" units":"millones de pesos, "+m.uds+" unidades";
+    if(m.eq){
+      E.querySelector("b").textContent=(en()?"Month ":"Mes ")+Math.max(1,Math.round(v.eq||m.eq));
+      E.querySelector(".u").textContent = m.eq>12 ? (en()?"Slow pace: over a year to cover the cost":"Ritmo lento: más de un año para cubrir el costo") : (en()?"when sales cover the total cost":"cuando las ventas cubren el costo total");
+    } else {
+      E.querySelector("b").textContent="—";
+      E.querySelector(".u").textContent=en()?"Raise the price to cover the cost":"Sube el precio para cubrir el costo";
+    }
+    E.classList.toggle("alerta", !m.eq || m.eq>12);
+    U.querySelector("b").textContent=(v.ut<0?"−":"")+(en()?"COP ":"$")+fmt(v.ut);
+    U.querySelector(".u").textContent=(en()?"million · ":"millones · ")+(m.ut<0?"−":"")+fmt(m.ut/m.ing*100)+(en()?"% of sales":" % sobre ventas");
+    U.classList.toggle("alerta", m.ut<0);
+  }
+  let raf=0;
+  function anima(){
+    const m=calc(); etiquetas(m); cancelAnimationFrame(raf);
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches){ Object.assign(vivo,{ing:m.ing,ut:m.ut,eq:m.eq}); pinta(m,vivo); return; }
+    const de={...vivo}, t0=performance.now(), T=320;
+    const paso=t=>{ const k=Math.min(1,(t-t0)/T), e=1-Math.pow(1-k,3);
+      vivo.ing=de.ing+(m.ing-de.ing)*e; vivo.ut=de.ut+(m.ut-de.ut)*e; vivo.eq=m.eq&&de.eq?de.eq+(m.eq-de.eq)*e:m.eq;
+      pinta(m,vivo); if(k<1) raf=requestAnimationFrame(paso); };
+    raf=requestAnimationFrame(paso);
+  }
+  f.addEventListener("input",anima);
+  // el selector ES / EN cambia el idioma del documento: se vuelven a escribir las cifras.
+  // i18n.js reescribe «lang» cada vez que traduce; solo se repinta si el idioma de verdad cambió (si no, se arma un bucle).
+  let idioma=document.documentElement.lang;
+  new MutationObserver(()=>{ if(document.documentElement.lang===idioma) return; idioma=document.documentElement.lang;
+    const m=calc(); etiquetas(m); Object.assign(vivo,{ing:m.ing,ut:m.ut,eq:m.eq}); pinta(m,vivo); }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+  anima();
+})();
 
 // ---------- barra y menú ----------
 const hd=document.getElementById("top"), bg=document.querySelector(".burger"), mn=document.getElementById("menu");
@@ -526,6 +640,6 @@ curvas("curvas",.42); curvas("curvas2",.5);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/relieve.js?v=20261022c" defer></script>
-<script src="assets/i18n.js?v=20261021b" defer></script>
+<script src="assets/i18n.js?v=20261022a" defer></script>
 </body>
 </html>
