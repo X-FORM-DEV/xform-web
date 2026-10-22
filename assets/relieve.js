@@ -72,11 +72,15 @@
         float borde = smoothstep(9.5, 5.5, length(vP*vec2(0.75,1.0)));
         // detrás del titular (lado izquierdo) el relieve baja para que el texto se lea
         float sx = gl_FragCoord.x / uRes.x;
-        float texto = mix(0.35, 1.0, smoothstep(0.18, 0.62, sx));
+        float texto = mix(0.10, 1.0, smoothstep(0.30, 0.74, sx));
+        // en pantalla vertical (celular) el texto ocupa todo el ancho: el relieve baja parejo
+        if (uRes.y > uRes.x) texto = 0.42;
         vec3 papel = vec3(0.945,0.941,0.925);
+        // lima de marca #C8FF3C exacto. Con alfa baja sobre el negro vira a oliva/amarillo,
+        // así que las maestras van con más alfa (lima real) y el resto en gris muy suave.
         vec3 lima  = vec3(0.784,1.0,0.235);
         vec3 col = mix(papel, lima, maestra);
-        float a = max(linea*0.15, maestra*0.32) * borde * texto;
+        float a = max(linea*0.13, maestra*0.55) * borde * texto;
         if (a < 0.01) discard;
         gl_FragColor = vec4(col, a);
       }`
