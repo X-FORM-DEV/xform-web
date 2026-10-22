@@ -30,7 +30,7 @@ a{color:inherit}
 .light .tag i,.white .tag i{background:var(--ink)}
 h1,h2,h3{font-weight:300;letter-spacing:-.015em;line-height:1.08}
 h2{font-size:clamp(32px,5vw,64px);margin-top:22px;max-width:16ch}
-section{padding:clamp(80px,12vw,150px) 0;position:relative}
+section{padding:clamp(64px,8vw,112px) 0;position:relative}
 .light{background:var(--paper);color:var(--ink)}
 .light .tag{color:#6E6E6E}
 .white{background:var(--white);color:var(--ink)}
@@ -64,10 +64,7 @@ nav.menu button.lang[hidden]{display:none}
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 clamp(48px,8vw,90px);overflow:hidden}
 canvas.curvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6}
-canvas.relieve{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:1}
-.hero.con3d{cursor:crosshair}
-.hero.con3d .wrap{pointer-events:none}
-.hero.con3d .wrap a,.hero.con3d .wrap button{pointer-events:auto}
+canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
 .hero .wrap{position:relative;z-index:1;width:100%}
 .hero h1{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
 .hero h1 b{font-weight:700}
@@ -90,8 +87,8 @@ canvas.relieve{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacit
 
 /* ---------- servicios ---------- */
 .srv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:clamp(40px,6vw,72px);border:1px solid var(--line)}
-.srv article{background:var(--deep);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;min-height:380px;transition:background .3s}
-.srv article:hover{background:#171717}
+.srv article{background:rgba(17,17,17,.82);padding:clamp(26px,2.6vw,40px);display:flex;flex-direction:column;min-height:320px;transition:background .3s}
+.srv article:hover{background:rgba(23,23,23,.9)}
 .srv .code{font-size:13px;letter-spacing:.2em;color:var(--lime);font-weight:400}
 .srv h3{font-size:clamp(26px,2.4vw,34px);margin-top:auto;padding-top:60px}
 .srv .verb{font-size:12px;letter-spacing:.2em;color:var(--muted);margin-top:10px;font-weight:400}
@@ -107,7 +104,7 @@ canvas.relieve{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacit
 @media (max-width:560px){.fases{grid-template-columns:1fr}}
 
 /* ---------- cifras ---------- */
-.cifras{background:var(--carbon)}
+.cifras{background:rgba(43,43,43,.72)}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
 .kpis div{padding:30px 20px 0 0}
 .kpis b{display:block;font-size:clamp(40px,4.2vw,64px);white-space:nowrap;font-weight:300;letter-spacing:-.03em;line-height:1}
@@ -121,22 +118,22 @@ canvas.relieve{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacit
 .filtros button{font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;background:none;border:1px solid var(--linek);color:var(--ink);padding:10px 14px;cursor:pointer;transition:all .2s}
 .filtros button:hover{border-color:var(--ink)}
 .filtros button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.6vw,24px);margin-top:clamp(36px,5vw,56px)}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.4vw,20px);margin-top:clamp(28px,4vw,44px)}
 .card{grid-column:span 2;cursor:pointer;background:none;border:0;text-align:left;font-family:inherit;color:inherit;padding:0}
 .card.big{grid-column:span 3}
 .card .ph{position:relative;overflow:hidden;aspect-ratio:4/3;background:#DDD}
-.card.big .ph{aspect-ratio:16/10}
+.card.big .ph{aspect-ratio:16/9}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
 .card:hover img,.card:focus-visible img{transform:scale(1.04)}
 .card .ph::after{content:"VER PROYECTO";position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.2em;color:#fff;background:rgba(17,17,17,.75);padding:8px 12px;opacity:0;transform:translateY(6px);transition:all .3s}
 .card:hover .ph::after,.card:focus-visible .ph::after{opacity:1;transform:none}
-.card h3{font-size:clamp(22px,2vw,28px);margin-top:16px}
+.card h3{font-size:clamp(20px,1.7vw,24px);margin-top:12px}
 .card .meta{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;font-weight:400;text-transform:uppercase}
 .card.hide{display:none}
 .card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 @media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.card,.card.big{grid-column:span 1}}
 @media (max-width:560px){.cards{grid-template-columns:1fr}}
-.iaNote{margin-top:36px;font-size:12px;letter-spacing:.12em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+.iaNote{margin-top:24px;font-size:12px;letter-spacing:.12em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
 
 /* ficha abierta */
 dialog.ficha{border:0;padding:0;max-width:none;max-height:none;width:100%;height:100%;background:var(--paper);color:var(--ink)}
@@ -159,27 +156,30 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 @media (max-width:900px){.f-body{grid-template-columns:1fr}.f-txt{position:static;order:-1}}
 
 /* ---------- equipo ---------- */
-.team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);margin-top:clamp(40px,6vw,64px)}
-.person{border-top:1px solid var(--line);padding-top:26px}
-.person h3{font-size:clamp(28px,3vw,40px)}
-.person .role{font-size:12px;letter-spacing:.18em;color:var(--lime);margin-top:10px;font-weight:400}
-.person p.bio{color:#B9B8B3;margin-top:18px;max-width:46ch;font-size:17px}
-.boutique{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,90px);align-items:end;padding:clamp(28px,4vw,52px);background:var(--carbon)}
-.boutique h3{font-size:clamp(28px,3.4vw,46px);margin-top:16px}
-.boutique p:not(.tag){color:#C9C8C3;font-size:clamp(17px,1.5vw,20px)}
-.boutique p.foot{font-size:12px;letter-spacing:.18em;color:var(--muted);margin-top:20px;font-weight:400}
-@media (max-width:860px){.team,.boutique{grid-template-columns:1fr}}
+.eq{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:clamp(28px,5vw,80px);align-items:start}
+.eq h2{font-size:clamp(30px,3.6vw,48px);max-width:13ch}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.person{border-top:1px solid var(--line);padding-top:20px}
+.person h3{font-size:clamp(24px,2.3vw,32px)}
+.person .role{font-size:12px;letter-spacing:.18em;color:var(--lime);margin-top:8px;font-weight:400}
+.person p.bio{color:#B9B8B3;margin-top:14px;max-width:46ch;font-size:16px}
+.boutique{grid-column:1/-1;margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:clamp(28px,5vw,80px);align-items:center;padding:clamp(22px,2.6vw,34px) clamp(22px,2.6vw,34px);background:rgba(43,43,43,.78)}
+.boutique h3{font-size:clamp(22px,2.2vw,30px);margin-top:12px}
+.boutique p:not(.tag){color:#C9C8C3;font-size:clamp(16px,1.3vw,18px)}
+.boutique p.foot{font-size:11px;letter-spacing:.18em;color:var(--muted);margin-top:12px;font-weight:400}
+@media (max-width:860px){.eq,.team,.boutique{grid-template-columns:1fr}}
 
 /* ---------- dimensiona ---------- */
 .dim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,6vw,100px);align-items:start}
-.dim .lead{font-size:clamp(17px,1.5vw,20px);color:#3B3B3B;margin-top:24px;max-width:40ch}
-.q{border-top:1px solid var(--linek);padding:22px 0 26px}
+.dim h2{font-size:clamp(30px,3.6vw,48px)}
+.dim .lead{font-size:clamp(16px,1.3vw,18px);color:#3B3B3B;margin-top:20px;max-width:40ch}
+.q{border-top:1px solid var(--linek);padding:16px 0 18px}
 .q fieldset{border:0;min-width:0}
-.q legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:#6E6E6E;margin-bottom:14px;padding:0}
+.q legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:#6E6E6E;margin-bottom:10px;padding:0}
 .opts{display:flex;flex-wrap:wrap;gap:8px}
 .opts label{position:relative}
 .opts input{position:absolute;opacity:0;pointer-events:none}
-.opts span{display:inline-block;font-size:15px;padding:11px 16px;border:1px solid var(--linek);cursor:pointer;transition:all .2s;background:var(--white)}
+.opts span{display:inline-block;font-size:14px;padding:9px 14px;border:1px solid var(--linek);cursor:pointer;transition:all .2s;background:var(--white)}
 .opts label:hover span{border-color:var(--ink)}
 .opts input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .opts input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
@@ -198,42 +198,122 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .contacto{overflow:hidden}
 .contacto canvas.curvas{opacity:.35}
 .contacto .wrap{position:relative;z-index:1}
-.contacto h2{font-size:clamp(40px,7vw,104px);max-width:12ch}
-.contacto .lead{color:#C9C8C3;font-size:clamp(18px,1.7vw,22px);margin-top:24px;max-width:40ch}
-.datos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(48px,7vw,80px);padding-top:28px;border-top:1px solid var(--line)}
+.contacto .cgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:end}
+.contacto h2{font-size:clamp(36px,5.2vw,76px);max-width:12ch}
+.contacto .lead{color:#C9C8C3;font-size:clamp(16px,1.4vw,19px);margin-top:20px;max-width:40ch}
+.datos{display:grid;grid-template-columns:1fr 1fr;gap:22px clamp(20px,3vw,40px)}
+.datos div:last-child{grid-column:1/-1}
+@media (max-width:860px){.contacto .cgrid{grid-template-columns:1fr}}
 .datos h4{font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:400;margin-bottom:12px}
 .datos a,.datos p{display:block;font-size:17px;text-decoration:none;margin-bottom:6px;color:var(--paper)}
 .datos a:hover{color:var(--lime)}
-@media (max-width:760px){.datos{grid-template-columns:1fr}}
+@media (max-width:520px){.datos{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* ---------- modelo comercial vivo ---------- */
-.mv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,100px);align-items:start}
-.mv .lead{font-size:clamp(17px,1.5vw,20px);color:#C9C8C3;max-width:44ch;margin-top:28px}
-.mv .outs{margin-top:clamp(0px,4vw,52px)}
-.mv-ej{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:28px;padding-bottom:6px}
-.ctl{border-top:1px solid var(--line);padding:22px 0 20px}
-.ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
-.ctl output{font-size:clamp(18px,1.6vw,22px);letter-spacing:0;text-transform:none;color:var(--paper);font-weight:300;white-space:nowrap}
-.ctl .ext{display:flex;justify-content:space-between;font-size:12px;color:#6A6C72;margin-top:2px}
-.mv input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin-top:6px;cursor:pointer}
-.mv input[type=range]::-webkit-slider-runnable-track{height:2px;background:rgba(241,240,236,.25)}
-.mv input[type=range]::-moz-range-track{height:2px;background:rgba(241,240,236,.25)}
-.mv input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--lime);border:0;margin-top:-11px}
-.mv input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--lime);border:0}
-.mv input[type=range]:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
-.outs{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-.out{background:var(--carbon);padding:clamp(22px,2.6vw,34px);transition:background .3s}
-.out .k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400}
-.out b{display:block;font-size:clamp(40px,4.6vw,68px);font-weight:300;letter-spacing:-.03em;line-height:1;margin-top:16px;color:var(--lime);font-variant-numeric:tabular-nums;white-space:nowrap}
-.out .u{display:block;font-size:15px;color:#B9B8B3;margin-top:10px}
-.out.alerta b{color:#FF9F5A}
-.out.alerta{background:#33281F}
-.mv-pie{font-size:13px;color:var(--muted);margin-top:18px}
-.mv-cierre{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:28px;border-top:1px solid var(--line)}
-.mv-cierre p{font-size:clamp(22px,2.4vw,32px)}
-@media (max-width:900px){.mv{grid-template-columns:1fr}}
+.mv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(28px,5vw,80px);align-items:center}
+.mv h2{font-size:clamp(30px,3.6vw,48px);max-width:14ch}
+.mv .lead{font-size:clamp(16px,1.3vw,18px);color:#B9B8B3;max-width:40ch;margin-top:20px}
+.mv-ctl{margin-top:30px;display:grid;gap:18px}
+.mv-ctl .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button,.paso button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:all .2s}
+.seg button:hover,.paso button:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.paso{display:flex;align-items:center;gap:6px}
+.paso button{width:40px;height:40px;padding:0;font-size:18px;line-height:1}
+.paso button:disabled{opacity:.3;cursor:default}
+.paso output{min-width:64px;text-align:center;font-size:22px;font-weight:300}
+.paso span{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-left:6px}
+.mv-pie{font-size:12px;color:#6A6C72;margin-top:22px}
+.mv-cta{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--paper);border-bottom:1px solid var(--lime);padding-bottom:4px}
+.mv-cta:hover{color:var(--lime)}
+.mv-fig{position:relative;border:1px solid var(--line);background:rgba(17,17,17,.55)}
+.mv-vista{aspect-ratio:4/3;width:100%;cursor:grab;touch-action:pan-y}
+.mv-vista:active{cursor:grabbing}
+.mv-vista canvas{display:block;width:100%;height:100%}
+.mv-vista:not(.con3d){background:repeating-linear-gradient(0deg,transparent 0 22px,rgba(241,240,236,.05) 22px 23px)}
+.mv-tag{position:absolute;left:16px;top:14px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;pointer-events:none}
+.mv-giro{position:absolute;right:16px;top:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72;pointer-events:none}
+.mv-datos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line)}
+.mv-datos div{padding:14px 16px;border-left:1px solid var(--line)}
+.mv-datos div:first-child{border-left:0}
+.mv-datos span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.mv-datos b{display:block;font-size:clamp(15px,1.3vw,18px);font-weight:300;margin-top:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mv-datos b#mvMg{color:var(--lime)}
+.mv-datos b#mvMg.baja{color:#C9C8C3}
+.mv-curva{display:flex;align-items:center;gap:16px;padding:12px 16px;border-top:1px solid var(--line)}
+.mv-curva svg{width:240px;height:56px;flex:none;overflow:visible}
+.mv-curva p{font-size:12px;color:var(--muted);letter-spacing:.04em}
+@media (max-width:900px){.mv{grid-template-columns:1fr}.mv-datos{grid-template-columns:repeat(3,minmax(0,1fr))}.mv-datos div:nth-child(4){border-left:0}.mv-datos div:nth-child(n+4){border-top:1px solid var(--line)}}
+@media (max-width:480px){.mv-curva svg{width:150px}.mv-giro{display:none}}
+
+/* ---------- sabor ---------- */
+header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--lime);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.coord{position:absolute;right:var(--gut);bottom:clamp(48px,8vw,90px);z-index:1;font-size:11px;letter-spacing:.2em;color:var(--muted);text-align:right;line-height:1.9;font-weight:400}
+.coord b{color:var(--lime);font-weight:400}
+.bajar{position:absolute;left:50%;bottom:22px;z-index:1;width:1px;height:46px;background:rgba(241,240,236,.18);overflow:hidden}
+.bajar::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:var(--lime);animation:baja 2.2s cubic-bezier(.6,0,.2,1) infinite}
+@keyframes baja{to{top:46px}}
+@media (max-width:760px){.coord{display:none}}
+/* banda de palabras */
+.banda{overflow:hidden;padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+.banda-pista{display:flex;width:max-content;white-space:nowrap;will-change:transform}
+.banda-pista span{font-size:clamp(56px,9vw,140px);font-weight:700;letter-spacing:-.03em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(241,240,236,.42);padding-right:.35em}
+.banda-pista span:nth-child(3n+2){color:var(--paper);-webkit-text-stroke:0}
+.banda-pista em{font-style:normal;color:var(--lime);-webkit-text-stroke:0;padding-right:.35em;font-size:clamp(56px,9vw,140px);font-weight:300;line-height:1}
+/* titulares que se levantan, línea de etiqueta que se dibuja */
+@media (prefers-reduced-motion:no-preference){
+  .rvon h2.rv,.rvon .rv h2{clip-path:inset(0 0 100% 0);transform:translateY(28px);transition:clip-path 1.1s cubic-bezier(.2,.7,.1,1),transform 1.1s cubic-bezier(.2,.7,.1,1)}
+  .rvon h2.rv.in,.rvon .rv.in h2{clip-path:inset(0 0 -10% 0);transform:none}
+  .rvon .tag.rv i,.rvon .rv .tag i{width:0;transition:width .9s cubic-bezier(.2,.7,.1,1) .25s}
+  .rvon .tag.rv.in i,.rvon .rv.in .tag i{width:28px}
+  .rvon .card.rv .ph{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1) var(--d,0s)}
+  .rvon .card.rv.in .ph{clip-path:inset(0)}
+  .rvon .card.rv .ph img{transform:scale(1.18);transition:transform 1.6s cubic-bezier(.2,.7,.1,1) var(--d,0s)}
+  .rvon .card.rv.in .ph img{transform:scale(1)}
+  .rvon .card.rv.in:hover .ph img{transform:scale(1.04);transition-delay:0s;transition-duration:.8s}
+  .rvon .srv article.rv{transition-delay:var(--d,0s)}
+}
+/* fases: la línea se llena de lima en orden */
+.fase{position:relative}
+.fase::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform 1s cubic-bezier(.7,0,.2,1) calc(var(--d,0s) + .2s)}
+.fase.in::before{transform:scaleX(1)}
+html:not(.rvon) .fase::before{transform:scaleX(1)}
+.fase .num{transition:color .4s calc(var(--d,0s) + .6s)}
+.fase.in .num{color:var(--ink)}
+/* servicios: luz que sigue al mouse */
+.srv article{position:relative;overflow:hidden;transition:background .3s,transform .4s cubic-bezier(.2,.7,.1,1)}
+.srv article::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(200,255,60,.10),transparent 60%)}
+.srv article:hover::after{opacity:1}
+.srv article .code{transition:letter-spacing .4s}
+.srv article:hover .code{letter-spacing:.32em}
+.btn,nav.menu a.cta,.mv-cta{transition:background .2s,color .2s,border-color .2s,transform .35s cubic-bezier(.2,.7,.1,1)}
+/* cursor de arquitecto */
+html.con-cursor,html.con-cursor *{cursor:none!important}
+.cur-punto,.cur-aro{position:fixed;left:0;top:0;z-index:200;pointer-events:none;border-radius:50%;mix-blend-mode:normal}
+.cur-punto{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--lime)}
+.cur-aro{width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(241,240,236,.5);display:flex;align-items:center;justify-content:center;transition:width .3s,height .3s,margin .3s,background .3s,border-color .3s}
+.cur-aro span{font-size:10px;letter-spacing:.2em;color:var(--ink);font-weight:700;opacity:0;transition:opacity .2s}
+.cur-aro.link{width:54px;height:54px;margin:-27px 0 0 -27px;border-color:var(--lime)}
+.cur-aro.ver,.cur-aro.girar{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--lime);border-color:var(--lime)}
+.cur-aro.ver span,.cur-aro.girar span{opacity:1}
+.cur-aro.claro{border-color:rgba(26,26,26,.45)}
+.cur-punto.claro{background:var(--ink)}
+.cur-aro.claro.ver{background:var(--lime);border-color:var(--lime)}
+/* portada: entra por capas al cargar */
+@media (prefers-reduced-motion:no-preference){
+  .hero .tag,.hero h1,.hero .lead,.hero .btns,.hero .facts,.coord{animation:llega 1.3s cubic-bezier(.2,.7,.1,1) both}
+  .hero h1{animation-delay:.12s;clip-path:inset(0 0 -10% 0)}
+  .hero .lead{animation-delay:.3s}.hero .btns{animation-delay:.42s}.hero .facts{animation-delay:.55s}.coord{animation-delay:.8s}
+}
+@keyframes llega{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+/* hora de Bogotá */
+.hora{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;font-weight:400}
+.hora i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(200,255,60,.6);animation:pulso 2s infinite}
+@keyframes pulso{70%{box-shadow:0 0 0 10px rgba(200,255,60,0)}100%{box-shadow:0 0 0 0 rgba(200,255,60,0)}}
+@media (prefers-reduced-motion:reduce){.bajar::after,.hora i{animation:none}}
 
 /* aparición suave, solo con JavaScript */
 @media (prefers-reduced-motion:no-preference){
@@ -264,7 +344,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <main>
 <!-- HERO -->
-<section class="hero" id="inicio">
+<section class="hero" id="inicio" data-oscuro>
   <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="tag"><i></i>Arquitectura · Estrategia · Desarrollo</p>
@@ -280,6 +360,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div><b>+50 años</b>De oficio</div>
     </div>
   </div>
+  <p class="coord" aria-hidden="true"><b>4.6773° N</b> · 74.0490° W<br>Bogotá · 2.640 m s. n. m.</p>
+  <span class="bajar" aria-hidden="true"></span>
 </section>
 
 <!-- 01 FIRMA -->
@@ -298,7 +380,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <!-- 02 SERVICIOS -->
-<section id="servicios">
+<section id="servicios" data-oscuro>
   <div class="wrap">
     <p class="tag rv"><i></i>02 · Qué hacemos</p>
     <h2 class="rv">Tres frentes que piensan juntos</h2>
@@ -325,7 +407,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <!-- 04 CIFRAS -->
-<section class="cifras" id="cifras">
+<section class="cifras" id="cifras" data-oscuro>
   <div class="wrap">
     <p class="tag rv"><i></i>04 · Trayectoria</p>
     <h2 class="rv">X.FORM en cifras</h2>
@@ -339,35 +421,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <!-- 05 MODELO COMERCIAL VIVO · cifras de ejemplo, sin relación con un proyecto real -->
-<section id="modelo">
-  <div class="wrap">
-    <div class="mv">
-      <div class="rv">
-        <p class="tag"><i></i>05 · Modelo comercial vivo</p>
-        <h2>Mueve una variable y mira cómo cambia el proyecto.</h2>
-        <p class="lead">Así trabajamos la viabilidad: con un modelo que responde mientras diseñamos. Prueba con este edificio de ejemplo.</p>
-        <p class="mv-ej">Edificio de ejemplo · Bogotá · 4.000 m² vendibles</p>
-        <form id="mvForm" onsubmit="return false">
-          <div class="ctl"><label for="mvPrecio">Precio de venta por m² <output id="mvPrecioO" for="mvPrecio"></output></label>
-            <input type="range" id="mvPrecio" min="8" max="14" step="0.5" value="11"><div class="ext"><span>8 M</span><span>14 M</span></div></div>
-          <div class="ctl"><label for="mvMezcla">Mezcla de tipologías <output id="mvMezclaO" for="mvMezcla"></output></label>
-            <input type="range" id="mvMezcla" min="0" max="100" step="5" value="50"><div class="ext"><span>Estudios</span><span>3 alcobas</span></div></div>
-          <div class="ctl"><label for="mvRitmo">Ritmo de ventas <output id="mvRitmoO" for="mvRitmo"></output></label>
-            <input type="range" id="mvRitmo" min="2" max="10" step="1" value="5"><div class="ext"><span>2</span><span>10</span></div></div>
-        </form>
+<section id="modelo" data-oscuro>
+  <div class="wrap mv">
+    <div class="rv">
+      <p class="tag"><i></i>05 · Modelo comercial vivo</p>
+      <h2>Mira cómo crece un proyecto antes de dibujarlo.</h2>
+      <p class="lead">Así hacemos la factibilidad: un modelo que responde mientras diseñamos. Elige el uso, el lote y los pisos, y mira cómo cambian el edificio y sus números.</p>
+      <div class="mv-ctl">
+        <div><p class="k">Uso</p><div class="seg"><button type="button" data-uso="vivienda" aria-pressed="true">Vivienda</button><button type="button" data-uso="oficinas" aria-pressed="false">Oficinas</button><button type="button" data-uso="hotel" aria-pressed="false">Hotel</button></div></div>
+        <div><p class="k">Lote</p><div class="seg"><button type="button" data-lote="600" aria-pressed="false">600 m²</button><button type="button" data-lote="1200" aria-pressed="true">1.200 m²</button><button type="button" data-lote="2400" aria-pressed="false">2.400 m²</button></div></div>
+        <div><p class="k">Pisos</p><div class="paso"><button type="button" id="mvMenos" aria-label="Un piso menos">−</button><output id="mvPisos" aria-live="polite">10</output><button type="button" id="mvMas" aria-label="Un piso más">+</button></div></div>
       </div>
-      <div class="rv">
-        <div class="outs" aria-live="polite">
-          <div class="out" id="mvIng"><span class="k">Ingresos totales</span><b>—</b><span class="u"></span></div>
-          <div class="out" id="mvEq"><span class="k">Punto de equilibrio</span><b>—</b><span class="u"></span></div>
-          <div class="out" id="mvUt"><span class="k">Utilidad</span><b>—</b><span class="u"></span></div>
-        </div>
-        <p class="mv-pie">Cifras de ejemplo, sin relación con un proyecto real.</p>
-      </div>
+      <p class="mv-pie">Cifras de ejemplo, sin relación con un proyecto real.</p>
+      <a class="mv-cta" href="#hablemos">¿Quieres ver tu proyecto así? Hablemos →</a>
     </div>
-    <div class="mv-cierre rv"><p>¿Quieres ver tu proyecto así?</p><a class="btn k" href="#hablemos">Hablemos</a></div>
+    <figure class="mv-fig rv">
+      <div class="mv-vista" id="mvVista" aria-label="Modelo 3D del edificio de ejemplo"></div>
+      <p class="mv-tag">Lote de ejemplo · Bogotá</p>
+      <p class="mv-giro">Arrastra para girar</p>
+      <div class="mv-datos" aria-live="polite">
+        <div><span>Construido</span><b id="mvAc">—</b></div>
+        <div><span>Unidades</span><b id="mvUds">—</b></div>
+        <div><span>Ventas</span><b id="mvVentas">—</b></div>
+        <div><span>Utilidad</span><b id="mvUt">—</b></div>
+        <div><span>Margen</span><b id="mvMg">—</b></div>
+      </div>
+      <div class="mv-curva">
+        <svg viewBox="0 0 240 56" aria-hidden="true"><line id="mvCero" x1="0" x2="240" stroke="rgba(241,240,236,.18)" stroke-dasharray="2 4"/><polyline id="mvLinea" fill="none" stroke="#C8FF3C" stroke-width="1.4" stroke-linejoin="round"/><circle id="mvMejor" r="3" fill="none" stroke="#8E9097"/><circle id="mvPunto" r="4" fill="#C8FF3C"/></svg>
+        <p><span id="mvMejorTxt"></span><br>Margen según la altura, de 3 a 24 pisos.</p>
+      </div>
+    </figure>
   </div>
 </section>
+
+<div class="banda" data-oscuro aria-hidden="true"><div class="banda-pista">
+  <span>Masterplan</span><em>/</em><span>Arquitectura</span><em>/</em><span>Interiorismo</span><em>/</em><span>Estrategia</span><em>/</em><span>Desarrollo</span><em>/</em><span>Paisaje</span><em>/</em>
+  <span>Masterplan</span><em>/</em><span>Arquitectura</span><em>/</em><span>Interiorismo</span><em>/</em><span>Estrategia</span><em>/</em><span>Desarrollo</span><em>/</em><span>Paisaje</span><em>/</em>
+</div></div>
 
 <!-- 06 PROYECTOS -->
 <section class="light" id="proyectos">
@@ -388,10 +478,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <!-- 06 EQUIPO -->
-<section id="equipo">
-  <div class="wrap">
-    <p class="tag rv"><i></i>07 · Nosotros</p>
-    <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
+<section id="equipo" data-oscuro>
+  <div class="wrap eq">
+    <div><p class="tag rv"><i></i>07 · Nosotros</p>
+    <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2></div>
     <div class="team">
       <div class="person rv"><h3>Francisco Ospina</h3><p class="role">SOCIO · DIRECTOR DE DISEÑO</p><p class="bio">Arquitecto de la Universidad de los Andes, con maestría en Paisaje y Urbanismo de la Universidad de Pensilvania. Piensa el proyecto desde el paisaje hacia adentro.</p></div>
       <div class="person rv"><h3>Camilo Restrepo</h3><p class="role">SOCIO · DIRECTOR GENERAL</p><p class="bio">Arquitecto de la Pontificia Universidad Javeriana, con máster en Diseño de Interiores para Espacios Comerciales del IED Barcelona.</p></div>
@@ -448,20 +538,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <!-- 08 HABLEMOS -->
-<section class="contacto" id="hablemos">
+<section class="contacto" id="hablemos" data-oscuro>
   <canvas class="curvas" id="curvas2" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="tag rv"><i></i>09 · Hablemos</p>
+    <div class="cgrid">
+    <div><p class="tag rv"><i></i>09 · Hablemos</p>
     <h2 class="rv">Hablemos de tu lugar</h2>
     <p class="lead rv">Cuéntanos dónde está tu terreno y qué imaginas para él.</p>
     <div class="btns rv">
       <a class="btn k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">info@xform.com.co</a>
       <a class="btn" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
     </div>
+    <p class="hora"><i></i>Bogotá · <span id="hora">—</span> · GMT−5</p></div>
     <div class="datos">
       <div><h4>TELÉFONO</h4><a href="tel:+573168121156">+57 316 812 1156</a><a href="tel:+573148304724">+57 314 830 4724</a></div>
       <div><h4>DIGITAL</h4><a href="mailto:info@xform.com.co">info@xform.com.co</a><a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram @x.form___</a></div>
       <div><h4>OFICINA</h4><p>Calle 93 # 19B-66 Of. 303</p><p>110221, Bogotá, Colombia</p></div>
+    </div>
     </div>
   </div>
 </section>
@@ -480,13 +573,13 @@ const IA = "Imágenes con retoque de IA.";
 const P = [
  {f:["mp"], big:true, cat:"Masterplan", t:"Cayetana · Masterplan", meta:"Barú, Cartagena · Masterplan · 2026",
   txt:"El agua llegó primero. El lago interior decidió dónde se abría el paisaje y dónde se recogía la sombra, y desde ese borde se trazaron las calles, los senderos y el canal que lleva la brisa hasta el mar.",
-  cred:"Masterplan y diseño: X.FORM", ia:true, img:["cayetana-masterplan-1","cayetana-masterplan-2","cayetana-masterplan-3"], cap:["Cayetana, Barú","Planta del conjunto · Cayetana, Barú","El lago y el mar · Cayetana, Barú"]},
+  cred:"Masterplan y diseño: X.FORM", ia:true, img:["cayetana-masterplan-1","cayetana-masterplan-2","cayetana-masterplan-3","cayetana-masterplan-4","cayetana-masterplan-5","cayetana-masterplan-6"], cap:["El lago al atardecer · Cayetana, Barú","Planta del conjunto · Cayetana, Barú","El lago y el mar · Cayetana, Barú","Las calles alrededor del agua · Cayetana, Barú","El club del lago · Cayetana, Barú","El canal hacia el mar · Cayetana, Barú"]},
  {f:["hs"], big:true, cat:"Hospitality", t:"Cayetana · Beach Club", meta:"Barú, Cartagena · Hospitality · 2026",
   txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle para quedarse hasta que cae la tarde.",
-  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3"], cap:["Beach Club · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","La llegada al mar · Cayetana, Barú"]},
+  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3","cayetana-beachclub-4","cayetana-beachclub-5","cayetana-beachclub-6"], cap:["Beach Club · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","El club entre el canal y la playa · Cayetana, Barú","La playa desde el agua · Cayetana, Barú","El borde del lago al atardecer · Cayetana, Barú","El borde del lago · Cayetana, Barú"]},
  {f:["rs"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
   txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella sigue la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
-  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-villa-eivissa","cayetana-villa-macarella","cayetana-villa-savina"], cap:["Villa Eivissa · Cayetana, Barú","Villa Macarella · Cayetana, Barú","Villa Savina · Cayetana, Barú"]},
+  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-villa-macarella","cayetana-villa-eivissa","cayetana-villa-eivissa-2","cayetana-villa-eivissa-3","cayetana-villa-eivissa-4","cayetana-villa-eivissa-5","cayetana-villa-macarella-2","cayetana-villa-macarella-3","cayetana-villa-macarella-4","cayetana-villa-macarella-5","cayetana-villa-savina"], cap:["Villa Macarella · Cayetana, Barú","Villa Eivissa · Cayetana, Barú","La terraza hacia el mar · Villa Eivissa · Cayetana, Barú","Los arcos de la entrada · Villa Eivissa · Cayetana, Barú","La alcoba frente al mar · Villa Eivissa · Cayetana, Barú","La sala de cal y madera · Villa Eivissa · Cayetana, Barú","Villa Macarella de noche · Cayetana, Barú","La llegada · Villa Macarella · Cayetana, Barú","La terraza alta al atardecer · Villa Macarella · Cayetana, Barú","El patio de agua · Villa Macarella · Cayetana, Barú","Villa Savina · Cayetana, Barú"]},
  {f:["mu","rs"], cat:"Uso mixto", t:"VITA 119", meta:"Bogotá · Uso mixto · 5.150 m² · 2026",
   txt:"En VITA 119 el bienestar sube con el edificio. Recibe en el lobby, se abre al aire en el piso 4 y vuelve a encontrar la luz en el piso 12, entre jardines que cuelgan de la fachada. VT Residences y el Centro de Experiencia hacen parte del mismo proyecto.",
   cred:"Arquitectura: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["vita119-1","vita119-2","vita119-3","vita119-4"], cap:["VITA 119 · Santa Bárbara, Bogotá","VITA 119 · Bogotá","Terraza · VITA 119","VT Residences · VITA 119"]},
@@ -495,7 +588,7 @@ const P = [
   cred:"Arquitectura e interiorismo: X.FORM", ia:false, img:["casa-alma-1","casa-alma-2","casa-alma-3"], cap:["Casa Alma · Bogotá","Casa Alma · Bogotá","Casa Alma · Bogotá"]},
  {f:["rs"], big:true, cat:"Residencial", t:"Casa Barú", meta:"Cartagena · Residencial · 480 m² · 2019",
   txt:"Una casa pensada para la brisa del Caribe. Sombras profundas, espacios que se abren hacia el exterior y una vida que transcurre entre la terraza y el agua.",
-  cred:"Arquitectura: Camilo Restrepo", ia:false, img:["casa-baru-1","casa-baru-2"], cap:["Casa Barú · Cartagena","Casa Barú · Cartagena"]},
+  cred:"Arquitectura: Camilo Restrepo", ia:false, img:["casa-baru-1","casa-baru-2","casa-baru-3"], cap:["Casa Barú al anochecer · Cartagena","La llegada · Casa Barú · Cartagena","La terraza y la piscina · Casa Barú · Cartagena"]},
  {f:["rs"], big:true, cat:"Residencial", t:"Casa Villeta", meta:"Villeta, Cundinamarca · Residencial · 300 m² · 2012",
   txt:"La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca. La casa se abre entera al jardín.",
   cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-1","casa-villeta-2","casa-villeta-3"], cap:["Casa Villeta · Villeta","Casa Villeta · Villeta","Casa Villeta · Villeta"]}
@@ -550,61 +643,6 @@ form.addEventListener("change",()=>{
   document.getElementById("res").classList.add("show");
 });
 
-// ---------- Modelo comercial vivo: lógica ficticia del brief WEB-20261021-04 ----------
-// Edificio de ejemplo: 4.000 m² vendibles, de 40 unidades (todo estudios) a 27 (todo 3 alcobas).
-// Ingresos = área × precio × (1 + 0,04 × % grandes). Costo = 34.000 M + 1 % de los ingresos.
-(function(){
-  const f=document.getElementById("mvForm"); if(!f) return;
-  const $=id=>document.getElementById(id), AREA=4000, COSTO=34000;
-  const en=()=>document.documentElement.lang==="en";
-  const fmt=(n,d)=>Math.abs(n).toLocaleString(en()?"en-US":"es-CO",{maximumFractionDigits:d||0,minimumFractionDigits:d||0});
-  const vivo={ing:0,ut:0,eq:0};
-  function calc(){
-    const p=+$("mvPrecio").value, g=+$("mvMezcla").value/100, r=+$("mvRitmo").value;
-    const uds=Math.round(40-13*g), ing=AREA*p*(1+.04*g), costo=COSTO+.01*ing, ut=ing-costo;
-    const eq= ing>=costo ? Math.ceil(costo/(r*ing/uds)) : 0;
-    return {p,g,r,uds,ing,ut,eq};
-  }
-  function etiquetas(m){
-    const d = m.p%1 ? 1 : 0;
-    $("mvPrecioO").textContent = (en()?"COP ":"$")+fmt(m.p,d)+" M";
-    $("mvMezclaO").textContent = en() ? Math.round(m.g*100)+"% large · "+m.uds+" units" : Math.round(m.g*100)+" % grandes · "+m.uds+" uds.";
-    $("mvRitmoO").textContent = en() ? m.r+" units / month" : m.r+" uds. / mes";
-  }
-  function pinta(m,v){
-    const I=$("mvIng"), E=$("mvEq"), U=$("mvUt");
-    I.querySelector("b").textContent=(en()?"COP ":"$")+fmt(v.ing);
-    I.querySelector(".u").textContent=en()?"million, "+m.uds+" units":"millones de pesos, "+m.uds+" unidades";
-    if(m.eq){
-      E.querySelector("b").textContent=(en()?"Month ":"Mes ")+Math.max(1,Math.round(v.eq||m.eq));
-      E.querySelector(".u").textContent = m.eq>12 ? (en()?"Slow pace: over a year to cover the cost":"Ritmo lento: más de un año para cubrir el costo") : (en()?"when sales cover the total cost":"cuando las ventas cubren el costo total");
-    } else {
-      E.querySelector("b").textContent="—";
-      E.querySelector(".u").textContent=en()?"Raise the price to cover the cost":"Sube el precio para cubrir el costo";
-    }
-    E.classList.toggle("alerta", !m.eq || m.eq>12);
-    U.querySelector("b").textContent=(v.ut<0?"−":"")+(en()?"COP ":"$")+fmt(v.ut);
-    U.querySelector(".u").textContent=(en()?"million · ":"millones · ")+(m.ut<0?"−":"")+fmt(m.ut/m.ing*100)+(en()?"% of sales":" % sobre ventas");
-    U.classList.toggle("alerta", m.ut<0);
-  }
-  let raf=0;
-  function anima(){
-    const m=calc(); etiquetas(m); cancelAnimationFrame(raf);
-    if(matchMedia("(prefers-reduced-motion: reduce)").matches){ Object.assign(vivo,{ing:m.ing,ut:m.ut,eq:m.eq}); pinta(m,vivo); return; }
-    const de={...vivo}, t0=performance.now(), T=320;
-    const paso=t=>{ const k=Math.min(1,(t-t0)/T), e=1-Math.pow(1-k,3);
-      vivo.ing=de.ing+(m.ing-de.ing)*e; vivo.ut=de.ut+(m.ut-de.ut)*e; vivo.eq=m.eq&&de.eq?de.eq+(m.eq-de.eq)*e:m.eq;
-      pinta(m,vivo); if(k<1) raf=requestAnimationFrame(paso); };
-    raf=requestAnimationFrame(paso);
-  }
-  f.addEventListener("input",anima);
-  // el selector ES / EN cambia el idioma del documento: se vuelven a escribir las cifras.
-  // i18n.js reescribe «lang» cada vez que traduce; solo se repinta si el idioma de verdad cambió (si no, se arma un bucle).
-  let idioma=document.documentElement.lang;
-  new MutationObserver(()=>{ if(document.documentElement.lang===idioma) return; idioma=document.documentElement.lang;
-    const m=calc(); etiquetas(m); Object.assign(vivo,{ing:m.ing,ut:m.ut,eq:m.eq}); pinta(m,vivo); }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
-  anima();
-})();
 
 // ---------- barra y menú ----------
 const hd=document.getElementById("top"), bg=document.querySelector(".burger"), mn=document.getElementById("menu");
@@ -639,7 +677,9 @@ function curvas(id, cyF){
 curvas("curvas",.42); curvas("curvas2",.5);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="assets/relieve.js?v=20261022c" defer></script>
+<script src="assets/relieve.js?v=20261022d" defer></script>
+<script src="assets/modelo.js?v=20261022b" defer></script>
+<script src="assets/sabor.js?v=20261022a" defer></script>
 <script src="assets/i18n.js?v=20261022a" defer></script>
 </body>
 </html>
