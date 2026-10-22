@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://xform.com.co/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/"}}</script>
 <link rel="preload" href="assets/KievitOT-Light.otf" as="font" type="font/otf" crossorigin>
 <style>
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
@@ -80,10 +81,30 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer
 @media (max-width:620px){.facts{grid-template-columns:1fr;gap:18px}}
 
 /* ---------- firma ---------- */
-.firma .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,110px);align-items:start;margin-top:12px}
-.firma .grid p{font-size:clamp(17px,1.5vw,20px);color:#3B3B3B;margin-bottom:22px;max-width:52ch}
-.firma .grid p:first-child{font-size:clamp(20px,1.9vw,25px);color:var(--ink)}
-@media (max-width:860px){.firma .grid{grid-template-columns:1fr}}
+.fgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:start}
+.firma h2{font-size:clamp(30px,3.7vw,52px);max-width:15ch}
+.fplano{margin-top:clamp(28px,4vw,48px);max-width:560px}
+.fplano figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;margin-top:10px;font-weight:400}
+.plano{width:100%;height:auto;overflow:visible}
+.plano .tr{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:var(--d,0);vector-effect:non-scaling-stroke;stroke-linecap:square}
+.plano .m{stroke-width:2}
+.plano .fin{stroke-width:1}
+.plano .eje{stroke:#9A9A9A;stroke-width:.8}
+.plano path.eje{stroke-dasharray:1;opacity:.55}
+.plano .lim{stroke:var(--lime);stroke-width:2.6}
+.plano .cota{stroke:#6E6E6E;stroke-width:.8}
+.plano .tx{font-size:11px;letter-spacing:.14em;fill:#6E6E6E;text-anchor:middle;font-family:inherit;font-weight:400;opacity:var(--a,1);transition:opacity .4s}
+.plano .tx.rot{fill:var(--ink);font-size:11px;letter-spacing:.24em}
+.fder{display:grid;gap:0;padding-top:clamp(8px,2vw,24px)}
+.pilar{border-top:1px solid var(--linek);padding:clamp(20px,2.4vw,30px) 0 clamp(22px,2.6vw,32px);position:relative}
+.pilar:last-child{border-bottom:1px solid var(--linek)}
+.pilar::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:56px;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s cubic-bezier(.7,0,.2,1) .2s}
+.pilar.in::before,html:not(.rvon) .pilar::before{transform:scaleX(1)}
+.pk{display:flex;align-items:baseline;gap:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.pk b{font-size:12px;color:var(--ink);font-weight:700;letter-spacing:.1em}
+.pt{font-size:clamp(17px,1.45vw,20px);color:#2E2E2E;margin-top:14px;max-width:46ch;line-height:1.55}
+.pilar:first-child .pt{font-size:clamp(19px,1.75vw,23px);color:var(--ink)}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr}.fplano{max-width:none}}
 
 /* ---------- servicios ---------- */
 .srv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:clamp(40px,6vw,72px);border:1px solid var(--line)}
@@ -96,12 +117,32 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer
 @media (max-width:900px){.srv{grid-template-columns:1fr}.srv article{min-height:0}.srv h3{padding-top:36px}}
 
 /* ---------- proceso ---------- */
-.fases{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.5vw,36px);margin-top:clamp(40px,6vw,72px)}
-.fase{border-top:2px solid var(--ink);padding-top:22px}
-.fase h3{font-size:clamp(24px,2.2vw,30px);margin:14px 0}
-.fase p{color:#3B3B3B;font-size:17px}
-@media (max-width:980px){.fases{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.fases{grid-template-columns:1fr}}
+.pgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:start}
+.pvista{position:sticky;top:90px;margin-top:clamp(20px,3vw,36px)}
+.pcanvas{aspect-ratio:5/4;width:100%;cursor:grab;touch-action:pan-y;position:relative}
+.pcanvas:active{cursor:grabbing}
+.pcanvas canvas{display:block;width:100%;height:100%}
+.pcanvas::after{content:"";position:absolute;inset:0;margin:auto;width:42px;height:42px;border:1px solid var(--linek);border-top-color:var(--ink);border-radius:50%;animation:gira 1s linear infinite}
+.pcanvas.listo::after,.pcanvas.error::after{display:none}
+.pcanvas canvas{transition:opacity 1.2s}
+.preal{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(.97);transition:opacity 1.2s,transform 1.6s cubic-bezier(.2,.7,.1,1);pointer-events:none}
+.pcanvas.real .preal{opacity:1;transform:none}
+.pcanvas.real canvas{opacity:0}
+.pia{position:absolute;right:0;bottom:0;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8E9097;opacity:0;transition:opacity .8s}
+.pcanvas.real .pia{opacity:1}
+@keyframes gira{to{transform:rotate(360deg)}}
+.pfase{margin-bottom:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.pfase b{color:var(--ink);font-weight:700}
+.pvista figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400;margin-top:8px}
+.fases{display:grid;gap:0;margin-top:clamp(8px,2vw,24px)}
+.fase{border-top:2px solid var(--linek);padding:22px 0 26px;cursor:pointer;transition:opacity .4s}
+.fase:last-child{border-bottom:1px solid var(--linek)}
+.fase h3{font-size:clamp(24px,2.2vw,30px);margin:10px 0 8px;transition:color .4s}
+.fase p{color:#3B3B3B;font-size:17px;max-width:44ch}
+.fase:not(.on){opacity:.42}
+.fase:not(.on):hover{opacity:.75}
+.fase:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media (max-width:900px){.pgrid{grid-template-columns:1fr}.pvista{position:relative;top:0}.fase:not(.on){opacity:.6}}
 
 /* ---------- cifras ---------- */
 .cifras{background:rgba(43,43,43,.72)}
@@ -211,43 +252,63 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-/* ---------- modelo comercial vivo ---------- */
-.mv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(28px,5vw,80px);align-items:center}
-.mv h2{font-size:clamp(30px,3.6vw,48px);max-width:14ch}
-.mv .lead{font-size:clamp(16px,1.3vw,18px);color:#B9B8B3;max-width:40ch;margin-top:20px}
-.mv-ctl{margin-top:30px;display:grid;gap:18px}
+/* ---------- modelo comercial vivo: cabida y prefactibilidad ---------- */
+.mv{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.3fr);gap:clamp(28px,4.5vw,72px);align-items:start}
+.mv h2{font-size:clamp(32px,3.8vw,52px);max-width:12ch}
+.mv .lead{font-size:clamp(16px,1.3vw,18px);color:#B9B8B3;max-width:40ch;margin-top:18px}
+.mv-ctl{margin-top:26px;display:grid;gap:16px}
 .mv-ctl .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:8px}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
-.seg button,.paso button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:all .2s}
-.seg button:hover,.paso button:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
+.seg button,.paso button,.mv-pl-head button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:all .2s}
+.seg button:hover,.paso button:hover:not(:disabled),.mv-pl-head button:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .paso{display:flex;align-items:center;gap:6px}
 .paso button{width:40px;height:40px;padding:0;font-size:18px;line-height:1}
-.paso button:disabled{opacity:.3;cursor:default}
+.paso button:disabled,.mv-pl-head button:disabled{opacity:.3;cursor:default}
 .paso output{min-width:64px;text-align:center;font-size:22px;font-weight:300}
-.paso span{font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-left:6px}
-.mv-pie{font-size:12px;color:#6A6C72;margin-top:22px}
-.mv-cta{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--paper);border-bottom:1px solid var(--lime);padding-bottom:4px}
-.mv-cta:hover{color:var(--lime)}
-.mv-fig{position:relative;border:1px solid var(--line);background:rgba(17,17,17,.55)}
-.mv-vista{aspect-ratio:4/3;width:100%;cursor:grab;touch-action:pan-y}
-.mv-vista:active{cursor:grabbing}
-.mv-vista canvas{display:block;width:100%;height:100%}
-.mv-vista:not(.con3d){background:repeating-linear-gradient(0deg,transparent 0 22px,rgba(241,240,236,.05) 22px 23px)}
-.mv-tag{position:absolute;left:16px;top:14px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;pointer-events:none}
-.mv-giro{position:absolute;right:16px;top:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72;pointer-events:none}
-.mv-datos{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line)}
-.mv-datos div{padding:14px 16px;border-left:1px solid var(--line)}
-.mv-datos div:first-child{border-left:0}
+.mv-datos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:26px;border-top:1px solid var(--line)}
+.mv-datos div{padding:12px 12px 12px 0}
 .mv-datos span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400}
-.mv-datos b{display:block;font-size:clamp(15px,1.3vw,18px);font-weight:300;margin-top:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mv-datos b{display:block;font-size:clamp(14px,1.15vw,16px);font-weight:300;margin-top:4px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .mv-datos b#mvMg{color:var(--lime)}
 .mv-datos b#mvMg.baja{color:#C9C8C3}
-.mv-curva{display:flex;align-items:center;gap:16px;padding:12px 16px;border-top:1px solid var(--line)}
-.mv-curva svg{width:240px;height:56px;flex:none;overflow:visible}
-.mv-curva p{font-size:12px;color:var(--muted);letter-spacing:.04em}
-@media (max-width:900px){.mv{grid-template-columns:1fr}.mv-datos{grid-template-columns:repeat(3,minmax(0,1fr))}.mv-datos div:nth-child(4){border-left:0}.mv-datos div:nth-child(n+4){border-top:1px solid var(--line)}}
-@media (max-width:480px){.mv-curva svg{width:150px}.mv-giro{display:none}}
+.mv-curva{display:flex;align-items:center;gap:14px;padding-top:10px;border-top:1px solid var(--line)}
+.mv-curva svg{width:220px;height:48px;flex:none;overflow:visible}
+.mv-curva p{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.mv-pie{font-size:11px;color:#6A6C72;margin-top:14px}
+.mv-fig{position:relative;border:1px solid var(--line);background:rgba(17,17,17,.55)}
+.mv-vista{aspect-ratio:16/10;width:100%;cursor:pointer;touch-action:pan-y}
+.mv-vista canvas{display:block;width:100%;height:100%}
+.mv-tag,.mv-giro{position:absolute;top:14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;pointer-events:none}
+.mv-tag{left:16px;color:var(--muted)}
+.mv-giro{right:16px;color:#6A6C72}
+.mv-planta{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border-top:1px solid var(--line)}
+.mv-pl-dib{padding:14px 16px;border-right:1px solid var(--line)}
+.mv-pl-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mv-pl-head button{width:34px;height:34px;padding:0;font-size:18px}
+.mv-pl-head div{text-align:center}
+.mv-pl-head b{display:block;font-size:15px;font-weight:400;letter-spacing:.04em}
+.mv-pl-head span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin-top:2px}
+#mvPlanta{width:100%;height:auto;display:block;margin-top:6px}
+#mvPlanta .pl-borde{fill:none;stroke:var(--paper);stroke-width:1.6}
+#mvPlanta .pl-u{fill:rgba(241,240,236,.05);stroke:rgba(241,240,236,.55);stroke-width:1}
+#mvPlanta .pl-nucleo{fill:rgba(200,255,60,.18);stroke:var(--lime);stroke-width:1}
+#mvPlanta .pl-pas{stroke:rgba(241,240,236,.25);stroke-dasharray:3 4}
+#mvPlanta .pl-t{fill:var(--paper);font-size:10px;letter-spacing:.12em;text-anchor:middle;font-family:inherit}
+#mvPlanta .pl-a{fill:var(--muted);font-size:8.5px;text-anchor:middle;font-family:inherit}
+#mvPlanta .pl-cota{fill:var(--muted);font-size:9px;text-anchor:middle;font-family:inherit}
+.mv-cadena{list-style:none;padding:12px 16px;margin:0;counter-reset:c}
+.mv-cadena li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(241,240,236,.12);font-size:12px}
+.mv-cadena li span{color:#B9B8B3}
+.mv-cadena li b{font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mv-cadena li.fin{border-bottom:0}
+.mv-cadena li.fin b{color:var(--lime)}
+.mv-venta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px;padding:16px 18px;border:1px solid var(--line);background:rgba(17,17,17,.55)}
+.mv-venta p{font-size:14px;color:#B9B8B3;max-width:52ch}
+.mv-venta p b{color:var(--paper);font-weight:400}
+.mv-venta .btn{flex:none}
+@media (max-width:1000px){.mv{grid-template-columns:1fr}}
+@media (max-width:640px){.mv-planta{grid-template-columns:1fr}.mv-pl-dib{border-right:0;border-bottom:1px solid var(--line)}.mv-venta{flex-direction:column;align-items:flex-start}.mv-giro{display:none}.mv-curva svg{width:150px}}
 
 /* ---------- sabor ---------- */
 header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--lime);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
@@ -278,11 +339,10 @@ header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;backgr
 }
 /* fases: la línea se llena de lima en orden */
 .fase{position:relative}
-.fase::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform 1s cubic-bezier(.7,0,.2,1) calc(var(--d,0s) + .2s)}
-.fase.in::before{transform:scaleX(1)}
-html:not(.rvon) .fase::before{transform:scaleX(1)}
-.fase .num{transition:color .4s calc(var(--d,0s) + .6s)}
-.fase.in .num{color:var(--ink)}
+.fase::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.fase.on::before{transform:scaleX(1)}
+.fase .num{color:#6E6E6E}
+.fase.on .num{color:var(--ink)}
 /* servicios: luz que sigue al mouse */
 .srv article{position:relative;overflow:hidden;transition:background .3s,transform .4s cubic-bezier(.2,.7,.1,1)}
 .srv article::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(200,255,60,.10),transparent 60%)}
@@ -366,15 +426,16 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 
 <!-- 01 FIRMA -->
 <section class="light firma" id="firma">
-  <div class="wrap">
-    <p class="tag rv"><i></i>01 · Quiénes somos</p>
-    <div class="grid">
+  <div class="wrap fgrid">
+    <div class="fizq">
+      <p class="tag rv"><i></i>01 · Quiénes somos</p>
       <h2 class="rv">Transformamos predios y espacios en lugares que las personas quieren habitar.</h2>
-      <div class="rv">
-        <p>X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, en equilibrio con el entorno y con la cultura de cada lugar.</p>
-        <p>Cada proyecto lo construimos contigo. Desde la primera pregunta (qué cabe, qué conviene, qué historia quiere contar el lugar) hasta el día en que alguien lo habita.</p>
-        <p>Trabajamos con rigor técnico y viabilidad económica para dejar entornos más sostenibles y más valiosos. La forma que toma una decisión bien tomada va más allá del diseño.</p>
-      </div>
+      <figure class="fplano" data-plano><svg class="plano" viewBox="0 0 640 420" role="img" aria-label="Plano de una casa que se dibuja con el scroll"><path class="tr eje" data-o="1" pathLength="1" d="M70 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="70" cy="30" r="11"/><text class="tx" data-o="2" x="70" y="34">A</text><path class="tr eje" data-o="1" pathLength="1" d="M310 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="310" cy="30" r="11"/><text class="tx" data-o="2" x="310" y="34">B</text><path class="tr eje" data-o="1" pathLength="1" d="M550 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="550" cy="30" r="11"/><text class="tx" data-o="2" x="550" y="34">C</text><path class="tr eje" data-o="1" pathLength="1" d="M44 70H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="70" r="11"/><text class="tx" data-o="2" x="30" y="74">1</text><path class="tr eje" data-o="1" pathLength="1" d="M44 230H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="230" r="11"/><text class="tx" data-o="2" x="30" y="234">2</text><path class="tr eje" data-o="1" pathLength="1" d="M44 360H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="360" r="11"/><text class="tx" data-o="2" x="30" y="364">3</text><path class="tr lim" data-o="2" pathLength="1" d="M52 52H568V378H52Z"/><path class="tr m" data-o="3" pathLength="1" d="M70 70H160M220 70H400M460 70H550V360H380M320 360H70V70"/><path class="tr m" data-o="3" pathLength="1" d="M78 78H160M220 78H400M460 78H542V352H380M320 352H78V78"/><path class="tr fin" data-o="4" pathLength="1" d="M160 70H220M160 74H220M160 78H220"/><path class="tr fin" data-o="4" pathLength="1" d="M400 70H460M400 74H460M400 78H460"/><path class="tr fin" data-o="4" pathLength="1" d="M320 352H380M320 356H380M320 360H380"/><path class="tr m" data-o="5" pathLength="1" d="M310 78V180M310 220V352"/><path class="tr m" data-o="5" pathLength="1" d="M310 230H420M460 230H542"/><path class="tr m" data-o="5" pathLength="1" d="M78 250H180M230 250H310"/><path class="tr m" data-o="5" pathLength="1" d="M430 230V352"/><path class="tr fin" data-o="6" pathLength="1" d="M310 180L350 180M350 180A40 40 0 0 0 310 220"/><path class="tr fin" data-o="6" pathLength="1" d="M420 230L420 270M420 270A40 40 0 0 1 460 230"/><path class="tr fin" data-o="6" pathLength="1" d="M180 250L180 290M180 290A50 50 0 0 0 230 250"/><path class="tr fin" data-o="7" pathLength="1" d="M320 88H532V112H320Z"/><path class="tr fin" data-o="7" pathLength="1" d="M440 270H530V340H440ZM440 286H530"/><path class="tr cota" data-o="8" pathLength="1" d="M70 400H550M70 392V408M310 392V408M550 392V408"/><path class="tr cota" data-o="8" pathLength="1" d="M600 92L600 46M592 62L600 46L608 62"/><path class="tr lim" data-o="8" pathLength="1" d="M60 300H20M580 300H620"/><text class="tx cota" data-o="9" x="190" y="396">7.20</text><text class="tx cota" data-o="9" x="430" y="396">7.20</text><text class="tx" data-o="9" x="600" y="110">N</text><text class="tx" data-o="9" x="20" y="292">A</text><text class="tx" data-o="9" x="620" y="292">A'</text><text class="tx rot" data-o="10" x="190" y="165">SALA</text><text class="tx rot" data-o="10" x="430" y="160">COCINA</text><text class="tx rot" data-o="10" x="190" y="305">ESTUDIO</text><text class="tx rot" data-o="10" x="370" y="300">BAÑO</text><text class="tx rot" data-o="10" x="486" y="258">ALCOBA</text></svg><figcaption>Del primer trazo a la entrega</figcaption></figure>
+    </div>
+    <div class="fder">
+      <article class="pilar rv"><p class="pk"><b>01</b>Una sola mesa</p><p class="pt">X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, en equilibrio con el entorno y con la cultura de cada lugar.</p></article>
+      <article class="pilar rv"><p class="pk"><b>02</b>Contigo, de principio a fin</p><p class="pt">Cada proyecto lo construimos contigo. Desde la primera pregunta (qué cabe, qué conviene, qué historia quiere contar el lugar) hasta el día en que alguien lo habita.</p></article>
+      <article class="pilar rv"><p class="pk"><b>03</b>Rigor y valor</p><p class="pt">Trabajamos con rigor técnico y viabilidad económica para dejar entornos más sostenibles y más valiosos. La forma que toma una decisión bien tomada va más allá del diseño.</p></article>
     </div>
   </div>
 </section>
@@ -394,14 +455,21 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 
 <!-- 03 PROCESO -->
 <section class="white" id="proceso">
-  <div class="wrap">
-    <p class="tag rv"><i></i>03 · Cómo trabajamos</p>
-    <h2 class="rv">Cuatro fases, un mismo hilo</h2>
-    <div class="fases">
-      <div class="fase rv"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y te escuchamos a ti. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
-      <div class="fase rv"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: una forma propia de recibir la luz, de llegar y de recorrerse.</p></div>
-      <div class="fase rv"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir y conserva su carácter.</p></div>
-      <div class="fase rv"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Estamos en la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
+  <div class="wrap pgrid">
+    <div class="pizq">
+      <p class="tag rv"><i></i>03 · Cómo trabajamos</p>
+      <h2 class="rv">Cuatro fases, un mismo hilo</h2>
+      <figure class="pvista">
+        <p class="pfase" aria-live="polite"><b id="procNum">01</b> <span id="procNom">Estrategia</span></p>
+        <div class="pcanvas" id="procVista" aria-label="Modelo 3D de la Villa Eivissa que cambia con cada fase"><img class="preal" src="assets/img/eivissa-flotante.webp?v=20261022b" alt="Villa Eivissa · Cayetana, Barú" loading="lazy"><span class="pia">Render con retoque de IA</span></div>
+        <figcaption>Villa Eivissa · Cayetana, Barú · Modelo 3D X.FORM</figcaption>
+      </figure>
+    </div>
+    <div class="fases" role="list">
+      <div class="fase on" role="listitem" tabindex="0" data-f="1"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y te escuchamos a ti. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
+      <div class="fase" role="listitem" tabindex="0" data-f="2"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: una forma propia de recibir la luz, de llegar y de recorrerse.</p></div>
+      <div class="fase" role="listitem" tabindex="0" data-f="3"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir y conserva su carácter.</p></div>
+      <div class="fase" role="listitem" tabindex="0" data-f="4"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Estamos en la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
     </div>
   </div>
 </section>
@@ -423,22 +491,15 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 <!-- 05 MODELO COMERCIAL VIVO · cifras de ejemplo, sin relación con un proyecto real -->
 <section id="modelo" data-oscuro>
   <div class="wrap mv">
-    <div class="rv">
-      <p class="tag"><i></i>05 · Modelo comercial vivo</p>
-      <h2>Mira cómo crece un proyecto antes de dibujarlo.</h2>
-      <p class="lead">Así hacemos la factibilidad: un modelo que responde mientras diseñamos. Elige el uso, el lote y los pisos, y mira cómo cambian el edificio y sus números.</p>
+    <div class="rv mv-izq">
+      <p class="tag"><i></i>05 · Cabida y prefactibilidad en vivo</p>
+      <h2>¿Qué cabe en tu lote?</h2>
+      <p class="lead">Antes de dibujar, hacemos la cabida: cuánto se puede construir, cuántas unidades salen y si el negocio da. Prueba con un lote de ejemplo.</p>
       <div class="mv-ctl">
         <div><p class="k">Uso</p><div class="seg"><button type="button" data-uso="vivienda" aria-pressed="true">Vivienda</button><button type="button" data-uso="oficinas" aria-pressed="false">Oficinas</button><button type="button" data-uso="hotel" aria-pressed="false">Hotel</button></div></div>
         <div><p class="k">Lote</p><div class="seg"><button type="button" data-lote="600" aria-pressed="false">600 m²</button><button type="button" data-lote="1200" aria-pressed="true">1.200 m²</button><button type="button" data-lote="2400" aria-pressed="false">2.400 m²</button></div></div>
         <div><p class="k">Pisos</p><div class="paso"><button type="button" id="mvMenos" aria-label="Un piso menos">−</button><output id="mvPisos" aria-live="polite">10</output><button type="button" id="mvMas" aria-label="Un piso más">+</button></div></div>
       </div>
-      <p class="mv-pie">Cifras de ejemplo, sin relación con un proyecto real.</p>
-      <a class="mv-cta" href="#hablemos">¿Quieres ver tu proyecto así? Hablemos →</a>
-    </div>
-    <figure class="mv-fig rv">
-      <div class="mv-vista" id="mvVista" aria-label="Modelo 3D del edificio de ejemplo"></div>
-      <p class="mv-tag">Lote de ejemplo · Bogotá</p>
-      <p class="mv-giro">Arrastra para girar</p>
       <div class="mv-datos" aria-live="polite">
         <div><span>Construido</span><b id="mvAc">—</b></div>
         <div><span>Unidades</span><b id="mvUds">—</b></div>
@@ -447,10 +508,36 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
         <div><span>Margen</span><b id="mvMg">—</b></div>
       </div>
       <div class="mv-curva">
-        <svg viewBox="0 0 240 56" aria-hidden="true"><line id="mvCero" x1="0" x2="240" stroke="rgba(241,240,236,.18)" stroke-dasharray="2 4"/><polyline id="mvLinea" fill="none" stroke="#C8FF3C" stroke-width="1.4" stroke-linejoin="round"/><circle id="mvMejor" r="3" fill="none" stroke="#8E9097"/><circle id="mvPunto" r="4" fill="#C8FF3C"/></svg>
+        <svg viewBox="0 0 220 48" aria-hidden="true"><line id="mvCero" x1="0" x2="220" stroke="rgba(241,240,236,.18)" stroke-dasharray="2 4"/><polyline id="mvLinea" fill="none" stroke="#C8FF3C" stroke-width="1.4" stroke-linejoin="round"/><circle id="mvMejor" r="3" fill="none" stroke="#8E9097"/><circle id="mvPunto" r="4" fill="#C8FF3C"/></svg>
         <p><span id="mvMejorTxt"></span><br>Margen según la altura, de 3 a 24 pisos.</p>
       </div>
-    </figure>
+      <p class="mv-pie">Cifras de ejemplo, sin relación con un proyecto real.</p>
+    </div>
+    <div class="rv mv-der">
+      <figure class="mv-fig">
+        <div class="mv-vista" id="mvVista" aria-label="Edificio de ejemplo en 3D: haz clic en un piso para ver su planta"></div>
+        <p class="mv-tag">Lote de ejemplo · Bogotá</p>
+        <p class="mv-giro">Clic en un piso · arrastra para girar</p>
+        <div class="mv-planta">
+          <div class="mv-pl-dib">
+            <div class="mv-pl-head"><button type="button" id="mvAnt" aria-label="Piso de abajo">‹</button><div><b id="mvPisoN">Piso 5</b><span id="mvPisoU">—</span></div><button type="button" id="mvSig" aria-label="Piso de arriba">›</button></div>
+            <svg viewBox="0 0 300 190" id="mvPlanta" role="img" aria-label="Planta del piso elegido"></svg>
+          </div>
+          <ol class="mv-cadena" aria-label="De dónde salen las unidades">
+            <li><span>Lote</span><b id="mvC1">—</b></li>
+            <li><span>Ocupación de este piso</span><b id="mvC2">—</b></li>
+            <li><span>Área de la planta</span><b id="mvC3">—</b></li>
+            <li><span>Núcleo y circulación</span><b id="mvC4">—</b></li>
+            <li><span>Área vendible</span><b id="mvC5">—</b></li>
+            <li class="fin"><span>Unidades del piso</span><b id="mvC6">—</b></li>
+          </ol>
+        </div>
+      </figure>
+      <div class="mv-venta">
+        <p><b>Cabidas y prefactibilidades en pocos días.</b> Qué cabe en tu lote, cuántas unidades salen y si el negocio da, antes de comprar o de diseñar.</p>
+        <a class="btn k" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20una%20cabida%20para%20mi%20lote" target="_blank" rel="noopener">Pide tu cabida</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -679,8 +766,8 @@ curvas("curvas",.42); curvas("curvas2",.5);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/relieve.js?v=20261022d" defer></script>
-<script src="assets/modelo.js?v=20261022b" defer></script>
-<script src="assets/sabor.js?v=20261022a" defer></script>
+<script src="assets/modelo.js?v=20261022c" defer></script>
+<script src="assets/sabor.js?v=20261022c" defer></script>
 <script src="assets/i18n.js?v=20261022a" defer></script>
 </body>
 </html>
