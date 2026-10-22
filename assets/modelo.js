@@ -9,12 +9,13 @@
   const sec = document.getElementById("modelo"); if (!sec) return;
   const $ = s => sec.querySelector(s);
   const USOS = {
-    vivienda: { precio: 9.5,  cd: 4.3, ud: 72, torre: .45, es: ["apto", "aptos"], en: ["apt.", "apts."], p1: ["Lobby y comercio", "Lobby and retail"] },
-    oficinas: { precio: 8.8,  cd: 4.6, ud: 55, torre: .60, es: ["oficina", "oficinas"], en: ["office", "offices"], p1: ["Lobby y comercio", "Lobby and retail"] },
-    hotel:    { precio: 12.5, cd: 5.4, ud: 30, torre: .45, es: ["llave", "llaves"], en: ["key", "keys"], p1: ["Lobby y restaurante", "Lobby and restaurant"] }
+    vivienda: { precio: 9.5,  cd: 4.3, torre: .45, ini: 2, tams: [[42, "Estudio", "Studio", 1.10], [58, "1 alcoba", "1 bed", 1.05], [72, "2 alcobas", "2 bed", 1], [95, "3 alcobas", "3 bed", .96], [130, "Familiar", "Family", .93]], es: ["apto", "aptos"], en: ["apt.", "apts."], p1: ["Lobby y comercio", "Lobby and retail"] },
+    oficinas: { precio: 8.8,  cd: 4.6, torre: .60, ini: 1, tams: [[32, "Consultorio", "Suite", 1.08], [55, "Oficina", "Office", 1], [95, "Mediana", "Medium", .96], [180, "Planta libre", "Open floor", .92]], es: ["oficina", "oficinas"], en: ["office", "offices"], p1: ["Lobby y comercio", "Lobby and retail"] },
+    hotel:    { precio: 12.5, cd: 5.4, torre: .45, ini: 1, tams: [[22, "Cápsula", "Compact", 1.08], [30, "Estándar", "Standard", 1], [45, "Suite", "Suite", .97], [70, "Apartahotel", "Serviced apt.", .94]], es: ["llave", "llaves"], en: ["key", "keys"], p1: ["Lobby y restaurante", "Lobby and restaurant"] }
   };
   const LOTE_M2 = 3.0, INDIRECTOS = 1.22, MIN = 3, MAX = 24, H1 = 4.5, H = 3.1;
-  const st = { uso: "vivienda", lote: 1200, pisos: 10, piso: 5 };
+  const st = { uso: "vivienda", lote: 1200, pisos: 10, piso: 5, tam: 2 };
+  const tam = () => USOS[st.uso].tams[st.tam];
   const en = () => document.documentElement.lang === "en";
   const fmt = n => Math.round(n).toLocaleString(en() ? "en-US" : "es-CO");
   const mon = n => (n < 0 ? "−" : "") + (en() ? "COP " : "$") + fmt(Math.abs(n)) + " M";
@@ -29,13 +30,13 @@
   function pisoInfo(uso, lote, i, n){
     const u = USOS[uso], planta = lote * factor(uso, i, n);
     const nucleo = 40 + planta * .05, circ = planta * .07, vend = planta - nucleo - circ;
-    const uds = i === 1 ? 0 : Math.max(1, Math.round(vend / u.ud));
+    const uds = i === 1 ? 0 : Math.max(1, Math.round(vend / tam()[0]));
     return { i, planta, nucleo, circ, vend, uds, area: uds ? vend / uds : 0 };
   }
   function calc(uso, lote, n){
     const u = USOS[uso]; let ac = 0, vend = 0, uds = 0;
     for (let i = 1; i <= n; i++) { const p = pisoInfo(uso, lote, i, n); ac += p.planta; vend += p.vend; uds += p.uds; }
-    const ventas = vend * u.precio, costo = ac * u.cd * (1 + .01 * Math.max(0, n - 6)) * INDIRECTOS + lote * LOTE_M2, ut = ventas - costo;
+    const ventas = vend * u.precio * tam()[3], costo = ac * u.cd * (1 + .01 * Math.max(0, n - 6)) * INDIRECTOS + lote * LOTE_M2, ut = ventas - costo;
     return { ac, vend, uds, ventas, ut, margen: ut / ventas * 100 };
   }
 
@@ -63,6 +64,7 @@
     $("#mvC4").textContent = "− " + fmt(p.nucleo + p.circ) + " m²";
     $("#mvC5").textContent = fmt(p.vend) + " m²";
     $("#mvC6").textContent = p.uds ? p.uds + " × " + fmt(p.area) + " m²" : "—";
+    $("#mvC7").textContent = tam()[0] + " m² · " + (en() ? tam()[2] : tam()[1]);
     $("#mvAnt").disabled = st.piso <= 1; $("#mvSig").disabled = st.piso >= st.pisos;
 
     // dibujo: planta rectangular, pasillo al centro con el núcleo, unidades arriba y abajo
@@ -102,7 +104,14 @@
   }
 
   // ---------- controles ----------
-  sec.querySelectorAll("[data-uso]").forEach(b => b.addEventListener("click", () => { st.uso = b.dataset.uso; marca(true); }));
+  sec.querySelectorAll("[data-uso]").forEach(b => b.addEventListener("click", () => { st.uso = b.dataset.uso; st.tam = USOS[st.uso].ini; botonesTam(); marca(true); }));
+  // tamaño de la unidad: los botones cambian con el uso
+  const cajaTam = $("#mvTam");
+  function botonesTam(){
+    cajaTam.innerHTML = USOS[st.uso].tams.map((t, i) => `<button type="button" data-tam="${i}" aria-pressed="${i === st.tam}">${t[0]} m²<small>${en() ? t[2] : t[1]}</small></button>`).join("");
+    cajaTam.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { st.tam = +b.dataset.tam; marca(false); }));
+  }
+  botonesTam();
   sec.querySelectorAll("[data-lote]").forEach(b => b.addEventListener("click", () => { st.lote = +b.dataset.lote; marca(true); }));
   $("#mvMenos").addEventListener("click", () => { st.pisos = Math.max(MIN, st.pisos - 1); marca(true); });
   $("#mvMas").addEventListener("click", () => { st.pisos = Math.min(MAX, st.pisos + 1); marca(true); });
@@ -112,11 +121,12 @@
     st.piso = Math.min(st.piso, st.pisos);
     sec.querySelectorAll("[data-uso]").forEach(b => b.setAttribute("aria-pressed", b.dataset.uso === st.uso));
     sec.querySelectorAll("[data-lote]").forEach(b => b.setAttribute("aria-pressed", +b.dataset.lote === st.lote));
+    cajaTam.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.tam === st.tam));
     $("#mvMenos").disabled = st.pisos <= MIN; $("#mvMas").disabled = st.pisos >= MAX;
     pinta(); if (tres) tres(forma);
   }
   let idioma = document.documentElement.lang;
-  new MutationObserver(() => { if (document.documentElement.lang === idioma) return; idioma = document.documentElement.lang; pinta(); })
+  new MutationObserver(() => { if (document.documentElement.lang === idioma) return; idioma = document.documentElement.lang; botonesTam(); pinta(); })
     .observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
 
   // ---------- edificio 3D ----------

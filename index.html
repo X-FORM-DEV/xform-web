@@ -262,6 +262,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .seg button,.paso button,.mv-pl-head button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:all .2s}
 .seg button:hover,.paso button:hover:not(:disabled),.mv-pl-head button:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.seg.tam button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 12px;line-height:1.1}
+.seg.tam small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
 .paso{display:flex;align-items:center;gap:6px}
 .paso button{width:40px;height:40px;padding:0;font-size:18px;line-height:1}
 .paso button:disabled,.mv-pl-head button:disabled{opacity:.3;cursor:default}
@@ -498,6 +500,7 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
       <div class="mv-ctl">
         <div><p class="k">Uso</p><div class="seg"><button type="button" data-uso="vivienda" aria-pressed="true">Vivienda</button><button type="button" data-uso="oficinas" aria-pressed="false">Oficinas</button><button type="button" data-uso="hotel" aria-pressed="false">Hotel</button></div></div>
         <div><p class="k">Lote</p><div class="seg"><button type="button" data-lote="600" aria-pressed="false">600 m²</button><button type="button" data-lote="1200" aria-pressed="true">1.200 m²</button><button type="button" data-lote="2400" aria-pressed="false">2.400 m²</button></div></div>
+        <div><p class="k">Tamaño de la unidad</p><div class="seg tam" id="mvTam"></div></div>
         <div><p class="k">Pisos</p><div class="paso"><button type="button" id="mvMenos" aria-label="Un piso menos">−</button><output id="mvPisos" aria-live="polite">10</output><button type="button" id="mvMas" aria-label="Un piso más">+</button></div></div>
       </div>
       <div class="mv-datos" aria-live="polite">
@@ -529,6 +532,7 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
             <li><span>Área de la planta</span><b id="mvC3">—</b></li>
             <li><span>Núcleo y circulación</span><b id="mvC4">—</b></li>
             <li><span>Área vendible</span><b id="mvC5">—</b></li>
+            <li><span>Unidad elegida</span><b id="mvC7">—</b></li>
             <li class="fin"><span>Unidades del piso</span><b id="mvC6">—</b></li>
           </ol>
         </div>
@@ -766,7 +770,7 @@ curvas("curvas",.42); curvas("curvas2",.5);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/relieve.js?v=20261022d" defer></script>
-<script src="assets/modelo.js?v=20261022c" defer></script>
+<script src="assets/modelo.js?v=20261022d" defer></script>
 <script src="assets/sabor.js?v=20261022d" defer></script>
 <script src="assets/i18n.js?v=20261022a" defer></script>
 </body>
