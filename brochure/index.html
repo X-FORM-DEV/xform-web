@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>X.FORM · Brochure</title>
+<meta name="description" content="Brochure de X.FORM: quiénes somos, qué hacemos, cómo trabajamos y una selección de obra. Cayetana, VITA 119, Casa Barú y Casa Villeta.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="canonical" href="https://xform.com.co/brochure/">
+<meta property="og:title" content="X.FORM · Brochure">
+<meta property="og:description" content="Quiénes somos, qué hacemos y una selección de obra.">
+<meta property="og:image" content="https://xform.com.co/brochure/l01-1920.webp">
+<script>
+// Solo xform.com.co se indexa: las vistas previas de Netlify piden noindex.
+(function(){var h=location.hostname;if(h!=="xform.com.co"&&h!=="www.xform.com.co"){var m=document.createElement("meta");m.name="robots";m.content="noindex, nofollow";document.head.appendChild(m);}})();
+</script>
+<style>
+@font-face{font-family:"Kievit";src:url(../assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:"Kievit";src:url(../assets/KievitOT-Regular.otf) format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"Kievit";src:url(../assets/KievitOT-Bold.otf) format("opentype");font-weight:700;font-display:swap}
+:root{--ink:#1A1A1A;--deep:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--muted:#8E9097;--line:rgba(241,240,236,.14);--lime:#C8FF3C;--gut:clamp(16px,4vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--paper);font-family:"Kievit","Helvetica Neue",Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gut);background:rgba(17,17,17,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header img{height:30px;width:auto;display:block}
+.acc{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;padding:11px 16px;border:1px solid rgba(241,240,236,.35);color:var(--paper);white-space:nowrap}
+.btn:hover,.btn:focus-visible{border-color:var(--lime);outline:none}
+.btn.k{background:var(--lime);border-color:var(--lime);color:var(--ink);font-weight:700}
+.btn.k:hover,.btn.k:focus-visible{background:#d6ff66}
+@media (max-width:520px){.btn.sec{display:none}}
+main{max-width:1440px;margin:0 auto;padding:clamp(16px,3vw,40px) var(--gut) 24px;display:flex;flex-direction:column;gap:clamp(10px,1.6vw,22px)}
+figure{position:relative;width:100%;aspect-ratio:16/9;background:var(--carbon);overflow:hidden}
+figure img{display:block;width:100%;height:100%;object-fit:cover}
+figcaption{position:absolute;left:-9999px}
+.fin{max-width:1440px;margin:0 auto;padding:28px var(--gut) 64px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+footer{text-align:center;padding:0 var(--gut) 40px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+footer a{color:var(--muted);text-underline-offset:3px}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" aria-label="Ir a la web de X.FORM"><img src="../assets/xform-logo-blanco.png" alt="X.FORM" width="101" height="30"></a>
+  <div class="acc">
+    <a class="btn sec" href="/">Ver la web</a>
+    <a class="btn k" href="XFORM-brochure.pdf" download="XFORM-brochure.pdf" data-pdf>Descargar PDF ↓</a>
+  </div>
+</header>
+
+<main id="laminas"></main>
+
+<div class="fin">
+  <a class="btn k" href="XFORM-brochure.pdf" download="XFORM-brochure.pdf" data-pdf>Descargar PDF ↓</a>
+  <a class="btn" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20vi%20el%20brochure%20y%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">Hablemos por WhatsApp</a>
+  <a class="btn" href="/#dimensiona">Dimensiona tu proyecto</a>
+</div>
+<footer>X.FORM · Bogotá · Cali · <a href="/privacidad.html">Privacidad</a></footer>
+
+<script>
+// Las 14 láminas del brochure, en el orden del PDF. Para actualizar: volver a exportar las imágenes con el mismo nombre.
+var L = ["Portada · Más allá del diseño","01 · Quiénes somos","02 · Qué hacemos","03 · Cómo trabajamos",
+  "Cayetana Masterplan · Barú, Cartagena","Cayetana Beach Club · Barú, Cartagena","Cayetana Villas · Barú, Cartagena",
+  "VITA 119 · Bogotá","VITA Amenidades · Bogotá","Casa Barú · Cartagena","Casa Villeta · Villeta",
+  "05 · Nosotros","06 · Dimensiona tu proyecto","07 · Hablemos"];
+var m = document.getElementById("laminas");
+L.forEach(function(t, i){
+  var n = ("0" + (i + 1)).slice(-2), f = document.createElement("figure");
+  f.innerHTML = '<img src="l' + n + '-960.webp" srcset="l' + n + '-960.webp 960w, l' + n + '-1920.webp 1920w" sizes="(max-width:1440px) 100vw, 1440px" width="1920" height="1080" alt="Brochure X.FORM, lámina ' + (i + 1) + ': ' + t + '"' + (i > 1 ? ' loading="lazy"' : '') + ' decoding="async"><figcaption>' + t + '</figcaption>';
+  m.appendChild(f);
+});
+// Cuenta las descargas si el visitante aceptó cookies en la web.
+document.querySelectorAll("[data-pdf]").forEach(function(a){ a.addEventListener("click", function(){ if (window.gtag) gtag("event", "descarga_brochure", { ubicacion: "brochure" }); }); });
+</script>
+<script>
+// Analítica solo si ya aceptó en el aviso de la web (misma clave); aquí no se vuelve a preguntar.
+(function(){ try { if (localStorage.getItem("xform-cookies") !== "si") return; } catch (e) { return; }
+  var h = location.hostname; if (h !== "xform.com.co" && h !== "www.xform.com.co") return;
+  window.dataLayer = window.dataLayer || []; window.gtag = function(){ dataLayer.push(arguments); };
+  gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
+  gtag("js", new Date()); gtag("config", "G-P7VN32C19K", { anonymize_ip: true });
+  var s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=G-P7VN32C19K"; document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

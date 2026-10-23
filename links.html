@@ -80,10 +80,10 @@ footer a{color:var(--muted);text-underline-offset:3px}
     <!-- Para prender un enlace pendiente: poner la URL en href y quitar «hidden». -->
     <li><a class="k" href="/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=links">
       <span><span class="t">Página web</span><span class="s">Proyectos, proceso y equipo</span></span><span class="f" aria-hidden="true">→</span></a></li>
+    <li id="lnkBrochure"><a class="k" href="/brochure/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=links">
+      <span><span class="t">Ver brochure</span><span class="s">Quiénes somos y una selección de obra</span></span><span class="f" aria-hidden="true">→</span></a></li>
     <li><a href="/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=links#dimensiona">
       <span><span class="t">Dimensiona tu proyecto</span><span class="s">Qué puede caber en tu lote, en segundos</span></span><span class="f" aria-hidden="true">→</span></a></li>
-    <li id="lnkBrochure" hidden><a href="" target="_blank" rel="noopener">
-      <span><span class="t">Brochure</span><span class="s">Portafolio seleccionado · PDF</span></span><span class="f" aria-hidden="true">↓</span></a></li>
     <li><a href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20vengo%20de%20Instagram%20y%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">
       <span><span class="t">WhatsApp</span><span class="s">Conversemos sobre tu proyecto</span></span><span class="f" aria-hidden="true">→</span></a></li>
     <li><a href="mailto:info@xform.com.co?subject=Hola%20X.FORM">
@@ -101,10 +101,10 @@ footer a{color:var(--muted);text-underline-offset:3px}
 </div>
 <script src="assets/consent.js?v=20261022a"></script>
 <script>
-// Cuenta las salidas a brochure y LinkedIn (WhatsApp y correo ya los cuenta consent.js).
+// Cuenta las visitas al brochure y a LinkedIn (WhatsApp y correo ya los cuenta consent.js).
 document.addEventListener("click", function(e){
   var a = e.target.closest && e.target.closest("li[id] a"); if (!a || !window.xformEvento) return;
-  window.xformEvento(a.parentNode.id === "lnkBrochure" ? "descarga_brochure" : "clic_linkedin", { ubicacion: "links" });
+  window.xformEvento(a.parentNode.id === "lnkBrochure" ? "ver_brochure" : "clic_linkedin", { ubicacion: "links" });
 }, true);
 </script>
 </body>
