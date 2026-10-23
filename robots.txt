@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xform.com.co/sitemap.xml
