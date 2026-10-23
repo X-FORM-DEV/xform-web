@@ -2,80 +2,1042 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>X.FORM · Beyond design</title>
-<meta name="description" content="X.FORM · Arquitectura, estrategia y desarrollo. Bogotá, Colombia. El sitio está en obra: escríbenos a info@xform.com.co.">
+<title>X.FORM · Estudio de arquitectura en Bogotá</title>
+<meta name="description" content="Estudio de arquitectura en Bogotá. Estrategia, diseño y desarrollo inmobiliario en una misma mesa, del primer trazo a la obra, en Colombia y el Caribe.">
+<link rel="canonical" href="https://xform.com.co/">
+<link rel="alternate" hreflang="es" href="https://xform.com.co/">
+<link rel="alternate" hreflang="en" href="https://xform.com.co/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://xform.com.co/">
+<script>
+// Solo xform.com.co se indexa: las vistas previas de Netlify y cualquier otra copia piden noindex.
+(function(){var h=location.hostname;if(h!=="xform.com.co"&&h!=="www.xform.com.co"){var m=document.createElement("meta");m.name="robots";m.content="noindex, nofollow";document.head.appendChild(m);}})();
+</script>
 <meta name="theme-color" content="#111111">
 <meta property="og:type" content="website">
-<meta property="og:title" content="X.FORM · Beyond design">
-<meta property="og:description" content="Arquitectura, estrategia y desarrollo. El sitio está en obra.">
-<meta property="og:image" content="https://xform.com.co/assets/og-xform.png">
+<meta property="og:site_name" content="X.FORM">
+<meta property="og:locale" content="es_CO">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="X.FORM · Estudio de arquitectura en Bogotá">
+<meta property="og:description" content="Arquitectura, estrategia y desarrollo en una misma mesa, del primer trazo a la obra.">
 <meta property="og:url" content="https://xform.com.co/">
+<meta property="og:image" content="https://xform.com.co/assets/og-xform.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="X.FORM · Beyond design">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="X.FORM · Estudio de arquitectura en Bogotá">
+<meta name="twitter:description" content="Arquitectura, estrategia y desarrollo en una misma mesa, del primer trazo a la obra.">
+<meta name="twitter:image" content="https://xform.com.co/assets/og-xform.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "@id": "https://xform.com.co/#organizacion",
+  "name": "X.FORM S.A.S.",
+  "alternateName": "X.FORM",
+  "description": "Estudio de arquitectura, estrategia y desarrollo inmobiliario.",
+  "url": "https://xform.com.co/",
+  "logo": "https://xform.com.co/assets/xform-logo-negro.png",
+  "image": "https://xform.com.co/assets/og-xform.png",
+  "telephone": "+57 314 830 4724",
+  "email": "info@xform.com.co",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle 93 # 19B-66 Of. 303",
+    "addressLocality": "Bogotá",
+    "addressRegion": "Bogotá D.C.",
+    "postalCode": "110221",
+    "addressCountry": "CO"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Bogotá"},
+    {"@type": "City", "name": "Cartagena"},
+    {"@type": "City", "name": "Medellín"},
+    {"@type": "City", "name": "Cali"}
+  ],
+  "knowsAbout": ["Arquitectura", "Diseño arquitectónico", "Desarrollo inmobiliario", "Masterplan", "Cabidas y estudios de prefactibilidad"],
+  "sameAs": ["https://www.instagram.com/x.form___/"]
+}
+</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/"}}</script>
 <link rel="preload" href="assets/KievitOT-Light.otf" as="font" type="font/otf" crossorigin>
 <style>
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Regular.otf) format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:"Kievit";src:url(assets/KievitOT-Bold.otf) format("opentype");font-weight:700;font-display:swap}
-:root{--ink:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--muted:#8E9097;--lime:#C8FF3C}
+:root{--ink:#1A1A1A;--deep:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--white:#FFFFFF;--muted:#8E9097;--line:rgba(241,240,236,.14);--linek:rgba(26,26,26,.14);--lime:#C8FF3C;--gut:clamp(16px,5vw,72px)}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:var(--ink);color:var(--paper);font-family:"Kievit","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-body{min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
-canvas#curvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55}
-main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 24px}
-.logo{width:min(440px,72vw);height:auto}
-.obra{margin-top:clamp(36px,7vh,64px);font-weight:300;font-size:clamp(22px,3.4vw,34px);letter-spacing:.01em}
-.obra b{font-weight:400}
-.barra{width:120px;height:2px;background:rgba(241,240,236,.12);margin:26px auto 0;overflow:hidden}
-.barra i{display:block;width:40%;height:100%;background:var(--lime)}
-.sub{margin-top:22px;font-weight:300;font-size:clamp(14px,1.6vw,16px);color:var(--muted);letter-spacing:.02em}
-nav{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-nav a{color:var(--paper);text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border:1px solid rgba(241,240,236,.22);transition:border-color .25s,color .25s,background .25s}
-nav a:hover,nav a:focus-visible{border-color:var(--lime);color:var(--lime);outline:none}
-nav a.k{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-nav a.k:hover,nav a.k:focus-visible{background:var(--lime);border-color:var(--lime);color:var(--ink)}
-footer{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px calc(18px + env(safe-area-inset-bottom));font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5E6067}
-footer span:first-child{color:var(--muted)}
-/* Animación solo si el JavaScript corre: si no, todo se ve igual (navegadores limitados como el de Instagram) */
-@media (prefers-reduced-motion:no-preference){
-  .js .logo{animation:entra 1.4s cubic-bezier(.2,.7,.1,1) .2s backwards}
-  .js .obra{animation:entra 1.2s ease .9s backwards}
-  .js .barra{animation:entra 1s ease 1.3s backwards}
-  .js .sub{animation:entra 1s ease 1.5s backwards}
-  .js nav{animation:entra 1s ease 1.8s backwards}
-  .barra i{animation:avance 2.8s cubic-bezier(.6,0,.3,1) infinite}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--deep);color:var(--paper);font-family:"Kievit","Helvetica Neue",Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.tag{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;color:var(--muted);display:flex;align-items:center;gap:14px}
+.tag i{display:inline-block;width:28px;height:2px;background:var(--lime)}
+.light .tag i,.white .tag i{background:var(--ink)}
+h1,h2,h3{font-weight:300;letter-spacing:-.015em;line-height:1.08}
+h2{font-size:clamp(32px,5vw,64px);margin-top:22px;max-width:16ch}
+section{padding:clamp(64px,8vw,112px) 0;position:relative}
+.light{background:var(--paper);color:var(--ink)}
+.light .tag{color:#6E6E6E}
+.white{background:var(--white);color:var(--ink)}
+.white .tag{color:#6E6E6E}
+.num{font-size:12px;letter-spacing:.2em;color:#6E6E6E;font-weight:400}
+
+/* ---------- barra ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:border-color .3s;border-bottom:1px solid transparent;background:rgba(17,17,17,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+header.on{border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.bar img{height:30px;width:auto}
+nav.menu{display:flex;gap:28px;align-items:center}
+nav.menu a{text-decoration:none;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--paper);opacity:.78;transition:opacity .2s,color .2s}
+nav.menu a:hover{opacity:1;color:var(--lime)}
+nav.menu a.cta{opacity:1;border:1px solid rgba(241,240,236,.4);padding:10px 16px}
+nav.menu a.cta:hover{border-color:var(--lime)}
+nav.menu button.lang{font:inherit;font-size:12px;letter-spacing:.16em;color:var(--paper);background:none;border:0;border-left:1px solid rgba(241,240,236,.3);padding:4px 0 4px 16px;cursor:pointer;opacity:.78}
+nav.menu button.lang:hover{opacity:1;color:var(--lime)}
+nav.menu button.lang[hidden]{display:none}
+.burger{display:none;background:none;border:0;color:var(--paper);width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:22px;height:1.5px;background:currentColor;margin:5px auto}
+@media (max-width:1080px){
+  .burger{display:block}
+  nav.menu{position:fixed;top:68px;left:0;right:0;background:var(--deep);flex-direction:column;align-items:flex-start;gap:0;padding:8px var(--gut) 28px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .35s;z-index:-1}
+  nav.menu.open{transform:none}
+  nav.menu a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:13px}
+  nav.menu a.cta{border:0;border-bottom:1px solid var(--line);padding:14px 0;color:var(--lime)}
+  nav.menu button.lang{border:0;border-bottom:1px solid var(--line);padding:14px 0;width:100%;text-align:left;font-size:13px}
 }
-@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes avance{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
-@media (max-width:520px){footer{justify-content:center;text-align:center}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 clamp(48px,8vw,90px);overflow:hidden}
+canvas.curvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6}
+canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero h1{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
+.hero h1 b{font-weight:700}
+.hero .lead{max-width:44ch;font-size:clamp(18px,1.8vw,22px);color:#C9C8C3;margin-top:30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;padding:16px 24px;border:1px solid rgba(241,240,236,.35);color:var(--paper);background:none;cursor:pointer;font-family:inherit;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{border-color:var(--lime);color:var(--lime)}
+.btn.k{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn.k:hover{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+/* manifiesto de la portada: una frase en lugar de cifras (las cifras viven en «X.FORM en cifras») */
+.facts{margin-top:clamp(48px,7vw,90px);padding-top:26px;border-top:1px solid var(--line);display:flex;gap:18px;align-items:baseline;max-width:62ch}
+.facts i{flex:none;display:block;width:28px;height:2px;background:var(--lime);transform:translateY(-6px)}
+.facts span{font-size:clamp(20px,2.1vw,30px);line-height:1.25;letter-spacing:-.01em;color:var(--paper);font-weight:300}
+.facts span b{font-weight:700}
+
+/* ---------- firma ---------- */
+.fgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:start}
+.firma h2{font-size:clamp(30px,3.7vw,52px);max-width:15ch}
+.fplano{margin-top:clamp(28px,4vw,48px);max-width:560px}
+.fplano figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;margin-top:10px;font-weight:400}
+.plano{width:100%;height:auto;overflow:visible}
+.plano .tr{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:var(--d,0);vector-effect:non-scaling-stroke;stroke-linecap:square}
+.plano .m{stroke-width:2}
+.plano .fin{stroke-width:1}
+.plano .eje{stroke:#9A9A9A;stroke-width:.8}
+.plano path.eje{stroke-dasharray:1;opacity:.55}
+.plano .lim{stroke:var(--lime);stroke-width:2.6}
+.plano .cota{stroke:#6E6E6E;stroke-width:.8}
+.plano .tx{font-size:11px;letter-spacing:.14em;fill:#6E6E6E;text-anchor:middle;font-family:inherit;font-weight:400;opacity:var(--a,1);transition:opacity .4s}
+.plano .tx.rot{fill:var(--ink);font-size:11px;letter-spacing:.24em}
+.fder{display:grid;gap:0;padding-top:clamp(8px,2vw,24px)}
+.pilar{border-top:1px solid var(--linek);padding:clamp(20px,2.4vw,30px) 0 clamp(22px,2.6vw,32px);position:relative}
+.pilar:last-child{border-bottom:1px solid var(--linek)}
+.pilar::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:56px;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s cubic-bezier(.7,0,.2,1) .2s}
+.pilar.in::before,html:not(.rvon) .pilar::before{transform:scaleX(1)}
+.pk{display:flex;align-items:baseline;gap:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.pk b{font-size:12px;color:var(--ink);font-weight:700;letter-spacing:.1em}
+.pt{font-size:clamp(17px,1.45vw,20px);color:#2E2E2E;margin-top:14px;max-width:46ch;line-height:1.55}
+.pilar:first-child .pt{font-size:clamp(19px,1.75vw,23px);color:var(--ink)}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr}.fplano{max-width:none}}
+
+/* ---------- servicios ---------- */
+.srv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:clamp(40px,6vw,72px);border:1px solid var(--line)}
+.srv article{background:rgba(17,17,17,.82);padding:clamp(26px,2.6vw,40px);display:flex;flex-direction:column;min-height:320px;transition:background .3s}
+.srv article:hover{background:rgba(23,23,23,.9)}
+.srv .code{font-size:13px;letter-spacing:.2em;color:var(--lime);font-weight:400}
+.srv h3{font-size:clamp(26px,2.4vw,34px);margin-top:auto;padding-top:60px}
+.srv .verb{font-size:12px;letter-spacing:.2em;color:var(--muted);margin-top:10px;font-weight:400}
+.srv p{color:#B9B8B3;margin-top:20px;font-size:17px}
+@media (max-width:900px){.srv{grid-template-columns:1fr}.srv article{min-height:0}.srv h3{padding-top:36px}}
+
+/* ---------- proceso ---------- */
+.pgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:start}
+.pvista{position:sticky;top:90px;margin-top:clamp(20px,3vw,36px)}
+.pcanvas{aspect-ratio:5/4;width:100%;cursor:grab;touch-action:pan-y;position:relative}
+.pcanvas:active{cursor:grabbing}
+.pcanvas canvas{display:block;width:100%;height:100%}
+.pcanvas::after{content:"";position:absolute;inset:0;margin:auto;width:42px;height:42px;border:1px solid var(--linek);border-top-color:var(--ink);border-radius:50%;animation:gira 1s linear infinite}
+.pcanvas.listo::after,.pcanvas.error::after{display:none}
+.pcanvas canvas{transition:opacity 1.2s}
+.preal{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(.97);transition:opacity 1.2s,transform 1.6s cubic-bezier(.2,.7,.1,1);pointer-events:none}
+.pcanvas.real .preal{opacity:1;transform:none}
+.pcanvas.real canvas{opacity:0}
+.pia{position:absolute;right:0;bottom:0;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8E9097;opacity:0;transition:opacity .8s}
+.pcanvas.real .pia{opacity:1}
+@keyframes gira{to{transform:rotate(360deg)}}
+.pfase{margin-bottom:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.pfase b{color:var(--ink);font-weight:700}
+.pvista figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400;margin-top:8px}
+.fases{display:grid;gap:0;margin-top:clamp(8px,2vw,24px)}
+.fase{border-top:2px solid var(--linek);padding:22px 0 26px;cursor:pointer;transition:opacity .4s}
+.fase:last-child{border-bottom:1px solid var(--linek)}
+.fase h3{font-size:clamp(24px,2.2vw,30px);margin:10px 0 8px;transition:color .4s}
+.fase p{color:#3B3B3B;font-size:17px;max-width:44ch}
+.fase:not(.on){opacity:.42}
+.fase:not(.on):hover{opacity:.75}
+.fase:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media (max-width:900px){.pgrid{grid-template-columns:1fr}.pvista{position:relative;top:0}.fase:not(.on){opacity:.6}}
+
+/* ---------- cifras ---------- */
+.cifras{background:rgba(43,43,43,.72)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.kpis div{padding:30px 20px 0 0}
+.kpis b{display:block;font-size:clamp(40px,4.2vw,64px);white-space:nowrap;font-weight:300;letter-spacing:-.03em;line-height:1}
+.kpis div:first-child b::after{content:"";display:block;width:56px;height:3px;background:var(--lime);margin-top:18px}
+.kpis span{display:block;margin-top:16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;max-width:22ch}
+@media (max-width:860px){.kpis{grid-template-columns:1fr 1fr;row-gap:30px}}
+
+/* ---------- proyectos ---------- */
+.proy-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}
+.filtros button{font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;background:none;border:1px solid var(--linek);color:var(--ink);padding:10px 14px;cursor:pointer;transition:all .2s}
+.filtros button:hover{border-color:var(--ink)}
+.filtros button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.4vw,20px);margin-top:clamp(28px,4vw,44px)}
+.card{grid-column:span 2;cursor:pointer;background:none;border:0;text-align:left;font-family:inherit;color:inherit;padding:0}
+.card.big{grid-column:span 3}
+.card .ph{position:relative;overflow:hidden;aspect-ratio:4/3;background:#DDD}
+.card.big .ph{aspect-ratio:16/9}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
+.card:hover img,.card:focus-visible img{transform:scale(1.04)}
+.card .ph::after{content:"VER PROYECTO";position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.2em;color:#fff;background:rgba(17,17,17,.75);padding:8px 12px;opacity:0;transform:translateY(6px);transition:all .3s}
+.card:hover .ph::after,.card:focus-visible .ph::after{opacity:1;transform:none}
+.card h3{font-size:clamp(20px,1.7vw,24px);margin-top:12px}
+.card .meta{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;font-weight:400;text-transform:uppercase}
+.card.hide{display:none}
+.card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.card,.card.big{grid-column:span 1}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.iaNote{margin-top:24px;font-size:12px;letter-spacing:.12em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+
+/* ficha abierta */
+dialog.ficha{border:0;padding:0;max-width:none;max-height:none;width:100%;height:100%;background:var(--paper);color:var(--ink)}
+dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
+.f-top{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);background:var(--paper);border-bottom:1px solid var(--linek)}
+.f-top img{height:26px;width:auto}
+.f-close{font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;background:none;border:1px solid var(--linek);padding:10px 16px;cursor:pointer;color:var(--ink)}
+.f-close:hover{border-color:var(--ink)}
+.f-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);padding:clamp(24px,4vw,56px) var(--gut) 80px;max-width:1500px;margin:0 auto}
+.f-gal{display:grid;gap:18px}
+.f-gal figcaption{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;text-transform:uppercase;font-weight:400}
+.f-txt{position:sticky;top:90px;align-self:start}
+.f-txt .tag i{background:var(--ink)}
+.f-txt .tag{color:#6E6E6E}
+.f-txt h3{font-size:clamp(34px,4vw,56px);margin:18px 0 10px}
+.f-txt .meta{font-size:12px;letter-spacing:.18em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+.f-txt p.txt{font-size:clamp(17px,1.4vw,20px);margin-top:26px;color:#2E2E2E}
+.f-txt .cred{font-size:14px;margin-top:28px;padding-top:18px;border-top:1px solid var(--linek);color:#4A4A4A}
+.f-txt .ia{font-size:13px;margin-top:10px;color:#6E6E6E}
+@media (max-width:900px){.f-body{grid-template-columns:1fr}.f-txt{position:static;order:-1}}
+
+/* ---------- equipo ---------- */
+.eq{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.6fr);gap:clamp(28px,5vw,80px);align-items:start}
+.eq h2{font-size:clamp(30px,3.6vw,48px);max-width:13ch}
+.eq .lead{font-size:clamp(16px,1.3vw,18px);color:#C9C8C3;max-width:42ch;margin-top:22px}
+.cultura{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+.cultura li{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:clamp(15px,1.2vw,17px);color:var(--paper)}
+.cultura li b{font-size:11px;letter-spacing:.18em;color:var(--lime);font-weight:400;flex:none;width:22px}
+.socios-tag{margin-bottom:22px}
+.team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.person figure{aspect-ratio:1/1;overflow:hidden;background:var(--carbon)}
+.person figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.person:hover figure img{transform:scale(1.03)}
+.person h3{font-size:clamp(24px,2.3vw,32px);margin-top:22px}
+.person .role{font-size:12px;letter-spacing:.18em;color:var(--lime);margin-top:8px;font-weight:400}
+.person a.mail{display:inline-block;margin-top:14px;font-size:15px;color:#C9C8C3;text-decoration:none;border-bottom:1px solid rgba(241,240,236,.25);padding-bottom:2px;transition:color .2s,border-color .2s}
+.person a.mail:hover{color:var(--lime);border-color:var(--lime)}
+@media (max-width:860px){.eq{grid-template-columns:1fr}}
+@media (max-width:520px){.team{gap:14px}.person h3{font-size:19px;margin-top:14px}.person .role{font-size:9.5px;letter-spacing:.1em;line-height:1.5}.person a.mail{font-size:12.5px;word-break:break-all}}
+
+/* ---------- dimensiona ---------- */
+.dim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,6vw,100px);align-items:start}
+.dim h2{font-size:clamp(30px,3.6vw,48px)}
+.dim .lead{font-size:clamp(16px,1.3vw,18px);color:#3B3B3B;margin-top:20px;max-width:40ch}
+.q{border-top:1px solid var(--linek);padding:16px 0 18px}
+.q fieldset{border:0;min-width:0}
+.q legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:#6E6E6E;margin-bottom:10px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-block;font-size:14px;padding:9px 14px;border:1px solid var(--linek);cursor:pointer;transition:all .2s;background:var(--white)}
+.opts label:hover span{border-color:var(--ink)}
+.opts input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.opts input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.res{margin-top:10px;padding:clamp(24px,3vw,36px);background:var(--ink);color:var(--paper);display:none}
+.res.show{display:block;animation:entra .5s ease}
+.res .tag{color:var(--muted)}
+.res .tag i{background:var(--lime)}
+.res p.txt{font-size:clamp(18px,1.7vw,22px);margin-top:18px}
+.res p.matiz{font-size:16px;color:#B9B8B3;margin-top:12px}
+.res .btns{margin-top:26px}
+.res p.disc{font-size:13px;color:var(--muted);margin-top:22px}
+.hint{font-size:14px;color:#6E6E6E;margin-top:8px}
+@media (max-width:900px){.dim{grid-template-columns:1fr}}
+/* render de fondo con curvas de nivel en tinta: la arquitectura asoma detrás de lo claro */
+.conrender{overflow:hidden;isolation:isolate}
+.fondo-render{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.fondo-render img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;opacity:.26;filter:grayscale(.55) contrast(1.05);mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 38%,rgba(0,0,0,.12) 70%,transparent 92%);mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 38%,rgba(0,0,0,.12) 70%,transparent 92%);will-change:transform}
+.fondo-render canvas{position:absolute;inset:0;width:100%;height:100%}
+.fondo-cap{position:absolute;left:var(--gut);bottom:18px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+@media (max-width:900px){.fondo-render img{-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 30%,transparent 60%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 30%,transparent 60%)}.fondo-cap{bottom:auto;top:clamp(64px,8vw,112px);margin-top:-30px}}
+
+/* ---------- hablemos ---------- */
+.contacto{overflow:hidden}
+.contacto canvas.curvas{opacity:.35}
+.contacto .wrap{position:relative;z-index:1}
+.contacto .cgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:end}
+.contacto h2{font-size:clamp(36px,5.2vw,76px);max-width:12ch}
+.contacto .lead{color:#C9C8C3;font-size:clamp(16px,1.4vw,19px);margin-top:20px;max-width:40ch}
+.datos{display:grid;grid-template-columns:1fr 1fr;gap:22px clamp(20px,3vw,40px)}
+.datos div:last-child{grid-column:1/-1}
+@media (max-width:860px){.contacto .cgrid{grid-template-columns:1fr}}
+.datos h4{font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:400;margin-bottom:12px}
+.datos a,.datos p{display:block;font-size:17px;text-decoration:none;margin-bottom:6px;color:var(--paper)}
+.datos a:hover{color:var(--lime)}
+@media (max-width:520px){.datos{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6A6C72}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer nav.legal{display:flex;gap:18px;flex-wrap:wrap}
+footer nav.legal a{text-decoration:none;color:#8E9097;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+footer nav.legal a:hover{color:var(--lime);border-color:var(--lime)}
+/* textos legales */
+dialog.legal{border:0;padding:0;margin:auto;width:min(860px,100vw);max-height:min(88vh,100dvh);background:var(--paper);color:var(--ink)}
+dialog.legal::backdrop{background:rgba(17,17,17,.82);backdrop-filter:blur(4px)}
+.lg-top{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,4vw,44px);background:var(--paper);border-bottom:1px solid var(--linek);z-index:1}
+.lg-top img{height:24px;width:auto}
+.lg-top button{font:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;background:none;border:1px solid var(--linek);padding:9px 14px;cursor:pointer;color:var(--ink)}
+.lg-top button:hover{border-color:var(--ink)}
+.lg-body{padding:clamp(24px,4vw,44px) clamp(20px,4vw,44px) 48px;font-size:15px;line-height:1.65;color:#2B2B2B}
+.lg-body h3{font-size:clamp(26px,3vw,36px);color:var(--ink);margin:10px 0 6px}
+.lg-body .vig{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E6E6E;margin-bottom:22px}
+.lg-body h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink);margin:26px 0 8px}
+.lg-body p,.lg-body li{margin-bottom:8px;max-width:72ch}
+.lg-body ul{padding-left:20px}
+.lg-body a{color:var(--ink)}
+.lg-body .tag{color:#6E6E6E}.lg-body .tag i{background:var(--ink)}
+@media (max-width:640px){dialog.legal{max-height:100dvh;height:100dvh;width:100vw;max-width:100vw}}
+
+/* ---------- modelo comercial vivo: cabida y prefactibilidad ---------- */
+.mv{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.3fr);gap:clamp(28px,4.5vw,72px);align-items:start}
+.mv h2{font-size:clamp(32px,3.8vw,52px);max-width:12ch}
+.mv .lead{font-size:clamp(16px,1.3vw,18px);color:#B9B8B3;max-width:40ch;margin-top:18px}
+.mv-ctl{margin-top:26px;display:grid;gap:16px}
+.mv-ctl .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button,.paso button,.mv-pl-head button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:all .2s}
+.seg button:hover,.paso button:hover:not(:disabled),.mv-pl-head button:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.seg.tam button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 12px;line-height:1.1}
+.seg.tam small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.paso{display:flex;align-items:center;gap:6px}
+.paso button{width:40px;height:40px;padding:0;font-size:18px;line-height:1}
+.paso button:disabled,.mv-pl-head button:disabled{opacity:.3;cursor:default}
+.paso output{min-width:64px;text-align:center;font-size:22px;font-weight:300}
+.mv-datos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:26px;border-top:1px solid var(--line)}
+.mv-datos div{padding:12px 12px 12px 0}
+.mv-datos span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.mv-datos b{display:block;font-size:clamp(14px,1.15vw,16px);font-weight:300;margin-top:4px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mv-datos b#mvMg{color:var(--lime)}
+.mv-datos b#mvMg.baja{color:#C9C8C3}
+.mv-curva{display:flex;align-items:center;gap:14px;padding-top:10px;border-top:1px solid var(--line)}
+.mv-curva svg{width:220px;height:48px;flex:none;overflow:visible}
+.mv-curva p{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.mv-pie{font-size:11px;color:#6A6C72;margin-top:14px}
+.mv-fig{position:relative;border:1px solid var(--line);background:rgba(17,17,17,.55)}
+.mv-vista{aspect-ratio:16/10;width:100%;cursor:pointer;touch-action:pan-y}
+.mv-vista canvas{display:block;width:100%;height:100%}
+.mv-tag,.mv-giro{position:absolute;top:14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;pointer-events:none}
+.mv-tag{left:16px;color:var(--muted)}
+.mv-giro{right:16px;color:#6A6C72}
+.mv-planta{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border-top:1px solid var(--line)}
+.mv-pl-dib{padding:14px 16px;border-right:1px solid var(--line)}
+.mv-pl-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mv-pl-head button{width:34px;height:34px;padding:0;font-size:18px}
+.mv-pl-head div{text-align:center}
+.mv-pl-head b{display:block;font-size:15px;font-weight:400;letter-spacing:.04em}
+.mv-pl-head span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin-top:2px}
+#mvPlanta{width:100%;height:auto;display:block;margin-top:6px}
+#mvPlanta .pl-borde{fill:none;stroke:var(--paper);stroke-width:1.6}
+#mvPlanta .pl-u{fill:rgba(241,240,236,.05);stroke:rgba(241,240,236,.55);stroke-width:1}
+#mvPlanta .pl-mix{fill:rgba(241,240,236,.13);stroke:var(--paper);stroke-dasharray:4 2}
+#mvPlanta .pl-ac{fill:none;stroke:rgba(241,240,236,.3);stroke-dasharray:1 3}
+#mvPlanta .pl-nucleo{fill:rgba(200,255,60,.18);stroke:var(--lime);stroke-width:1}
+#mvPlanta .pl-pas{stroke:rgba(241,240,236,.25);stroke-dasharray:3 4}
+#mvPlanta .pl-t{fill:var(--paper);font-size:10px;letter-spacing:.12em;text-anchor:middle;font-family:inherit}
+#mvPlanta .pl-a{fill:var(--muted);font-size:8.5px;text-anchor:middle;font-family:inherit}
+#mvPlanta .pl-cota{fill:var(--muted);font-size:9px;text-anchor:middle;font-family:inherit}
+.mv-cadena{list-style:none;padding:12px 16px;margin:0;counter-reset:c}
+.mv-cadena li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(241,240,236,.12);font-size:12px}
+.mv-cadena li span{color:#B9B8B3}
+.mv-cadena li b{font-weight:400;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mv-cadena li.fin{border-bottom:1px dashed rgba(241,240,236,.12)}
+.mv-cadena li.resto{border-bottom:0}
+.mv-cadena li.resto span,.mv-cadena li.resto b{color:#8E9097}
+.mv-cadena li.fin b{color:var(--lime)}
+.mv-venta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px;padding:16px 18px;border:1px solid var(--line);background:rgba(17,17,17,.55)}
+.mv-venta p{font-size:14px;color:#B9B8B3;max-width:52ch}
+.mv-venta p b{color:var(--paper);font-weight:400}
+.mv-venta .btn{flex:none}
+/* la planta vive en un desplegable: abierto en escritorio, plegado en el celular */
+.mv-det{border:1px solid var(--line);border-top:0;background:rgba(17,17,17,.55)}
+.mv-det .mv-planta{border-top:0}
+.mv-det>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);font-weight:400}
+.mv-det>summary::-webkit-details-marker{display:none}
+.mv-det>summary::after{content:"+";font-size:20px;color:var(--lime);line-height:1}
+.mv-det[open]>summary::after{content:"−"}
+.mv-det[open]>summary{border-bottom:1px solid var(--line)}
+@media (min-width:1001px){
+  .mv-vista{aspect-ratio:16/9;max-height:46vh}
+  .mv-det>summary{display:none}
+  .mv-cadena li{padding:5px 0}
+  .mv-pl-dib{padding:10px 14px}
+}
+@media (max-width:1000px){
+  /* celular: titular, edificio, controles y cifras en ese orden, para ver el cambio mientras se toca */
+  .mv{display:flex;flex-direction:column;gap:0}
+  .mv-izq,.mv-der{display:contents}
+  .mv-izq .tag{order:1}.mv h2{order:2}.mv .lead{order:3}
+  .mv-fig{order:4;margin-top:22px}
+  .mv-ctl{order:5;margin-top:20px;gap:12px}
+  .mv-datos{order:6}
+  .mv-det{order:7;margin-top:14px;border-top:1px solid var(--line)}
+  .mv-venta{order:8}
+  .mv-pie{order:9}
+  .mv-curva,.mv-tag{display:none}
+  .mv-vista{aspect-ratio:4/3}
+  .mv>*,.mv-ctl,.mv-ctl>div{min-width:0}
+  .mv-ctl{grid-template-columns:minmax(0,1fr)}
+  .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{flex:none}
+}
+@media (max-width:640px){.mv-planta{grid-template-columns:1fr}.mv-pl-dib{border-right:0;border-bottom:1px solid var(--line)}.mv-venta{flex-direction:column;align-items:flex-start}.mv-giro{display:none}.mv-datos{grid-template-columns:repeat(3,minmax(0,1fr))}.mv-datos b{font-size:14px}}
+
+/* ---------- sabor ---------- */
+header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--lime);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.coord{position:absolute;right:var(--gut);bottom:clamp(48px,8vw,90px);z-index:1;font-size:11px;letter-spacing:.2em;color:var(--muted);text-align:right;line-height:1.9;font-weight:400}
+.coord b{color:var(--lime);font-weight:400}
+.bajar{position:absolute;left:50%;bottom:22px;z-index:1;width:1px;height:46px;background:rgba(241,240,236,.18);overflow:hidden}
+.bajar::after{content:"";position:absolute;left:0;top:-46px;width:1px;height:46px;background:var(--lime);animation:baja 2.2s cubic-bezier(.6,0,.2,1) infinite}
+@keyframes baja{to{top:46px}}
+@media (max-width:760px){.coord{display:none}}
+/* banda de palabras */
+.banda{overflow:hidden;padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+.banda-pista{display:flex;width:max-content;white-space:nowrap;will-change:transform}
+.banda-pista span{font-size:clamp(56px,9vw,140px);font-weight:700;letter-spacing:-.03em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(241,240,236,.42);padding-right:.35em}
+.banda-pista span:nth-child(3n+2){color:var(--paper);-webkit-text-stroke:0}
+.banda-pista em{font-style:normal;color:var(--lime);-webkit-text-stroke:0;padding-right:.35em;font-size:clamp(56px,9vw,140px);font-weight:300;line-height:1}
+/* titulares que se levantan, línea de etiqueta que se dibuja */
+@media (prefers-reduced-motion:no-preference){
+  .rvon h2.rv,.rvon .rv h2{clip-path:inset(0 0 100% 0);transform:translateY(28px);transition:clip-path 1.1s cubic-bezier(.2,.7,.1,1),transform 1.1s cubic-bezier(.2,.7,.1,1)}
+  .rvon h2.rv.in,.rvon .rv.in h2{clip-path:inset(0 0 -10% 0);transform:none}
+  .rvon .tag.rv i,.rvon .rv .tag i{width:0;transition:width .9s cubic-bezier(.2,.7,.1,1) .25s}
+  .rvon .tag.rv.in i,.rvon .rv.in .tag i{width:28px}
+  .rvon .card.rv .ph{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1) var(--d,0s)}
+  .rvon .card.rv.in .ph{clip-path:inset(0)}
+  .rvon .card.rv .ph img{transform:scale(1.18);transition:transform 1.6s cubic-bezier(.2,.7,.1,1) var(--d,0s)}
+  .rvon .card.rv.in .ph img{transform:scale(1)}
+  .rvon .card.rv.in:hover .ph img{transform:scale(1.04);transition-delay:0s;transition-duration:.8s}
+  .rvon .srv article.rv{transition-delay:var(--d,0s)}
+}
+/* fases: la línea se llena de lima en orden */
+.fase{position:relative}
+.fase::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.fase.on::before{transform:scaleX(1)}
+.fase .num{color:#6E6E6E}
+.fase.on .num{color:var(--ink)}
+/* servicios: luz que sigue al mouse */
+.srv article{position:relative;overflow:hidden;transition:background .3s,transform .4s cubic-bezier(.2,.7,.1,1)}
+.srv article::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(200,255,60,.10),transparent 60%)}
+.srv article:hover::after{opacity:1}
+.srv article .code{transition:letter-spacing .4s}
+.srv article:hover .code{letter-spacing:.32em}
+.btn,nav.menu a.cta,.mv-cta{transition:background .2s,color .2s,border-color .2s,transform .35s cubic-bezier(.2,.7,.1,1)}
+/* cursor de arquitecto */
+html.con-cursor,html.con-cursor *{cursor:none!important}
+.cur-punto,.cur-aro{position:fixed;left:0;top:0;z-index:200;pointer-events:none;border-radius:50%;mix-blend-mode:normal}
+.cur-punto{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--lime)}
+.cur-aro{width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(241,240,236,.5);display:flex;align-items:center;justify-content:center;transition:width .3s,height .3s,margin .3s,background .3s,border-color .3s}
+.cur-aro span{font-size:10px;letter-spacing:.2em;color:var(--ink);font-weight:700;opacity:0;transition:opacity .2s}
+.cur-aro.link{width:54px;height:54px;margin:-27px 0 0 -27px;border-color:var(--lime)}
+.cur-aro.ver,.cur-aro.girar{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--lime);border-color:var(--lime)}
+.cur-aro.ver span,.cur-aro.girar span{opacity:1}
+.cur-aro.claro{border-color:rgba(26,26,26,.45)}
+.cur-punto.claro{background:var(--ink)}
+.cur-aro.claro.ver{background:var(--lime);border-color:var(--lime)}
+/* portada: entra por capas al cargar */
+@media (prefers-reduced-motion:no-preference){
+  .hero .tag,.hero h1,.hero .lead,.hero .btns,.hero .facts,.coord{animation:llega 1.3s cubic-bezier(.2,.7,.1,1) both}
+  .hero h1{animation-delay:.12s;clip-path:inset(0 0 -10% 0)}
+  .hero .lead{animation-delay:.3s}.hero .btns{animation-delay:.42s}.hero .facts{animation-delay:.55s}.coord{animation-delay:.8s}
+}
+@keyframes llega{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+/* hora de Bogotá */
+.hora{display:inline-flex;align-items:center;gap:10px;margin-top:26px;font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;font-weight:400}
+.hora i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(200,255,60,.6);animation:pulso 2s infinite}
+@keyframes pulso{70%{box-shadow:0 0 0 10px rgba(200,255,60,0)}100%{box-shadow:0 0 0 0 rgba(200,255,60,0)}}
+@media (prefers-reduced-motion:reduce){.bajar::after,.hora i{animation:none}}
+
+/* aparición suave, solo con JavaScript */
+@media (prefers-reduced-motion:no-preference){
+  .rvon .rv{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
+  .rvon .rv.in{opacity:1;transform:none}
+}
+/* aviso de cookies */
+.cookies{position:fixed;left:var(--gut);right:var(--gut);bottom:16px;z-index:90;max-width:720px;margin:0 auto;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:18px 22px;background:var(--carbon);color:var(--paper);border:1px solid var(--line);border-left:2px solid var(--lime);box-shadow:0 18px 40px rgba(0,0,0,.35);font-size:15px;line-height:1.45}
+.cookies[hidden]{display:none}
+.cookies p{flex:1 1 320px}
+.cookies a{color:var(--paper);text-underline-offset:3px}
+.cookies .ckb{display:flex;gap:10px}
+.cookies button{font:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;padding:11px 18px;border:1px solid var(--line);background:transparent;color:var(--paper);cursor:pointer}
+.cookies button.k{background:var(--lime);border-color:var(--lime);color:var(--ink);font-weight:700}
+.cookies button:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+footer button.ck{font:inherit;background:none;border:0;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+@keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<canvas id="curvas" aria-hidden="true"></canvas>
+
+<header id="top">
+  <div class="wrap bar">
+    <a href="#inicio" aria-label="X.FORM, inicio"><img src="assets/xform-logo-blanco.png" alt="X.FORM · Beyond design" width="886" height="263"></a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#firma">La firma</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#dimensiona">Dimensiona tu proyecto</a>
+      <button class="lang" id="lang" type="button" hidden>EN</button>
+      <a class="cta" href="#hablemos">Hablemos</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-  <img class="logo" src="assets/xform-logo-blanco.png" alt="X.FORM · Beyond design" width="886" height="263">
-  <p class="obra">El sitio está <b>en obra.</b></p>
-  <div class="barra" aria-hidden="true"><i></i></div>
-  <p class="sub">Arquitectura, estrategia y desarrollo · Bogotá</p>
-  <nav aria-label="Contacto">
-    <a class="k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">Escríbenos</a>
-    <a href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram</a>
-  </nav>
+<!-- HERO -->
+<section class="hero" id="inicio" data-oscuro>
+  <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="tag"><i></i>Arquitectura · Estrategia · Desarrollo</p>
+    <h1>Más allá<br><b>del diseño</b></h1>
+    <p class="lead">Un predio, un edificio, un espacio vale por lo que puede llegar a ser. Lo descubrimos contigo desde el primer trazo, con diseño, sostenibilidad y experiencia humana.</p>
+    <div class="btns">
+      <a class="btn k" href="#proyectos">Ver proyectos</a>
+      <a class="btn" href="#hablemos">Hablemos</a>
+    </div>
+    <p class="facts"><i aria-hidden="true"></i><span>Todo lugar guarda una forma. <b>Nuestro oficio es revelarla.</b></span></p>
+  </div>
+  <p class="coord" aria-hidden="true"><b>4.6773° N</b> · 74.0490° W<br>Bogotá · 2.640 m s. n. m.</p>
+  <span class="bajar" aria-hidden="true"></span>
+</section>
+
+<!-- 01 FIRMA -->
+<section class="light firma" id="firma">
+  <div class="wrap fgrid">
+    <div class="fizq">
+      <p class="tag rv"><i></i>01 · Quiénes somos</p>
+      <h2 class="rv">Transformamos predios y espacios en lugares que las personas quieren habitar.</h2>
+      <figure class="fplano" data-plano><svg class="plano" viewBox="0 0 640 420" role="img" aria-label="Plano de una casa que se dibuja con el scroll"><path class="tr eje" data-o="1" pathLength="1" d="M70 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="70" cy="30" r="11"/><text class="tx" data-o="2" x="70" y="34">A</text><path class="tr eje" data-o="1" pathLength="1" d="M310 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="310" cy="30" r="11"/><text class="tx" data-o="2" x="310" y="34">B</text><path class="tr eje" data-o="1" pathLength="1" d="M550 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="550" cy="30" r="11"/><text class="tx" data-o="2" x="550" y="34">C</text><path class="tr eje" data-o="1" pathLength="1" d="M44 70H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="70" r="11"/><text class="tx" data-o="2" x="30" y="74">1</text><path class="tr eje" data-o="1" pathLength="1" d="M44 230H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="230" r="11"/><text class="tx" data-o="2" x="30" y="234">2</text><path class="tr eje" data-o="1" pathLength="1" d="M44 360H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="360" r="11"/><text class="tx" data-o="2" x="30" y="364">3</text><path class="tr lim" data-o="2" pathLength="1" d="M52 52H568V378H52Z"/><path class="tr m" data-o="3" pathLength="1" d="M70 70H160M220 70H400M460 70H550V360H380M320 360H70V70"/><path class="tr m" data-o="3" pathLength="1" d="M78 78H160M220 78H400M460 78H542V352H380M320 352H78V78"/><path class="tr fin" data-o="4" pathLength="1" d="M160 70H220M160 74H220M160 78H220"/><path class="tr fin" data-o="4" pathLength="1" d="M400 70H460M400 74H460M400 78H460"/><path class="tr fin" data-o="4" pathLength="1" d="M320 352H380M320 356H380M320 360H380"/><path class="tr m" data-o="5" pathLength="1" d="M310 78V180M310 220V352"/><path class="tr m" data-o="5" pathLength="1" d="M310 230H420M460 230H542"/><path class="tr m" data-o="5" pathLength="1" d="M78 250H180M230 250H310"/><path class="tr m" data-o="5" pathLength="1" d="M430 230V352"/><path class="tr fin" data-o="6" pathLength="1" d="M310 180L350 180M350 180A40 40 0 0 0 310 220"/><path class="tr fin" data-o="6" pathLength="1" d="M420 230L420 270M420 270A40 40 0 0 1 460 230"/><path class="tr fin" data-o="6" pathLength="1" d="M180 250L180 290M180 290A50 50 0 0 0 230 250"/><path class="tr fin" data-o="7" pathLength="1" d="M320 88H532V112H320Z"/><path class="tr fin" data-o="7" pathLength="1" d="M440 270H530V340H440ZM440 286H530"/><path class="tr cota" data-o="8" pathLength="1" d="M70 400H550M70 392V408M310 392V408M550 392V408"/><path class="tr cota" data-o="8" pathLength="1" d="M600 92L600 46M592 62L600 46L608 62"/><path class="tr lim" data-o="8" pathLength="1" d="M60 300H20M580 300H620"/><text class="tx cota" data-o="9" x="190" y="396">7.20</text><text class="tx cota" data-o="9" x="430" y="396">7.20</text><text class="tx" data-o="9" x="600" y="110">N</text><text class="tx" data-o="9" x="20" y="292">A</text><text class="tx" data-o="9" x="620" y="292">A'</text><text class="tx rot" data-o="10" x="190" y="165">SALA</text><text class="tx rot" data-o="10" x="430" y="160">COCINA</text><text class="tx rot" data-o="10" x="190" y="305">ESTUDIO</text><text class="tx rot" data-o="10" x="370" y="300">BAÑO</text><text class="tx rot" data-o="10" x="486" y="258">ALCOBA</text></svg><figcaption>Del primer trazo a la entrega</figcaption></figure>
+    </div>
+    <div class="fder">
+      <article class="pilar rv"><p class="pk"><b>01</b>Una sola mesa</p><p class="pt">X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, en equilibrio con el entorno y con la cultura de cada lugar.</p></article>
+      <article class="pilar rv"><p class="pk"><b>02</b>Contigo, de principio a fin</p><p class="pt">Cada proyecto lo construimos contigo. Desde la primera pregunta (qué cabe, qué conviene, qué historia quiere contar el lugar) hasta el día en que alguien lo habita.</p></article>
+      <article class="pilar rv"><p class="pk"><b>03</b>Rigor y valor</p><p class="pt">Trabajamos con rigor técnico y viabilidad económica para dejar entornos más sostenibles y más valiosos. La forma que toma una decisión bien tomada va más allá del diseño.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 02 SERVICIOS -->
+<section id="servicios" data-oscuro>
+  <div class="wrap">
+    <p class="tag rv"><i></i>02 · Qué hacemos</p>
+    <h2 class="rv">Tres frentes que piensan juntos</h2>
+    <div class="srv">
+      <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres contigo leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
+      <article class="rv"><span class="code">X.DSG</span><h3>Arquitectura e interiorismo</h3><span class="verb">DISEÑAR</span><p>Arquitectura, interiorismo, urbanismo y paisaje salen del mismo lápiz. Trabajamos la luz, la materia y el recorrido con el rigor técnico que piden la norma y la obra.</p></article>
+      <article class="rv"><span class="code">X.DVL</span><h3>Gerencia, control y obra</h3><span class="verb">EJECUTAR</span><p>Llevamos el proyecto hasta que se vuelve materia. Coordinamos disciplinas, tiempos y costos, y en obra cuidamos que lo dibujado llegue intacto.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PROCESO -->
+<section class="white" id="proceso">
+  <div class="wrap pgrid">
+    <div class="pizq">
+      <p class="tag rv"><i></i>03 · Cómo trabajamos</p>
+      <h2 class="rv">Cuatro fases, un mismo hilo</h2>
+      <figure class="pvista">
+        <p class="pfase" aria-live="polite"><b id="procNum">01</b> <span id="procNom">Estrategia</span></p>
+        <div class="pcanvas" id="procVista" aria-label="Modelo 3D de la Villa Eivissa que cambia con cada fase"><img class="preal" src="assets/img/eivissa-flotante.webp?v=20261022b" alt="Villa Eivissa · Cayetana, Barú" loading="lazy"><span class="pia">Render con retoque de IA</span></div>
+        <figcaption>Villa Eivissa · Cayetana, Barú · Modelo 3D X.FORM</figcaption>
+      </figure>
+    </div>
+    <div class="fases" role="list">
+      <div class="fase on" role="listitem" tabindex="0" data-f="1"><span class="num">FASE 01</span><h3>Estrategia</h3><p>Escuchamos el terreno y te escuchamos a ti. Definimos la visión y los criterios que van a sostener cada decisión que venga después.</p></div>
+      <div class="fase" role="listitem" tabindex="0" data-f="2"><span class="num">FASE 02</span><h3>Concepto</h3><p>La estrategia se vuelve idea arquitectónica: una forma propia de recibir la luz, de llegar y de recorrerse.</p></div>
+      <div class="fase" role="listitem" tabindex="0" data-f="3"><span class="num">FASE 03</span><h3>Desarrollo</h3><p>La idea se vuelve técnica. Coordinamos estructura, redes y detalle, versión tras versión, hasta que el proyecto se puede construir y conserva su carácter.</p></div>
+      <div class="fase" role="listitem" tabindex="0" data-f="4"><span class="num">FASE 04</span><h3>Ejecución</h3><p>Estamos en la obra hasta la entrega. Cada material que llega al sitio se revisa contra la idea que lo hizo nacer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CIFRAS -->
+<section class="cifras" id="cifras" data-oscuro>
+  <div class="wrap">
+    <p class="tag rv"><i></i>04 · Trayectoria</p>
+    <h2 class="rv">X.FORM en cifras</h2>
+    <div class="kpis">
+      <div class="rv"><b>+500.000</b><span>M² diseñados</span></div>
+      <div class="rv"><b>93 %</b><span>Cumplimiento en cronograma</span></div>
+      <div class="rv"><b>+50</b><span>Años de experiencia combinada</span></div>
+      <div class="rv"><b>+20</b><span>Proyectos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 MODELO COMERCIAL VIVO · cifras de ejemplo, sin relación con un proyecto real -->
+<section id="modelo" data-oscuro>
+  <div class="wrap mv">
+    <div class="rv mv-izq">
+      <p class="tag"><i></i>05 · Cabida y prefactibilidad en vivo</p>
+      <h2>¿Qué cabe en tu lote?</h2>
+      <p class="lead">Antes de dibujar, hacemos la cabida: cuánto se puede construir, cuántas unidades salen y si el negocio da. Prueba con un lote de ejemplo.</p>
+      <div class="mv-ctl">
+        <div><p class="k">Uso</p><div class="seg"><button type="button" data-uso="vivienda" aria-pressed="true">Vivienda</button><button type="button" data-uso="oficinas" aria-pressed="false">Oficinas</button><button type="button" data-uso="hotel" aria-pressed="false">Hotel</button></div></div>
+        <div><p class="k">Lote</p><div class="seg"><button type="button" data-lote="600" aria-pressed="false">600 m²</button><button type="button" data-lote="1200" aria-pressed="true">1.200 m²</button><button type="button" data-lote="2400" aria-pressed="false">2.400 m²</button></div></div>
+        <div><p class="k">Tamaño de la unidad</p><div class="seg tam" id="mvTam"></div></div>
+        <div><p class="k">Pisos</p><div class="paso"><button type="button" id="mvMenos" aria-label="Un piso menos">−</button><output id="mvPisos" aria-live="polite">10</output><button type="button" id="mvMas" aria-label="Un piso más">+</button></div></div>
+      </div>
+      <div class="mv-datos" aria-live="polite">
+        <div><span>Construido</span><b id="mvAc">—</b></div>
+        <div><span>Unidades</span><b id="mvUds">—</b></div>
+        <div><span>Ventas</span><b id="mvVentas">—</b></div>
+        <div><span>Utilidad</span><b id="mvUt">—</b></div>
+        <div><span>Margen</span><b id="mvMg">—</b></div>
+      </div>
+      <div class="mv-curva">
+        <svg viewBox="0 0 220 48" aria-hidden="true"><line id="mvCero" x1="0" x2="220" stroke="rgba(241,240,236,.18)" stroke-dasharray="2 4"/><polyline id="mvLinea" fill="none" stroke="#C8FF3C" stroke-width="1.4" stroke-linejoin="round"/><circle id="mvMejor" r="3" fill="none" stroke="#8E9097"/><circle id="mvPunto" r="4" fill="#C8FF3C"/></svg>
+        <p><span id="mvMejorTxt"></span><br>Margen según la altura, de 3 a 24 pisos.</p>
+      </div>
+      <p class="mv-pie">Cifras de ejemplo, sin relación con un proyecto real.</p>
+    </div>
+    <div class="rv mv-der">
+      <figure class="mv-fig">
+        <div class="mv-vista" id="mvVista" aria-label="Edificio de ejemplo en 3D: haz clic en un piso para ver su planta"></div>
+        <p class="mv-tag">Lote de ejemplo · Bogotá</p>
+        <p class="mv-giro">Clic en un piso · arrastra para girar</p>
+      </figure>
+      <details class="mv-det" id="mvDet">
+        <summary>Ver la planta del piso</summary>
+        <div class="mv-planta">
+          <div class="mv-pl-dib">
+            <div class="mv-pl-head"><button type="button" id="mvAnt" aria-label="Piso de abajo">‹</button><div><b id="mvPisoN">Piso 5</b><span id="mvPisoU">—</span></div><button type="button" id="mvSig" aria-label="Piso de arriba">›</button></div>
+            <svg viewBox="0 0 300 190" id="mvPlanta" role="img" aria-label="Planta del piso elegido"></svg>
+          </div>
+          <ol class="mv-cadena" aria-label="De dónde salen las unidades">
+            <li><span>Lote</span><b id="mvC1">—</b></li>
+            <li><span>Ocupación de este piso</span><b id="mvC2">—</b></li>
+            <li><span>Área de la planta</span><b id="mvC3">—</b></li>
+            <li><span>Núcleo y circulación</span><b id="mvC4">—</b></li>
+            <li><span>Área vendible</span><b id="mvC5">—</b></li>
+            <li><span>Unidad elegida</span><b id="mvC7">—</b></li>
+            <li class="fin"><span>Unidades del piso</span><b id="mvC6">—</b></li>
+            <li class="resto"><span>Lo que sobra pasa a área común</span><b id="mvC8">—</b></li>
+          </ol>
+        </div>
+      </details>
+      <div class="mv-venta">
+        <p><b>Cabidas y prefactibilidades en pocos días.</b> Qué cabe en tu lote, cuántas unidades salen y si el negocio da, antes de comprar o de diseñar.</p>
+        <a class="btn k" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20una%20cabida%20para%20mi%20lote" target="_blank" rel="noopener">Pide tu cabida</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="banda" data-oscuro aria-hidden="true"><div class="banda-pista">
+  <span>Masterplan</span><em>/</em><span>Arquitectura</span><em>/</em><span>Interiorismo</span><em>/</em><span>Estrategia</span><em>/</em><span>Desarrollo</span><em>/</em><span>Paisaje</span><em>/</em>
+  <span>Masterplan</span><em>/</em><span>Arquitectura</span><em>/</em><span>Interiorismo</span><em>/</em><span>Estrategia</span><em>/</em><span>Desarrollo</span><em>/</em><span>Paisaje</span><em>/</em>
+</div></div>
+
+<!-- 06 PROYECTOS -->
+<section class="light" id="proyectos">
+  <div class="wrap">
+    <div class="proy-head">
+      <div><p class="tag rv"><i></i>06 · Selección de obra</p><h2 class="rv">Proyectos</h2></div>
+      <div class="filtros rv" role="group" aria-label="Filtrar proyectos">
+        <button aria-pressed="true" data-f="all">Todos</button>
+        <button aria-pressed="false" data-f="mp">Masterplan</button>
+        <button aria-pressed="false" data-f="rs">Residencial</button>
+        <button aria-pressed="false" data-f="hs">Hospitality</button>
+        <button aria-pressed="false" data-f="mu">Uso mixto</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+    <p class="iaNote">Las imágenes de Cayetana tienen retoque con inteligencia artificial.</p>
+  </div>
+</section>
+
+<!-- 06 EQUIPO -->
+<section id="equipo" data-oscuro>
+  <div class="wrap eq">
+    <div><p class="tag rv"><i></i>07 · Nosotros</p>
+    <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
+    <p class="lead rv">Somos un estudio pequeño a propósito. Estrategia, paisaje y arquitectura se sientan en la misma mesa desde el primer boceto, y cada proyecto lo llevan sus socios de principio a fin.</p>
+    <ul class="cultura rv">
+      <li><b>01</b>Dibujamos mucho antes de decidir.</li>
+      <li><b>02</b>Trabajamos cerca de quien va a habitar el lugar.</li>
+      <li><b>03</b>Cuidamos el detalle hasta el día de la obra.</li>
+    </ul></div>
+    <div>
+      <p class="tag socios-tag rv"><i></i>Founding Partners</p>
+      <div class="team">
+        <article class="person rv"><figure><img src="assets/img/equipo-francisco.webp?v=20261022c" alt="Francisco Ospina, cofundador y director de diseño de X.FORM" loading="lazy" decoding="async" width="900" height="900"></figure><h3>Francisco Ospina</h3><p class="role">CO-FOUNDER · DIRECTOR DE DISEÑO</p><a class="mail" href="mailto:fospina@xform.com.co">fospina@xform.com.co</a></article>
+        <article class="person rv"><figure><img src="assets/img/equipo-camilo.webp?v=20261022c" alt="Camilo Restrepo, cofundador y director de proyectos de X.FORM" loading="lazy" decoding="async" width="900" height="900"></figure><h3>Camilo Restrepo</h3><p class="role">CO-FOUNDER · DIRECTOR DE PROYECTOS</p><a class="mail" href="mailto:crestrepo@xform.com.co">crestrepo@xform.com.co</a></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 DIMENSIONA -->
+<section class="light conrender" id="dimensiona">
+  <div class="fondo-render" aria-hidden="true"><img id="fondoImg" src="assets/img/cayetana-masterplan-3.webp?v=20261022b" alt="" loading="lazy" decoding="async"><canvas id="curvasTinta"></canvas></div>
+  <p class="fondo-cap" aria-hidden="true">Cayetana, Barú · render con retoque de IA</p>
+  <div class="wrap dim">
+    <div>
+      <p class="tag rv"><i></i>08 · Dimensiona tu proyecto</p>
+      <h2 class="rv">Cuéntanos qué tienes en mente</h2>
+      <p class="lead rv">Tres preguntas para darte una primera lectura de la escala de tu proyecto y del paso que sigue.</p>
+    </div>
+    <form id="dimForm" class="rv" onsubmit="return false">
+      <div class="q"><fieldset><legend>01 · ¿Qué quieres hacer?</legend><div class="opts">
+        <label><input type="radio" name="tipo" value="vivienda"><span>Vivienda</span></label>
+        <label><input type="radio" name="tipo" value="uso mixto"><span>Uso mixto</span></label>
+        <label><input type="radio" name="tipo" value="oficinas"><span>Oficinas</span></label>
+        <label><input type="radio" name="tipo" value="hospitality"><span>Hospitality</span></label>
+        <label><input type="radio" name="tipo" value="masterplan"><span>Masterplan</span></label>
+      </div></fieldset></div>
+      <div class="q"><fieldset><legend>02 · ¿Qué área imaginas?</legend><div class="opts">
+        <label><input type="radio" name="area" value="1" data-t="de hasta 500 m²"><span>Hasta 500 m²</span></label>
+        <label><input type="radio" name="area" value="2" data-t="de 500 a 2.000 m²"><span>500 a 2.000 m²</span></label>
+        <label><input type="radio" name="area" value="3" data-t="de 2.000 a 10.000 m²"><span>2.000 a 10.000 m²</span></label>
+        <label><input type="radio" name="area" value="4" data-t="de 10.000 a 50.000 m²"><span>10.000 a 50.000 m²</span></label>
+        <label><input type="radio" name="area" value="5" data-t="de más de 50.000 m² o varias hectáreas"><span>Más de 50.000 m² o varias hectáreas</span></label>
+      </div></fieldset></div>
+      <div class="q"><fieldset><legend>03 · ¿En qué etapa estás?</legend><div class="opts">
+        <label><input type="radio" name="etapa" value="idea" data-t="idea"><span>Tengo una idea</span></label>
+        <label><input type="radio" name="etapa" value="lote" data-t="lote"><span>Tengo el lote</span></label>
+        <label><input type="radio" name="etapa" value="diseno" data-t="diseño en curso"><span>El diseño está en curso</span></label>
+        <label><input type="radio" name="etapa" value="obra" data-t="obra"><span>Estoy en obra</span></label>
+      </div></fieldset></div>
+      <p class="hint" id="hint">Responde las tres preguntas para ver tu lectura.</p>
+      <div class="res" id="res" aria-live="polite">
+        <p class="tag"><i></i>Primera lectura</p>
+        <p class="txt" id="resTxt"></p>
+        <p class="matiz" id="resMatiz"></p>
+        <div class="btns">
+          <a class="btn k" id="ctaWa" href="https://wa.me/573148304724" target="_blank" rel="noopener">Agenda 20 minutos con nosotros</a>
+          <a class="btn" id="ctaMail" href="mailto:info@xform.com.co">Escríbenos por correo</a>
+        </div>
+        <p class="disc">Una primera lectura para orientar la conversación. El detalle lo armamos juntos en la primera reunión.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- 08 HABLEMOS -->
+<section class="contacto" id="hablemos" data-oscuro>
+  <canvas class="curvas" id="curvas2" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="cgrid">
+    <div><p class="tag rv"><i></i>09 · Hablemos</p>
+    <h2 class="rv">Hablemos de tu lugar</h2>
+    <p class="lead rv">Cuéntanos dónde está tu terreno y qué imaginas para él.</p>
+    <div class="btns rv">
+      <a class="btn k" href="mailto:info@xform.com.co?subject=Hola%20X.FORM">info@xform.com.co</a>
+      <a class="btn" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20conversar%20sobre%20un%20proyecto" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p class="hora"><i></i>Bogotá · <span id="hora">—</span> · GMT−5</p></div>
+    <div class="datos">
+      <div><h4>TELÉFONO</h4><a href="tel:+573168121156">+57 316 812 1156</a><a href="tel:+573148304724">+57 314 830 4724</a></div>
+      <div><h4>DIGITAL</h4><a href="mailto:info@xform.com.co">info@xform.com.co</a><a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram @x.form___</a></div>
+      <div><h4>OFICINA</h4><p>Calle 93 # 19B-66 Of. 303</p><p>110221, Bogotá, Colombia</p></div>
+    </div>
+    </div>
+  </div>
+</section>
 </main>
-<footer><span>X.FORM S.A.S.</span><span>info@xform.com.co</span></footer>
+
+<footer><div class="wrap"><span>X.FORM S.A.S. · NIT. 901.968.408-4</span><nav class="legal" aria-label="Legal"><a href="#terminos" data-legal="lgTerminos">Términos y condiciones</a><a href="#datos" data-legal="lgDatos">Tratamiento de datos personales</a><a href="privacidad.html">Privacidad y cookies</a><button type="button" class="ck" data-cookies>Preferencias de cookies</button></nav><span>© 2026 · Todos los derechos reservados</span></div></footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies de analítica para entender cómo se recorre el sitio. Solo se activan si las aceptas. <a href="privacidad.html">Privacidad y cookies</a></p>
+  <div class="ckb"><button type="button" id="ckNo">Rechazar</button><button type="button" id="ckSi" class="k">Aceptar</button></div>
+</div>
+
+<dialog class="legal" id="lgTerminos" aria-labelledby="lgT1">
+  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar ✕</button></div>
+  <div class="lg-body">
+    <p class="tag"><i></i>Legal</p>
+    <h3 id="lgT1">Términos y condiciones de uso</h3>
+    <p class="vig">Vigentes desde el 23 de octubre de 2026</p>
+    <h4>1. Quiénes somos</h4>
+    <p>Este sitio, xform.com.co, pertenece a X.FORM S.A.S., NIT 901.968.408-4, con domicilio en la Calle 93 # 19B-66 Of. 303, Bogotá, Colombia. Correo de contacto: <a href="mailto:info@xform.com.co">info@xform.com.co</a>.</p>
+    <h4>2. Aceptación</h4>
+    <p>Al navegar por este sitio aceptas estos términos. Si no estás de acuerdo con ellos, te pedimos no usar el sitio.</p>
+    <h4>3. Uso del sitio</h4>
+    <p>El sitio presenta el trabajo de X.FORM y sirve como canal de contacto. Puedes consultarlo para fines personales e informativos. Está prohibido usarlo para fines ilícitos, intentar vulnerar su seguridad o copiar su contenido de forma automatizada.</p>
+    <h4>4. Propiedad intelectual</h4>
+    <p>Los textos, planos, renders, fotografías, modelos 3D, logotipos y el diseño del sitio son de X.FORM S.A.S. o de sus clientes y aliados, que autorizaron su publicación. Ningún contenido puede reproducirse, modificarse o usarse con fines comerciales sin autorización escrita. Las marcas de terceros pertenecen a sus titulares.</p>
+    <h4>5. Imágenes de los proyectos</h4>
+    <p>Los renders muestran la intención de diseño de cada proyecto y pueden cambiar en su desarrollo. Algunas imágenes tienen retoque con inteligencia artificial y así se indica junto a ellas. Ninguna imagen constituye una oferta comercial ni una promesa sobre el resultado final de una obra.</p>
+    <h4>6. Herramientas de cálculo</h4>
+    <p>La cabida en vivo, el modelo comercial y la lectura de «Dimensiona tu proyecto» trabajan con cifras de ejemplo. Sirven para entender cómo pensamos un proyecto y no reemplazan un estudio de norma, una cabida técnica, un avalúo ni una asesoría financiera, jurídica o tributaria. Cualquier decisión de compra, diseño o inversión debe apoyarse en un estudio hecho para tu caso.</p>
+    <h4>7. Enlaces a terceros</h4>
+    <p>El sitio enlaza a servicios de terceros como WhatsApp, Instagram o el correo electrónico. Cada uno tiene sus propias condiciones y políticas, de las que X.FORM no es responsable.</p>
+    <h4>8. Responsabilidad</h4>
+    <p>Procuramos que la información del sitio sea correcta y esté al día, pero puede contener errores o cambiar sin aviso. X.FORM no responde por daños derivados del uso del sitio o de la imposibilidad de acceder a él, salvo en los casos que la ley no permita excluir.</p>
+    <h4>9. Datos personales</h4>
+    <p>Los datos que nos compartas se tratan según nuestra <a href="#datos" data-legal="lgDatos">Política de tratamiento de datos personales</a>.</p>
+    <h4>10. Cambios y ley aplicable</h4>
+    <p>Podemos actualizar estos términos; la versión vigente es la publicada en este sitio. Estos términos se rigen por las leyes de la República de Colombia.</p>
+  </div>
+</dialog>
+
+<dialog class="legal" id="lgDatos" aria-labelledby="lgT2">
+  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar ✕</button></div>
+  <div class="lg-body">
+    <p class="tag"><i></i>Legal</p>
+    <h3 id="lgT2">Política de tratamiento de datos personales</h3>
+    <p class="vig">Vigente desde el 23 de octubre de 2026 · Ley 1581 de 2012 y Decreto 1074 de 2015</p>
+    <h4>1. Responsable del tratamiento</h4>
+    <p>X.FORM S.A.S., NIT 901.968.408-4. Calle 93 # 19B-66 Of. 303, Bogotá, Colombia. Correo: <a href="mailto:info@xform.com.co">info@xform.com.co</a>. Teléfono: +57 316 812 1156.</p>
+    <h4>2. Qué datos tratamos</h4>
+    <p>Los que tú nos entregas al escribirnos por correo, WhatsApp, redes sociales o en una reunión: nombre, correo, teléfono, empresa, cargo y la información de tu proyecto (ubicación del predio, metas, presupuesto). No pedimos datos sensibles ni datos de menores de edad. Si llegaras a compartirlos, no estás obligado a hacerlo y los trataremos con la reserva que exige la ley.</p>
+    <h4>3. Para qué los usamos</h4>
+    <ul>
+      <li>Responder tus mensajes y solicitudes.</li>
+      <li>Preparar propuestas, cabidas, contratos y facturas.</li>
+      <li>Coordinar y ejecutar los proyectos que nos encargues.</li>
+      <li>Enviarte información sobre X.FORM, solo si nos autorizas.</li>
+      <li>Cumplir obligaciones legales, contables y tributarias.</li>
+    </ul>
+    <h4>4. Autorización</h4>
+    <p>Al escribirnos y entregarnos tus datos nos autorizas a tratarlos para estas finalidades. Puedes revocar la autorización cuando quieras, salvo cuando exista un deber legal o contractual de conservarlos.</p>
+    <h4>5. Tus derechos</h4>
+    <ul>
+      <li>Conocer, actualizar y rectificar tus datos.</li>
+      <li>Pedir prueba de la autorización que nos diste.</li>
+      <li>Saber qué uso les hemos dado.</li>
+      <li>Revocar la autorización o pedir que los borremos.</li>
+      <li>Acceder gratis a tus datos.</li>
+      <li>Presentar quejas ante la Superintendencia de Industria y Comercio, después de agotar el trámite con nosotros.</li>
+    </ul>
+    <h4>6. Cómo ejercerlos</h4>
+    <p>Escríbenos a <a href="mailto:info@xform.com.co">info@xform.com.co</a> con tu nombre, tu documento de identidad, lo que pides y un dato de contacto. Respondemos las consultas en máximo diez (10) días hábiles, prorrogables cinco (5) más, y los reclamos en máximo quince (15) días hábiles, prorrogables ocho (8) más. Si el reclamo está incompleto, te pediremos completarlo dentro de los cinco (5) días hábiles siguientes.</p>
+    <h4>7. Quién más los ve</h4>
+    <p>Solo el equipo de X.FORM y los proveedores que nos ayudan a operar, como el correo y el almacenamiento en la nube (Microsoft), el alojamiento del sitio (Netlify), la mensajería (WhatsApp) y, solo si la aceptas, la analítica del sitio (Google Analytics). Algunos guardan la información fuera de Colombia, con niveles de protección adecuados. No vendemos ni cedemos tus datos.</p>
+    <h4>8. Seguridad</h4>
+    <p>Aplicamos medidas técnicas y administrativas razonables, como accesos restringidos y cuentas con verificación, para proteger tus datos contra pérdida, consulta o uso no autorizado.</p>
+    <h4>9. Cookies y almacenamiento local</h4>
+    <p>Con tu permiso usamos Google Analytics 4 para medir, de forma agregada, cómo se recorre el sitio: páginas vistas, clics a WhatsApp o al correo y uso de «Dimensiona tu proyecto». Esas cookies solo se activan si las aceptas en el aviso, y puedes cambiar tu decisión en «Preferencias de cookies», al pie de la página. No usamos cookies publicitarias. El sitio también guarda en tu navegador el idioma que eliges y tu decisión sobre las cookies. El detalle está en <a href="privacidad.html">Privacidad y cookies</a>.</p>
+    <h4>10. Conservación y vigencia</h4>
+    <p>Guardamos tus datos mientras dure la relación contigo y el tiempo que exijan las normas contables y legales. Esta política rige desde la fecha indicada arriba; si cambia, publicaremos la nueva versión en este sitio.</p>
+  </div>
+</dialog>
+
+<dialog class="ficha" id="ficha" aria-labelledby="fTitle">
+  <div class="f-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button class="f-close" id="fClose">Cerrar ✕</button></div>
+  <div class="f-body"><div class="f-gal" id="fGal"></div><div class="f-txt"><p class="tag"><i></i><span id="fCat"></span></p><h3 id="fTitle"></h3><p class="meta" id="fMeta"></p><p class="txt" id="fTxt"></p><p class="cred" id="fCred"></p><p class="ia" id="fIa"></p></div></div>
+</dialog>
+
 <script>
-// Curvas de nivel en movimiento lento: el motivo gráfico de la marca.
-(()=>{const c=document.getElementById("curvas"),g=c.getContext("2d");let W,H,t=0;const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches;
-function tam(){const r=Math.min(devicePixelRatio||1,2);W=c.width=innerWidth*r;H=c.height=innerHeight*r}
-function dibuja(){g.clearRect(0,0,W,H);const cx=W*.5,cy=H*.48,n=26,esc=Math.max(W,H)/24,d=Math.min(devicePixelRatio||1,2);
-  for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
-    for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
-    g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
-  if(!quieto){t+=.0025;requestAnimationFrame(dibuja)}}
-addEventListener("resize",()=>{tam();if(quieto)dibuja()});tam();dibuja()})();
+// ---------- Proyectos: fuente única de las 7 fichas ----------
+const IA = "Imágenes con retoque de IA.";
+const P = [
+ {f:["mp"], big:true, cat:"Masterplan", t:"Cayetana · Masterplan", meta:"Barú, Cartagena · Masterplan · 2026",
+  txt:"El agua llegó primero. El lago interior decidió dónde se abría el paisaje y dónde se recogía la sombra, y desde ese borde se trazaron las calles, los senderos y el canal que lleva la brisa hasta el mar.",
+  cred:"Masterplan y diseño: X.FORM", ia:true, img:["cayetana-masterplan-1","cayetana-masterplan-2","cayetana-masterplan-3","cayetana-masterplan-4","cayetana-masterplan-5","cayetana-masterplan-6","cayetana-masterplan-7","cayetana-masterplan-8","cayetana-masterplan-9","cayetana-masterplan-10","cayetana-masterplan-11","cayetana-masterplan-12"], cap:["El lago al atardecer · Cayetana, Barú","El lago y el mar · Cayetana, Barú","Planta del conjunto · Cayetana, Barú","Las calles alrededor del agua · Cayetana, Barú","El conjunto hacia el mar · Cayetana, Barú","Las villas y sus piscinas · Cayetana, Barú","El club del lago · Cayetana, Barú","El canal hacia el mar · Cayetana, Barú","La llegada por la vía · Cayetana, Barú","El sendero que baja al agua · Cayetana, Barú","El borde del lago · Cayetana, Barú","El borde del lago al atardecer · Cayetana, Barú"]},
+ {f:["hs"], big:true, cat:"Hospitality", t:"Cayetana · Beach Club", meta:"Barú, Cartagena · Hospitality · 2026",
+  txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle para quedarse hasta que cae la tarde.",
+  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3","cayetana-beachclub-4","cayetana-beachclub-5"], cap:["Beach Club · Cayetana, Barú","La playa y el muelle · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","La playa desde el agua · Cayetana, Barú","El conjunto, el canal y la playa · Cayetana, Barú"]},
+ {f:["rs"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
+  txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella sigue la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
+  cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-villa-macarella","cayetana-villa-eivissa","cayetana-villa-eivissa-2","cayetana-villa-eivissa-3","cayetana-villa-eivissa-4","cayetana-villa-eivissa-5","cayetana-villa-macarella-2","cayetana-villa-macarella-3","cayetana-villa-macarella-4","cayetana-villa-macarella-5","cayetana-villa-savina"], cap:["Villa Macarella · Cayetana, Barú","Villa Eivissa · Cayetana, Barú","La terraza hacia el mar · Villa Eivissa · Cayetana, Barú","Los arcos de la entrada · Villa Eivissa · Cayetana, Barú","La alcoba frente al mar · Villa Eivissa · Cayetana, Barú","La sala de cal y madera · Villa Eivissa · Cayetana, Barú","Villa Macarella de noche · Cayetana, Barú","La llegada · Villa Macarella · Cayetana, Barú","La terraza alta al atardecer · Villa Macarella · Cayetana, Barú","El patio de agua · Villa Macarella · Cayetana, Barú","Villa Savina · Cayetana, Barú"]},
+ {f:["mu","rs"], cat:"Uso mixto", t:"VITA 119", meta:"Bogotá · Uso mixto · 5.150 m² · 2026",
+  txt:"En VITA 119 el bienestar sube con el edificio. Recibe en el lobby, se abre al aire en el piso 4 y vuelve a encontrar la luz en el piso 12, entre jardines que cuelgan de la fachada. VT Residences y el Centro de Experiencia hacen parte del mismo proyecto.",
+  cred:"Arquitectura: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["vita119-1","vita119-2","vita119-3","vita119-4","vita119-5","vita119-6","vita119-7","vita119-8","vita119-9","vita119-10"], cap:["VITA 119 · Santa Bárbara, Bogotá","Los jardines suspendidos · VITA 119","La esquina con la luz de la tarde · VITA 119","La fachada verde frente al cerro · VITA 119","El lobby · VITA 119","La terraza frente a los cerros · VITA 119","El gimnasio · VITA 119","La sala junto al ventanal · VT Residences · VITA 119","La sala y el comedor · VT Residences · VITA 119","La cocina abierta a la ciudad · VT Residences · VITA 119"]},
+ {f:["hs","mu"], cat:"Hospitality", t:"VITA Amenidades", meta:"Bogotá · Amenidades y bienestar · 600 m² · 2025",
+  txt:"Un lugar para bajar el ritmo dentro del edificio. Las amenidades de VITA 119 se ordenan alrededor del cuerpo y la calma: un jardín que recibe en la entrada, una biblioteca para trabajar con luz tamizada y materiales cálidos que piden llegar despacio.",
+  cred:"Arquitectura e interiorismo: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["casa-alma-1","casa-alma-4","casa-alma-2","casa-alma-3"], cap:["La llegada · VITA Amenidades · Bogotá","La biblioteca de trabajo · VITA Amenidades · Bogotá","El gimnasio frente a la ciudad · VITA Amenidades · Bogotá","La zona de pesas · VITA Amenidades · Bogotá"]},
+ {f:["rs"], big:true, cat:"Residencial", t:"Casa Barú", meta:"Cartagena · Residencial · 480 m² · 2019",
+  txt:"Una casa pensada para la brisa del Caribe. Sombras profundas, espacios que se abren hacia el exterior y una vida que transcurre entre la terraza y el agua.",
+  cred:"Arquitectura: Camilo Restrepo", ia:false, img:["casa-baru-1","casa-baru-2","casa-baru-3"], cap:["Casa Barú al anochecer · Cartagena","La llegada · Casa Barú · Cartagena","La terraza y la piscina · Casa Barú · Cartagena"]},
+ {f:["rs"], big:true, cat:"Residencial", t:"Casa Villeta", meta:"Villeta, Cundinamarca · Residencial · 300 m² · 2012",
+  txt:"La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca. La casa se abre entera al jardín.",
+  cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-1","casa-villeta-2","casa-villeta-3"], cap:["La piscina y el jardín · Casa Villeta · Villeta, Cundinamarca","La llegada · Casa Villeta · Villeta, Cundinamarca","El muro blanco al atardecer · Casa Villeta · Villeta, Cundinamarca"]}
+];
+// la versión obliga al navegador a bajar la imagen nueva (assets va con caché de un año)
+const src = n => `assets/img/${n}.webp?v=20261022d`;
+const cards = document.getElementById("cards");
+cards.innerHTML = P.map((p,i)=>`<button class="card rv${p.big?" big":""}" data-i="${i}" data-f="${p.f.join(" ")}" aria-label="Ver ${p.t}">
+  <div class="ph"><img src="${src(p.img[0])}" alt="${p.cap[0]}" loading="lazy" decoding="async"></div>
+  <h3>${p.t}</h3><p class="meta">${p.meta}</p></button>`).join("");
+
+document.querySelectorAll(".filtros button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".filtros button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const f=b.dataset.f;
+  cards.querySelectorAll(".card").forEach(c=>c.classList.toggle("hide", f!=="all" && !c.dataset.f.split(" ").includes(f)));
+}));
+
+const dlg=document.getElementById("ficha");
+cards.addEventListener("click",e=>{
+  const c=e.target.closest(".card"); if(!c) return; const p=P[+c.dataset.i];
+  document.getElementById("fCat").textContent=p.cat;
+  document.getElementById("fTitle").textContent=p.t;
+  document.getElementById("fMeta").textContent=p.meta;
+  document.getElementById("fTxt").textContent=p.txt;
+  document.getElementById("fCred").textContent=p.cred;
+  document.getElementById("fIa").textContent=p.ia?IA:"";
+  document.getElementById("fGal").innerHTML=p.img.map((n,k)=>`<figure><img src="${src(n)}" alt="${p.cap[k]}" loading="lazy"><figcaption>${p.cap[k]}</figcaption></figure>`).join("");
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+  dlg.scrollTop=0;
+});
+document.getElementById("fClose").addEventListener("click",()=>dlg.close?dlg.close():dlg.removeAttribute("open"));
+dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
+
+// ---------- Dimensiona tu proyecto: lectura cualitativa, nunca precio ----------
+const L = {
+  idea:"Un proyecto en este punto se beneficia de una fase de estrategia: tres a cuatro semanas para leer el lugar, definir la visión y saber qué vale la pena construir.",
+  lote:"Con el lote en la mano, el primer paso es una cabida: entender qué permite la norma y qué pide el terreno antes de dibujar.",
+  diseno:"Podemos entrar a revisar, coordinar o profundizar lo que ya existe y construir sobre lo avanzado.",
+  obra:"Entramos a la ejecución con control técnico y dirección, para que lo construido conserve la idea."
+};
+const MATIZ="Los proyectos de más de 10.000 m² o de masterplan suelen arrancar con una mesa de estrategia antes del concepto.";
+const form=document.getElementById("dimForm");
+form.addEventListener("change",()=>{
+  const g=n=>form.querySelector(`input[name=${n}]:checked`);
+  const t=g("tipo"),a=g("area"),s=g("etapa");
+  if(!(t&&a&&s)) return;
+  document.getElementById("hint").style.display="none";
+  document.getElementById("resTxt").textContent=L[s.value];
+  document.getElementById("resMatiz").textContent = (+a.value>=4 || t.value==="masterplan") ? MATIZ : "";
+  const msg=`Hola, X.FORM. Quiero conversar sobre un proyecto de ${t.value}, ${a.dataset.t}, que está en la etapa de ${s.dataset.t}.`;
+  document.getElementById("ctaWa").href="https://wa.me/573148304724?text="+encodeURIComponent(msg);
+  document.getElementById("ctaMail").href="mailto:info@xform.com.co?subject="+encodeURIComponent("Dimensiona tu proyecto · X.FORM")+"&body="+encodeURIComponent(msg);
+  document.getElementById("res").classList.add("show");
+});
+
+
+// ---------- barra y menú ----------
+const hd=document.getElementById("top"), bg=document.querySelector(".burger"), mn=document.getElementById("menu");
+const onS=()=>hd.classList.toggle("on", scrollY>40); addEventListener("scroll",onS,{passive:true}); onS();
+bg.addEventListener("click",()=>{const o=mn.classList.toggle("open"); bg.setAttribute("aria-expanded",o); hd.classList.add("on");});
+mn.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mn.classList.remove("open");bg.setAttribute("aria-expanded",false);}));
+
+// ---------- aparición ----------
+// El contenido solo se esconde cuando este código ya corre; si algo falla o tarda, todo queda visible.
+const todos=()=>document.querySelectorAll(".rv").forEach(el=>el.classList.add("in"));
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px 10% 0px"});
+  document.querySelectorAll(".rv").forEach(el=>{const r=el.getBoundingClientRect(); if(r.top<innerHeight*1.1) el.classList.add("in"); else io.observe(el);});
+  document.documentElement.classList.add("rvon");
+  addEventListener("hashchange",todos); if(location.hash) todos();
+  setTimeout(todos,2500);
+} else todos();
+
+// ---------- curvas de nivel: el motivo gráfico de la marca ----------
+function curvas(id, cyF){
+  const c=document.getElementById(id); if(!c) return; const g=c.getContext("2d"); let W,H,t=0,vis=true,run=false;
+  const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function tam(){const r=Math.min(devicePixelRatio||1,2);W=c.width=c.clientWidth*r;H=c.height=c.clientHeight*r}
+  function dibuja(){run=false;g.clearRect(0,0,W,H);const cx=W*.62,cy=H*cyF,n=26,esc=Math.max(W,H)/24,d=Math.min(devicePixelRatio||1,2);
+    for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
+      for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
+      g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
+    if(!quieto&&vis){t+=.0025;run=true;requestAnimationFrame(dibuja)}}
+  if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting; if(vis&&!run) dibuja();}).observe(c);
+  addEventListener("resize",()=>{tam();if(quieto)dibuja()}); tam(); dibuja();
+}
+curvas("curvas",.42); curvas("curvas2",.5);
+
+// ---------- Textos legales: se abren desde el pie o con #terminos / #datos en la dirección ----------
+(function(){
+  const abre = id => { const d = document.getElementById(id); if (!d) return; document.querySelectorAll("dialog.legal[open]").forEach(x => x !== d && x.close()); if (!d.open) d.showModal(); d.querySelector(".lg-body").scrollTop = 0; d.scrollTop = 0; };
+  document.querySelectorAll("[data-legal]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); abre(a.dataset.legal); }));
+  document.querySelectorAll("dialog.legal").forEach(d => {
+    d.querySelector("[data-cierra]").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });   // clic fuera del texto
+  });
+  const porHash = () => { if (location.hash === "#terminos") abre("lgTerminos"); if (location.hash === "#datos") abre("lgDatos"); };
+  porHash(); addEventListener("hashchange", porHash);
+})();
+
+// ---------- Cabida: la planta va abierta en escritorio y plegada en el celular ----------
+(function(){
+  const det = document.getElementById("mvDet"); if (!det) return;
+  const mq = matchMedia("(min-width:1001px)");
+  const fija = () => { if (mq.matches) det.open = true; else det.open = false; };
+  fija(); mq.addEventListener ? mq.addEventListener("change", fija) : mq.addListener(fija);
+})();
+
+// ---------- Dimensiona: render de fondo con curvas de nivel en tinta que se levantan con el cursor ----------
+(function(){
+  const sec = document.getElementById("dimensiona"), c = document.getElementById("curvasTinta"), img = document.getElementById("fondoImg");
+  if (!sec || !c) return;
+  const g = c.getContext("2d"), quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W, H, d = 1, t = 0, vis = false, run = false, mx = -9999, my = -9999, fx = 0, fy = 0, fuerza = 0;
+  function tam(){ d = Math.min(devicePixelRatio || 1, 2); W = c.width = c.clientWidth * d; H = c.height = c.clientHeight * d; }
+  function dibuja(){
+    run = false; g.clearRect(0, 0, W, H);
+    fx += (mx - fx) * .08; fy += (my - fy) * .08;            // el cursor se sigue con suavidad
+    fuerza += ((mx > -999 ? 1 : 0) - fuerza) * .05;
+    const cx = W * .22, cy = H * .55, n = 30, esc = Math.max(W, H) / 26, sig = 170 * d;
+    for (let i = 1; i <= n; i++) {
+      g.beginPath(); const r0 = i * esc;
+      for (let k = 0; k <= 200; k++) {
+        const a = k / 200 * Math.PI * 2;
+        const r = r0 * (1 + .09 * Math.sin(a * 3 + i * .33 + t) + .05 * Math.cos(a * 5 - i * .21 - t * .7));
+        let x = cx + Math.cos(a) * r * 1.45, y = cy + Math.sin(a) * r * .8;
+        const dx = x - fx, dy = y - fy, e = Math.exp(-(dx * dx + dy * dy) / (2 * sig * sig)) * fuerza;
+        x += dx * e * .55; y += dy * e * .55;                    // la colina empuja las curvas hacia afuera
+        k ? g.lineTo(x, y) : g.moveTo(x, y);
+      }
+      g.closePath();
+      g.strokeStyle = i % 5 === 0 ? "rgba(26,26,26,.34)" : "rgba(26,26,26," + (.2 - .003 * i) + ")";
+      g.lineWidth = (i % 5 === 0 ? 1.3 : .9) * d; g.stroke();
+    }
+    // el render se desplaza un poco más lento que la página
+    if (img) { const r = sec.getBoundingClientRect(); img.style.transform = "translateY(" + ((r.top + r.height / 2 - innerHeight / 2) * -.06).toFixed(1) + "px)"; }
+    if (!quieto && vis) { t += .002; run = true; requestAnimationFrame(dibuja); }
+  }
+  sec.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); mx = (e.clientX - r.left) * d; my = (e.clientY - r.top) * d; if (fx < -999) { fx = mx; fy = my; } });
+  sec.addEventListener("pointerleave", () => { mx = my = -9999; });
+  if ("IntersectionObserver" in window) new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis && !run) dibuja(); }).observe(sec); else { vis = true; }
+  addEventListener("resize", () => { tam(); if (quieto) dibuja(); }); tam(); dibuja();
+})();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="assets/relieve.js?v=20261022d" defer></script>
+<script src="assets/modelo.js?v=20261022e" defer></script>
+<script src="assets/sabor.js?v=20261022d" defer></script>
+<script src="assets/i18n.js?v=20261022a" defer></script>
+<script src="assets/consent.js?v=20261022a" defer></script>
 </body>
 </html>
