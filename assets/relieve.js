@@ -1,4 +1,4 @@
-// X.FORM · Relieve 3D de curvas de nivel en todos los espacios negros de la página.
+// X.FORM · Relieve 3D de curvas de nivel en la portada (v4: una sola aparición fuerte, DESIGN.md §2).
 // Un solo terreno, fijo detrás del contenido: las secciones claras lo tapan con su fondo y las
 // oscuras lo dejan ver. El cursor (o el dedo) levanta una colina suave donde pasa, en cualquier
 // sección oscura, y el terreno se desplaza despacio con el scroll.
@@ -98,7 +98,7 @@
   cam.lookAt(1.2, -0.6, 0);
 
   // Secciones oscuras: el relieve solo se dibuja cuando alguna está en pantalla.
-  const oscuras = [...document.querySelectorAll("[data-oscuro]")];
+  const oscuras = [...document.querySelectorAll("#inicio")];   // v4: el relieve vive solo en la portada
   const enPantalla = new Set();
   let heroVis = 1;
 
