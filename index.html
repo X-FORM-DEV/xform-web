@@ -113,7 +113,7 @@ nav.menu button.lang[hidden]{display:none}
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 clamp(48px,8vw,90px);overflow:hidden}
 canvas.curvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6}
-canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+canvas.relieve{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointer-events:none}
 .hero .wrap{position:relative;z-index:1;width:100%}
 .hero h1{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
 .hero h1 b{font-weight:700}
@@ -131,7 +131,7 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer
 
 /* ---------- firma ---------- */
 .fgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:start}
-.firma h2{font-size:clamp(30px,3.7vw,52px);max-width:15ch}
+.firma h2{font-size:clamp(30px,3.4vw,48px);max-width:24ch}
 .fplano{margin-top:clamp(28px,4vw,48px);max-width:560px}
 .fplano figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;margin-top:10px;font-weight:400}
 .plano{width:100%;height:auto;overflow:visible}
@@ -205,7 +205,7 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer
 /* ---------- proyectos ---------- */
 .proy-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
 .filtros{display:flex;gap:8px;flex-wrap:wrap}
-.filtros button{font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;background:none;border:1px solid var(--linek);color:var(--ink);padding:10px 14px;cursor:pointer;transition:all .2s}
+.filtros button{font-family:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;background:none;border:1px solid var(--linek);color:var(--ink);padding:10px 14px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .filtros button:hover{border-color:var(--ink)}
 .filtros button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .cards{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.4vw,20px);margin-top:clamp(28px,4vw,44px)}
@@ -215,7 +215,7 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer
 .card.big .ph{aspect-ratio:16/9}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
 .card:hover img,.card:focus-visible img{transform:scale(1.04)}
-.card .ph::after{content:"VER PROYECTO";position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.2em;color:#fff;background:rgba(17,17,17,.75);padding:8px 12px;opacity:0;transform:translateY(6px);transition:all .3s}
+.card .ph::after{content:"VER PROYECTO";position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.2em;color:#fff;background:rgba(17,17,17,.75);padding:8px 12px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
 .card:hover .ph::after,.card:focus-visible .ph::after{opacity:1;transform:none}
 .card h3{font-size:clamp(20px,1.7vw,24px);margin-top:12px}
 .card .meta{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;font-weight:400;text-transform:uppercase}
@@ -274,7 +274,7 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .opts{display:flex;flex-wrap:wrap;gap:8px}
 .opts label{position:relative}
 .opts input{position:absolute;opacity:0;pointer-events:none}
-.opts span{display:inline-block;font-size:14px;padding:9px 14px;border:1px solid var(--linek);cursor:pointer;transition:all .2s;background:var(--white)}
+.opts span{display:inline-block;font-size:14px;padding:9px 14px;border:1px solid var(--linek);cursor:pointer;transition:background .2s,color .2s,border-color .2s;background:var(--white)}
 .opts label:hover span{border-color:var(--ink)}
 .opts input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .opts input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
@@ -339,7 +339,7 @@ dialog.legal::backdrop{background:rgba(17,17,17,.82);backdrop-filter:blur(4px)}
 .mv-ctl{margin-top:26px;display:grid;gap:16px}
 .mv-ctl .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:8px}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
-.seg button,.paso button,.mv-pl-head button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:all .2s}
+.seg button,.paso button,.mv-pl-head button{font-family:inherit;font-size:13px;letter-spacing:.06em;color:var(--paper);background:rgba(17,17,17,.6);border:1px solid rgba(241,240,236,.22);padding:9px 14px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .seg button:hover,.paso button:hover:not(:disabled),.mv-pl-head button:hover:not(:disabled){border-color:var(--lime);color:var(--lime)}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .seg.tam button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 12px;line-height:1.1}
@@ -509,6 +509,23 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 .cookies button:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 footer button.ck{font:inherit;background:none;border:0;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
 @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* v5 · obra desde la segunda pantalla y menos aire */
+section{padding:clamp(52px,6vw,88px) 0}
+.firma{padding-top:clamp(20px,3vw,40px)}
+.obra{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:clamp(8px,1vw,14px);height:clamp(440px,58vw,780px);margin-bottom:clamp(36px,4.5vw,64px)}
+.obra button{position:relative;overflow:hidden;border:0;padding:0;background:#1A1A1A;cursor:pointer;font:inherit;color:#fff;text-align:left}
+.obra button:first-child{grid-row:span 2}
+.obra img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.obra button:hover img{transform:scale(1.035)}
+.obra .ot{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;background:linear-gradient(transparent,rgba(17,17,17,.72)); /* taste-skill-ignore: scrim sobre foto */display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.obra .ot b{font-weight:700;font-size:clamp(16px,1.3vw,20px);line-height:1.15}
+.obra .ot span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.82;white-space:nowrap}
+.obra .oia{position:absolute;top:12px;right:12px;white-space:nowrap;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(17,17,17,.6);padding:5px 8px}
+.firma .fgrid{align-items:start}
+.pilar{padding:16px 0 18px}
+.pilar .pt{line-height:1.5}
+@media (max-width:860px){.obra{grid-template-columns:1fr 1fr;grid-template-rows:none;height:auto}.obra button{aspect-ratio:4/5}.obra button:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}.obra .ot span{display:none}}
 </style>
 </head>
 <body>
@@ -550,11 +567,13 @@ footer button.ck{font:inherit;background:none;border:0;color:inherit;cursor:poin
 
 <!-- 01 FIRMA -->
 <section class="light firma" id="firma">
+  <div class="wrap">
+    <div class="obra" id="obra" aria-label="Proyectos de X.FORM"></div>
+  </div>
   <div class="wrap fgrid">
     <div class="fizq">
       <p class="tag rv"><i></i>01 · Quiénes somos</p>
       <h2 class="rv">Transformamos predios y espacios en lugares que las personas quieren habitar.</h2>
-      <figure class="fplano" data-plano><svg class="plano" viewBox="0 0 640 420" role="img" aria-label="Plano de una casa que se dibuja con el scroll"><path class="tr eje" data-o="1" pathLength="1" d="M70 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="70" cy="30" r="11"/><text class="tx" data-o="2" x="70" y="34">A</text><path class="tr eje" data-o="1" pathLength="1" d="M310 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="310" cy="30" r="11"/><text class="tx" data-o="2" x="310" y="34">B</text><path class="tr eje" data-o="1" pathLength="1" d="M550 44V372"/><circle class="tr eje" data-o="1" pathLength="1" cx="550" cy="30" r="11"/><text class="tx" data-o="2" x="550" y="34">C</text><path class="tr eje" data-o="1" pathLength="1" d="M44 70H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="70" r="11"/><text class="tx" data-o="2" x="30" y="74">1</text><path class="tr eje" data-o="1" pathLength="1" d="M44 230H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="230" r="11"/><text class="tx" data-o="2" x="30" y="234">2</text><path class="tr eje" data-o="1" pathLength="1" d="M44 360H576"/><circle class="tr eje" data-o="1" pathLength="1" cx="30" cy="360" r="11"/><text class="tx" data-o="2" x="30" y="364">3</text><path class="tr lim" data-o="2" pathLength="1" d="M52 52H568V378H52Z"/><path class="tr m" data-o="3" pathLength="1" d="M70 70H160M220 70H400M460 70H550V360H380M320 360H70V70"/><path class="tr m" data-o="3" pathLength="1" d="M78 78H160M220 78H400M460 78H542V352H380M320 352H78V78"/><path class="tr fin" data-o="4" pathLength="1" d="M160 70H220M160 74H220M160 78H220"/><path class="tr fin" data-o="4" pathLength="1" d="M400 70H460M400 74H460M400 78H460"/><path class="tr fin" data-o="4" pathLength="1" d="M320 352H380M320 356H380M320 360H380"/><path class="tr m" data-o="5" pathLength="1" d="M310 78V180M310 220V352"/><path class="tr m" data-o="5" pathLength="1" d="M310 230H420M460 230H542"/><path class="tr m" data-o="5" pathLength="1" d="M78 250H180M230 250H310"/><path class="tr m" data-o="5" pathLength="1" d="M430 230V352"/><path class="tr fin" data-o="6" pathLength="1" d="M310 180L350 180M350 180A40 40 0 0 0 310 220"/><path class="tr fin" data-o="6" pathLength="1" d="M420 230L420 270M420 270A40 40 0 0 1 460 230"/><path class="tr fin" data-o="6" pathLength="1" d="M180 250L180 290M180 290A50 50 0 0 0 230 250"/><path class="tr fin" data-o="7" pathLength="1" d="M320 88H532V112H320Z"/><path class="tr fin" data-o="7" pathLength="1" d="M440 270H530V340H440ZM440 286H530"/><path class="tr cota" data-o="8" pathLength="1" d="M70 400H550M70 392V408M310 392V408M550 392V408"/><path class="tr cota" data-o="8" pathLength="1" d="M600 92L600 46M592 62L600 46L608 62"/><path class="tr lim" data-o="8" pathLength="1" d="M60 300H20M580 300H620"/><text class="tx cota" data-o="9" x="190" y="396">7.20</text><text class="tx cota" data-o="9" x="430" y="396">7.20</text><text class="tx" data-o="9" x="600" y="110">N</text><text class="tx" data-o="9" x="20" y="292">A</text><text class="tx" data-o="9" x="620" y="292">A'</text><text class="tx rot" data-o="10" x="190" y="165">SALA</text><text class="tx rot" data-o="10" x="430" y="160">COCINA</text><text class="tx rot" data-o="10" x="190" y="305">ESTUDIO</text><text class="tx rot" data-o="10" x="370" y="300">BAÑO</text><text class="tx rot" data-o="10" x="486" y="258">ALCOBA</text></svg><figcaption>Del primer trazo a la entrega</figcaption></figure>
     </div>
     <div class="fder">
       <article class="pilar rv"><p class="pk"><b>01</b>Una sola mesa</p><p class="pt">X.FORM es un estudio de arquitectura en Bogotá. Reunimos estrategia, diseño, técnica y desarrollo en una misma mesa, en equilibrio con el entorno y con la cultura de cada lugar.</p></article>
@@ -907,8 +926,14 @@ document.querySelectorAll(".filtros button").forEach(b=>b.addEventListener("clic
 }));
 
 const dlg=document.getElementById("ficha");
+// v5 · obra en la segunda pantalla: sale de las mismas fichas (proyecto, imagen)
+const OBRA=[[0,0],[3,3],[2,1],[1,0],[5,0]];
+document.getElementById("obra").innerHTML=OBRA.map(([i,k])=>{const p=P[i];return `<button type="button" data-i="${i}" aria-label="Ver ${p.t}"><img src="${src(p.img[k])}" alt="${p.cap[k]}" loading="${i===0?"eager":"lazy"}" decoding="async">${p.ia?'<span class="oia">Retoque de IA</span>':""}<span class="ot"><b>${p.t}</b><span>${p.cat}</span></span></button>`;}).join("");
+document.getElementById("obra").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) abrirFicha(+b.dataset.i);});
 cards.addEventListener("click",e=>{
-  const c=e.target.closest(".card"); if(!c) return; const p=P[+c.dataset.i];
+  const c=e.target.closest(".card"); if(!c) return; abrirFicha(+c.dataset.i);
+});
+function abrirFicha(i){ const p=P[i];
   document.getElementById("fCat").textContent=p.cat;
   document.getElementById("fTitle").textContent=p.t;
   document.getElementById("fMeta").textContent=p.meta;
@@ -918,7 +943,7 @@ cards.addEventListener("click",e=>{
   document.getElementById("fGal").innerHTML=p.img.map((n,k)=>`<figure><img src="${src(n)}" alt="${p.cap[k]}" loading="lazy"><figcaption>${p.cap[k]}</figcaption></figure>`).join("");
   if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
   dlg.scrollTop=0;
-});
+}
 document.getElementById("fClose").addEventListener("click",()=>dlg.close?dlg.close():dlg.removeAttribute("open"));
 dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
 
