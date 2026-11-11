@@ -575,6 +575,19 @@ section{padding:clamp(52px,6vw,88px) 0}
 .hero.calma canvas.curvas{opacity:.12}
 .hero .wrap{transition-duration:1.8s}
 .hero:not(.calma) .wrap{transition-duration:.7s}
+
+/* v6d · sin curvas donde hay renders: fondo sólido en la obra y fuera las curvas sobre el render de Dimensiona */
+.obra-sec,.interior{background:#111}
+#curvasTinta{display:none}
+/* v6d · titular contenido: la obra que pasa detrás manda */
+.hero h1{font-size:clamp(38px,4.8vw,76px);letter-spacing:-.025em;line-height:1;margin-top:18px}
+.hero .tag{font-size:11px}
+.hero .lead{max-width:40ch;font-size:clamp(15px,1.15vw,17px);margin-top:18px;color:#D2D1CC}
+.hero .btns{margin-top:26px}
+.hero .facts{margin-top:clamp(28px,4vw,48px);padding-top:18px}
+.hero .facts span{font-size:clamp(15px,1.25vw,18px)}
+.hero .facts i{width:20px;transform:translateY(-4px)}
+.hero-velo{background:linear-gradient(90deg,rgba(17,17,17,.78) 0%,rgba(17,17,17,.48) 36%,rgba(17,17,17,0) 68%),linear-gradient(0deg,rgba(17,17,17,.6) 0%,transparent 45%) /* taste-skill-ignore: velo sobre video */}
 </style>
 </head>
 <body>
@@ -1102,10 +1115,10 @@ if("IntersectionObserver" in window){
 // v6c · hero: tras unos segundos de lectura el texto se retira y queda la obra en movimiento
 (function(){const h=document.getElementById("inicio"); if(!h||matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   let tm; const calma=()=>{ if(scrollY<innerHeight*.5) h.classList.add("calma"); };
-  const vuelve=()=>{ h.classList.remove("calma"); clearTimeout(tm); tm=setTimeout(calma,7000); };
+  const vuelve=()=>{ h.classList.remove("calma"); clearTimeout(tm); tm=setTimeout(calma,6000); };
   ["pointerdown","touchstart","keydown","wheel","focusin","scroll"].forEach(e=>addEventListener(e,vuelve,{passive:true}));
   let ult=0; addEventListener("pointermove",e=>{ const d=Math.abs(e.movementX)+Math.abs(e.movementY); if(d>24&&Date.now()-ult>400){ult=Date.now();vuelve();} },{passive:true});
-  tm=setTimeout(calma,9000);
+  tm=setTimeout(calma,6000);
 })();
 // v6 · video del hero: quieto si la persona pidió menos movimiento o ahorro de datos
 (function(){const v=document.getElementById("heroVid"); if(!v) return;
