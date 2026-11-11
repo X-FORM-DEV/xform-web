@@ -588,6 +588,37 @@ section{padding:clamp(52px,6vw,88px) 0}
 .hero .facts span{font-size:clamp(15px,1.25vw,18px)}
 .hero .facts i{width:20px;transform:translateY(-4px)}
 .hero-velo{background:linear-gradient(90deg,rgba(17,17,17,.78) 0%,rgba(17,17,17,.48) 36%,rgba(17,17,17,0) 68%),linear-gradient(0deg,rgba(17,17,17,.6) 0%,transparent 45%) /* taste-skill-ignore: velo sobre video */}
+
+/* v6e · el interiorismo como un mundo: atmósferas, escalas y proceso */
+.int-mundo{background:#111;padding:clamp(64px,8vw,120px) 0 clamp(64px,8vw,112px)}
+.int-mundo .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}
+.atm{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(28px,5vw,80px);align-items:center}
+.atm h3{font-size:clamp(28px,3.2vw,48px);font-weight:300;line-height:1.08;letter-spacing:-.02em;margin-top:16px;max-width:16ch}
+.atm-sub{color:#BDBCB7;margin-top:14px;font-size:clamp(15px,1.2vw,17px)}
+.atm-lista{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(24px,3vw,36px)}
+.atm-lista button{display:flex;flex-direction:column;align-items:flex-start;gap:8px;background:none;border:0;padding:0;color:var(--paper);font:inherit;cursor:pointer}
+.atm-lista img{width:64px;height:64px;object-fit:cover;display:block;outline:1px solid transparent;outline-offset:3px;transition:outline-color .3s,transform .3s}
+.atm-lista span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A9A8A3;transition:color .3s}
+.atm-lista button[aria-selected="true"] img{outline-color:var(--paper);transform:translateY(-3px)}
+.atm-lista button[aria-selected="true"] span{color:var(--paper)}
+.atm-lista button:focus-visible img{outline-color:var(--lime)}
+.atm-frase{margin-top:clamp(22px,3vw,34px);font-size:clamp(18px,1.6vw,22px);font-weight:300;line-height:1.4;max-width:30ch;min-height:3em;color:var(--paper)}
+.atm-foto{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;background:#1A1A1A}
+.atm-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.atm-foto img.on{opacity:1}
+.atm-foto figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:40px 16px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85);background:linear-gradient(transparent,rgba(17,17,17,.7)) /* taste-skill-ignore: scrim sobre foto */}
+.int-escalas,.int-proceso{margin-top:clamp(64px,8vw,120px)}
+.esc,.pasos{list-style:none;padding:0;margin:clamp(20px,2.4vw,32px) 0 0;display:grid;gap:clamp(22px,2.4vw,36px)}
+.esc{grid-template-columns:repeat(5,minmax(0,1fr))}
+.pasos{grid-template-columns:repeat(4,minmax(0,1fr))}
+.esc h4,.pasos h4{font-size:clamp(19px,1.6vw,24px);font-weight:700;margin:0;color:var(--paper)}
+.esc p,.pasos p{margin-top:10px;color:#BDBCB7;font-size:15px;line-height:1.55}
+.pasos h4{font-weight:300;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.02em}
+.int-cta{margin-top:clamp(64px,8vw,112px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.int-cta p{font-size:clamp(22px,2.4vw,34px);font-weight:300;margin:0;max-width:24ch;color:var(--paper)}
+.int-cta .btns{margin-top:0}
+@media (max-width:980px){.atm{grid-template-columns:1fr}.atm-foto{order:-1}.esc{grid-template-columns:1fr 1fr}.pasos{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.esc,.pasos{grid-template-columns:1fr}.atm-lista{gap:10px}.atm-lista img{width:54px;height:54px}}
 </style>
 </head>
 <body>
@@ -642,6 +673,7 @@ section{padding:clamp(52px,6vw,88px) 0}
         <button aria-pressed="false" data-f="rs">Residencial</button>
         <button aria-pressed="false" data-f="hs">Hospitality</button>
         <button aria-pressed="false" data-f="mu">Uso mixto</button>
+        <button aria-pressed="false" data-f="in">Interiorismo</button>
         <button aria-pressed="false" data-f="cc">Concursos</button>
       </div>
     </div>
@@ -657,11 +689,52 @@ section{padding:clamp(52px,6vw,88px) 0}
   <div class="int-velo" aria-hidden="true"></div>
   <div class="wrap int-txt">
     <p class="tag rv"><i></i>02 · Interiorismo</p>
-    <h2 class="rv">El proyecto también se habita por dentro.</h2>
-    <p class="rv">Diseñamos el interior con el mismo lápiz que la arquitectura: la luz, la materia, el mobiliario y el recorrido. Lobbies, amenidades, vivienda y hospitality que se sienten antes de verse.</p>
-    <div class="btns rv"><button type="button" class="btn k" id="intVer">Ver VITA Amenidades</button><a class="btn" href="#hablemos">Cuéntanos tu espacio</a></div>
+    <h2 class="rv">Interiores que se sienten antes de verse.</h2>
+    <p class="rv">Diseñamos el interior con el mismo lápiz que la arquitectura. La luz, la materia, el mobiliario y el recorrido se piensan juntos, para que cada espacio cuente su historia desde que alguien cruza la puerta.</p>
+    <div class="btns rv"><a class="btn k" href="#atmosferas">Explora las atmósferas</a><button type="button" class="btn" id="intVer">Ver interiores</button></div>
   </div>
   <p class="int-pie" id="intPie" aria-live="off"></p>
+</section>
+
+<section class="int-mundo" id="interiorismo-servicio" data-oscuro>
+  <div class="wrap">
+    <div class="atm" id="atmosferas">
+      <div class="atm-txt">
+        <p class="k rv">Atmósferas</p>
+        <h3 class="rv">Todo interior empieza por una materia.</h3>
+        <p class="atm-sub rv">Elige una y mira cómo cambia el espacio.</p>
+        <div class="atm-lista rv" role="tablist" aria-label="Materias" id="atmLista"></div>
+        <p class="atm-frase" id="atmFrase" aria-live="polite"></p>
+      </div>
+      <figure class="atm-foto" id="atmFoto"><figcaption id="atmPie"></figcaption></figure>
+    </div>
+
+    <div class="int-escalas">
+      <p class="k rv">Qué diseñamos</p>
+      <ul class="esc">
+        <li class="rv"><h4>Vivienda</h4><p>Casas y apartamentos hechos a la medida de quien los vive.</p></li>
+        <li class="rv"><h4>Hospitality</h4><p>Hoteles, clubes y restaurantes donde la experiencia empieza en el umbral.</p></li>
+        <li class="rv"><h4>Amenidades y lobbies</h4><p>El primer recuerdo de un edificio y el lugar donde su comunidad se encuentra.</p></li>
+        <li class="rv"><h4>Espacios de trabajo</h4><p>Oficinas que acompañan la manera en que hoy trabajan los equipos.</p></li>
+        <li class="rv"><h4>La marca en el espacio</h4><p>Locales y salas de ventas donde una marca se vuelve lugar.</p></li>
+      </ul>
+    </div>
+
+    <div class="int-proceso">
+      <p class="k rv">Cómo lo hacemos</p>
+      <ol class="pasos">
+        <li class="rv"><h4>Imaginar</h4><p>Leemos el lugar y a quien lo habita. De ahí sale la atmósfera y la historia que el espacio va a contar.</p></li>
+        <li class="rv"><h4>Elegir</h4><p>Armamos la carta de materiales con muestras reales y la referencia de cada proveedor, antes del primer render.</p></li>
+        <li class="rv"><h4>Dibujar</h4><p>Planos de detalle, mobiliario a medida, iluminación y renders que anticipan el resultado.</p></li>
+        <li class="rv"><h4>Habitar</h4><p>Acompañamos la obra y el montaje hasta que el espacio queda listo para vivirse.</p></li>
+      </ol>
+    </div>
+
+    <div class="int-cta rv">
+      <p>¿Qué espacio quieres transformar por dentro?</p>
+      <div class="btns"><a class="btn k" href="https://wa.me/573148304724?text=Hola%20X.FORM%2C%20quiero%20dise%C3%B1ar%20el%20interior%20de%20mi%20espacio." target="_blank" rel="noopener">Conversemos por WhatsApp</a><a class="btn" href="#hablemos">Escríbenos</a></div>
+    </div>
+  </div>
 </section>
 
 <!-- 03 FIRMA -->
@@ -975,13 +1048,13 @@ const P = [
  {f:["hs"], big:true, cat:"Hospitality", t:"Cayetana · Beach Club", meta:"Barú, Cartagena · Hospitality · 2026",
   txt:"Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle para quedarse hasta que cae la tarde.",
   cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-beachclub-1","cayetana-beachclub-2","cayetana-beachclub-3","cayetana-beachclub-4","cayetana-beachclub-5"], cap:["Beach Club · Cayetana, Barú","La playa y el muelle · Cayetana, Barú","La playa al atardecer · Cayetana, Barú","La playa desde el agua · Cayetana, Barú","El conjunto, el canal y la playa · Cayetana, Barú"]},
- {f:["rs"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
+ {f:["rs","in"], cat:"Residencial", t:"Cayetana · Villas", meta:"Barú, Cartagena · Residencial · 2026",
   txt:"Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella sigue la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.",
   cred:"Arquitectura: X.FORM", ia:true, img:["cayetana-villa-macarella","cayetana-villa-eivissa","cayetana-villa-eivissa-2","cayetana-villa-eivissa-3","cayetana-villa-eivissa-4","cayetana-villa-eivissa-5","cayetana-villa-macarella-2","cayetana-villa-macarella-3","cayetana-villa-macarella-4","cayetana-villa-macarella-5","cayetana-villa-savina"], cap:["Villa Macarella · Cayetana, Barú","Villa Eivissa · Cayetana, Barú","La terraza hacia el mar · Villa Eivissa · Cayetana, Barú","Los arcos de la entrada · Villa Eivissa · Cayetana, Barú","La alcoba frente al mar · Villa Eivissa · Cayetana, Barú","La sala de cal y madera · Villa Eivissa · Cayetana, Barú","Villa Macarella de noche · Cayetana, Barú","La llegada · Villa Macarella · Cayetana, Barú","La terraza alta al atardecer · Villa Macarella · Cayetana, Barú","El patio de agua · Villa Macarella · Cayetana, Barú","Villa Savina · Cayetana, Barú"]},
- {f:["mu","rs"], cat:"Uso mixto", t:"VITA 119", meta:"Bogotá · Uso mixto · 5.150 m² · 2026",
+ {f:["mu","rs","in"], cat:"Uso mixto", t:"VITA 119", meta:"Bogotá · Uso mixto · 5.150 m² · 2026",
   txt:"En VITA 119 el bienestar sube con el edificio. Recibe en el lobby, se abre al aire en el piso 4 y vuelve a encontrar la luz en el piso 12, entre jardines que cuelgan de la fachada. VT Residences y el Centro de Experiencia hacen parte del mismo proyecto.",
   cred:"Arquitectura: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["vita119-1","vita119-2","vita119-3","vita119-4","vita119-5","vita119-6","vita119-7","vita119-8","vita119-9","vita119-10"], cap:["VITA 119 · Santa Bárbara, Bogotá","Los jardines suspendidos · VITA 119","La esquina con la luz de la tarde · VITA 119","La fachada verde frente al cerro · VITA 119","El lobby · VITA 119","La terraza frente a los cerros · VITA 119","El gimnasio · VITA 119","La sala junto al ventanal · VT Residences · VITA 119","La sala y el comedor · VT Residences · VITA 119","La cocina abierta a la ciudad · VT Residences · VITA 119"]},
- {f:["hs","mu"], cat:"Hospitality", t:"VITA Amenidades", meta:"Bogotá · Amenidades y bienestar · 600 m² · 2025",
+ {f:["hs","mu","in"], cat:"Hospitality", t:"VITA Amenidades", meta:"Bogotá · Amenidades y bienestar · 600 m² · 2025",
   txt:"Un lugar para bajar el ritmo dentro del edificio. Las amenidades de VITA 119 se ordenan alrededor del cuerpo y la calma: un jardín que recibe en la entrada, una biblioteca para trabajar con luz tamizada y materiales cálidos que piden llegar despacio.",
   cred:"Arquitectura e interiorismo: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["casa-alma-1","casa-alma-4","casa-alma-2","casa-alma-3"], cap:["La llegada · VITA Amenidades · Bogotá","La biblioteca de trabajo · VITA Amenidades · Bogotá","El gimnasio frente a la ciudad · VITA Amenidades · Bogotá","La zona de pesas · VITA Amenidades · Bogotá"]},
  {f:["cc"], cat:"Institucional", t:"Alcaldía Local de Usme", meta:"Usme, Bogotá · Concurso SCA · Institucional",
@@ -1106,7 +1179,7 @@ if("IntersectionObserver" in window){
   const im=[...box.querySelectorAll("img")]; let n=0;
   const rotula=()=>{const [i,k]=F[n]; pie.textContent=P[i].cap[k]+(P[i].ia?" · Retoque de IA":"");};
   rotula();
-  document.getElementById("intVer").addEventListener("click",()=>abrirFicha(4));
+  document.getElementById("intVer").addEventListener("click",()=>{ const b=document.querySelector('.filtros button[data-f="in"]'); if(b) b.click(); document.getElementById("proyectos").scrollIntoView({behavior:"smooth"}); });
   if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   let vis=false;
   if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.2}).observe(box.parentElement);
@@ -1119,6 +1192,30 @@ if("IntersectionObserver" in window){
   ["pointerdown","touchstart","keydown","wheel","focusin","scroll"].forEach(e=>addEventListener(e,vuelve,{passive:true}));
   let ult=0; addEventListener("pointermove",e=>{ const d=Math.abs(e.movementX)+Math.abs(e.movementY); if(d>24&&Date.now()-ult>400){ult=Date.now();vuelve();} },{passive:true});
   tm=setTimeout(calma,6000);
+})();
+// v6e · Atmósferas: cada materia sale de un render real y cambia el espacio
+(function(){
+  const M=[
+    ["madera","Madera",3,4,"La madera calienta la llegada y guía el paso hacia adentro."],
+    ["cal","Cal",2,5,"La cal guarda el fresco del Caribe y suaviza la luz del mediodía."],
+    ["lino","Lino",2,4,"El lino baja el ritmo: la alcoba se vuelve un lugar para quedarse."],
+    ["piedra","Piedra",3,9,"La piedra ancla el centro de la casa, donde todo se reúne."],
+    ["jardin","Jardín",4,0,"El verde entra al interior y el edificio respira con quien lo habita."]];
+  const lista=document.getElementById("atmLista"), foto=document.getElementById("atmFoto"), pie=document.getElementById("atmPie"), frase=document.getElementById("atmFrase"); if(!lista) return;
+  lista.innerHTML=M.map(([k,n],j)=>`<button type="button" role="tab" aria-selected="${j?"false":"true"}" data-j="${j}"><img src="assets/img/materia/${k}.webp?v=20261111b" alt="" width="64" height="64" loading="lazy"><span>${n}</span></button>`).join("");
+  foto.insertAdjacentHTML("afterbegin",M.map(([k,n,i,im],j)=>`<img class="${j?"":"on"}" src="${src(P[i].img[im])}" alt="${P[i].cap[im]}" loading="lazy" decoding="async">`).join(""));
+  const fotos=[...foto.querySelectorAll("img")], bts=[...lista.querySelectorAll("button")];
+  let n=0;
+  function elige(j){ n=j; fotos.forEach((f,x)=>f.classList.toggle("on",x===j)); bts.forEach((b,x)=>b.setAttribute("aria-selected",x===j));
+    const [,,i,im,t]=M[j]; frase.textContent=t; pie.textContent=P[i].cap[im]+(P[i].ia?" · Retoque de IA":""); }
+  bts.forEach(b=>{ b.addEventListener("click",()=>{ elige(+b.dataset.j); pausa=true; }); b.addEventListener("mouseenter",()=>elige(+b.dataset.j)); });
+  elige(0);
+  // si nadie elige, las materias pasan solas, despacio
+  let pausa=false, vis=false;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.3}).observe(foto);
+  lista.addEventListener("mouseenter",()=>pausa=true);
+  setInterval(()=>{ if(vis&&!pausa) elige((n+1)%M.length); },6500);
 })();
 // v6 · video del hero: quieto si la persona pidió menos movimiento o ahorro de datos
 (function(){const v=document.getElementById("heroVid"); if(!v) return;
