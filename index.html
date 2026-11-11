@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>X.FORM · Estudio de arquitectura en Bogotá</title>
-<meta name="description" content="Estudio de arquitectura en Bogotá. Estrategia, diseño y desarrollo inmobiliario en una misma mesa, del primer trazo a la obra, en Colombia y el Caribe.">
+<title>X.FORM · Estudio de arquitectura e interiores en Bogotá</title>
+<meta name="description" content="Estudio de arquitectura y diseño de interiores en Bogotá. Masterplans en Cartagena y Barú, cabidas y desarrollo inmobiliario, del lote a la obra.">
 <link rel="canonical" href="https://xform.com.co/">
 <link rel="alternate" hreflang="es" href="https://xform.com.co/">
-<link rel="alternate" hreflang="en" href="https://xform.com.co/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://xform.com.co/">
 <script>
 // Solo xform.com.co se indexa: las vistas previas de Netlify y cualquier otra copia piden noindex.
@@ -18,7 +17,7 @@
 <meta property="og:site_name" content="X.FORM">
 <meta property="og:locale" content="es_CO">
 <meta property="og:locale:alternate" content="en_US">
-<meta property="og:title" content="X.FORM · Estudio de arquitectura en Bogotá">
+<meta property="og:title" content="X.FORM · Arquitectura, interiores y masterplan · Bogotá y Caribe">
 <meta property="og:description" content="Arquitectura, estrategia y desarrollo en una misma mesa, del primer trazo a la obra.">
 <meta property="og:url" content="https://xform.com.co/">
 <meta property="og:image" content="https://xform.com.co/assets/og-xform.png">
@@ -26,7 +25,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="X.FORM · Beyond design">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="X.FORM · Estudio de arquitectura en Bogotá">
+<meta name="twitter:title" content="X.FORM · Arquitectura, interiores y masterplan · Bogotá y Caribe">
 <meta name="twitter:description" content="Arquitectura, estrategia y desarrollo en una misma mesa, del primer trazo a la obra.">
 <meta name="twitter:image" content="https://xform.com.co/assets/og-xform.png">
 <script type="application/ld+json">
@@ -36,7 +35,9 @@
   "@id": "https://xform.com.co/#organizacion",
   "name": "X.FORM S.A.S.",
   "alternateName": "X.FORM",
-  "description": "Estudio de arquitectura, estrategia y desarrollo inmobiliario.",
+  "description": "Estudio de arquitectura y diseño de interiores en Bogotá: masterplans, vivienda, hospitality, cabidas y desarrollo inmobiliario en Colombia y el Caribe.",
+  "founder": [{"@type": "Person", "name": "Francisco Ospina"}, {"@type": "Person", "name": "Camilo Restrepo"}],
+  "geo": {"@type": "GeoCoordinates", "latitude": 4.6773, "longitude": -74.0490},
   "url": "https://xform.com.co/",
   "logo": "https://xform.com.co/assets/xform-logo-negro.png",
   "image": "https://xform.com.co/assets/og-xform.png",
@@ -53,20 +54,28 @@
   "areaServed": [
     {"@type": "City", "name": "Bogotá"},
     {"@type": "City", "name": "Cartagena"},
+    {"@type": "Place", "name": "Barú, Cartagena"},
     {"@type": "City", "name": "Medellín"},
     {"@type": "City", "name": "Cali"}
   ],
-  "knowsAbout": ["Arquitectura", "Diseño arquitectónico", "Desarrollo inmobiliario", "Masterplan", "Cabidas y estudios de prefactibilidad"],
+  "knowsAbout": ["Arquitectura", "Diseño de interiores", "Interiorismo", "Diseño arquitectónico", "Urbanismo y paisaje", "Desarrollo inmobiliario", "Masterplan", "Cabidas y estudios de prefactibilidad"],
+  "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Servicios", "itemListElement": [
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Arquitectura"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diseño de interiores"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Masterplan y urbanismo"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cabidas y prefactibilidad"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gerencia y desarrollo inmobiliario"}}]},
   "sameAs": ["https://www.instagram.com/x.form___/"]
 }
 </script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/"}}</script>
-<link rel="preload" href="assets/KievitOT-Light.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="assets/KievitOT-Light.woff2?v=20261111d" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/video/hero-obra.webp?v=20261111d" fetchpriority="high">
 <style>
-@font-face{font-family:"Kievit";src:url(assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
-@font-face{font-family:"Kievit";src:url(assets/KievitOT-Regular.otf) format("opentype");font-weight:400;font-display:swap}
-@font-face{font-family:"Kievit";src:url(assets/KievitOT-Bold.otf) format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:"Kievit";src:url(assets/KievitOT-Light.woff2?v=20261111d) format("woff2"),url(assets/KievitOT-Light.otf) format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:"Kievit";src:url(assets/KievitOT-Regular.woff2?v=20261111d) format("woff2"),url(assets/KievitOT-Regular.otf) format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"Kievit";src:url(assets/KievitOT-Bold.woff2?v=20261111d) format("woff2"),url(assets/KievitOT-Bold.otf) format("opentype");font-weight:700;font-display:swap}
 :root{--ink:#1A1A1A;--deep:#111111;--carbon:#2B2B2B;--paper:#F1F0EC;--white:#FFFFFF;--muted:#8E9097;--line:rgba(241,240,236,.14);--linek:rgba(26,26,26,.14);--lime:#C8FF3C;--gut:clamp(16px,5vw,72px)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -81,10 +90,10 @@ h1,h2,h3{font-weight:300;letter-spacing:-.015em;line-height:1.08}
 h2{font-size:clamp(32px,5vw,64px);margin-top:22px;max-width:16ch}
 section{padding:clamp(64px,8vw,112px) 0;position:relative}
 .light{background:var(--paper);color:var(--ink)}
-.light .tag{color:#6E6E6E}
+.light .tag{color:#5E5E5E}
 .white{background:var(--white);color:var(--ink)}
-.white .tag{color:#6E6E6E}
-.num{font-size:12px;letter-spacing:.2em;color:#6E6E6E;font-weight:400}
+.white .tag{color:#5E5E5E}
+.num{font-size:12px;letter-spacing:.2em;color:#5E5E5E;font-weight:400}
 
 /* ---------- barra ---------- */
 header{position:fixed;top:0;left:0;right:0;z-index:50;transition:border-color .3s;border-bottom:1px solid transparent;background:rgba(17,17,17,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
@@ -115,8 +124,8 @@ nav.menu button.lang[hidden]{display:none}
 canvas.curvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6}
 canvas.relieve{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointer-events:none}
 .hero .wrap{position:relative;z-index:1;width:100%}
-.hero h1{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
-.hero h1 b{font-weight:700}
+.hero .lema{font-size:clamp(52px,10.5vw,156px);letter-spacing:-.035em;line-height:.95;margin-top:28px}
+.hero .lema b{font-weight:700}
 .hero .lead{max-width:44ch;font-size:clamp(18px,1.8vw,22px);color:#C9C8C3;margin-top:30px}
 .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px}
 .btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;padding:16px 24px;border:1px solid rgba(241,240,236,.35);color:var(--paper);background:none;cursor:pointer;font-family:inherit;transition:background .2s,color .2s,border-color .2s}
@@ -133,7 +142,7 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointe
 .fgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:start}
 .firma h2{font-size:clamp(30px,3.4vw,48px);max-width:24ch}
 .fplano{margin-top:clamp(28px,4vw,48px);max-width:560px}
-.fplano figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;margin-top:10px;font-weight:400}
+.fplano figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5E5E5E;margin-top:10px;font-weight:400}
 .plano{width:100%;height:auto;overflow:visible}
 .plano .tr{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:var(--d,0);vector-effect:non-scaling-stroke;stroke-linecap:square}
 .plano .m{stroke-width:2}
@@ -141,15 +150,15 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointe
 .plano .eje{stroke:#9A9A9A;stroke-width:.8}
 .plano path.eje{stroke-dasharray:1;opacity:.55}
 .plano .lim{stroke:var(--lime);stroke-width:2.6}
-.plano .cota{stroke:#6E6E6E;stroke-width:.8}
-.plano .tx{font-size:11px;letter-spacing:.14em;fill:#6E6E6E;text-anchor:middle;font-family:inherit;font-weight:400;opacity:var(--a,1);transition:opacity .4s}
+.plano .cota{stroke:#5E5E5E;stroke-width:.8}
+.plano .tx{font-size:11px;letter-spacing:.14em;fill:#5E5E5E;text-anchor:middle;font-family:inherit;font-weight:400;opacity:var(--a,1);transition:opacity .4s}
 .plano .tx.rot{fill:var(--ink);font-size:11px;letter-spacing:.24em}
 .fder{display:grid;gap:0;padding-top:clamp(8px,2vw,24px)}
 .pilar{border-top:1px solid var(--linek);padding:clamp(20px,2.4vw,30px) 0 clamp(22px,2.6vw,32px);position:relative}
 .pilar:last-child{border-bottom:1px solid var(--linek)}
 .pilar::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:56px;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform .9s cubic-bezier(.7,0,.2,1) .2s}
 .pilar.in::before,html:not(.rvon) .pilar::before{transform:scaleX(1)}
-.pk{display:flex;align-items:baseline;gap:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.pk{display:flex;align-items:baseline;gap:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#5E5E5E;font-weight:400}
 .pk b{font-size:12px;color:var(--ink);font-weight:700;letter-spacing:.1em}
 .pt{font-size:clamp(17px,1.45vw,20px);color:#2E2E2E;margin-top:14px;max-width:46ch;line-height:1.55}
 .pilar:first-child .pt{font-size:clamp(19px,1.75vw,23px);color:var(--ink)}
@@ -180,9 +189,9 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointe
 .pia{position:absolute;right:0;bottom:0;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8E9097;opacity:0;transition:opacity .8s}
 .pcanvas.real .pia{opacity:1}
 @keyframes gira{to{transform:rotate(360deg)}}
-.pfase{margin-bottom:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.pfase{margin-bottom:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#5E5E5E;font-weight:400}
 .pfase b{color:var(--ink);font-weight:700}
-.pvista figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E6E6E;font-weight:400;margin-top:8px}
+.pvista figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5E5E5E;font-weight:400;margin-top:8px}
 .fases{display:grid;gap:0;margin-top:clamp(8px,2vw,24px)}
 .fase{border-top:2px solid var(--linek);padding:22px 0 26px;cursor:pointer;transition:opacity .4s}
 .fase:last-child{border-bottom:1px solid var(--linek)}
@@ -218,12 +227,12 @@ canvas.relieve{position:fixed;inset:0;width:100vw;height:100svh;z-index:0;pointe
 .card .ph::after{content:"VER PROYECTO";position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.2em;color:#fff;background:rgba(17,17,17,.75);padding:8px 12px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
 .card:hover .ph::after,.card:focus-visible .ph::after{opacity:1;transform:none}
 .card h3{font-size:clamp(20px,1.7vw,24px);margin-top:12px}
-.card .meta{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;font-weight:400;text-transform:uppercase}
+.card .meta{font-size:11px;letter-spacing:.18em;color:#5E5E5E;margin-top:8px;font-weight:400;text-transform:uppercase}
 .card.hide{display:none}
 .card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 @media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.card,.card.big{grid-column:span 1}}
 @media (max-width:560px){.cards{grid-template-columns:1fr}}
-.iaNote{margin-top:24px;font-size:12px;letter-spacing:.12em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+.iaNote{margin-top:24px;font-size:12px;letter-spacing:.12em;color:#5E5E5E;text-transform:uppercase;font-weight:400}
 
 /* ficha abierta */
 dialog.ficha{border:0;padding:0;max-width:none;max-height:none;width:100%;height:100%;background:var(--paper);color:var(--ink)}
@@ -234,15 +243,15 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .f-close:hover{border-color:var(--ink)}
 .f-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);padding:clamp(24px,4vw,56px) var(--gut) 80px;max-width:1500px;margin:0 auto}
 .f-gal{display:grid;gap:18px}
-.f-gal figcaption{font-size:11px;letter-spacing:.18em;color:#6E6E6E;margin-top:8px;text-transform:uppercase;font-weight:400}
+.f-gal figcaption{font-size:11px;letter-spacing:.18em;color:#5E5E5E;margin-top:8px;text-transform:uppercase;font-weight:400}
 .f-txt{position:sticky;top:90px;align-self:start}
 .f-txt .tag i{background:var(--ink)}
-.f-txt .tag{color:#6E6E6E}
+.f-txt .tag{color:#5E5E5E}
 .f-txt h3{font-size:clamp(34px,4vw,56px);margin:18px 0 10px}
-.f-txt .meta{font-size:12px;letter-spacing:.18em;color:#6E6E6E;text-transform:uppercase;font-weight:400}
+.f-txt .meta{font-size:12px;letter-spacing:.18em;color:#5E5E5E;text-transform:uppercase;font-weight:400}
 .f-txt p.txt{font-size:clamp(17px,1.4vw,20px);margin-top:26px;color:#2E2E2E}
 .f-txt .cred{font-size:14px;margin-top:28px;padding-top:18px;border-top:1px solid var(--linek);color:#4A4A4A}
-.f-txt .ia{font-size:13px;margin-top:10px;color:#6E6E6E}
+.f-txt .ia{font-size:13px;margin-top:10px;color:#5E5E5E}
 @media (max-width:900px){.f-body{grid-template-columns:1fr}.f-txt{position:static;order:-1}}
 
 /* ---------- equipo ---------- */
@@ -270,7 +279,7 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .dim .lead{font-size:clamp(16px,1.3vw,18px);color:#3B3B3B;margin-top:20px;max-width:40ch}
 .q{border-top:1px solid var(--linek);padding:16px 0 18px}
 .q fieldset{border:0;min-width:0}
-.q legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:#6E6E6E;margin-bottom:10px;padding:0}
+.q legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;color:#5E5E5E;margin-bottom:10px;padding:0}
 .opts{display:flex;flex-wrap:wrap;gap:8px}
 .opts label{position:relative}
 .opts input{position:absolute;opacity:0;pointer-events:none}
@@ -286,14 +295,14 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .res p.matiz{font-size:16px;color:#B9B8B3;margin-top:12px}
 .res .btns{margin-top:26px}
 .res p.disc{font-size:13px;color:var(--muted);margin-top:22px}
-.hint{font-size:14px;color:#6E6E6E;margin-top:8px}
+.hint{font-size:14px;color:#5E5E5E;margin-top:8px}
 @media (max-width:900px){.dim{grid-template-columns:1fr}}
 /* render de fondo con curvas de nivel en tinta: la arquitectura asoma detrás de lo claro */
 .conrender{overflow:hidden;isolation:isolate}
 .fondo-render{position:absolute;inset:0;z-index:-1;pointer-events:none}
 .fondo-render img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;opacity:.26;filter:grayscale(.55) contrast(1.05);mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 38%,rgba(0,0,0,.12) 70%,transparent 92%);mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.75) 38%,rgba(0,0,0,.12) 70%,transparent 92%);will-change:transform}
 .fondo-render canvas{position:absolute;inset:0;width:100%;height:100%}
-.fondo-cap{position:absolute;left:var(--gut);bottom:18px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6E6E6E;font-weight:400}
+.fondo-cap{position:absolute;left:var(--gut);bottom:18px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#5E5E5E;font-weight:400}
 @media (max-width:900px){.fondo-render img{-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 30%,transparent 60%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 30%,transparent 60%)}.fondo-cap{bottom:auto;top:clamp(64px,8vw,112px);margin-top:-30px}}
 
 /* ---------- hablemos ---------- */
@@ -306,7 +315,7 @@ dialog.ficha::backdrop{background:rgba(0,0,0,.6)}
 .datos{display:grid;grid-template-columns:1fr 1fr;gap:22px clamp(20px,3vw,40px)}
 .datos div:last-child{grid-column:1/-1}
 @media (max-width:860px){.contacto .cgrid{grid-template-columns:1fr}}
-.datos h4{font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:400;margin-bottom:12px}
+.datos h3{font-size:12px;letter-spacing:.18em;color:var(--muted);font-weight:400;margin-bottom:12px}
 .datos a,.datos p{display:block;font-size:17px;text-decoration:none;margin-bottom:6px;color:var(--paper)}
 .datos a:hover{color:var(--lime)}
 @media (max-width:520px){.datos{grid-template-columns:1fr}}
@@ -324,12 +333,12 @@ dialog.legal::backdrop{background:rgba(17,17,17,.82);backdrop-filter:blur(4px)}
 .lg-top button:hover{border-color:var(--ink)}
 .lg-body{padding:clamp(24px,4vw,44px) clamp(20px,4vw,44px) 48px;font-size:15px;line-height:1.65;color:#2B2B2B}
 .lg-body h3{font-size:clamp(26px,3vw,36px);color:var(--ink);margin:10px 0 6px}
-.lg-body .vig{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6E6E6E;margin-bottom:22px}
+.lg-body .vig{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#5E5E5E;margin-bottom:22px}
 .lg-body h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink);margin:26px 0 8px}
 .lg-body p,.lg-body li{margin-bottom:8px;max-width:72ch}
 .lg-body ul{padding-left:20px}
 .lg-body a{color:var(--ink)}
-.lg-body .tag{color:#6E6E6E}.lg-body .tag i{background:var(--ink)}
+.lg-body .tag{color:#5E5E5E}.lg-body .tag i{background:var(--ink)}
 @media (max-width:640px){dialog.legal{max-height:100dvh;height:100dvh;width:100vw;max-width:100vw}}
 
 /* ---------- modelo comercial vivo: cabida y prefactibilidad ---------- */
@@ -448,7 +457,7 @@ header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;backgr
   .rvon h2.rv.in,.rvon .rv.in h2{clip-path:inset(0 0 -10% 0);transform:none}
   .rvon .tag.rv i,.rvon .rv .tag i{width:0;transition:width .9s cubic-bezier(.2,.7,.1,1) .25s}
   .rvon .tag.rv.in i,.rvon .rv.in .tag i{width:28px}
-  .rvon .card.rv .ph{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s cubic-bezier(.7,0,.2,1) var(--d,0s)}
+  .rvon .card.rv .ph{clip-path:inset(100% 0 0 0);transition:clip-path .7s cubic-bezier(.7,0,.2,1) var(--d,0s)}
   .rvon .card.rv.in .ph{clip-path:inset(0)}
   .rvon .card.rv .ph img{transform:scale(1.18);transition:transform 1.6s cubic-bezier(.2,.7,.1,1) var(--d,0s)}
   .rvon .card.rv.in .ph img{transform:scale(1)}
@@ -459,7 +468,7 @@ header .avance{position:absolute;left:0;bottom:-1px;height:2px;width:100%;backgr
 .fase{position:relative}
 .fase::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.7,0,.2,1)}
 .fase.on::before{transform:scaleX(1)}
-.fase .num{color:#6E6E6E}
+.fase .num{color:#5E5E5E}
 .fase.on .num{color:var(--ink)}
 /* servicios: luz que sigue al mouse */
 .srv article{position:relative;overflow:hidden;transition:background .3s,transform .4s cubic-bezier(.2,.7,.1,1)}
@@ -482,8 +491,8 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 .cur-aro.claro.ver{background:var(--lime);border-color:var(--lime)}
 /* portada: entra por capas al cargar */
 @media (prefers-reduced-motion:no-preference){
-  .hero .tag,.hero h1,.hero .lead,.hero .btns,.hero .facts,.coord{animation:llega 1.3s cubic-bezier(.2,.7,.1,1) both}
-  .hero h1{animation-delay:.12s;clip-path:inset(0 0 -10% 0)}
+  .hero .tag,.hero .lema,.hero .lead,.hero .btns,.hero .facts,.coord{animation:llega 1.3s cubic-bezier(.2,.7,.1,1) both}
+  .hero .lema{animation-delay:.12s;clip-path:inset(0 0 -10% 0)}
   .hero .lead{animation-delay:.3s}.hero .btns{animation-delay:.42s}.hero .facts{animation-delay:.55s}.coord{animation-delay:.8s}
 }
 @keyframes llega{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
@@ -505,7 +514,7 @@ html.con-cursor,html.con-cursor *{cursor:none!important}
 .cookies a{color:var(--paper);text-underline-offset:3px}
 .cookies .ckb{display:flex;gap:10px}
 .cookies button{font:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;padding:11px 18px;border:1px solid var(--line);background:transparent;color:var(--paper);cursor:pointer}
-.cookies button.k{background:var(--lime);border-color:var(--lime);color:var(--ink);font-weight:700}
+.cookies button.k{background:var(--paper);border-color:var(--paper);color:var(--ink);font-weight:700}
 .cookies button:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 footer button.ck{font:inherit;background:none;border:0;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
 @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -580,7 +589,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 .obra-sec,.interior{background:#111}
 #curvasTinta{display:none}
 /* v6d · titular contenido: la obra que pasa detrás manda */
-.hero h1{font-size:clamp(38px,4.8vw,76px);letter-spacing:-.025em;line-height:1;margin-top:18px}
+.hero .lema{font-size:clamp(38px,4.8vw,76px);letter-spacing:-.025em;line-height:1;margin-top:18px}
 .hero .tag{font-size:11px}
 .hero .lead{max-width:40ch;font-size:clamp(15px,1.15vw,17px);margin-top:18px;color:#D2D1CC}
 .hero .btns{margin-top:26px}
@@ -611,17 +620,25 @@ section{padding:clamp(52px,6vw,88px) 0}
 .esc,.pasos{list-style:none;padding:0;margin:clamp(20px,2.4vw,32px) 0 0;display:grid;gap:clamp(22px,2.4vw,36px)}
 .esc{grid-template-columns:repeat(5,minmax(0,1fr))}
 .pasos{grid-template-columns:repeat(4,minmax(0,1fr))}
-.esc h4,.pasos h4{font-size:clamp(19px,1.6vw,24px);font-weight:700;margin:0;color:var(--paper)}
+.esc h3,.pasos h3{font-size:clamp(19px,1.6vw,24px);font-weight:700;margin:0;color:var(--paper)}
 .esc p,.pasos p{margin-top:10px;color:#BDBCB7;font-size:15px;line-height:1.55}
-.pasos h4{font-weight:300;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.02em}
+.pasos h3{font-weight:300;font-size:clamp(26px,2.6vw,40px);letter-spacing:-.02em}
 .int-cta{margin-top:clamp(64px,8vw,112px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .int-cta p{font-size:clamp(22px,2.4vw,34px);font-weight:300;margin:0;max-width:24ch;color:var(--paper)}
 .int-cta .btns{margin-top:0}
 @media (max-width:980px){.atm{grid-template-columns:1fr}.atm-foto{order:-1}.esc{grid-template-columns:1fr 1fr}.pasos{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.esc,.pasos{grid-template-columns:1fr}.atm-lista{gap:10px}.atm-lista img{width:54px;height:54px}}
+.hero h1.tag{font-size:11px;margin:0;font-weight:400;line-height:1.4}
+
+/* tanda 1 · accesibilidad */
+.salto{position:absolute;left:12px;top:-60px;z-index:200;background:var(--paper);color:var(--ink);padding:10px 14px;font-size:13px;text-decoration:none}
+.salto:focus{top:12px}
+.vid-pausa{position:absolute;right:var(--gut);top:92px;z-index:2;background:rgba(17,17,17,.4);border:1px solid rgba(241,240,236,.25);color:var(--paper);font:inherit;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;cursor:pointer}
+.vid-pausa:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 </style>
 </head>
 <body>
+<a class="salto" href="#proyectos">Saltar al contenido</a>
 
 <header id="top">
   <div class="wrap bar">
@@ -644,12 +661,12 @@ section{padding:clamp(52px,6vw,88px) 0}
 <main>
 <!-- HERO -->
 <section class="hero" id="inicio" data-oscuro>
-  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-obra.webp?v=20261111c" aria-hidden="true"><source src="assets/video/hero-obra-1080.mp4?v=20261111c" type="video/mp4" media="(min-width: 900px)"><source src="assets/video/hero-obra-720.mp4?v=20261111c" type="video/mp4"></video>
+  <video class="hero-vid" id="heroVid" muted loop playsinline preload="none" poster="assets/video/hero-obra.webp?v=20261111d" aria-hidden="true"><source src="assets/video/hero-obra-1080.mp4?v=20261111c" type="video/mp4" media="(min-width: 900px)"><source src="assets/video/hero-obra-720.mp4?v=20261111d" type="video/mp4"></video>
   <div class="hero-velo" aria-hidden="true"></div>
   <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="tag"><i></i>Arquitectura · Estrategia · Desarrollo</p>
-    <h1>Más allá<br><b>del diseño</b></h1>
+    <h1 class="tag"><i></i>Estudio de arquitectura e interiores en Bogotá</h1>
+    <p class="lema">Más allá<br><b>del diseño</b></p>
     <p class="lead">Un predio, un edificio, un espacio vale por lo que puede llegar a ser. Lo descubrimos contigo desde el primer trazo, con diseño, sostenibilidad y experiencia humana.</p>
     <div class="btns">
       <a class="btn k" href="#proyectos">Ver proyectos</a>
@@ -659,6 +676,7 @@ section{padding:clamp(52px,6vw,88px) 0}
   </div>
   <p class="coord" aria-hidden="true"><b>4.6773° N</b> · 74.0490° W<br>Bogotá · 2.640 m s. n. m.<br><span class="hia">Imágenes con retoque de IA</span></p>
   <span class="bajar" aria-hidden="true"></span>
+  <button type="button" class="vid-pausa" id="vidPausa" aria-pressed="false" aria-label="Pausar o reanudar el video de fondo">Pausa</button>
   <span class="hero-ia">Imágenes con retoque de IA</span>
 </section>
 
@@ -677,7 +695,7 @@ section{padding:clamp(52px,6vw,88px) 0}
         <button aria-pressed="false" data-f="cc">Concursos</button>
       </div>
     </div>
-    <div class="cards" id="cards"></div>
+    <div class="cards" id="cards"><article class="card"><h3>Cayetana · Masterplan</h3><p class="meta">Barú, Cartagena · Masterplan · 2026</p><p>El agua llegó primero. El lago interior decidió dónde se abría el paisaje y dónde se recogía la sombra, y desde ese borde se trazaron las calles, los senderos y el canal que lleva la brisa hasta el mar.</p></article><article class="card"><h3>Cayetana · Beach Club</h3><p class="meta">Barú, Cartagena · Hospitality · 2026</p><p>Al final del recorrido, el mar. El club se abre a la playa con sombra generosa, madera bajo los pies y un muelle para quedarse hasta que cae la tarde.</p></article><article class="card"><h3>Cayetana · Villas</h3><p class="meta">Barú, Cartagena · Residencial · 2026</p><p>Tres maneras de habitar Cayetana. La Villa Eivissa se arma con cal, madera y arcos que tamizan el sol. La Villa Macarella sigue la pendiente y se escalona hacia la vista. La Villa Savina se queda en un solo piso y sube a la cubierta para encontrar el horizonte.</p></article><article class="card"><h3>VITA 119</h3><p class="meta">Bogotá · Uso mixto · 5.150 m² · 2026</p><p>En VITA 119 el bienestar sube con el edificio. Recibe en el lobby, se abre al aire en el piso 4 y vuelve a encontrar la luz en el piso 12, entre jardines que cuelgan de la fachada. VT Residences y el Centro de Experiencia hacen parte del mismo proyecto.</p></article><article class="card"><h3>VITA Amenidades</h3><p class="meta">Bogotá · Amenidades y bienestar · 600 m² · 2025</p><p>Un lugar para bajar el ritmo dentro del edificio. Las amenidades de VITA 119 se ordenan alrededor del cuerpo y la calma: un jardín que recibe en la entrada, una biblioteca para trabajar con luz tamizada y materiales cálidos que piden llegar despacio.</p></article><article class="card"><h3>Alcaldía Local de Usme</h3><p class="meta">Usme, Bogotá · Concurso SCA · Institucional</p><p>Una sede de gobierno que se recorre como una plaza. El edificio recibe a pie, guarda un jardín en su centro y deja que las montañas del sur entren por cada fachada.</p></article><article class="card"><h3>Guadalupe River Park</h3><p class="meta">San José, California · Paisaje y espacio público</p><p>El río vuelve a ser parte de la ciudad. Senderos, orillas vivas y praderas que cambian con cada estación devuelven el agua a la vida diaria del barrio.</p></article><article class="card"><h3>Prácticas Musicales Uniandes</h3><p class="meta">Bogotá · Concurso · Institucional</p><p>Un lugar para que la música se escuche desde el campus. Las salas de ensayo se abren a un ágora en la ladera, donde estudiar y presentarse ocurren en el mismo paisaje.</p></article><article class="card"><h3>Auditorio de Cajicá</h3><p class="meta">Cajicá, Cundinamarca · Concurso · Segundo puesto · 2014</p><p>Un auditorio que empieza en la calle. El vestíbulo se abre al pueblo y la sala recoge la madera y la luz, para que cada función empiece desde la llegada.</p></article><article class="card"><h3>Colegio de Soledad</h3><p class="meta">Soledad, Atlántico · Concurso Fonade · Tercer puesto · 2009</p><p>Un colegio que se aprende al aire libre. Patios con sombra, pérgolas y jardines hacen del clima del Atlántico parte de cada clase.</p></article><article class="card"><h3>Wynwood · ULI Hines</h3><p class="meta">Miami, Florida · Concurso de urbanismo · Mención de honor · 2020</p><p>Arte, ecología y conexión en un mismo barrio. La propuesta junta una estación, el espacio público y el arte urbano de Wynwood en un solo recorrido.</p></article><article class="card"><h3>Casa Barú</h3><p class="meta">Cartagena · Residencial · 480 m² · 2019</p><p>Una casa pensada para la brisa del Caribe. Sombras profundas, espacios que se abren hacia el exterior y una vida que transcurre entre la terraza y el agua.</p></article><article class="card"><h3>Casa Villeta</h3><p class="meta">Villeta, Cundinamarca · Residencial · 300 m² · 2012</p><p>La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca. La casa se abre entera al jardín.</p></article></div>
     <div class="proy-cta rv"><p>¿Tienes un predio, un edificio o un espacio por transformar?</p><a class="btn k" href="#hablemos">Hablemos de tu proyecto</a></div>
     <p class="iaNote">Las imágenes marcadas tienen retoque con inteligencia artificial.</p>
   </div>
@@ -712,21 +730,21 @@ section{padding:clamp(52px,6vw,88px) 0}
     <div class="int-escalas">
       <p class="k rv">Qué diseñamos</p>
       <ul class="esc">
-        <li class="rv"><h4>Vivienda</h4><p>Casas y apartamentos hechos a la medida de quien los vive.</p></li>
-        <li class="rv"><h4>Hospitality</h4><p>Hoteles, clubes y restaurantes donde la experiencia empieza en el umbral.</p></li>
-        <li class="rv"><h4>Amenidades y lobbies</h4><p>El primer recuerdo de un edificio y el lugar donde su comunidad se encuentra.</p></li>
-        <li class="rv"><h4>Espacios de trabajo</h4><p>Oficinas que acompañan la manera en que hoy trabajan los equipos.</p></li>
-        <li class="rv"><h4>La marca en el espacio</h4><p>Locales y salas de ventas donde una marca se vuelve lugar.</p></li>
+        <li class="rv"><h3>Vivienda</h3><p>Casas y apartamentos hechos a la medida de quien los vive.</p></li>
+        <li class="rv"><h3>Hospitality</h3><p>Hoteles, clubes y restaurantes donde la experiencia empieza en el umbral.</p></li>
+        <li class="rv"><h3>Amenidades y lobbies</h3><p>El primer recuerdo de un edificio y el lugar donde su comunidad se encuentra.</p></li>
+        <li class="rv"><h3>Espacios de trabajo</h3><p>Oficinas que acompañan la manera en que hoy trabajan los equipos.</p></li>
+        <li class="rv"><h3>La marca en el espacio</h3><p>Locales y salas de ventas donde una marca se vuelve lugar.</p></li>
       </ul>
     </div>
 
     <div class="int-proceso">
       <p class="k rv">Cómo lo hacemos</p>
       <ol class="pasos">
-        <li class="rv"><h4>Imaginar</h4><p>Leemos el lugar y a quien lo habita. De ahí sale la atmósfera y la historia que el espacio va a contar.</p></li>
-        <li class="rv"><h4>Elegir</h4><p>Armamos la carta de materiales con muestras reales y la referencia de cada proveedor, antes del primer render.</p></li>
-        <li class="rv"><h4>Dibujar</h4><p>Planos de detalle, mobiliario a medida, iluminación y renders que anticipan el resultado.</p></li>
-        <li class="rv"><h4>Habitar</h4><p>Acompañamos la obra y el montaje hasta que el espacio queda listo para vivirse.</p></li>
+        <li class="rv"><h3>Imaginar</h3><p>Leemos el lugar y a quien lo habita. De ahí sale la atmósfera y la historia que el espacio va a contar.</p></li>
+        <li class="rv"><h3>Elegir</h3><p>Armamos la carta de materiales con muestras reales y la referencia de cada proveedor, antes del primer render.</p></li>
+        <li class="rv"><h3>Dibujar</h3><p>Planos de detalle, mobiliario a medida, iluminación y renders que anticipan el resultado.</p></li>
+        <li class="rv"><h3>Habitar</h3><p>Acompañamos la obra y el montaje hasta que el espacio queda listo para vivirse.</p></li>
       </ol>
     </div>
 
@@ -946,9 +964,9 @@ section{padding:clamp(52px,6vw,88px) 0}
     </div>
     <p class="hora"><i></i>Bogotá · <span id="hora">—</span> · GMT−5</p></div>
     <div class="datos">
-      <div><h4>TELÉFONO</h4><a href="tel:+573168121156">+57 316 812 1156</a><a href="tel:+573148304724">+57 314 830 4724</a></div>
-      <div><h4>DIGITAL</h4><a href="mailto:info@xform.com.co">info@xform.com.co</a><a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram @x.form___</a></div>
-      <div><h4>OFICINA</h4><p>Calle 93 # 19B-66 Of. 303</p><p>110221, Bogotá, Colombia</p></div>
+      <div><h3>TELÉFONO</h3><a href="tel:+573168121156">+57 316 812 1156</a><a href="tel:+573148304724">+57 314 830 4724</a></div>
+      <div><h3>DIGITAL</h3><a href="mailto:info@xform.com.co">info@xform.com.co</a><a href="https://www.instagram.com/x.form___/" target="_blank" rel="noopener">Instagram @x.form___</a></div>
+      <div><h3>OFICINA</h3><p>Calle 93 # 19B-66 Of. 303</p><p>110221, Bogotá, Colombia</p></div>
     </div>
     </div>
   </div>
@@ -963,7 +981,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 </div>
 
 <dialog class="legal" id="lgTerminos" aria-labelledby="lgT1">
-  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar ✕</button></div>
+  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar <svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true" style="vertical-align:-1px"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.4"/></svg></button></div>
   <div class="lg-body">
     <p class="tag"><i></i>Legal</p>
     <h3 id="lgT1">Términos y condiciones de uso</h3>
@@ -992,7 +1010,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 </dialog>
 
 <dialog class="legal" id="lgDatos" aria-labelledby="lgT2">
-  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar ✕</button></div>
+  <div class="lg-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button type="button" data-cierra>Cerrar <svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true" style="vertical-align:-1px"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.4"/></svg></button></div>
   <div class="lg-body">
     <p class="tag"><i></i>Legal</p>
     <h3 id="lgT2">Política de tratamiento de datos personales</h3>
@@ -1034,7 +1052,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 </dialog>
 
 <dialog class="ficha" id="ficha" aria-labelledby="fTitle">
-  <div class="f-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button class="f-close" id="fClose">Cerrar ✕</button></div>
+  <div class="f-top"><img src="assets/xform-logo-negro.png" alt="X.FORM"><button class="f-close" id="fClose">Cerrar <svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true" style="vertical-align:-1px"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.4"/></svg></button></div>
   <div class="f-body"><div class="f-gal" id="fGal"></div><div class="f-txt"><p class="tag"><i></i><span id="fCat"></span></p><h3 id="fTitle"></h3><p class="meta" id="fMeta"></p><p class="txt" id="fTxt"></p><p class="cred" id="fCred"></p><p class="ia" id="fIa"></p></div></div>
 </dialog>
 
@@ -1084,13 +1102,14 @@ const P = [
 ];
 // la versión obliga al navegador a bajar la imagen nueva (assets va con caché de un año)
 const src = n => `assets/img/${n}.webp?v=20261111c`;
+const srcs = n => `assets/img/${n}-960.webp?v=20261111d 960w, assets/img/${n}.webp?v=20261111c 2400w`;
 // v6 · orden de la vitrina y ancho de cada tarjeta (de 12 columnas), como en MVRDV y Foster
 const ORDEN=[0,10,6,5,7,8,9,3,1,2,11,12,4];
 const ANCHO=[12,7,5,4,4,4,5,7,6,6,4,4,4];
 const cards = document.getElementById("cards");
 cards.innerHTML = ORDEN.map((i,k)=>{const p=P[i]; const fotos=p.img.slice(0,3);
   return `<button class="card rv w${ANCHO[k]}" data-i="${i}" data-f="${p.f.join(" ")}" aria-label="Ver ${p.t}">
-  <div class="ph">${fotos.map((n,j)=>`<img class="${j?"":"on"}" src="${src(n)}" alt="${j?"":p.cap[0]}" loading="${k<2?"eager":"lazy"}" decoding="async">`).join("")}
+  <div class="ph">${fotos.map((n,j)=>`<img class="${j?"":"on"}" src="${src(n)}" srcset="${srcs(n)}" sizes="${ANCHO[k]===12?"100vw":"(max-width:900px) 100vw, 58vw"}" alt="${j?"":p.cap[0]}" loading="${k===0&&j===0?"eager":"lazy"}" decoding="async">`).join("")}
   ${p.ia?'<span class="cia">Retoque de IA</span>':""}
   <span class="cinfo"><h3>${p.t}</h3><span class="meta">${p.meta}</span></span></div></button>`;}).join("");
 // v6 · motion: en cada tarjeta visible las imágenes se funden despacio, una tras otra
@@ -1175,7 +1194,8 @@ if("IntersectionObserver" in window){
 (function(){
   const F=[[3,4],[4,1],[2,5],[3,8],[4,0],[2,4],[3,9]]; // [proyecto, imagen]
   const box=document.getElementById("intFotos"), pie=document.getElementById("intPie"); if(!box) return;
-  box.innerHTML=F.map(([i,k],j)=>`<img class="${j?"":"on"}" src="${src(P[i].img[k])}" alt="" loading="${j?"lazy":"eager"}" decoding="async">`).join("");
+  box.innerHTML=F.map(([i,k],j)=>j?`<img data-src="${src(P[i].img[k])}" data-srcset="${srcs(P[i].img[k])}" sizes="100vw" alt="" decoding="async">`:`<img class="on" src="${src(P[i].img[k])}" srcset="${srcs(P[i].img[k])}" sizes="100vw" alt="" loading="lazy" decoding="async">`).join("");
+  const carga=x=>{ if(x&&x.dataset.src){ x.srcset=x.dataset.srcset; x.src=x.dataset.src; delete x.dataset.src; } };
   const im=[...box.querySelectorAll("img")]; let n=0;
   const rotula=()=>{const [i,k]=F[n]; pie.textContent=P[i].cap[k]+(P[i].ia?" · Retoque de IA":"");};
   rotula();
@@ -1183,7 +1203,8 @@ if("IntersectionObserver" in window){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   let vis=false;
   if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.2}).observe(box.parentElement);
-  setInterval(()=>{ if(!vis) return; im[n].classList.remove("on"); n=(n+1)%im.length; im[n].classList.add("on"); rotula(); },8400);
+  setInterval(()=>{ if(!vis) return; carga(im[(n+2)%im.length]); im[n].classList.remove("on"); n=(n+1)%im.length; carga(im[n]); im[n].classList.add("on"); rotula(); },8400);
+  new IntersectionObserver(es=>{ if(es[0].isIntersecting) carga(im[1]); },{rootMargin:"300px"}).observe(box);
 })();
 // v6c · hero: tras unos segundos de lectura el texto se retira y queda la obra en movimiento
 (function(){const h=document.getElementById("inicio"); if(!h||matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -1203,7 +1224,7 @@ if("IntersectionObserver" in window){
     ["jardin","Jardín",4,0,"El verde entra al interior y el edificio respira con quien lo habita."]];
   const lista=document.getElementById("atmLista"), foto=document.getElementById("atmFoto"), pie=document.getElementById("atmPie"), frase=document.getElementById("atmFrase"); if(!lista) return;
   lista.innerHTML=M.map(([k,n],j)=>`<button type="button" role="tab" aria-selected="${j?"false":"true"}" data-j="${j}"><img src="assets/img/materia/${k}.webp?v=20261111b" alt="" width="64" height="64" loading="lazy"><span>${n}</span></button>`).join("");
-  foto.insertAdjacentHTML("afterbegin",M.map(([k,n,i,im],j)=>`<img class="${j?"":"on"}" src="${src(P[i].img[im])}" alt="${P[i].cap[im]}" loading="lazy" decoding="async">`).join(""));
+  foto.insertAdjacentHTML("afterbegin",M.map(([k,n,i,im],j)=>`<img class="${j?"":"on"}" src="${src(P[i].img[im])}" srcset="${srcs(P[i].img[im])}" sizes="(max-width:980px) 100vw, 58vw" alt="${P[i].cap[im]}" loading="lazy" decoding="async">`).join(""));
   const fotos=[...foto.querySelectorAll("img")], bts=[...lista.querySelectorAll("button")];
   let n=0;
   function elige(j){ n=j; fotos.forEach((f,x)=>f.classList.toggle("on",x===j)); bts.forEach((b,x)=>b.setAttribute("aria-selected",x===j));
@@ -1219,9 +1240,12 @@ if("IntersectionObserver" in window){
 })();
 // v6 · video del hero: quieto si la persona pidió menos movimiento o ahorro de datos
 (function(){const v=document.getElementById("heroVid"); if(!v) return;
-  const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
-  if(quieto){v.removeAttribute("autoplay");v.pause();v.preload="none";}
-  else { const p=v.play(); if(p&&p.catch) p.catch(()=>{}); }
+  const c=navigator.connection, b=document.getElementById("vidPausa");
+  const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches||(c&&(c.saveData||/2g|3g/.test(c.effectiveType||"")));
+  if(quieto){ if(b) b.hidden=true; return; }   // queda el póster
+  const arranca=()=>{ v.preload="auto"; v.load(); const p=v.play(); if(p&&p.catch) p.catch(()=>{}); };
+  if(document.readyState==="complete") setTimeout(arranca,300); else addEventListener("load",()=>setTimeout(arranca,300));
+  if(b) b.addEventListener("click",()=>{ const pausado=!v.paused; pausado?v.pause():v.play(); b.setAttribute("aria-pressed",pausado); b.textContent=pausado?"Reanudar":"Pausa"; });
 })();
 // ---------- curvas de nivel: el motivo gráfico de la marca ----------
 function curvas(id, cyF, fija){
