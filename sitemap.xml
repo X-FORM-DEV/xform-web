@@ -6,7 +6,6 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://xform.com.co/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://xform.com.co/?lang=en"/>
   </url>
   <url>
     <loc>https://xform.com.co/privacidad.html</loc>
