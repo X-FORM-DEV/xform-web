@@ -513,19 +513,45 @@ footer button.ck{font:inherit;background:none;border:0;color:inherit;cursor:poin
 /* v5 · obra desde la segunda pantalla y menos aire */
 section{padding:clamp(52px,6vw,88px) 0}
 .firma{padding-top:clamp(20px,3vw,40px)}
-.obra{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:clamp(8px,1vw,14px);height:clamp(440px,58vw,780px);margin-bottom:clamp(36px,4.5vw,64px)}
-.obra button{position:relative;overflow:hidden;border:0;padding:0;background:#1A1A1A;cursor:pointer;font:inherit;color:#fff;text-align:left}
-.obra button:first-child{grid-row:span 2}
-.obra img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.obra button:hover img{transform:scale(1.035)}
-.obra .ot{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;background:linear-gradient(transparent,rgba(17,17,17,.72)); /* taste-skill-ignore: scrim sobre foto */display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.obra .ot b{font-weight:700;font-size:clamp(16px,1.3vw,20px);line-height:1.15}
-.obra .ot span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.82;white-space:nowrap}
-.obra .oia{position:absolute;top:12px;right:12px;white-space:nowrap;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(17,17,17,.6);padding:5px 8px}
 .firma .fgrid{align-items:start}
 .pilar{padding:16px 0 18px}
 .pilar .pt{line-height:1.5}
-@media (max-width:860px){.obra{grid-template-columns:1fr 1fr;grid-template-rows:none;height:auto}.obra button{aspect-ratio:4/5}.obra button:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}.obra .ot span{display:none}}
+
+/* v6 · la obra manda: video en el hero y vitrina a sangre (referentes: Arias Serna Saravia, MVRDV, Foster) */
+.hero{position:relative}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-velo{position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(17,17,17,.86) 0%,rgba(17,17,17,.6) 42%,rgba(17,17,17,.28) 100%),linear-gradient(0deg,rgba(17,17,17,.78) 0%,transparent 55%) /* taste-skill-ignore: velo sobre video */}
+.hero canvas.curvas{opacity:.5;z-index:0}
+.hero-ia{display:none}
+@media (max-width:760px){.hero-ia{display:block;position:absolute;right:var(--gut);bottom:16px;z-index:1;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}}
+.coord .hia{color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.obra-sec{padding:clamp(40px,5vw,72px) 0 clamp(52px,6vw,88px)}
+.obra-sec .wrap{max-width:none;padding-left:clamp(12px,1.6vw,24px);padding-right:clamp(12px,1.6vw,24px)}
+.obra-sec .proy-head{padding:0 clamp(4px,1vw,16px)}
+.obra-sec .filtros button{color:var(--paper);border-color:rgba(241,240,236,.3)}
+.obra-sec .filtros button[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.obra-sec .iaNote{color:var(--muted);padding:0 clamp(4px,1vw,16px)}
+.cards{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(8px,.9vw,14px);margin-top:clamp(24px,3vw,40px)}
+.card{grid-column:span 4;color:#fff}
+.card.w12{grid-column:span 12}.card.w7{grid-column:span 7}.card.w6{grid-column:span 6}.card.w5{grid-column:span 5}.card.w4{grid-column:span 4}
+.card .ph,.card.big .ph{aspect-ratio:auto;height:clamp(300px,34vw,560px);background:#111}
+.card.w12 .ph{height:clamp(380px,50vw,820px)}
+.card.w4 .ph{height:clamp(280px,27vw,440px)}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease,transform 7s cubic-bezier(.2,.7,.2,1);transform:scale(1.06)}
+.card .ph img.on{opacity:1;transform:scale(1)}
+.card:hover .ph img.on,.card:focus-visible .ph img.on{transform:scale(1.035);transition:opacity 1.6s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.card .ph::after{display:none}
+.card .cinfo{position:absolute;left:0;right:0;bottom:0;padding:70px clamp(16px,1.6vw,26px) clamp(16px,1.6vw,24px);background:linear-gradient(transparent,rgba(17,17,17,.78)) /* taste-skill-ignore: scrim sobre foto */;display:block;text-align:left}
+.card .cinfo h3{margin:0;font-size:clamp(20px,1.9vw,30px);font-weight:700;line-height:1.1;color:#fff}
+.card.w12 .cinfo h3{font-size:clamp(28px,3.4vw,56px)}
+.card .cinfo .meta{display:block;color:rgba(255,255,255,.78);margin-top:8px}
+.card .cia{position:absolute;top:clamp(14px,1.4vw,20px);right:clamp(14px,1.4vw,20px);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(17,17,17,.6);color:#fff;padding:5px 8px}
+.card:focus-visible{outline:2px solid var(--lime)}
+.cards.filtrado .card{grid-column:span 6}
+.cards.filtrado .card .ph{height:clamp(280px,32vw,520px)}
+@media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.card,.card.w4,.card.w5,.card.w6,.card.w7{grid-column:span 1}.card.w12{grid-column:span 2}.card .ph,.card.w4 .ph{height:clamp(240px,52vw,420px)}.cards.filtrado .card{grid-column:span 1}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}.card,.card.w12,.cards.filtrado .card{grid-column:span 1}.card .ph,.card.w4 .ph,.card.w12 .ph{height:auto;aspect-ratio:4/5}.card.w12 .ph{aspect-ratio:4/5}}
+@media (prefers-reduced-motion:reduce){.card .ph img{transition:none}}
 </style>
 </head>
 <body>
@@ -535,10 +561,10 @@ section{padding:clamp(52px,6vw,88px) 0}
     <a href="#inicio" aria-label="X.FORM, inicio"><img src="assets/xform-logo-blanco.png" alt="X.FORM · Beyond design" width="886" height="263"></a>
     <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#proyectos">Proyectos</a>
       <a href="#firma">La firma</a>
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
-      <a href="#proyectos">Proyectos</a>
       <a href="#equipo">Equipo</a>
       <a href="#dimensiona">Dimensiona tu proyecto</a>
       <button class="lang" id="lang" type="button" hidden>EN</button>
@@ -550,6 +576,8 @@ section{padding:clamp(52px,6vw,88px) 0}
 <main>
 <!-- HERO -->
 <section class="hero" id="inicio" data-oscuro>
+  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-obra.webp?v=20261111" aria-hidden="true"><source src="assets/video/hero-obra.mp4?v=20261111" type="video/mp4"></video>
+  <div class="hero-velo" aria-hidden="true"></div>
   <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="tag"><i></i>Arquitectura · Estrategia · Desarrollo</p>
@@ -561,18 +589,35 @@ section{padding:clamp(52px,6vw,88px) 0}
     </div>
     <p class="facts"><i aria-hidden="true"></i><span>Todo lugar guarda una forma. <b>Nuestro oficio es revelarla.</b></span></p>
   </div>
-  <p class="coord" aria-hidden="true"><b>4.6773° N</b> · 74.0490° W<br>Bogotá · 2.640 m s. n. m.</p>
+  <p class="coord" aria-hidden="true"><b>4.6773° N</b> · 74.0490° W<br>Bogotá · 2.640 m s. n. m.<br><span class="hia">Imágenes con retoque de IA</span></p>
   <span class="bajar" aria-hidden="true"></span>
+  <span class="hero-ia">Imágenes con retoque de IA</span>
 </section>
 
-<!-- 01 FIRMA -->
-<section class="light firma" id="firma">
+<!-- 01 PROYECTOS -->
+<section class="obra-sec" id="proyectos" data-oscuro>
   <div class="wrap">
-    <div class="obra" id="obra" aria-label="Proyectos de X.FORM"></div>
+    <div class="proy-head">
+      <div><p class="tag rv"><i></i>01 · Selección de obra</p><h2 class="rv">Proyectos</h2></div>
+      <div class="filtros rv" role="group" aria-label="Filtrar proyectos">
+        <button aria-pressed="true" data-f="all">Todos</button>
+        <button aria-pressed="false" data-f="mp">Masterplan</button>
+        <button aria-pressed="false" data-f="rs">Residencial</button>
+        <button aria-pressed="false" data-f="hs">Hospitality</button>
+        <button aria-pressed="false" data-f="mu">Uso mixto</button>
+        <button aria-pressed="false" data-f="cc">Concursos</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+    <p class="iaNote">Las imágenes marcadas tienen retoque con inteligencia artificial.</p>
   </div>
+</section>
+
+<!-- 02 FIRMA -->
+<section class="light firma" id="firma">
   <div class="wrap fgrid">
     <div class="fizq">
-      <p class="tag rv"><i></i>01 · Quiénes somos</p>
+      <p class="tag rv"><i></i>02 · Quiénes somos</p>
       <h2 class="rv">Transformamos predios y espacios en lugares que las personas quieren habitar.</h2>
     </div>
     <div class="fder">
@@ -586,7 +631,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <!-- 02 SERVICIOS -->
 <section id="servicios" data-oscuro>
   <div class="wrap">
-    <p class="tag rv"><i></i>02 · Qué hacemos</p>
+    <p class="tag rv"><i></i>03 · Qué hacemos</p>
     <h2 class="rv">Tres frentes que piensan juntos</h2>
     <div class="srv">
       <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres contigo leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
@@ -600,7 +645,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <section class="white" id="proceso">
   <div class="wrap pgrid">
     <div class="pizq">
-      <p class="tag rv"><i></i>03 · Cómo trabajamos</p>
+      <p class="tag rv"><i></i>04 · Cómo trabajamos</p>
       <h2 class="rv">Cuatro fases, un mismo hilo</h2>
       <figure class="pvista">
         <p class="pfase" aria-live="polite"><b id="procNum">01</b> <span id="procNom">Estrategia</span></p>
@@ -620,7 +665,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <!-- 04 CIFRAS -->
 <section class="cifras" id="cifras" data-oscuro>
   <div class="wrap">
-    <p class="tag rv"><i></i>04 · Trayectoria</p>
+    <p class="tag rv"><i></i>05 · Trayectoria</p>
     <h2 class="rv">X.FORM en cifras</h2>
     <div class="kpis">
       <div class="rv"><b>+500.000</b><span>M² diseñados</span></div>
@@ -635,7 +680,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <section id="modelo" data-oscuro>
   <div class="wrap mv">
     <div class="rv mv-izq">
-      <p class="tag"><i></i>05 · Cabida y prefactibilidad en vivo</p>
+      <p class="tag"><i></i>06 · Cabida y prefactibilidad en vivo</p>
       <h2>¿Qué cabe en tu lote?</h2>
       <p class="lead">Antes de dibujar, hacemos la cabida: cuánto se puede construir, cuántas unidades salen y si el negocio da. Prueba con un lote de ejemplo.</p>
       <div class="mv-ctl">
@@ -695,23 +740,6 @@ section{padding:clamp(52px,6vw,88px) 0}
   <span>Masterplan</span><em>/</em><span>Arquitectura</span><em>/</em><span>Interiorismo</span><em>/</em><span>Estrategia</span><em>/</em><span>Desarrollo</span><em>/</em><span>Paisaje</span><em>/</em>
 </div></div>
 
-<!-- 06 PROYECTOS -->
-<section class="light" id="proyectos">
-  <div class="wrap">
-    <div class="proy-head">
-      <div><p class="tag rv"><i></i>06 · Selección de obra</p><h2 class="rv">Proyectos</h2></div>
-      <div class="filtros rv" role="group" aria-label="Filtrar proyectos">
-        <button aria-pressed="true" data-f="all">Todos</button>
-        <button aria-pressed="false" data-f="mp">Masterplan</button>
-        <button aria-pressed="false" data-f="rs">Residencial</button>
-        <button aria-pressed="false" data-f="hs">Hospitality</button>
-        <button aria-pressed="false" data-f="mu">Uso mixto</button>
-      </div>
-    </div>
-    <div class="cards" id="cards"></div>
-    <p class="iaNote">Las imágenes de Cayetana tienen retoque con inteligencia artificial.</p>
-  </div>
-</section>
 
 <!-- 06 EQUIPO -->
 <section id="equipo" data-oscuro>
@@ -905,31 +933,63 @@ const P = [
  {f:["hs","mu"], cat:"Hospitality", t:"VITA Amenidades", meta:"Bogotá · Amenidades y bienestar · 600 m² · 2025",
   txt:"Un lugar para bajar el ritmo dentro del edificio. Las amenidades de VITA 119 se ordenan alrededor del cuerpo y la calma: un jardín que recibe en la entrada, una biblioteca para trabajar con luz tamizada y materiales cálidos que piden llegar despacio.",
   cred:"Arquitectura e interiorismo: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["casa-alma-1","casa-alma-4","casa-alma-2","casa-alma-3"], cap:["La llegada · VITA Amenidades · Bogotá","La biblioteca de trabajo · VITA Amenidades · Bogotá","El gimnasio frente a la ciudad · VITA Amenidades · Bogotá","La zona de pesas · VITA Amenidades · Bogotá"]},
+ {f:["cc"], cat:"Institucional", t:"Alcaldía Local de Usme", meta:"Usme, Bogotá · Concurso SCA · Institucional",
+  txt:"Una sede de gobierno que se recorre como una plaza. El edificio recibe a pie, guarda un jardín en su centro y deja que las montañas del sur entren por cada fachada.",
+  cred:"", ia:true, img:["usme-1","usme-2","usme-3","usme-4","usme-5","usme-6"], cap:["La alcaldía en su barrio · Usme, Bogotá","El acceso principal · Alcaldía Local de Usme","La llegada a pie · Alcaldía Local de Usme","El recorrido peatonal · Alcaldía Local de Usme","El interior · Alcaldía Local de Usme","La fachada frontal · Alcaldía Local de Usme"]},
+ {f:["cc","mp"], cat:"Paisaje", t:"Guadalupe River Park", meta:"San José, California · Paisaje y espacio público",
+  txt:"El río vuelve a ser parte de la ciudad. Senderos, orillas vivas y praderas que cambian con cada estación devuelven el agua a la vida diaria del barrio.",
+  cred:"", ia:true, img:["guadalupe-1","guadalupe-2","guadalupe-3","guadalupe-4","guadalupe-5","guadalupe-6"], cap:["El río en verano · Guadalupe River Park","La orilla en otoño · Guadalupe River Park","La primavera en el río · Guadalupe River Park","El sendero junto al agua · Guadalupe River Park","La pradera · Guadalupe River Park","El parque abierto · Guadalupe River Park"]},
+ {f:["cc"], cat:"Institucional", t:"Prácticas Musicales Uniandes", meta:"Bogotá · Concurso · Institucional",
+  txt:"Un lugar para que la música se escuche desde el campus. Las salas de ensayo se abren a un ágora en la ladera, donde estudiar y presentarse ocurren en el mismo paisaje.",
+  cred:"", ia:true, img:["uniandes-1","uniandes-2","uniandes-3","uniandes-4"], cap:["El conjunto en la ladera · Prácticas Musicales Uniandes","El ágora · Prácticas Musicales Uniandes","Desde el bloque C · Prácticas Musicales Uniandes","La sala de ensayo · Prácticas Musicales Uniandes"]},
+ {f:["cc"], cat:"Institucional", t:"Auditorio de Cajicá", meta:"Cajicá, Cundinamarca · Concurso · Segundo puesto · 2014",
+  txt:"Un auditorio que empieza en la calle. El vestíbulo se abre al pueblo y la sala recoge la madera y la luz, para que cada función empiece desde la llegada.",
+  cred:"Arquitectura: Francisco Ospina", ia:true, img:["cajica-1","cajica-2","cajica-3"], cap:["La llegada · Auditorio de Cajicá","El vestíbulo · Auditorio de Cajicá","La sala · Auditorio de Cajicá"]},
+ {f:["cc"], cat:"Institucional", t:"Colegio de Soledad", meta:"Soledad, Atlántico · Concurso Fonade · Tercer puesto · 2009",
+  txt:"Un colegio que se aprende al aire libre. Patios con sombra, pérgolas y jardines hacen del clima del Atlántico parte de cada clase.",
+  cred:"Arquitectura: Francisco Ospina", ia:true, img:["soledad-1","soledad-2","soledad-3","soledad-4","soledad-5"], cap:["El acceso por el parque · Colegio de Soledad","El colegio y el humedal · Colegio de Soledad","La plaza de las pérgolas · Colegio de Soledad","Los patios · Colegio de Soledad","El borde del agua · Colegio de Soledad"]},
+ {f:["cc","mp"], cat:"Urbanismo", t:"Wynwood · ULI Hines", meta:"Miami, Florida · Concurso de urbanismo · Mención de honor · 2020",
+  txt:"Arte, ecología y conexión en un mismo barrio. La propuesta junta una estación, el espacio público y el arte urbano de Wynwood en un solo recorrido.",
+  cred:"Francisco Ospina, con su equipo de la Universidad de Pensilvania", ia:true, img:["miami-1","miami-2"], cap:["La estación y el barrio · Wynwood, Miami","La estación de Wynwood · Miami"]},
  {f:["rs"], big:true, cat:"Residencial", t:"Casa Barú", meta:"Cartagena · Residencial · 480 m² · 2019",
   txt:"Una casa pensada para la brisa del Caribe. Sombras profundas, espacios que se abren hacia el exterior y una vida que transcurre entre la terraza y el agua.",
   cred:"Arquitectura: Camilo Restrepo", ia:false, img:["casa-baru-1","casa-baru-2","casa-baru-3"], cap:["Casa Barú al anochecer · Cartagena","La llegada · Casa Barú · Cartagena","La terraza y la piscina · Casa Barú · Cartagena"]},
  {f:["rs"], big:true, cat:"Residencial", t:"Casa Villeta", meta:"Villeta, Cundinamarca · Residencial · 300 m² · 2012",
   txt:"La casa blanca de Lagos del Peñón. Volúmenes claros que reciben el sol de tierra caliente y lo convierten en sombra fresca. La casa se abre entera al jardín.",
-  cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-1","casa-villeta-2","casa-villeta-3"], cap:["La piscina y el jardín · Casa Villeta · Villeta, Cundinamarca","La llegada · Casa Villeta · Villeta, Cundinamarca","El muro blanco al atardecer · Casa Villeta · Villeta, Cundinamarca"]}
+  cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-n-1","casa-villeta-1","casa-villeta-n-2","casa-villeta-n-3","casa-villeta-n-4","casa-villeta-2","casa-villeta-3"], cap:["La piscina y el jardín · Casa Villeta · Villeta, Cundinamarca","La piscina hacia la casa · Casa Villeta · Villeta, Cundinamarca","La fachada principal · Casa Villeta · Villeta, Cundinamarca","La entrada · Casa Villeta · Villeta, Cundinamarca","El volumen lateral · Casa Villeta · Villeta, Cundinamarca","La llegada · Casa Villeta · Villeta, Cundinamarca","El muro blanco al atardecer · Casa Villeta · Villeta, Cundinamarca"]}
 ];
 // la versión obliga al navegador a bajar la imagen nueva (assets va con caché de un año)
-const src = n => `assets/img/${n}.webp?v=20261022d`;
+const src = n => `assets/img/${n}.webp?v=20261111`;
+// v6 · orden de la vitrina y ancho de cada tarjeta (de 12 columnas), como en MVRDV y Foster
+const ORDEN=[0,3,1,6,2,7,8,9,10,4,11,5,12];
+const ANCHO=[12,7,5,4,4,4,5,7,6,6,4,4,4];
 const cards = document.getElementById("cards");
-cards.innerHTML = P.map((p,i)=>`<button class="card rv${p.big?" big":""}" data-i="${i}" data-f="${p.f.join(" ")}" aria-label="Ver ${p.t}">
-  <div class="ph"><img src="${src(p.img[0])}" alt="${p.cap[0]}" loading="lazy" decoding="async"></div>
-  <h3>${p.t}</h3><p class="meta">${p.meta}</p></button>`).join("");
+cards.innerHTML = ORDEN.map((i,k)=>{const p=P[i]; const fotos=p.img.slice(0,3);
+  return `<button class="card rv w${ANCHO[k]}" data-i="${i}" data-f="${p.f.join(" ")}" aria-label="Ver ${p.t}">
+  <div class="ph">${fotos.map((n,j)=>`<img class="${j?"":"on"}" src="${src(n)}" alt="${j?"":p.cap[0]}" loading="${k<2?"eager":"lazy"}" decoding="async">`).join("")}
+  ${p.ia?'<span class="cia">Retoque de IA</span>':""}
+  <span class="cinfo"><h3>${p.t}</h3><span class="meta">${p.meta}</span></span></div></button>`;}).join("");
+// v6 · motion: en cada tarjeta visible las imágenes se funden despacio, una tras otra
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const vivas=new Set();
+  if("IntersectionObserver" in window){
+    const ob=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?vivas.add(e.target):vivas.delete(e.target)),{threshold:.35});
+    cards.querySelectorAll(".card").forEach(c=>{ if(c.querySelectorAll("img").length>1) ob.observe(c); });
+  }
+  let t=0;
+  setInterval(()=>{ t++; vivas.forEach(c=>{ const im=[...c.querySelectorAll(".ph img")]; if(c.matches(":hover")) return;
+    const k=(+c.dataset.i+t)%im.length; im.forEach((x,j)=>x.classList.toggle("on",j===k)); }); },3800);
+})();
 
 document.querySelectorAll(".filtros button").forEach(b=>b.addEventListener("click",()=>{
   document.querySelectorAll(".filtros button").forEach(x=>x.setAttribute("aria-pressed",x===b));
   const f=b.dataset.f;
   cards.querySelectorAll(".card").forEach(c=>c.classList.toggle("hide", f!=="all" && !c.dataset.f.split(" ").includes(f)));
+  cards.classList.toggle("filtrado", f!=="all");
 }));
 
 const dlg=document.getElementById("ficha");
-// v5 · obra en la segunda pantalla: sale de las mismas fichas (proyecto, imagen)
-const OBRA=[[0,0],[3,3],[2,1],[1,0],[5,0]];
-document.getElementById("obra").innerHTML=OBRA.map(([i,k])=>{const p=P[i];return `<button type="button" data-i="${i}" aria-label="Ver ${p.t}"><img src="${src(p.img[k])}" alt="${p.cap[k]}" loading="${i===0?"eager":"lazy"}" decoding="async">${p.ia?'<span class="oia">Retoque de IA</span>':""}<span class="ot"><b>${p.t}</b><span>${p.cat}</span></span></button>`;}).join("");
-document.getElementById("obra").addEventListener("click",e=>{const b=e.target.closest("button"); if(b) abrirFicha(+b.dataset.i);});
 cards.addEventListener("click",e=>{
   const c=e.target.closest(".card"); if(!c) return; abrirFicha(+c.dataset.i);
 });
@@ -987,6 +1047,12 @@ if("IntersectionObserver" in window){
   setTimeout(todos,2500);
 } else todos();
 
+// v6 · video del hero: quieto si la persona pidió menos movimiento o ahorro de datos
+(function(){const v=document.getElementById("heroVid"); if(!v) return;
+  const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
+  if(quieto){v.removeAttribute("autoplay");v.pause();v.preload="none";}
+  else { const p=v.play(); if(p&&p.catch) p.catch(()=>{}); }
+})();
 // ---------- curvas de nivel: el motivo gráfico de la marca ----------
 function curvas(id, cyF){
   const c=document.getElementById(id); if(!c) return; const g=c.getContext("2d"); let W,H,t=0,vis=true,run=false;
