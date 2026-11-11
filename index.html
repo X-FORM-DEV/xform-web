@@ -552,6 +552,21 @@ section{padding:clamp(52px,6vw,88px) 0}
 @media (max-width:900px){.cards{grid-template-columns:1fr 1fr}.card,.card.w4,.card.w5,.card.w6,.card.w7{grid-column:span 1}.card.w12{grid-column:span 2}.card .ph,.card.w4 .ph{height:clamp(240px,52vw,420px)}.cards.filtrado .card{grid-column:span 1}}
 @media (max-width:560px){.cards{grid-template-columns:1fr}.card,.card.w12,.cards.filtrado .card{grid-column:span 1}.card .ph,.card.w4 .ph,.card.w12 .ph{height:auto;aspect-ratio:4/5}.card.w12 .ph{aspect-ratio:4/5}}
 @media (prefers-reduced-motion:reduce){.card .ph img{transition:none}}
+
+/* v6b · interiorismo con nombre propio y llamado comercial */
+.interior{position:relative;min-height:clamp(560px,88vh,920px);display:flex;align-items:flex-end;padding:0;overflow:hidden;background:#111}
+.int-fotos{position:absolute;inset:0}
+.int-fotos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.8s ease,transform 9s cubic-bezier(.2,.7,.2,1)}
+.int-fotos img.on{opacity:1;transform:scale(1)}
+.int-velo{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,17,.9) 0%,rgba(17,17,17,.68) 46%,rgba(17,17,17,.18) 100%),linear-gradient(0deg,rgba(17,17,17,.66),transparent 45%) /* taste-skill-ignore: velo sobre foto */}
+.int-txt{position:relative;z-index:1;padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(56px,7vw,96px)}
+.int-txt h2{font-size:clamp(34px,4.6vw,72px);line-height:1.02;letter-spacing:-.02em;max-width:14ch;margin-top:22px}
+.int-txt > p:not(.tag){max-width:46ch;font-size:clamp(17px,1.5vw,20px);color:#D6D5D0;margin-top:22px;line-height:1.55}
+.int-pie{position:absolute;right:var(--gut);bottom:22px;z-index:1;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(241,240,236,.72);text-align:right;max-width:40ch}
+.proy-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:clamp(28px,3.4vw,48px);padding:0 clamp(4px,1vw,16px)}
+.proy-cta p{font-size:clamp(20px,2vw,28px);font-weight:300;color:var(--paper);max-width:34ch;margin:0}
+@media (max-width:760px){.int-pie{left:var(--gut);right:auto;text-align:left;bottom:14px;font-size:10px}.int-txt{padding-bottom:64px}}
+@media (prefers-reduced-motion:reduce){.int-fotos img{transition:none;transform:none}}
 </style>
 </head>
 <body>
@@ -562,6 +577,7 @@ section{padding:clamp(52px,6vw,88px) 0}
     <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <nav class="menu" id="menu" aria-label="Principal">
       <a href="#proyectos">Proyectos</a>
+      <a href="#interiorismo">Interiorismo</a>
       <a href="#firma">La firma</a>
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
@@ -576,7 +592,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <main>
 <!-- HERO -->
 <section class="hero" id="inicio" data-oscuro>
-  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-obra.webp?v=20261111" aria-hidden="true"><source src="assets/video/hero-obra.mp4?v=20261111" type="video/mp4"></video>
+  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-obra.webp?v=20261111b" aria-hidden="true"><source src="assets/video/hero-obra.mp4?v=20261111b" type="video/mp4"></video>
   <div class="hero-velo" aria-hidden="true"></div>
   <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -609,15 +625,29 @@ section{padding:clamp(52px,6vw,88px) 0}
       </div>
     </div>
     <div class="cards" id="cards"></div>
+    <div class="proy-cta rv"><p>¿Tienes un predio, un edificio o un espacio por transformar?</p><a class="btn k" href="#hablemos">Hablemos de tu proyecto</a></div>
     <p class="iaNote">Las imágenes marcadas tienen retoque con inteligencia artificial.</p>
   </div>
 </section>
 
-<!-- 02 FIRMA -->
+<!-- 02 INTERIORISMO -->
+<section class="interior" id="interiorismo" data-oscuro>
+  <div class="int-fotos" id="intFotos" aria-hidden="true"></div>
+  <div class="int-velo" aria-hidden="true"></div>
+  <div class="wrap int-txt">
+    <p class="tag rv"><i></i>02 · Interiorismo</p>
+    <h2 class="rv">El proyecto también se habita por dentro.</h2>
+    <p class="rv">Diseñamos el interior con el mismo lápiz que la arquitectura: la luz, la materia, el mobiliario y el recorrido. Lobbies, amenidades, vivienda y hospitality que se sienten antes de verse.</p>
+    <div class="btns rv"><button type="button" class="btn k" id="intVer">Ver VITA Amenidades</button><a class="btn" href="#hablemos">Cuéntanos tu espacio</a></div>
+  </div>
+  <p class="int-pie" id="intPie" aria-live="off"></p>
+</section>
+
+<!-- 03 FIRMA -->
 <section class="light firma" id="firma">
   <div class="wrap fgrid">
     <div class="fizq">
-      <p class="tag rv"><i></i>02 · Quiénes somos</p>
+      <p class="tag rv"><i></i>03 · Quiénes somos</p>
       <h2 class="rv">Transformamos predios y espacios en lugares que las personas quieren habitar.</h2>
     </div>
     <div class="fder">
@@ -631,7 +661,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <!-- 02 SERVICIOS -->
 <section id="servicios" data-oscuro>
   <div class="wrap">
-    <p class="tag rv"><i></i>03 · Qué hacemos</p>
+    <p class="tag rv"><i></i>04 · Qué hacemos</p>
     <h2 class="rv">Tres frentes que piensan juntos</h2>
     <div class="srv">
       <article class="rv"><span class="code">X.STR</span><h3>Visión y estrategia</h3><span class="verb">PENSAR</span><p>Antes del trazo, la idea. En talleres contigo leemos el lugar, el público y el momento, y de esa lectura sale el concepto que guía todo lo demás: qué se construye, para quién y con qué carácter.</p></article>
@@ -645,7 +675,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <section class="white" id="proceso">
   <div class="wrap pgrid">
     <div class="pizq">
-      <p class="tag rv"><i></i>04 · Cómo trabajamos</p>
+      <p class="tag rv"><i></i>05 · Cómo trabajamos</p>
       <h2 class="rv">Cuatro fases, un mismo hilo</h2>
       <figure class="pvista">
         <p class="pfase" aria-live="polite"><b id="procNum">01</b> <span id="procNom">Estrategia</span></p>
@@ -665,7 +695,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <!-- 04 CIFRAS -->
 <section class="cifras" id="cifras" data-oscuro>
   <div class="wrap">
-    <p class="tag rv"><i></i>05 · Trayectoria</p>
+    <p class="tag rv"><i></i>06 · Trayectoria</p>
     <h2 class="rv">X.FORM en cifras</h2>
     <div class="kpis">
       <div class="rv"><b>+500.000</b><span>M² diseñados</span></div>
@@ -680,7 +710,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <section id="modelo" data-oscuro>
   <div class="wrap mv">
     <div class="rv mv-izq">
-      <p class="tag"><i></i>06 · Cabida y prefactibilidad en vivo</p>
+      <p class="tag"><i></i>07 · Cabida y prefactibilidad en vivo</p>
       <h2>¿Qué cabe en tu lote?</h2>
       <p class="lead">Antes de dibujar, hacemos la cabida: cuánto se puede construir, cuántas unidades salen y si el negocio da. Prueba con un lote de ejemplo.</p>
       <div class="mv-ctl">
@@ -744,7 +774,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <!-- 06 EQUIPO -->
 <section id="equipo" data-oscuro>
   <div class="wrap eq">
-    <div><p class="tag rv"><i></i>07 · Nosotros</p>
+    <div><p class="tag rv"><i></i>08 · Nosotros</p>
     <h2 class="rv">Quien firma el proyecto es quien lo dirige.</h2>
     <p class="lead rv">Somos un estudio pequeño a propósito. Estrategia, paisaje y arquitectura se sientan en la misma mesa desde el primer boceto, y cada proyecto lo llevan sus socios de principio a fin.</p>
     <ul class="cultura rv">
@@ -768,7 +798,7 @@ section{padding:clamp(52px,6vw,88px) 0}
   <p class="fondo-cap" aria-hidden="true">Cayetana, Barú · render con retoque de IA</p>
   <div class="wrap dim">
     <div>
-      <p class="tag rv"><i></i>08 · Dimensiona tu proyecto</p>
+      <p class="tag rv"><i></i>09 · Dimensiona tu proyecto</p>
       <h2 class="rv">Cuéntanos qué tienes en mente</h2>
       <p class="lead rv">Tres preguntas para darte una primera lectura de la escala de tu proyecto y del paso que sigue.</p>
     </div>
@@ -813,7 +843,7 @@ section{padding:clamp(52px,6vw,88px) 0}
   <canvas class="curvas" id="curvas2" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="cgrid">
-    <div><p class="tag rv"><i></i>09 · Hablemos</p>
+    <div><p class="tag rv"><i></i>10 · Hablemos</p>
     <h2 class="rv">Hablemos de tu lugar</h2>
     <p class="lead rv">Cuéntanos dónde está tu terreno y qué imaginas para él.</p>
     <div class="btns rv">
@@ -961,7 +991,7 @@ const P = [
 // la versión obliga al navegador a bajar la imagen nueva (assets va con caché de un año)
 const src = n => `assets/img/${n}.webp?v=20261111`;
 // v6 · orden de la vitrina y ancho de cada tarjeta (de 12 columnas), como en MVRDV y Foster
-const ORDEN=[0,3,1,6,2,7,8,9,10,4,11,5,12];
+const ORDEN=[0,10,6,5,7,8,9,3,1,2,11,12,4];
 const ANCHO=[12,7,5,4,4,4,5,7,6,6,4,4,4];
 const cards = document.getElementById("cards");
 cards.innerHTML = ORDEN.map((i,k)=>{const p=P[i]; const fotos=p.img.slice(0,3);
@@ -1047,6 +1077,20 @@ if("IntersectionObserver" in window){
   setTimeout(todos,2500);
 } else todos();
 
+// v6b · interiorismo: las fotos de interior se funden solas, con su pie y la IA declarada
+(function(){
+  const F=[[3,4],[4,1],[2,5],[3,8],[4,0],[2,4],[3,9]]; // [proyecto, imagen]
+  const box=document.getElementById("intFotos"), pie=document.getElementById("intPie"); if(!box) return;
+  box.innerHTML=F.map(([i,k],j)=>`<img class="${j?"":"on"}" src="${src(P[i].img[k])}" alt="" loading="${j?"lazy":"eager"}" decoding="async">`).join("");
+  const im=[...box.querySelectorAll("img")]; let n=0;
+  const rotula=()=>{const [i,k]=F[n]; pie.textContent=P[i].cap[k]+(P[i].ia?" · Retoque de IA":"");};
+  rotula();
+  document.getElementById("intVer").addEventListener("click",()=>abrirFicha(4));
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let vis=false;
+  if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.2}).observe(box.parentElement);
+  setInterval(()=>{ if(!vis) return; im[n].classList.remove("on"); n=(n+1)%im.length; im[n].classList.add("on"); rotula(); },4200);
+})();
 // v6 · video del hero: quieto si la persona pidió menos movimiento o ahorro de datos
 (function(){const v=document.getElementById("heroVid"); if(!v) return;
   const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches||(navigator.connection&&navigator.connection.saveData);
@@ -1062,7 +1106,7 @@ function curvas(id, cyF){
     for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
       for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
       g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
-    if(!quieto&&vis){t+=.0025;run=true;requestAnimationFrame(dibuja)}}
+    if(!quieto&&vis){t+=.0008;run=true;requestAnimationFrame(dibuja)}}
   if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting; if(vis&&!run) dibuja();}).observe(c);
   addEventListener("resize",()=>{tam();if(quieto)dibuja()}); tam(); dibuja();
 }
