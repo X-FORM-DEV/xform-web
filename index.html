@@ -537,9 +537,9 @@ section{padding:clamp(52px,6vw,88px) 0}
 .card .ph,.card.big .ph{aspect-ratio:auto;height:clamp(300px,34vw,560px);background:#111}
 .card.w12 .ph{height:clamp(380px,50vw,820px)}
 .card.w4 .ph{height:clamp(280px,27vw,440px)}
-.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease,transform 7s cubic-bezier(.2,.7,.2,1);transform:scale(1.06)}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 3.2s ease,transform 14s cubic-bezier(.2,.7,.2,1);transform:scale(1.04)}
 .card .ph img.on{opacity:1;transform:scale(1)}
-.card:hover .ph img.on,.card:focus-visible .ph img.on{transform:scale(1.035);transition:opacity 1.6s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img.on,.card:focus-visible .ph img.on{transform:scale(1.035);transition:opacity 3.2s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .card .ph::after{display:none}
 .card .cinfo{position:absolute;left:0;right:0;bottom:0;padding:70px clamp(16px,1.6vw,26px) clamp(16px,1.6vw,24px);background:linear-gradient(transparent,rgba(17,17,17,.78)) /* taste-skill-ignore: scrim sobre foto */;display:block;text-align:left}
 .card .cinfo h3{margin:0;font-size:clamp(20px,1.9vw,30px);font-weight:700;line-height:1.1;color:#fff}
@@ -556,7 +556,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 /* v6b · interiorismo con nombre propio y llamado comercial */
 .interior{position:relative;min-height:clamp(560px,88vh,920px);display:flex;align-items:flex-end;padding:0;overflow:hidden;background:#111}
 .int-fotos{position:absolute;inset:0}
-.int-fotos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.8s ease,transform 9s cubic-bezier(.2,.7,.2,1)}
+.int-fotos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity 3.6s ease,transform 18s cubic-bezier(.2,.7,.2,1)}
 .int-fotos img.on{opacity:1;transform:scale(1)}
 .int-velo{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,17,.9) 0%,rgba(17,17,17,.68) 46%,rgba(17,17,17,.18) 100%),linear-gradient(0deg,rgba(17,17,17,.66),transparent 45%) /* taste-skill-ignore: velo sobre foto */}
 .int-txt{position:relative;z-index:1;padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(56px,7vw,96px)}
@@ -567,6 +567,14 @@ section{padding:clamp(52px,6vw,88px) 0}
 .proy-cta p{font-size:clamp(20px,2vw,28px);font-weight:300;color:var(--paper);max-width:34ch;margin:0}
 @media (max-width:760px){.int-pie{left:var(--gut);right:auto;text-align:left;bottom:14px;font-size:10px}.int-txt{padding-bottom:64px}}
 @media (prefers-reduced-motion:reduce){.int-fotos img{transition:none;transform:none}}
+
+/* v6c · el texto se lee y se retira: la obra gana el primer plano */
+.hero .wrap,.hero .coord,.hero .hero-ia,.hero-velo,.hero canvas.curvas,.hero .bajar{transition:filter 1.8s ease,opacity 1.8s ease}
+.hero.calma .wrap,.hero.calma .coord,.hero.calma .hero-ia{filter:opacity(0);pointer-events:none}
+.hero.calma .hero-velo{opacity:.1}
+.hero.calma canvas.curvas{opacity:.12}
+.hero .wrap{transition-duration:1.8s}
+.hero:not(.calma) .wrap{transition-duration:.7s}
 </style>
 </head>
 <body>
@@ -592,7 +600,7 @@ section{padding:clamp(52px,6vw,88px) 0}
 <main>
 <!-- HERO -->
 <section class="hero" id="inicio" data-oscuro>
-  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-obra.webp?v=20261111b" aria-hidden="true"><source src="assets/video/hero-obra.mp4?v=20261111b" type="video/mp4"></video>
+  <video class="hero-vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-obra.webp?v=20261111c" aria-hidden="true"><source src="assets/video/hero-obra-1080.mp4?v=20261111c" type="video/mp4" media="(min-width: 900px)"><source src="assets/video/hero-obra-720.mp4?v=20261111c" type="video/mp4"></video>
   <div class="hero-velo" aria-hidden="true"></div>
   <canvas class="curvas" id="curvas" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -965,7 +973,7 @@ const P = [
   cred:"Arquitectura e interiorismo: Francisco Ospina y Camilo Restrepo · X.FORM. Desarrollo: Elemento Constructora.", ia:false, img:["casa-alma-1","casa-alma-4","casa-alma-2","casa-alma-3"], cap:["La llegada · VITA Amenidades · Bogotá","La biblioteca de trabajo · VITA Amenidades · Bogotá","El gimnasio frente a la ciudad · VITA Amenidades · Bogotá","La zona de pesas · VITA Amenidades · Bogotá"]},
  {f:["cc"], cat:"Institucional", t:"Alcaldía Local de Usme", meta:"Usme, Bogotá · Concurso SCA · Institucional",
   txt:"Una sede de gobierno que se recorre como una plaza. El edificio recibe a pie, guarda un jardín en su centro y deja que las montañas del sur entren por cada fachada.",
-  cred:"", ia:true, img:["usme-1","usme-2","usme-3","usme-4","usme-5","usme-6"], cap:["La alcaldía en su barrio · Usme, Bogotá","El acceso principal · Alcaldía Local de Usme","La llegada a pie · Alcaldía Local de Usme","El recorrido peatonal · Alcaldía Local de Usme","El interior · Alcaldía Local de Usme","La fachada frontal · Alcaldía Local de Usme"]},
+  cred:"", ia:true, img:["usme-3","usme-1","usme-2","usme-4","usme-5","usme-6"], cap:["La llegada a pie · Alcaldía Local de Usme","La alcaldía en su barrio · Usme, Bogotá","El acceso principal · Alcaldía Local de Usme","El recorrido peatonal · Alcaldía Local de Usme","El interior · Alcaldía Local de Usme","La fachada frontal · Alcaldía Local de Usme"]},
  {f:["cc","mp"], cat:"Paisaje", t:"Guadalupe River Park", meta:"San José, California · Paisaje y espacio público",
   txt:"El río vuelve a ser parte de la ciudad. Senderos, orillas vivas y praderas que cambian con cada estación devuelven el agua a la vida diaria del barrio.",
   cred:"", ia:true, img:["guadalupe-1","guadalupe-2","guadalupe-3","guadalupe-4","guadalupe-5","guadalupe-6"], cap:["El río en verano · Guadalupe River Park","La orilla en otoño · Guadalupe River Park","La primavera en el río · Guadalupe River Park","El sendero junto al agua · Guadalupe River Park","La pradera · Guadalupe River Park","El parque abierto · Guadalupe River Park"]},
@@ -989,7 +997,7 @@ const P = [
   cred:"Arquitectura: Francisco Ospina", ia:false, img:["casa-villeta-n-1","casa-villeta-1","casa-villeta-n-2","casa-villeta-n-3","casa-villeta-n-4","casa-villeta-2","casa-villeta-3"], cap:["La piscina y el jardín · Casa Villeta · Villeta, Cundinamarca","La piscina hacia la casa · Casa Villeta · Villeta, Cundinamarca","La fachada principal · Casa Villeta · Villeta, Cundinamarca","La entrada · Casa Villeta · Villeta, Cundinamarca","El volumen lateral · Casa Villeta · Villeta, Cundinamarca","La llegada · Casa Villeta · Villeta, Cundinamarca","El muro blanco al atardecer · Casa Villeta · Villeta, Cundinamarca"]}
 ];
 // la versión obliga al navegador a bajar la imagen nueva (assets va con caché de un año)
-const src = n => `assets/img/${n}.webp?v=20261111`;
+const src = n => `assets/img/${n}.webp?v=20261111c`;
 // v6 · orden de la vitrina y ancho de cada tarjeta (de 12 columnas), como en MVRDV y Foster
 const ORDEN=[0,10,6,5,7,8,9,3,1,2,11,12,4];
 const ANCHO=[12,7,5,4,4,4,5,7,6,6,4,4,4];
@@ -1009,7 +1017,7 @@ cards.innerHTML = ORDEN.map((i,k)=>{const p=P[i]; const fotos=p.img.slice(0,3);
   }
   let t=0;
   setInterval(()=>{ t++; vivas.forEach(c=>{ const im=[...c.querySelectorAll(".ph img")]; if(c.matches(":hover")) return;
-    const k=(+c.dataset.i+t)%im.length; im.forEach((x,j)=>x.classList.toggle("on",j===k)); }); },3800);
+    const k=(+c.dataset.i+t)%im.length; im.forEach((x,j)=>x.classList.toggle("on",j===k)); }); },7600);
 })();
 
 document.querySelectorAll(".filtros button").forEach(b=>b.addEventListener("click",()=>{
@@ -1089,7 +1097,15 @@ if("IntersectionObserver" in window){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   let vis=false;
   if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.2}).observe(box.parentElement);
-  setInterval(()=>{ if(!vis) return; im[n].classList.remove("on"); n=(n+1)%im.length; im[n].classList.add("on"); rotula(); },4200);
+  setInterval(()=>{ if(!vis) return; im[n].classList.remove("on"); n=(n+1)%im.length; im[n].classList.add("on"); rotula(); },8400);
+})();
+// v6c · hero: tras unos segundos de lectura el texto se retira y queda la obra en movimiento
+(function(){const h=document.getElementById("inicio"); if(!h||matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let tm; const calma=()=>{ if(scrollY<innerHeight*.5) h.classList.add("calma"); };
+  const vuelve=()=>{ h.classList.remove("calma"); clearTimeout(tm); tm=setTimeout(calma,7000); };
+  ["pointerdown","touchstart","keydown","wheel","focusin","scroll"].forEach(e=>addEventListener(e,vuelve,{passive:true}));
+  let ult=0; addEventListener("pointermove",e=>{ const d=Math.abs(e.movementX)+Math.abs(e.movementY); if(d>24&&Date.now()-ult>400){ult=Date.now();vuelve();} },{passive:true});
+  tm=setTimeout(calma,9000);
 })();
 // v6 · video del hero: quieto si la persona pidió menos movimiento o ahorro de datos
 (function(){const v=document.getElementById("heroVid"); if(!v) return;
@@ -1098,19 +1114,19 @@ if("IntersectionObserver" in window){
   else { const p=v.play(); if(p&&p.catch) p.catch(()=>{}); }
 })();
 // ---------- curvas de nivel: el motivo gráfico de la marca ----------
-function curvas(id, cyF){
+function curvas(id, cyF, fija){
   const c=document.getElementById(id); if(!c) return; const g=c.getContext("2d"); let W,H,t=0,vis=true,run=false;
-  const quieto=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const quieto=fija||matchMedia("(prefers-reduced-motion: reduce)").matches;
   function tam(){const r=Math.min(devicePixelRatio||1,2);W=c.width=c.clientWidth*r;H=c.height=c.clientHeight*r}
   function dibuja(){run=false;g.clearRect(0,0,W,H);const cx=W*.62,cy=H*cyF,n=26,esc=Math.max(W,H)/24,d=Math.min(devicePixelRatio||1,2);
     for(let i=1;i<=n;i++){g.beginPath();const r0=i*esc;
       for(let k=0;k<=180;k++){const a=k/180*Math.PI*2;const r=r0*(1+.08*Math.sin(a*3+i*.35+t)+.05*Math.cos(a*5-i*.2-t*.7));const x=cx+Math.cos(a)*r*1.35,y=cy+Math.sin(a)*r*.82;k?g.lineTo(x,y):g.moveTo(x,y)}
       g.closePath();g.strokeStyle=i%6===0?"rgba(200,255,60,.16)":"rgba(241,240,236,"+(.075-.0018*i)+")";g.lineWidth=(i%6===0?1.4:1)*d;g.stroke()}
-    if(!quieto&&vis){t+=.0008;run=true;requestAnimationFrame(dibuja)}}
+    if(!quieto&&vis){t+=.0004;run=true;requestAnimationFrame(dibuja)}}
   if("IntersectionObserver" in window) new IntersectionObserver(es=>{vis=es[0].isIntersecting; if(vis&&!run) dibuja();}).observe(c);
   addEventListener("resize",()=>{tam();if(quieto)dibuja()}); tam(); dibuja();
 }
-curvas("curvas",.42); curvas("curvas2",.5);
+curvas("curvas",.42,true); curvas("curvas2",.5);
 
 // ---------- Textos legales: se abren desde el pie o con #terminos / #datos en la dirección ----------
 (function(){
@@ -1137,6 +1153,7 @@ curvas("curvas",.42); curvas("curvas2",.5);
   const sec = document.getElementById("dimensiona"), c = document.getElementById("curvasTinta"), img = document.getElementById("fondoImg");
   if (!sec || !c) return;
   const g = c.getContext("2d"), quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SOBRE_IMAGEN = true; // v6c · sobre el render las curvas quedan quietas: manda la imagen
   let W, H, d = 1, t = 0, vis = false, run = false, mx = -9999, my = -9999, fx = 0, fy = 0, fuerza = 0;
   function tam(){ d = Math.min(devicePixelRatio || 1, 2); W = c.width = c.clientWidth * d; H = c.height = c.clientHeight * d; }
   function dibuja(){
@@ -1160,7 +1177,7 @@ curvas("curvas",.42); curvas("curvas2",.5);
     }
     // el render se desplaza un poco más lento que la página
     if (img) { const r = sec.getBoundingClientRect(); img.style.transform = "translateY(" + ((r.top + r.height / 2 - innerHeight / 2) * -.06).toFixed(1) + "px)"; }
-    if (!quieto && vis) { t += .002; run = true; requestAnimationFrame(dibuja); }
+    if (!quieto && vis && !SOBRE_IMAGEN) { t += .0007; run = true; requestAnimationFrame(dibuja); }
   }
   sec.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); mx = (e.clientX - r.left) * d; my = (e.clientY - r.top) * d; if (fx < -999) { fx = mx; fy = my; } });
   sec.addEventListener("pointerleave", () => { mx = my = -9999; });
@@ -1169,7 +1186,7 @@ curvas("curvas",.42); curvas("curvas2",.5);
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="assets/relieve.js?v=20261022d" defer></script>
+<script src="assets/relieve.js?v=20261111c" defer></script>
 <script src="assets/modelo.js?v=20261022e" defer></script>
 <script src="assets/sabor.js?v=20261022d" defer></script>
 <script src="assets/i18n.js?v=20261022a" defer></script>

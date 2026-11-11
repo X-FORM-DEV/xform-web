@@ -105,7 +105,9 @@
   // El cursor se proyecta sobre el plano para saber dónde levantar la colina.
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), objetivo = new THREE.Vector2(9, 9);
   let fuerzaObj = 0, px = 0, py = 0;
-  const sobreOscura = el => !!(el && el.closest && el.closest("[data-oscuro]"));
+  // v6c · sobre imágenes, video o la banda de interiorismo el relieve no reacciona: manda la imagen
+  const sobreImagen = el => !!(el && el.closest && el.closest("img, video, .card, .interior, #inicio"));
+  const sobreOscura = el => !!(el && el.closest && el.closest("[data-oscuro]")) && !sobreImagen(el);
   function apunta(x, y, el){
     if (!sobreOscura(el)) { fuerzaObj = 0; return; }
     ndc.set((x / innerWidth) * 2 - 1, -(y / innerHeight) * 2 + 1);
@@ -144,10 +146,10 @@
   function cuadro(){
     corriendo = false;
     if (!activo()) return;
-    const t = (performance.now() - t0) / 1000;
+    const t = (performance.now() - t0) / 1000 * 0.4; // v6c · más lento y más suave
     uni.uT.value = t;
-    uni.uMouse.value.lerp(objetivo, 0.08);
-    uni.uFuerza.value += (fuerzaObj - uni.uFuerza.value) * 0.05;
+    uni.uMouse.value.lerp(objetivo, 0.04);
+    uni.uFuerza.value += (fuerzaObj - uni.uFuerza.value) * 0.025;
     uni.uHero.value += (Math.min(1, heroVis * 1.6) - uni.uHero.value) * 0.08;
     uni.uDesp.value += (scrollY / innerHeight * 1.4 - uni.uDesp.value) * 0.08;
     malla.rotation.z += ((px * 0.12) - malla.rotation.z) * 0.04;
